@@ -129,34 +129,16 @@
 
 /* wui-scrolly-load */
 
-.wui-scrolly-load.fadein,
-.wui-scrolly-load.fadein-up,
-.wui-scrolly-load.fadein-left,
-.wui-scrolly-load.fadein-right {
+.wui-scrolly-load:is(.fadein, .fadein-up, .fadein-top, .fadein-left, .fadein-right) {
+	--fadein-transition: all .8s;
 	-khtml-opacity: 0;
 	-moz-opacity: 0;
 	opacity: 0;
-}
-.wui-scrolly-load.fadein.loaded,
-.wui-scrolly-load.fadein-up.loaded,
-.wui-scrolly-load.fadein-left.loaded,
-.wui-scrolly-load.fadein-right.loaded {
-	-khtml-opacity: 1;
-	-moz-opacity: 1;
-	opacity: 1;
-	top: 0;
-	left: 0;
-}
-.wui-scrolly-load.fadein,
-.wui-scrolly-load.fadein-up,
-.wui-scrolly-load.fadein-left,
-.wui-scrolly-load.fadein-right {
-	--fadein-transition: all .8s;
 	-webkit-transition: var(--fadein-transition);
 	-moz-transition: var(--fadein-transition);
 	transition: var(--fadein-transition);
 }
-.wui-scrolly-load.fadein-up {
+.wui-scrolly-load:is(.fadein-up, .fadein-top) {
 	top: 56px;
 }
 .wui-scrolly-load.fadein-left {
@@ -164,4 +146,11 @@
 }
 .wui-scrolly-load.fadein-right {
 	left: -56px;
+}
+.wui-scrolly-load:is(.fadein, .fadein-up, .fadein-top, .fadein-left, .fadein-right).loaded {
+	-khtml-opacity: 1;
+	-moz-opacity: 1;
+	opacity: 1;
+	top: 0;
+	left: 0;
 }
