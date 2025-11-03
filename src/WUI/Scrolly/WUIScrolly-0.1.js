@@ -179,8 +179,8 @@ class WUIScrolly {
 		}
 		const onScrollJS = (event) => {
 			if (!this._lock) {
+				this._direction = window.scrollY > this._scrollY ? "down" : window.scrollY < this._scrollY ? "up" : this._direction;
 				this._scrollY = window.scrollY >= 0 ? window.scrollY : 0;
-				this._direction = event.deltaY > 0 ? "down" : (event.deltaY < 0 ? "up" : this._direction);
 				if (!this._moving) {
 					this._bodyHeight = WUIScrolly.bodyHeight();
 					this._screenHeight = WUIScrolly.screenHeight();
