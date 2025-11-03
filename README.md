@@ -1075,28 +1075,60 @@ CSS settings:
 CSS code:
 
 ```css
+html,
 body {
+	height: 100%;
+}
+.wui-scrolly {
+	overflow-x: hidden;
 	margin: 0;
 	padding: 0;
 }
-.my-section {
-	display: flex;
+.wui-scrolly > .section {
 	width: 100%;
-	min-height: 100px;
-	margin: 10px 0;
 	background-color: lightgray;
+}
+.wui-scrolly > .section > .scene > .animation {
+	position: relative;
+}
+.wui-scrolly > .section1 {
+	background-color: #f1f1f1;
+}
+.wui-scrolly > .section2 > .scene.scene2 {
+	display: flex;
+	position: relative; /* necessary */
 	align-items: center;
 	justify-content: center;
+	flex-direction: row;
 	gap: 20px;
 }
-.my-section.section1 {
-	margin-top: 50px;
+.wui-scrolly > .section2 {
+	background-color: #e9e9e9;
+}
+.wui-scrolly > .section3 {
+	background-color: #e1e1e1;
+}
+.wui-scrolly > .section3 > .scene > .animation > .my-element {
+	left: -100px;
+}
+.wui-scrolly > .section4 {
+	background-color: #d9d9d9;
 }
 .my-element {
+	display: flex;
+	position: relative; /* necessary */
 	width: 50px;
 	height: 50px;
+	margin: 5px;
 	pargin: 20px;
 	background-color: dodgerblue;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+}
+.my-output {
+	margin: 10px;
+	font-family: monospace;
 }
 ```
 
@@ -1110,27 +1142,49 @@ HTML head:
 HTML code:
 
 ```html
-<!-- CSS animation -->
-<section class="my-section section1">
-	<div class="my-element fadein-left"></div>
-	<div class="my-element fadein-top" data-delay="200"></div>
-	<div class="my-element fadein-right" data-delay="400"></div>
-</section>
+<body class="wui-scrolly">
+	<section class="section section1">
+		<div class="scene">1: scroll down</div>
+	</section>
 
-<!-- JS animation -->
-<section class="my-section section2">
-	<div class="scene">
-		<div class="animation"></div>
-	</div>
-</section>
+	<!-- CSS animation -->
 
-<!-- JS animation with paging -->
-<section class="my-section section3">
-	<div class="scene">
-		<div class="animation"></div>
-	</div>
-	<div class="paging dots"></div>
-</section>
+	<section class="section section2">
+		<div class="scene scene2">
+			<div class="my-element wui-scrolly-load fadein" data-delay=".0">1</div>
+			<div class="my-element wui-scrolly-load fadein-left" data-delay=".2">2</div>
+			<div class="my-element wui-scrolly-load fadein-top" data-delay=".4">3</div>
+			<div class="my-element wui-scrolly-load fadein-right" data-delay=".8">4</div>
+		</div>
+	</section>
+
+	<!-- JS animation -->
+
+	<section class="section section3">
+		<div class="scene">
+			<div class="animation">
+				<div class="my-element element5">5</div>
+				<div class="my-element element6">6</div>
+				<div class="my-element element7">7</div>
+			</div>
+			<div class="my-output"></div>
+		</div>
+	</section>
+
+	<!-- Paged JS animation -->
+
+	<section class="section section4">
+		<div class="scene">
+			<div class="animation">
+				<div class="my-element element8">8</div>
+				<div class="my-element element9">9</div>
+				<div class="my-element element10">10</div>
+			</div>
+			<div class="my-output"></div>
+		</div>
+		<div class="paging dots"></div>
+	</section>
+</body>
 ```
 
 JS code:
@@ -1143,36 +1197,75 @@ const scrolly = new WUIScrolly({
 	dataScrollY: "scrollY",  // Default value, property can be omitted
 	dataDelay: "delay",      // Default value, property can be omitted
 	onStart: () => {},
-	onMove: () => {},
+	onMove: (event) => {},
 	onStop: () => {},
-	debug: true
+	debug: false
 });
+const element5 = document.body.querySelector(".section3 .my-element.element5");
+const element6 = document.body.querySelector(".section3 .my-element.element6");
+const element7 = document.body.querySelector(".section3 .my-element.element7");
+const element8 = document.body.querySelector(".section4 .my-element.element8");
+const element9 = document.body.querySelector(".section4 .my-element.element9");
+const element10 = document.body.querySelector(".section4 .my-element.element10");
+const output3 = document.body.querySelector(".section3 .my-output");
+const output4 = document.body.querySelector(".section4 .my-output");
 
 // Add sections
 scrolly.addSection({
-	selector: ".my-section.section1",
-	target: "css-animation",
+	selector: ".section1",
+	target: "cover",
 	type: "static",
-	height: "auto"
+	height: "100%"
 });
 scrolly.addSection({
-	selector: ".my-section.section2",
-	target: "js-animation",
+	selector: ".section2",
+	target: "css-animation",
 	type: "static",
-	height: 400,
+	height: 400
+});
+scrolly.addSection({
+	selector: ".section3",
+	target: "js-animation",
+	type: "auto",
+	height: 4500,
 	animation: (step = 0, progress = 0) => {
-		// ...
+		const direction = scrolly.direction;
+		const left = step != null ? parseInt(200 * progress - 100)+"px" : "100px";
+		if (step == 0) {
+			if (direction == "up") {
+				element6.style.left = "-100px";
+			}
+			element5.style.left = left;
+		} else if (step == 1) {
+			if (direction == "down") {
+				element5.style.left = "100px";
+			} else if (direction == "up") {
+				element7.style.left = "-100px";
+			}
+			element6.style.left = left;
+		} else if (step == 2) {
+			if (direction == "down") {
+				element6.style.left = "100px";
+			}
+			element7.style.left = left;
+		} else if (step == null) {
+			element7.style.left = left;
+		}
+		output3.textContent = `step: ${step}, progress: ${progress}, direction: ${direction}`;
 	}
 });
 scrolly.addSection({
-	selector: ".my-section.section3",
+	selector: ".section4",
 	target: "js-animation-paging",
-	type: "static",
-	height: 480,
-	steps: 8,
+	type: "auto",
+	height: 4500,
+	steps: 2,
 	pages: 3,
 	animation: (step = 0, progress = 0) => {
+		const direction = scrolly.direction;
+		const left = step != null ? parseInt(200 * progress - 100)+"px" : "100px";
 		// ...
+		output4.textContent = `step: ${step}, progress: ${progress}, direction: ${direction}`;
 	}
 });
 
