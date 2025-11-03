@@ -70,6 +70,10 @@ class WUIScrolly {
 		return this._scrollY;
 	}
 
+	get direction() {
+		return this._direction;
+	}
+
 	get deltaY() {
 		return this._deltaY;
 	}
@@ -176,6 +180,7 @@ class WUIScrolly {
 		const onScrollJS = (event) => {
 			if (!this._lock) {
 				this._scrollY = window.scrollY >= 0 ? window.scrollY : 0;
+				this._direction = event.deltaY > 0 ? "down" : (event.deltaY < 0 ? "up" : this._direction);
 				if (!this._moving) {
 					this._bodyHeight = WUIScrolly.bodyHeight();
 					this._screenHeight = WUIScrolly.screenHeight();
@@ -292,6 +297,7 @@ class WUIScrolly {
 		this._screenHeight = WUIScrolly.screenHeight();
 		this._maxScrollTop = this._bodyHeight - this._screenHeight;
 		this._scrollY = window.scrollY >= 0 ? window.scrollY : 0;
+		this._direction = null;
 		this._deltaY = 0;
 		this._moving = false;
 		this._truncated = false;
