@@ -1143,6 +1143,9 @@ HTML code:
 
 ```html
 <body class="wui-scrolly">
+
+	<!-- Cover -->
+
 	<section class="section section1">
 		<div class="scene">1: scroll down</div>
 	</section>
@@ -1171,7 +1174,7 @@ HTML code:
 		</div>
 	</section>
 
-	<!-- Paged JS animation -->
+	<!-- JS paging animation -->
 
 	<section class="section section4">
 		<div class="scene">
@@ -1256,7 +1259,7 @@ scrolly.addSection({
 });
 scrolly.addSection({
 	selector: ".section4",
-	target: "js-animation-paging",
+	target: "js-paging-animation",
 	type: "auto",
 	height: 4500,
 	steps: 2,
