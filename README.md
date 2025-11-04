@@ -1215,6 +1215,8 @@ const scrolly = new WUIScrolly({
 	onMove: (index, step, progress) => {
 		if (index == 1) {
 			element5.style.left = "-100px";
+		} else if (index == 2) {
+			element8.style.left = "-100px";
 		} else if (index == 3) {
 			element7.style.left = "100px";
 		}
