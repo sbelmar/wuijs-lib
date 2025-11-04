@@ -1225,7 +1225,7 @@ scrolly.addSection({
 	target: "js-animation",
 	type: "auto",
 	height: 4500,
-	steps: 2, /* 0 - 2 */
+	steps: 3,
 	pages: 3,
 	animation: (step, progress) => {
 		const direction = scrolly.direction;

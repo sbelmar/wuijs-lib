@@ -254,7 +254,7 @@ class WUIScrolly {
 							h += height;
 						}
 						if (y > 0) {
-							const steps = this._sections[this._sceneIndex].steps +1;
+							const steps = this._sections[this._sceneIndex].steps;
 							for (s = 0; s < steps; s++) {
 								if (p >= s/steps && p < (s +1)/steps) {
 									this._sceneStep = s;
@@ -363,7 +363,7 @@ class WUIScrolly {
 					section._scene.classList.remove("fixed");
 					section._scene.style.top = "auto";
 					section._scene.style.bottom = "0px";
-					this._sceneStep = section.steps;
+					this._sceneStep = section.steps -1;
 					this._sceneProgress = 1;
 				}
 				if (sense.match(/^(start|forward|backward)$/)) {
