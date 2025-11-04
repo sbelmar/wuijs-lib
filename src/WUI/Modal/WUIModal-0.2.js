@@ -321,7 +321,6 @@ class WUIModal {
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		const bodyHeight = document.body.offsetHeight;
 		const bodyStyle = getComputedStyle(document.body);
-		const bgcolor = getComputedStyle(this._element).getPropertyValue("--wui-modal-overlay-bgcolor").replace(/\s+/g, "").replace("rgba(", "").replace(")", "").split(",");
 		const slideMargin = parseInt(getComputedStyle(this._element).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
 		let under = null;
 		let pages = 1;
@@ -397,10 +396,7 @@ class WUIModal {
 				const underPage = Boolean(under._element.classList.contains("page"));
 				const underSlide = Boolean(under._element.classList.contains("slide"));
 				const underMaximized = Boolean(under._element.classList.contains("maximized"));
-				if (bgcolor.length == 4) {
-					const opacity = Math.round((1 -ease) * parseFloat(bgcolor[3]) * 100) / 100;
-					under._element.style.backgroundColor = "rgba("+bgcolor[0]+", "+bgcolor[1]+", "+bgcolor[2]+", "+opacity+")";
-				}
+				this._element.classList.add("over");
 				if (under._box != null && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
@@ -469,7 +465,6 @@ class WUIModal {
 		const slide = Boolean(this._element.classList.contains("slide"));
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		const bodyHeight = document.body.offsetHeight;
-		const bgcolor = getComputedStyle(this._element).getPropertyValue("--wui-modal-overlay-bgcolor").replace(/\s+/g, "").replace("rgba(", "").replace(")", "").split(",");
 		const slideMargin = parseInt(getComputedStyle(this._element).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
 		let under = null;
 		let step = delay > 0 ? 100 : 0;
@@ -520,10 +515,7 @@ class WUIModal {
 				const underPage = Boolean(under._element.classList.contains("page"));
 				const underSlide = Boolean(under._element.classList.contains("slide"));
 				const underMaximized = Boolean(under._element.classList.contains("maximized"));
-				if (bgcolor.length == 4) {
-					const opacity = Math.round((1 -ease) * parseFloat(bgcolor[3]) * 100) / 100;
-					under._element.style.backgroundColor = "rgba("+bgcolor[0]+", "+bgcolor[1]+", "+bgcolor[2]+", "+opacity+")";
-				}
+				this._element.classList.remove("over");
 				if (under._box != null && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
