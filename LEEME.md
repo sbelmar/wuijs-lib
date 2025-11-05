@@ -2464,6 +2464,13 @@ Configuración CSS:
 Código CSS:
 
 ```css
+.my-button {
+	margin: 20px;
+}
+.my-output {
+	margin: 10px;
+	font-family: monospace;
+}
 ```
 
 Cabecera HTML:
@@ -2477,12 +2484,54 @@ Cabecera HTML:
 Código HTML:
 
 ```html
+<button class="wui-button my-button button1">botón 1</button>
+<button class="wui-button my-button button2 submit">
+	<div class="wui-icon float-left mappointer-fill"></div>
+	<span>botón 2</span>
+</button>
+
+<div class="my-output"></div>
 ```
 
 Código JS:
 
 ```js
+// Crear objeto
+const output = document.body.querySelector(".my-output");
+const button1 = new WUIButton({
+	selector: ".wui-button.button1",
+	text: "",           // Valor predeterminado, propiedad puede ser omitida
+	selectable: false,  // Valor predeterminado, propiedad puede ser omitida
+	locked: false,      // Valor predeterminado, propiedad puede ser omitida
+	enabled: true,      // Valor predeterminado, propiedad puede ser omitida
+	onClick: () => {
+		output.textContent = "Click button 1";
+	},
+	onDblClick: () => {
+		output.textContent = "Double-Click button 1";
+	}
+});
+const button2 = new WUIButton({
+	selector: ".wui-button.button2",
+	text: "",           // Valor predeterminado, propiedad puede ser omitida
+	selectable: false,  // Valor predeterminado, propiedad puede ser omitida
+	locked: false,      // Valor predeterminado, propiedad puede ser omitida
+	enabled: true,      // Valor predeterminado, propiedad puede ser omitida
+	onClick: () => {
+		output.textContent = "Click button 2";
+	},
+	onDblClick: () => {
+		output.textContent = "Double-Click button 2";
+	}
+});
+
+// Inicializar objetos
+button1.init();
+button2.init();
 ```
+
+> [!TIP]
+> Puede revisar este ejemplo funcional en CodePen en el enlace: [https://codepen.io/sbelmar/pen/gbPyBNJ](https://codepen.io/sbelmar/pen/gbPyBNJ).
 
 <a name="examples"></a>
 
@@ -2497,3 +2546,4 @@ Los ejemplos listados en esta sección, son detallados en la sección "Implement
 | [WUIFade](#WUIFade)       | [https://codepen.io/sbelmar/pen/KwVeEOv](https://codepen.io/sbelmar/pen/KwVeEOv) |
 | [WUIList](#WUIList)       | [https://codepen.io/sbelmar/pen/vELrGBJ](https://codepen.io/sbelmar/pen/vELrGBJ) |
 | [WUITable](#WUITable)     | [https://codepen.io/sbelmar/pen/zxrapZe](https://codepen.io/sbelmar/pen/zxrapZe) |
+| [WUIButton](#WUIButton)   | [https://codepen.io/sbelmar/pen/gbPyBNJ](https://codepen.io/sbelmar/pen/gbPyBNJ) |
