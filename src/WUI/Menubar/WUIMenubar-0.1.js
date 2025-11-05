@@ -37,8 +37,8 @@ class WUIMenubar {
 			this._selector = value;
 			this._element = document.querySelector(value);
 			this._bar = document.querySelector(value+" > .bar");
-			this._main = this._bar.querySelector(".main");
-			this._bottom = this._bar.querySelector(".bottom");
+			this._main = this._bar ? this._bar.querySelector(".main") : null;
+			this._bottom = this._bar ? this._bar.querySelector(".bottom") : null;
 		}
 	}
 
@@ -72,26 +72,45 @@ class WUIMenubar {
 	}
 
 	setBubble(optionId, number = 0) {
-		const button = this._element.querySelector(`[data-id='${optionId}'].button`);
-		// ...
+		const bubble = this._element.querySelector(`[data-id='${optionId}'].button > .bubble`);
+		bubble.textContent = number;
+		if (number > 0) {
+			bubble.classList.remove("hidden");
+		} else {
+			bubble.classList.add("hidden");
+		}
 	}
 
 	init() {
+		this._submenu = document.createElement("div");
+		this._submenu.className = "submenu";
+		this._element.append(this._submenu);
 		this._options.forEach(option => {
 			const button = document.createElement("div");
 			const icon = document.createElement("div");
 			const text = document.createElement("div");
+			const tooltip = document.createElement("div");
 			const bubble = document.createElement("div");
 			button.append(icon);
 			button.append(text);
+			button.append(tooltip);
 			button.append(bubble);
 			button.dataset.id = option.id;
 			button.className = "button"+(option.enabled == false ? " disabled" : "");
+			button.addEventListener("click", () => {
+				if (!button.classList.contains("disabled")) {
+					if (option.onClick && typeof(option.onClick) == "function") {
+						option.onClick();
+					}
+				}
+			});
 			(option.iconClass || "").split(/\s+/).forEach(name => {
 				icon.classList.add(name);
 			});
-			text.innerText = option.label || "";
+			text.textContent = option.label || "";
 			text.className = "text";
+			tooltip.className = "tooltip hidden";
+			tooltip.textContent = option.label || "";
 			bubble.className = "bubble hidden";
 			bubble.innerText = 0;
 			if ((typeof(option.position) == "undefined" || option.position == "main") && this._main) {
@@ -125,6 +144,10 @@ class WUIMenubar {
 		}
 		this.getOption(id).selected = selected;
 	}
+
+	open() {}
+
+	close() {}
 
 	destroy() {
 		if (this._element) {

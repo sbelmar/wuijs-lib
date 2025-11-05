@@ -116,7 +116,9 @@
 	border-right: 1px solid var(--wui-table-column-resize-bordercolor-over);
 }
 .wui-table > table > thead > tr > th.draggable.drag {
-	opacity: 0.5;
+	-khtml-opacity: .5;
+	-moz-opacity: .5;
+	opacity: .5;
 }
 .wui-table > table > thead > tr > th.draggable.over {
 	outline: 2px dashed var(--wui-table-column-drag-bordercolor-over);
