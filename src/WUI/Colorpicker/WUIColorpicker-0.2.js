@@ -461,23 +461,10 @@ class WUIColorpicker {
 		return this._input;
 	}
 
-	#getSRCIcon(name, event) {
-		const isDarkMode = () => {
-			const shema = getComputedStyle(element).getPropertyValue("color-scheme").trim().replace(/only\s+/, "");
-			return shema == "dark" || (shema.includes("dark") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-		}
-		const rgb2hex = (rgba) => "#"+rgba.map((x, i) => {return ("0"+parseInt(i == 3 ? 255*x : x).toString(16)).slice(-2);}).join("");
+	#getSRCIcon(name) {
 		const element = this._element || document.documentElement;
-		const color = (() => {
-			let color = getComputedStyle(element).getPropertyValue("--wui-colorpicker-"+name+"color-"+event).replace(/#/g, "%23").trim();
-			if (color.match(/light-dark/)) {
-				const lightdark = color.match(/light-dark\(([^,]+),\s*([^)]+)\)/);
-				color = lightdark[!isDarkMode() ? 1 : 2].trim();
-			}
-			return (color.replace(/\s+/g, "").match(/\d+\,\d+\,\d+/) ? rgb2hex(color.replace(/\s+/g, "").replace(/^rgba?\((\d+\,\d+\,\d+)(\,[\d.]+)?\)$/, "$1$2").split(",")) : color);
-		})();
-		const src = getComputedStyle(element).getPropertyValue("--wui-colorpicker-"+name+"icon-src").replace(/currentColor/g, color);
-		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUIColorpicker.#icons[name].replace(/currentColor/g, color)+"\")";
+		const src = getComputedStyle(element).getPropertyValue("--wui-colorpicker-"+name+"icon-src");
+		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUIColorpicker.#icons[name]+"\")";
 	}
 
 	#setValue(value) {
@@ -492,11 +479,11 @@ class WUIColorpicker {
 		const list = WUIColorpicker.#colors.list;
 		const empty = Boolean(value == "" || value == this._emptyValue);
 		const bgcolor = empty ? "transparent" : value;
-		const bgimage = empty ? this.#getSRCIcon("empty", "out") : "url()";
+		const bgimage = empty ? this.#getSRCIcon("empty") : "url()";
 		this._buttonColor.style.backgroundColor = bgcolor;
-		this._buttonColor.style.backgroundImage = bgimage;
+		this._buttonColor.style.maskImage = bgimage;
 		this._previewColor.style.backgroundColor = bgcolor;
-		this._previewColor.style.backgroundImage = bgimage;
+		this._previewColor.style.maskImage = bgimage;
 		this._previewText.innerHTML = empty ? WUIColorpicker.#texts[this._lang].empty : value in list ? list[value] : value;
 		if (empty) {
 			this._buttonColor.classList.add("empty");
@@ -516,7 +503,6 @@ class WUIColorpicker {
 		} else {
 			this._element.classList.remove("disabled");
 		}
-		this._element.style.backgroundImage = this.#getSRCIcon("open", disabled ? "disabled" : "out");
 	}
 
 	init() {
@@ -534,6 +520,7 @@ class WUIColorpicker {
 			this.#setValue(value);
 			this.#setView(value);
 		}
+		this._open = document.createElement("div");
 		this._button = document.createElement("button");
 		this._buttonColor = document.createElement("div");
 		this._background = document.createElement("div");
@@ -549,20 +536,14 @@ class WUIColorpicker {
 		this._footer = document.createElement("div");
 		this._cancelButton = document.createElement("button");
 		this._acceptButton = document.createElement("button");
+		this._element.appendChild(this._open);
 		this._element.appendChild(this._button);
 		this._element.appendChild(this._background);
 		this._element.appendChild(this._box);
-		this._element.style.backgroundImage = this.#getSRCIcon("open", this._input.disabled ? "disabled" : "out");
 		this._element.addEventListener("click", event => {
 			if (this._enabled && event.target.classList.contains("button") || (event.target.classList.contains("color") && event.target.parentNode.classList.contains("button"))) {
 				this.toggle();
 			}
-		});
-		["mouseover", "mouseout", "focus", "blur"].forEach(type => {
-			this._element.addEventListener(type, () => {
-				const event = this._input.disabled ? "disabled" : type == "blur" ? "out" : type.replace(/mouse/, "");
-				this._element.style.backgroundImage = this.#getSRCIcon("open", event);
-			});
 		});
 		if (this._input.getAttribute("style") != null) {
 			this._input.removeAttributeNode(this._input.getAttributeNode("style"));
@@ -599,6 +580,8 @@ class WUIColorpicker {
 			option.addEventListener("click", () => {optionOnClick(option, "list");});
 			this._list.appendChild(option);
 		});
+		this._open.className = "open";
+		this._open.style.maskImage = this.#getSRCIcon("open");
 		this._button.className = "button";
 		this._button.appendChild(this._buttonColor);
 		this._buttonColor.className = "color";
@@ -762,20 +745,10 @@ class WUIColorpicker {
 }
 
 /*
-HTML code:
-<div class="wui-colorpicker">
-	<input type="color" value="(name)" value="">
-</div>
-
-JS code:
-const colorpicker = new WUIColorpicker({
-	selector: ".wui-colorpicker"
-});
-colorpicker.init();
-
 Generated HTML code:
 <div class="wui-colorpicker">
 	<input type="color" value="(name)" value="">
+	<div class="open"></div>
 	<button class="button">
 		<div class="color"></div>
 	</button>

@@ -293,23 +293,10 @@ class WUISelectpicker {
 		return this.#getSelectedOptions().map(opt => opt.text).join(this._separatorText) || "";
 	}
 
-	#getSRCIcon(name, event) {
-		const isDarkMode = () => {
-			const shema = getComputedStyle(element).getPropertyValue("color-scheme").trim().replace(/only\s+/, "");
-			return shema == "dark" || (shema.includes("dark") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-		}
-		const rgb2hex = (rgba) => "#"+rgba.map((x, i) => {return ("0"+parseInt(i == 3 ? 255*x : x).toString(16)).slice(-2);}).join("");
+	#getSRCIcon(name) {
 		const element = this._element || document.documentElement;
-		const color = (() => {
-			let color = getComputedStyle(element).getPropertyValue("--wui-selectpicker-"+name+"color-"+event).replace(/#/g, "%23").trim();
-			if (color.match(/light-dark/)) {
-				const lightdark = color.match(/light-dark\(([^,]+),\s*([^)]+)\)/);
-				color = lightdark[!isDarkMode() ? 1 : 2].trim();
-			}
-			return (color.replace(/\s+/g, "").match(/\d+\,\d+\,\d+/) ? rgb2hex(color.replace(/\s+/g, "").replace(/^rgba?\((\d+\,\d+\,\d+)(\,[\d.]+)?\)$/, "$1$2").split(",")) : color);
-		})();
-		const src = getComputedStyle(element).getPropertyValue("--wui-selectpicker-"+name+"icon-src").replace(/currentColor/g, color);
-		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUISelectpicker.#icons[name].replace(/currentColor/g, color)+"\")";
+		const src = getComputedStyle(element).getPropertyValue("--wui-selectpicker-"+name+"icon-src");
+		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUISelectpicker.#icons[name]+"\")";
 	}
 
 	#setValue(value) {
@@ -341,7 +328,6 @@ class WUISelectpicker {
 		} else {
 			this._element.classList.remove("disabled");
 		}
-		this._element.style.backgroundImage = this.#getSRCIcon("open", disabled ? "disabled" : "out");
 	}
 
 	addOption(opt) {
@@ -416,6 +402,7 @@ class WUISelectpicker {
 	}
 
 	init() {
+		this._open = document.createElement("div");
 		this._inputText = document.createElement("input");
 		this._background = document.createElement("div");
 		this._box = document.createElement("div");
@@ -423,22 +410,17 @@ class WUISelectpicker {
 		this._footer = document.createElement("div");
 		this._cancelButton = document.createElement("button");
 		this._acceptButton = document.createElement("button");
+		this._element.appendChild(this._open);
 		this._element.appendChild(this._inputText);
 		this._element.appendChild(this._background);
 		this._element.appendChild(this._box);
-		this._element.style.backgroundImage = this.#getSRCIcon("open", !this._enabled ? "disabled" : "out");
 		this._element.addEventListener("click", event => {
-			const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-			if (this._enabled && event.target.classList.contains("wui-selectpicker") && (!(!mobile && this._filterable) || (this._element.offsetWidth - event.offsetX < 30))) {
+			if (this._enabled && (event.target.classList.contains("wui-selectpicker") || event.target.classList.contains("open"))) {
 				this.toggle();
 			}
 		});
-		["mouseover", "mouseout", "focus", "blur"].forEach(type => {
-			this._element.addEventListener(type, () => {
-				const event = !this._enabled ? "disabled" : type == "blur" ? "out" : type.replace(/mouse/, "");
-				this._element.style.backgroundImage = this.#getSRCIcon("open", event);
-			});
-		});
+		this._open.className = "open";
+		this._open.style.maskImage = this.#getSRCIcon("open");
 		if (this._input.getAttribute("style") != null) {
 			this._input.removeAttributeNode(this._input.getAttributeNode("style"));
 		}
@@ -634,6 +616,7 @@ Generated HTML code:
 		<option value="value1">value 1</option>
 		...
 	</select>
+	<div class="open"></div>
 	<input type="text" value="(name)Text" value="">
 	<div class="background"></div>
 	<div class="box">

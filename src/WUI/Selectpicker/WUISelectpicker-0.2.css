@@ -16,15 +16,37 @@
 	height: 30px;
 	margin: 0;
 	border: 0;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position-x: 100%;
-	background-image: none;
-	background-size: var(--wui-selectpicker-openicon-size);
-	padding-right: 2rem;
+	padding-right: var(--wui-selectpicker-openicon-size);
 }
 .wui-selectpicker > select {
 	display: none;
+}
+.wui-selectpicker > .open {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: var(--wui-selectpicker-openicon-size);
+	height: var(--wui-selectpicker-openicon-size);
+	-webkit-mask-image: url();
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-moz-mask-image: url();
+	-moz-mask-position: center;
+	-moz-mask-repeat: no-repeat;
+	mask-image: url();
+	mask-position: center;
+	mask-repeat: no-repeat;
+	background-color: var(--wui-selectpicker-opencolor-out);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.wui-selectpicker:not(.disabled):hover > .open {
+	background-color: var(--wui-selectpicker-opencolor-over);
+}
+.wui-selectpicker.disabled > .open {
+	background-color: var(--wui-selectpicker-opencolor-disabled) !important;
 }
 .wui-selectpicker > input[type="text"] {
 	width: 100%;
@@ -42,7 +64,8 @@
 .wui-selectpicker > input[type="text"]:is(:hover, :focus, :focus-within) {
 	color: var(--wui-selectpicker-input-textcolor-over);
 }
-.wui-selectpicker > input[type="text"]:disabled {
+.wui-selectpicker > input[type="text"]:disabled,
+.wui-selectpicker.disabled > input[type="text"] {
 	color: var(--wui-selectpicker-input-textcolor-disabled) !important;
 }
 .wui-selectpicker > .background {

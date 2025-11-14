@@ -216,21 +216,10 @@ class WUITable {
 		return this._element;
 	}
 
-	#getSRCIcon(name, event) {
-		const rgb2hex = (rgba) => "#"+rgba.map((x, i) => {return ("0"+parseInt(i == 3 ? 255*x : x).toString(16)).slice(-2);}).join("");
+	#getSRCIcon(name) {
 		const element = this._element || document.documentElement;
-		const color = (() => {
-			let color = getComputedStyle(element).getPropertyValue("--wui-table-"+name+"color-"+event).replace(/#/g, "%23").trim();
-			const lightdark = color.match(/light-dark\(([^,]+),\s*([^)]+)\)/);
-			if (lightdark?.[2]) {
-				const schema = getComputedStyle(element).getPropertyValue("color-scheme");
-				const isDarkMode = schema.match(/dark/) && window.matchMedia("(prefers-color-scheme: dark)").matches;
-				color = lightdark[!isDarkMode ? 1 : 2].trim();
-			}
-			return (color.replace(/\s+/g, "").match(/\d+\,\d+\,\d+/) ? rgb2hex(color.replace(/\s+/g, "").replace(/^rgba?\((\d+\,\d+\,\d+)(\,[\d.]+)?\)$/, "$1$2").split(",")) : color);
-		})();
-		const src = getComputedStyle(element).getPropertyValue("--wui-table-"+name+"icon-src").replace(/currentColor/g, color);
-		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUITable.#icons[name].replace(/currentColor/g, color)+"\")";
+		const src = getComputedStyle(element).getPropertyValue("--wui-table-"+name+"icon-src");
+		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUITable.#icons[name]+"\")";
 	}
 
 	init() {
@@ -256,7 +245,7 @@ class WUITable {
 			if (this._thead.querySelector(".sorter")) {
 				const theadRow = this._thead.rows[0];
 				if (theadRow.children[this._sortingIndex]) {
-					theadRow.children[this._sortingIndex].querySelector(".sorter").style.maskImage = this.#getSRCIcon(`column-sorter-${this._sortingDirection == "asc" ? "asc" : "desc"}`, "out");
+					theadRow.children[this._sortingIndex].querySelector(".sorter").style.maskImage = this.#getSRCIcon(`column-sorter-${this._sortingDirection == "asc" ? "asc" : "desc"}`);
 				}
 			}
 		});
@@ -446,7 +435,7 @@ class WUITable {
 		theadRow.querySelectorAll("th .sorter").forEach(sorter => {
 			sorter.style.maskImage = "url()";
 		});
-		theadRow.children[index].querySelector(".sorter").style.maskImage = this.#getSRCIcon(`column-sorter-${direction == "asc" ? "asc" : "desc"}`, "out");
+		theadRow.children[index].querySelector(".sorter").style.maskImage = this.#getSRCIcon(`column-sorter-${direction == "asc" ? "asc" : "desc"}`);
 		rows.sort((rowA, rowB) => {
 			const cellA = rowA.cells[index];
 			const cellB = rowB.cells[index];

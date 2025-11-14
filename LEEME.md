@@ -1661,11 +1661,12 @@ Objeto avanzado para implementación de barras de menú.
 
 #### Propiedades
 
-| Propiedad | Tipo      | Valor predeterminado | Descripción |
-| --------- | --------- | -------------------- | ----------- |
-| selector  | `string`  | `".wui-menubar"`     | (get/set)<br><br>Selector CSS que define el elemento HTML que serán convertido en el objeto avanzado tipo bara de menú. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
-| expansive | `boolean` | `true`               | (get/set)<br><br>Define el menú se expande. |
-| buttons   | `array`   | `[]`                 | (get/set)<br><br>Lista de botones de menú, según la definición de **Opciones de Botón**. |
+| Propiedad | Tipo       | Valor predeterminado | Descripción |
+| --------- | ---------- | -------------------- | ----------- |
+| selector  | `string`   | `".wui-menubar"`     | (get/set)<br><br>Selector CSS que define el elemento HTML que serán convertido en el objeto avanzado tipo bara de menú. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| expansive | `boolean`  | `true`               | (get/set)<br><br>Define el menú se expande. |
+| buttons   | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú, según la definición de **Opciones de Botón**. |
+| onClick   | `function` | `null`               | (get/set)<br><br>Función que se llama cuando un botón es presionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
 
 #### Opciones de Botón
 
@@ -1676,7 +1677,7 @@ Objeto avanzado para implementación de barras de menú.
 | label        | `string`   | `""`                 | Texto de la etiqueta asociada al botón de menú. |
 | section      | `string`   | `"main"`             | Sección donde se agregado el botón.<br><br>Valores:<br>• `"main"`<br>• `"bottom"` |
 | enabled      | `boolean`  | `true`               | Define si el botón está habilitado. |
-| onClick      | `function` | `null`               | Función que se llama cuando el botón es presionado. |
+| onClick      | `function` | `null`               | Función que se llama cuando el botón es presionado. Si está definida, esta opción tiene prioridad sobre la propiedad `onClick`. |
 
 #### Métodos
 

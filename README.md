@@ -1661,11 +1661,12 @@ Advanced object for implementing menu bars.
 
 #### Properties
 
-| Property  | Type      | Default value.   | Description |
-| --------- | --------- | ---------------- | ----------- |
-| selector  | `string`  | `".wui-menubar"` | (get/set)<br><br>CSS selector that defines the HTML element that will be converted into the advanced menu bar object. If more than one element matches the selector, only the first match will be included. |
-| expansive | `boolean` | `true`           | (get/set)<br><br>Define the menu expands. |
-| buttons   | `array`   | `[]`             | (get/set)<br><br>List of menu buttons, as defined by **Button Options**. |
+| Property  | Type       | Default value.   | Description |
+| --------- | ---------- | ---------------- | ----------- |
+| selector  | `string`   | `".wui-menubar"` | (get/set)<br><br>CSS selector that defines the HTML element that will be converted into the advanced menu bar object. If more than one element matches the selector, only the first match will be included. |
+| expansive | `boolean`  | `true`           | (get/set)<br><br>Define the menu expands. |
+| buttons   | `array`    | `[]`             | (get/set)<br><br>List of menu buttons, as defined by **Button Options**. |
+| onClick   | `function` | `null`           | (get/set)<br><br>Function called when a button is clicked. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
 
 #### Button Options
 
@@ -1676,7 +1677,7 @@ Advanced object for implementing menu bars.
 | label        | `string`   | `""`          | Label text associated with the menu button. |
 | section      | `string`   | `"main"`      | Section where the button is added.<br><br>Values:<br>• `"main"`<br>• `"bottom"` |
 | enabled      | `boolean`  | `true`        | Defines whether the button is enabled. |
-| onClick      | `function` | `null`        | Function called when the button is clicked. |
+| onClick      | `function` | `null`        | Function called when the button is clicked. If defined, this option takes precedence over the `onClick` property. |
 
 #### Methods
 

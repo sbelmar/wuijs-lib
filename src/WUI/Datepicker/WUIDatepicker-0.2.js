@@ -259,23 +259,10 @@ class WUIDatepicker {
 		return this._input;
 	}
 
-	#getSRCIcon(name, event) {
-		const isDarkMode = () => {
-			const shema = getComputedStyle(element).getPropertyValue("color-scheme").trim().replace(/only\s+/, "");
-			return shema == "dark" || (shema.includes("dark") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-		}
-		const rgb2hex = (rgba) => "#"+rgba.map((x, i) => {return ("0"+parseInt(i == 3 ? 255*x : x).toString(16)).slice(-2);}).join("");
+	#getSRCIcon(name) {
 		const element = this._element || document.documentElement;
-		const color = (() => {
-			let color = getComputedStyle(element).getPropertyValue("--wui-datepicker-"+name+"color-"+event).replace(/#/g, "%23").trim();
-			if (color.match(/light-dark/)) {
-				const lightdark = color.match(/light-dark\(([^,]+),\s*([^)]+)\)/);
-				color = lightdark[!isDarkMode() ? 1 : 2].trim();
-			}
-			return (color.replace(/\s+/g, "").match(/\d+\,\d+\,\d+/) ? rgb2hex(color.replace(/\s+/g, "").replace(/^rgba?\((\d+\,\d+\,\d+)(\,[\d.]+)?\)$/, "$1$2").split(",")) : color);
-		})();
-		const src = getComputedStyle(element).getPropertyValue("--wui-datepicker-"+name+"icon-src").replace(/currentColor/g, color);
-		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUIDatepicker.#icons[name].replace(/currentColor/g, color)+"\")";
+		const src = getComputedStyle(element).getPropertyValue("--wui-datepicker-"+name+"icon-src");
+		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUIDatepicker.#icons[name]+"\")";
 	}
 
 	#setValue(value) {
@@ -298,10 +285,10 @@ class WUIDatepicker {
 		} else {
 			this._element.classList.remove("disabled");
 		}
-		this._element.style.backgroundImage = this.#getSRCIcon("open", disabled ? "disabled" : "out");
 	}
 
 	init() {
+		this._open = document.createElement("div");
 		this._inputs = document.createElement("div");
 		this._inputYear = document.createElement("input");
 		this._inputMonth = document.createElement("input");
@@ -320,23 +307,14 @@ class WUIDatepicker {
 		this._footer = document.createElement("div");
 		this._cancelButton = document.createElement("button");
 		this._acceptButton = document.createElement("button");
+		this._element.appendChild(this._open);
 		this._element.appendChild(this._inputs);
 		this._element.appendChild(this._background);
 		this._element.appendChild(this._box);
-		this._element.style.backgroundImage = this.#getSRCIcon("open", !this._enabled ? "disabled" : "out");
 		this._element.addEventListener("click", event => {
-			if (this._enabled && event.target.classList.contains("wui-datepicker") && this._element.offsetWidth - event.offsetX < 30) {
+			if (this._enabled && (event.target.classList.contains("wui-datepicker") || event.target.classList.contains("open"))) {
 				this.toggle();
 			}
-		});
-		["mouseover", "mouseout", "focus", "blur"].forEach(type => {
-			this._element.addEventListener(type, () => {
-				const event = !this._enabled ? "disabled" : type == "blur" ? "out" : type.replace(/mouse/, "");
-				this._element.style.backgroundImage = this.#getSRCIcon("open", event);
-			});
-			this._period.addEventListener(type, () => {
-				this._periodIcon.style.backgroundImage = this.#getSRCIcon("box-"+(this._mode == "months" ? "up" : "down"), event);
-			});
 		});
 		["min", "max", "style"].forEach(name => {
 			if (this._input.hasAttribute(name)) {
@@ -370,7 +348,8 @@ class WUIDatepicker {
 				}
 			});
 		});
-		this._input.type = "hidden";
+		this._open.className = "open";
+		this._open.style.maskImage = this.#getSRCIcon("open");
 		this._inputs.className = "inputs";
 		this._background.className = "background hidden";
 		this._box.className = `box ${this._boxAlign} ${this._openDirection} hidden`;
@@ -390,10 +369,10 @@ class WUIDatepicker {
 		this._periodText.className = "text";
 		this._periodIcon.className = "icon";
 		this._prev.className = "prev";
-		this._prev.style.backgroundImage = this.#getSRCIcon("box-prev", this._input.disabled ? "disabled" : "out");
+		this._prev.style.maskImage = this.#getSRCIcon("box-prev");
 		this._prev.addEventListener("click", () => {this.prev();});
 		this._next.className = "next";
-		this._next.style.backgroundImage = this.#getSRCIcon("box-next", this._input.disabled ? "disabled" : "out");
+		this._next.style.maskImage = this.#getSRCIcon("box-next");
 		this._next.addEventListener("click", () => {this.next();});
 		this._months.className = "months";
 		this._week.className = "week";
@@ -491,7 +470,7 @@ class WUIDatepicker {
 		let m = 1;
 		this._box.classList.remove("extended");
 		this._periodText.textContent = this._monthsNames[month -1]+" "+year;
-		this._periodIcon.style.backgroundImage = this.#getSRCIcon("box-up", this._input.disabled ? "disabled" : "out");
+		this._periodIcon.style.maskImage = this.#getSRCIcon("box-up");
 		this._months.style.display = "grid";
 		this._months.innerHTML = "";
 		this._week.style.display = "none";
@@ -558,7 +537,7 @@ class WUIDatepicker {
 		let d = 1;
 		this._box.classList.remove("extended");
 		this._periodText.textContent = this._monthsNames[month -1]+" "+year;
-		this._periodIcon.style.backgroundImage = this.#getSRCIcon("box-down", this._input.disabled ? "disabled" : "out");
+		this._periodIcon.style.maskImage = this.#getSRCIcon("box-down");
 		this._months.style.display = "none";
 		this._months.innerHTML = "";
 		this._week.style.display = "grid";
@@ -734,6 +713,7 @@ WUIDatepicker._initClass();
 Generated HTML code:
 <div class="wui-datepicker">
 	<input type="date" value="(name)" value="">
+	<div class="open"></div>
 	<div class="inputs">
 		<input type="text" value="(name)Year">
 		<span></span>
@@ -741,10 +721,12 @@ Generated HTML code:
 		<span></span>
 		<input type="text" value="(name)Day">
 	</div>
-	<div class="background"></div>
-	<div class="box">
+	<div class="background[ hidden]"></div>
+	<div class="box[ hidden]">
 		<div class="header">
-			<div class="period"></div>
+			<div class="period">
+				<div class="icon"></div>
+			</div>
 			<div class="prev"></div>
 			<div class="next"></div>
 		</div>

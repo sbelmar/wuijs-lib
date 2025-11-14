@@ -181,23 +181,10 @@ class WUITimepicker {
 		return this._input;
 	}
 
-	#getSRCIcon(name, event) {
-		const isDarkMode = () => {
-			const shema = getComputedStyle(element).getPropertyValue("color-scheme").trim().replace(/only\s+/, "");
-			return shema == "dark" || (shema.includes("dark") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-		}
-		const rgb2hex = (rgba) => "#"+rgba.map((x, i) => {return ("0"+parseInt(i == 3 ? 255*x : x).toString(16)).slice(-2);}).join("");
+	#getSRCIcon(name) {
 		const element = this._element || document.documentElement;
-		const color = (() => {
-			let color = getComputedStyle(element).getPropertyValue("--wui-timepicker-"+name+"color-"+event).replace(/#/g, "%23").trim();
-			if (color.match(/light-dark/)) {
-				const lightdark = color.match(/light-dark\(([^,]+),\s*([^)]+)\)/);
-				color = lightdark[!isDarkMode() ? 1 : 2].trim();
-			}
-			return (color.replace(/\s+/g, "").match(/\d+\,\d+\,\d+/) ? rgb2hex(color.replace(/\s+/g, "").replace(/^rgba?\((\d+\,\d+\,\d+)(\,[\d.]+)?\)$/, "$1$2").split(",")) : color);
-		})();
-		const src = getComputedStyle(element).getPropertyValue("--wui-timepicker-"+name+"icon-src").replace(/currentColor/g, color);
-		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUITimepicker.#icons[name].replace(/currentColor/g, color)+"\")";
+		const src = getComputedStyle(element).getPropertyValue("--wui-timepicker-"+name+"icon-src");
+		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUITimepicker.#icons[name]+"\")";
 	}
 
 	#setValue(value) {
@@ -217,10 +204,10 @@ class WUITimepicker {
 		} else {
 			this._element.classList.remove("disabled");
 		}
-		this._element.style.backgroundImage = this.#getSRCIcon("open", disabled ? "disabled" : "out");
 	}
 
 	init() {
+		this._open = document.createElement("div");
 		this._inputs = document.createElement("div");
 		this._inputHours = document.createElement("input");
 		this._inputMinutes = document.createElement("input");
@@ -232,20 +219,14 @@ class WUITimepicker {
 		this._footer = document.createElement("div");
 		this._cancelButton = document.createElement("button");
 		this._acceptButton = document.createElement("button");
+		this._element.appendChild(this._open);
 		this._element.appendChild(this._inputs);
 		this._element.appendChild(this._background);
 		this._element.appendChild(this._box);
-		this._element.style.backgroundImage = this.#getSRCIcon("open", this._input.disabled ? "disabled" : "out");
 		this._element.addEventListener("click", event => {
-			if (this._enabled && event.target.classList.contains("wui-timepicker") && this._element.offsetWidth - event.offsetX < 30) {
+			if (this._enabled && (event.target.classList.contains("wui-timepicker") || event.target.classList.contains("open"))) {
 				this.toggle();
 			}
-		});
-		["mouseover", "mouseout", "focus", "blur"].forEach(type => {
-			this._element.addEventListener(type, () => {
-				const event = this._input.disabled ? "disabled" : type == "blur" ? "out" : type.replace(/mouse/, "");
-				this._element.style.backgroundImage = this.#getSRCIcon("open", event);
-			});
 		});
 		["min", "max", "style"].forEach(name => {
 			if (this._input.hasAttribute(name)) {
@@ -309,6 +290,8 @@ class WUITimepicker {
 				list.appendChild(option);
 			}
 		});
+		this._open.className = "open";
+		this._open.style.maskImage = this.#getSRCIcon("open");
 		this._inputs.className = "inputs";
 		this._background.className = "background hidden";
 		this._box.className = "box "+this._openDirection+" hidden";
@@ -453,13 +436,14 @@ class WUITimepicker {
 Generated HTML code:
 <div class="wui-timepicker">
 	<input type="time" name="(name)" value="">
+	<div class="open"></div>
 	<div class="inputs">
 		<input type="text" name="(name))Hours" class="hours">
 		<span></span>
 		<input type="text" name="(name)Minutes" class="minutes">
 	</div>
-	<div class="background"></div>
-	<div class="box">
+	<div class="background[ hidden]"></div>
+	<div class="box[ hidden]">
 		<div class="select">
 			<ul class="hours">
 				<li></li>

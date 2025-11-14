@@ -16,15 +16,37 @@
 	height: 30px;
 	margin: 0;
 	border: 0;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-position-x: 100%;
-	background-image: none;
-	background-size: var(--wui-colorpicker-openicon-size);
-	padding-right: 0;
+	padding-right: var(--wui-colorpicker-openicon-size);
 }
 .wui-colorpicker > input[type="color"] {
 	display: none;
+}
+.wui-colorpicker > .open {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: var(--wui-colorpicker-openicon-size);
+	height: var(--wui-colorpicker-openicon-size);
+	-webkit-mask-image: url();
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-moz-mask-image: url();
+	-moz-mask-position: center;
+	-moz-mask-repeat: no-repeat;
+	mask-image: url();
+	mask-position: center;
+	mask-repeat: no-repeat;
+	background-color: var(--wui-colorpicker-opencolor-out);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.wui-colorpicker:not(.disabled):hover > .open {
+	background-color: var(--wui-colorpicker-opencolor-over);
+}
+.wui-colorpicker.disabled > .open {
+	background-color: var(--wui-colorpicker-opencolor-disabled) !important;
 }
 .wui-colorpicker > button {
 	--button-radius: calc(var(--wui-colorpicker-button-size) / 2);
@@ -73,13 +95,20 @@
 	border-width: var(--wui-colorpicker-viewicon-borderwidth);
 	border-style: solid;
 	border-color: var(--wui-colorpicker-viewicon-bordercolor);
+	-webkit-mask-image: url();
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-moz-mask-image: url();
+	-moz-mask-position: center;
+	-moz-mask-repeat: no-repeat;
+	mask-image: url();
+	mask-position: center;
+	mask-repeat: no-repeat;
+	background-color: transparent;
 }
 .wui-colorpicker > button.button > .color.empty {
 	border: 0;
 	background-color: transparent;
-	background-position: center; 
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 .wui-colorpicker > .background {
 	display: none;
@@ -242,13 +271,20 @@
 	-webkit-border-radius: var(--option-radius);
 	-moz-border-radius: var(--option-radius);
 	border-radius: var(--option-radius);
+	-webkit-mask-image: url();
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-moz-mask-image: url();
+	-moz-mask-position: center;
+	-moz-mask-repeat: no-repeat;
+	mask-image: url();
+	mask-position: center;
+	mask-repeat: no-repeat;
+	background-color: transparent;
 }
 .wui-colorpicker > .box > .preview > .color.empty {
 	border: 0;
 	background-color: transparent;
-	background-position: center; 
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 .wui-colorpicker > .box > .preview > .text {
 	font-size: 14px;

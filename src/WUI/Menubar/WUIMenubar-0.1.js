@@ -13,6 +13,17 @@ class WUIMenubar {
 		buttons: []
 	};
 
+	static #icons = {
+		"bar-expand": ""
+			+"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
+			+"<path d='M9.29 15.88L13.17 12L9.29 8.12a.996.996 0 1 1 1.41-1.41l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3a.996.996 0 0 1-1.41 0c-.38-.39-.39-1.03 0-1.42z'/>"
+			+"</svg>",
+		"bar-contract": ""
+			+"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
+			+"<path d='M14.71 15.88L10.83 12l3.88-3.88a.996.996 0 1 0-1.41-1.41L8.71 11.3a.996.996 0 0 0 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0c.38-.39.39-1.03 0-1.42z'/>"
+			+"</svg>"
+	};
+
 	constructor (properties) {
 		const defaults = structuredClone(WUIMenubar.#defaults);
 		Object.entries(defaults).forEach(([key, defValue]) => {
@@ -36,9 +47,6 @@ class WUIMenubar {
 		if (typeof(value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
-			this._bar = document.querySelector(value+" > .bar");
-			this._main = this._bar ? this._bar.querySelector(".main") : null;
-			this._bottom = this._bar ? this._bar.querySelector(".bottom") : null;
 		}
 	}
 
@@ -71,10 +79,39 @@ class WUIMenubar {
 		return null;
 	}
 
+	#getSRCIcon(name) {
+		const element = this._element || document.documentElement;
+		const src = getComputedStyle(element).getPropertyValue("--wui-menubar-"+name+"icon-src");
+		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUIMenubar.#icons[name]+"\")";
+	}
+
 	init() {
+		this._bar = document.createElement("div");
+		this._top = document.createElement("div");
+		this._main = document.createElement("div");
+		this._bottom = document.createElement("div");
 		this._submenu = document.createElement("div");
-		this._submenu.className = "submenu";
+		this._element.append(this._bar);
 		this._element.append(this._submenu);
+		this._bar.className = "bar";
+		this._bar.append(this._top);
+		this._bar.append(this._main);
+		this._bar.append(this._bottom);
+		this._top.className = "top";
+		this._main.className = "main";
+		this._bottom.className = "bottom";
+		this._submenu.className = "submenu";
+		if (this._expansive) {
+			this._expander = document.createElement("div");
+			this._expander.className = "expander";
+			this._expander.style.maskImage = this.#getSRCIcon("bar-expand");
+			this._expander.addEventListener("click", () => {
+				const expanded = this._expander.classList.contains("expanded");
+				this._expander.classList.toggle("expanded");
+				this._expander.style.maskImage = this.#getSRCIcon("bar-"+(expanded ? "expand" : "contract"));
+			});
+			this._top.append(this._expander);
+		}
 		this._buttons.forEach(option => {
 			const button = document.createElement("div");
 			const icon = document.createElement("div");
@@ -91,16 +128,19 @@ class WUIMenubar {
 				if (!button.classList.contains("disabled")) {
 					if (option.onClick && typeof(option.onClick) == "function") {
 						option.onClick();
+					} else if (this.onClick && typeof(this.onClick) == "function") {
+						this.onClick(option.id);
 					}
 				}
 			});
+			icon.className = "icon";
 			(option.iconClass || "").split(/\s+/).forEach(name => {
 				icon.classList.add(name);
 			});
-			text.textContent = option.label || "";
+			text.innerHTML = option.label || "";
 			text.className = "text";
 			tooltip.className = "tooltip hidden";
-			tooltip.textContent = option.label || "";
+			tooltip.innerHTML = option.label || "";
 			bubble.className = "bubble hidden";
 			bubble.innerText = 0;
 			if ((typeof(option.section) == "undefined" || option.section == "main") && this._main) {
@@ -155,3 +195,23 @@ class WUIMenubar {
 		}
 	}
 }
+
+/*
+<div class="wui-menubar">
+	<div class="bar">
+		<div class="top">
+			<div class="expander"></div>
+		</div>
+		<div class="main">
+			<div class="button">
+				<div class="icon"></div>
+				<div class="text"></div>
+				<div class="tooltip"></div>
+				<div class="bubble"></div>
+			</div>
+			...
+		</div>
+		<div class="bottom"></div>
+	</div>
+</div>
+ */

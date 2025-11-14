@@ -38,6 +38,29 @@
 	align-items: center;
 	justify-content: center;
 }
+.wui-menubar > .bar > .top {
+	display: flex;
+	position: absolute;
+	top: 10px;
+}
+.wui-menubar > .bar > .top > .expander {
+	cursor: pointer;
+	width: var(--wui-menubar-bar-expander-size);
+	height: var(--wui-menubar-bar-expander-size);
+	-webkit-mask-image: url();
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-moz-mask-image: url();
+	-moz-mask-position: center;
+	-moz-mask-repeat: no-repeat;
+	mask-image: url();
+	mask-position: center;
+	mask-repeat: no-repeat;
+	background-color: var(--wui-menubar-bar-expandcolor-out);
+}
+.wui-menubar > .bar > .top > .expander:hover {
+	background-color: var(--wui-menubar-bar-expandcolor-over);
+}
 .wui-menubar > .bar > .main {
 	display: flex;
 	position: absolute;
@@ -59,7 +82,7 @@
 .wui-menubar > .bar > .main > .button > .icon {
 	width: 24px;
 	height: 24px;
-	/*background-color: var(--wui-menubar-barbutton-iconcolor-out);*/
+	background-color: var(--wui-menubar-barbutton-iconcolor-out);
 }
 .wui-menubar > .bar > .main > .button > .bubble {
 	position: absolute;
@@ -81,7 +104,7 @@
 	background-color: var(--wui-menubar-barbutton-bgcolor-over);
 }
 .wui-menubar > .bar > .main > .button:is(:hover, :focus):not(.disabled) > .icon {
-	/*background-color: var(--wui-menubar-barbutton-iconcolor-over);*/
+	background-color: var(--wui-menubar-barbutton-iconcolor-over);
 }
 .wui-menubar > .bar > .main > .button > .photo {
 	display: block;
@@ -98,15 +121,15 @@
 .wui-menubar > .bar > .main > .button.selected {
 	background-color: var(--wui-menubar-barbutton-bgcolor-selected);
 }
-/*.wui-menubar > .bar > .main > .button.selected > .icon {
+.wui-menubar > .bar > .main > .button.selected > .icon {
 	background-color: var(--wui-menubar-barbutton-iconcolor-selected);
-}*/
+}
 .wui-menubar > .bar > .main > .button.disabled {
 	background-color: var(--wui-menubar-barbutton-bgcolor-disabled);
 }
-/*.wui-menubar > .bar > .main > .button.disabled > .icon {
+.wui-menubar > .bar > .main > .button.disabled > .icon {
 	background-color: var(--wui-menubar-barbutton-iconcolor-disabled);
-}*/
+}
 .wui-menubar > .bar > .hidden,
 .wui-menubar > .bar > .main > .button > .bubble.hidden {
 	display: none;
