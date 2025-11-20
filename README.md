@@ -2110,46 +2110,44 @@ Advanced object for implementing data tables. Unlike the `WUIList` object, the `
 
 #### CSS Variables
 
-| Variable                                     | Description |
-| -------------------------------------------- | ----------- |
-| `--wui-table-shadowcolor`                    |
-| `--wui-table-borderradius`                   |
-| `--wui-table-column-bordercolor-width`       |
-| `--wui-table-column-bordercolor-out`         |
-| `--wui-table-column-bordercolor-over`        |
-| `--wui-table-column-bordercolor-selected`    |
-| `--wui-table-column-bgcolor-out`             |
-| `--wui-table-column-bgcolor-over`            |
-| `--wui-table-column-bgcolor-selected`        |
-| `--wui-table-column-textcolor-out`           |
-| `--wui-table-column-textcolor-over`          |
-| `--wui-table-column-textcolor-selected`      |
-| `--wui-table-column-textcolor-disabled`      |
-| `--wui-table-column-sort-asccolor-out`       |
-| `--wui-table-column-sort-asccolor-over`      |
-| `--wui-table-column-sort-asccolor-disabled`  |
-| `--wui-table-column-sort-ascicon-src`        |
-| `--wui-table-column-sort-desccolor-out`      |
-| `--wui-table-column-sort-desccolor-over`     |
-| `--wui-table-column-sort-desccolor-disabled` |
-| `--wui-table-column-sort-descicon-src`       |
-| `--wui-table-column-resize-bordercolor-out`  |
-| `--wui-table-column-resize-bordercolor-over` |
-| `--wui-table-column-drag-bordercolor-over`   |
-| `--wui-table-column-drag-bgcolor-drop`       |
-| `--wui-table-row-bordercolor-width`          |
-| `--wui-table-row-bordercolor-out`            |
-| `--wui-table-row-bordercolor-over`           |
-| `--wui-table-row-bordercolor-selected`       |
-| `--wui-table-row-bordercolor-disabled`       |
-| `--wui-table-row-bgcolor-out`                |
-| `--wui-table-row-bgcolor-over`               |
-| `--wui-table-row-bgcolor-selected`           |
-| `--wui-table-row-bgcolor-disabled`           |
-| `--wui-table-row-textcolor-out`              |
-| `--wui-table-row-textcolor-over`             |
-| `--wui-table-row-textcolor-selected`         |
-| `--wui-table-row-textcolor-disabled`         |
+| Variable                                       | Description |
+| ---------------------------------------------- | ----------- |
+| `--wui-table-shadowcolor`                      |
+| `--wui-table-borderradius`                     |
+| `--wui-table-column-bordercolor-width`         |
+| `--wui-table-column-bordercolor-out`           |
+| `--wui-table-column-bordercolor-over`          |
+| `--wui-table-column-bordercolor-selected`      |
+| `--wui-table-column-bgcolor-out`               |
+| `--wui-table-column-bgcolor-over`              |
+| `--wui-table-column-bgcolor-selected`          |
+| `--wui-table-column-textcolor-out`             |
+| `--wui-table-column-textcolor-over`            |
+| `--wui-table-column-textcolor-selected`        |
+| `--wui-table-column-textcolor-disabled`        |
+| `--wui-table-column-sorter-iconsize`           |
+| `--wui-table-column-sorter-iconcolor-out`      |
+| `--wui-table-column-sorter-iconcolor-over`     |
+| `--wui-table-column-sorter-iconcolor-disabled` |
+| `--wui-table-column-sorter-ascicon-src`        |
+| `--wui-table-column-sorter-descicon-src`       |
+| `--wui-table-column-resizer-bordercolor-out`   |
+| `--wui-table-column-resizer-bordercolor-over`  |
+| `--wui-table-column-dragger-bordercolor-over`  |
+| `--wui-table-column-dragger-bgcolor-drop`      |
+| `--wui-table-row-bordercolor-width`            |
+| `--wui-table-row-bordercolor-out`              |
+| `--wui-table-row-bordercolor-over`             |
+| `--wui-table-row-bordercolor-selected`         |
+| `--wui-table-row-bordercolor-disabled`         |
+| `--wui-table-row-bgcolor-out`                  |
+| `--wui-table-row-bgcolor-over`                 |
+| `--wui-table-row-bgcolor-selected`             |
+| `--wui-table-row-bgcolor-disabled`             |
+| `--wui-table-row-textcolor-out`                |
+| `--wui-table-row-textcolor-over`               |
+| `--wui-table-row-textcolor-selected`           |
+| `--wui-table-row-textcolor-disabled`           |
 
 #### Implementation
 
@@ -2170,18 +2168,16 @@ CSS settings:
 	--wui-table-column-textcolor-over: #000;
 	--wui-table-column-textcolor-selected: #1e90ff;
 	--wui-table-column-textcolor-disabled: #d5dce3;
-	--wui-table-column-sort-asccolor-out: #444;
-	--wui-table-column-sort-asccolor-over: #000;
-	--wui-table-column-sort-asccolor-disabled: #d5dce3;
-	--wui-table-column-sort-ascicon-src: none;
-	--wui-table-column-sort-desccolor-out: #444;
-	--wui-table-column-sort-desccolor-over: #000;
-	--wui-table-column-sort-desccolor-disabled: #d5dce3;
-	--wui-table-column-sort-descicon-src: none;
-	--wui-table-column-resize-bordercolor-out: rgb(from #1e90ff r g b / 10%);
-	--wui-table-column-resize-bordercolor-over: rgb(from #1e90ff r g b / 10%);
-	--wui-table-column-drag-bordercolor-over: #444;
-	--wui-table-column-drag-bgcolor-drop: rgb(from #1e90ff r g b / 10%);
+	--wui-table-column-sorter-iconsize: 16px;
+	--wui-table-column-sorter-iconcolor-out: #444;
+	--wui-table-column-sorter-iconcolor-over: #000;
+	--wui-table-column-sorter-iconcolor-disabled: #d5dce3;
+	--wui-table-column-sorter-ascicon-src: none;
+	--wui-table-column-sorter-descicon-src: none;
+	--wui-table-column-resizer-bordercolor-out: rgb(from #1e90ff r g b / 10%);
+	--wui-table-column-resizer-bordercolor-over: rgb(from #1e90ff r g b / 10%);
+	--wui-table-column-dragger-bordercolor-over: #444;
+	--wui-table-column-dragger-bgcolor-drop: rgb(from #1e90ff r g b / 10%);
 	--wui-table-row-bordercolor-width: 1px;
 	--wui-table-row-bordercolor-out: #f0f0f3;
 	--wui-table-row-bordercolor-over: #f0f0f3;
