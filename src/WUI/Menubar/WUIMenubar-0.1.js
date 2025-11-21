@@ -103,12 +103,15 @@ class WUIMenubar {
 		this._submenu.className = "submenu";
 		if (this._expansive) {
 			this._expander = document.createElement("div");
+			this._expanderIcon = document.createElement("div");
+			this._expander.append(this._expanderIcon);
 			this._expander.className = "expander";
-			this._expander.style.maskImage = this.#getSRCIcon("barexpander-expand");
+			this._expanderIcon.className = "icon";
+			this._expanderIcon.style.maskImage = this.#getSRCIcon("barexpander-expand");
 			this._expander.addEventListener("click", () => {
-				const expanded = this._expander.classList.contains("expanded");
-				this._expander.classList.toggle("expanded");
-				this._expander.style.maskImage = this.#getSRCIcon("barexpander-"+(expanded ? "expand" : "contract"));
+				const expanded = this._element.classList.contains("expanded");
+				this._element.classList.toggle("expanded");
+				this._expanderIcon.style.maskImage = this.#getSRCIcon("barexpander-"+(expanded ? "expand" : "contract"));
 			});
 			this._top.append(this._expander);
 		}
@@ -126,6 +129,17 @@ class WUIMenubar {
 			button.className = "button"+(option.enabled == false ? " disabled" : "");
 			button.addEventListener("click", () => {
 				if (!button.classList.contains("disabled")) {
+					if (typeof(option.type) == "string" && option.type == "toggle") {
+						this.selectButton(option.id, !option.selected);
+					} else {
+						this._buttons.forEach(opt => {
+							if (opt.id == option.id) {
+								this.selectButton(opt.id, !opt.selected);
+							} else {
+								this.selectButton(opt.id, false);
+							}
+						});
+					}
 					if (option.onClick && typeof(option.onClick) == "function") {
 						option.onClick();
 					} else if (this.onClick && typeof(this.onClick) == "function") {
@@ -147,6 +161,9 @@ class WUIMenubar {
 				this._main.append(button);
 			} else if (option.section == "bottom" && this._bottom) {
 				this._bottom.append(button);
+			}
+			if (typeof(option.selected) == "boolean" && option.selected) {
+				this.selectButton(option.id, true);
 			}
 		});
 	}
@@ -200,7 +217,9 @@ class WUIMenubar {
 <div class="wui-menubar">
 	<div class="bar">
 		<div class="top">
-			<div class="expand"></div>
+			<div class="expand">
+				<div class="icon"></div>
+			</div>
 		</div>
 		<div class="main">
 			<div class="button">

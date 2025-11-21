@@ -101,7 +101,7 @@ class WUIPaging {
 	}
 
 	static getDelay() {
-		const time = getComputedStyle(document.documentElement).getPropertyValue("--wui-paging-page-transition-time");
+		const time = getComputedStyle(document.body).getPropertyValue("--wui-paging-page-transition-time");
 		const factor = time.match(/ms$/) ? 1 : time.match(/s$/) ? 1000 : 0;
 		const delay = factor * parseFloat(time.replace(/\D$/, ""));
 		return delay;
