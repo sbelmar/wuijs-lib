@@ -141,17 +141,19 @@ class WUIMenubar {
 			button.append(bubble);
 			button.dataset.id = option.id;
 			button.className = "button"+(option.enabled == false ? " disabled" : "");
+			option.submenu = false;
 			if (typeof(option.buttons) == "object" && Array.isArray(option.buttons) && option.buttons.length > 0) {
 				const opener = document.createElement("div");
 				opener.className = "opener";
 				opener.style.maskImage = this.#getSRCIcon("submenu-opener-open");
 				button.append(opener);
+				option.submenu = true;
 			}
 			button.addEventListener("click", () => {
 				if (!button.classList.contains("disabled")) {
-					if (typeof(option.type) == "string" && option.type == "toggle") {
+					if (typeof(option.radio) == "boolean" && !option.radio) {
 						this.selectButton(option.id, !option.selected);
-					} else {
+					} else if (typeof(option.selectable) == "undefined" && !option.selectable) {
 						this._buttons.forEach(opt => {
 							if (opt.id == option.id) {
 								this.selectButton(opt.id, true);
@@ -168,9 +170,9 @@ class WUIMenubar {
 					}
 				}
 			});
-			if ((typeof(option.section) == "undefined" || option.section == "main") && this._main) {
+			if ((typeof(option.section) == "undefined" || option.section.match(/^(main)$/)) && this._main) {
 				this._main.append(button);
-			} else if (option.section == "bottom" && this._bottom) {
+			} else if (option.section.match(/^(bottom)$/) && this._bottom) {
 				this._bottom.append(button);
 			}
 			if (typeof(option.selected) == "boolean" && option.selected) {
