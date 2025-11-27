@@ -918,9 +918,10 @@ Administrador de idioma para interfaces web. Permite cargar archivos de idioma e
 
 #### Métodos
 
-| Método | Tipo retorno | Descripción |
-| ------ | ------------ | ----------- |
-| load   | `void`       | `load([lang[, sets]])`<br><br>Parámetros:<br>**• lang:** `string` *opcional* (valor predeterminado el idioma actual)<br>**• sets:** `array` *opcional* (valor predeterminado el conjunto actual expresado como arreglo)<br><br>Carga los archivos de idioma indicados por idioma y conjunto y, actualiza los elementos HTML marcados con el selector CSS. |
+| Método  | Tipo retorno | Descripción |
+| ------- | ------------ | ----------- |
+| load    | `void`       | `load([lang[, sets]])`<br><br>Parámetros:<br>**• lang:** `string` *opcional* (valor predeterminado corresponde a la propiedad `lang` del objeto)<br>**• sets:** `array` *opcional* (valor predeterminado corresponde a la propiedad `sets` del objeto)<br><br>Carga los archivos de idioma indicados por idioma y conjunto y, actualiza los elementos HTML marcados con el selector CSS. |
+| refresh | `void`       | `refresh([selector[, lang]])`<br><br>Parámetros:<br>**• selector:** `string` *opcional* (valor predeterminado corresponde a la propiedad `selector` del objeto)<br>**• lang:** `string` *opcional* (valor predeterminado corresponde a la propiedad `lang` del objeto)<br><br>Recarga el texto contenido en los elementos anidados de el elemento HTML especificado en el argumento `selector`. |
 
 #### Implementación
 
@@ -1682,6 +1683,7 @@ Objeto avanzado para implementación de barras de menú.
 | expansive | `boolean`  | `true`               | (get/set)<br><br>Define el menú se expande. |
 | buttons   | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú, según la definición de **Opciones de Botón**. |
 | onClick   | `function` | `null`               | (get/set)<br><br>Función que se llama cuando un botón es presionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
+| onSelect  | `function` | `null`               | (get/set)<br><br>Función que se llama cuando un botón con propiedad `selectable` es seleccionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
 
 #### Opciones de Botón
 
@@ -1691,6 +1693,8 @@ Objeto avanzado para implementación de barras de menú.
 | iconClass    | `string`   | `undefined`          | Estilos CSS que define el ícono del botón de menú. Esta opción puede ser utilizado opcionalmente con la librería [WUIIcon](#wuiIcon) mediante el estilo `wui-icon` conjuntamente a un estilo de ícono específico. |
 | label        | `string`   | `""`                 | Texto de la etiqueta asociada al botón de menú. |
 | section      | `string`   | `"main"`             | Sección donde se agregado el botón.<br><br>Valores:<br>• `"main"`<br>• `"bottom"` |
+| selectable   | `boolean`  | `true`               | Define si el botón es seleccionable. |
+| radio        | `boolean`  | `true`               | Define si el botón se comporta como un botón de radio. |
 | enabled      | `boolean`  | `true`               | Define si el botón está habilitado. |
 | onClick      | `function` | `null`               | Función que se llama cuando el botón es presionado. Si está definida, esta opción tiene prioridad sobre la propiedad `onClick`. |
 

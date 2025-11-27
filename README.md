@@ -918,9 +918,10 @@ Language manager for web interfaces. Allows you to load language files in JS or 
 
 #### Methods
 
-| Method | Return type | Description |
-| ------ | ----------- | ----------- |
-| load   | `void`      | `load([lang[, sets]])`<br><br>Arguments:<br>**• lang:** `string` *optional* (default value the current language)<br>**• sets:** `array` *optional* (default value the current set expressed as an array)<br><br>Loads the language files indicated by language and set, and updates the HTML elements marked with the CSS selector. |
+| Method  | Return type | Description |
+| ------- | ----------- | ----------- |
+| load    | `void`      | `load([lang[, sets]])`<br><br>Arguments:<br>**• lang:** `string` *optional* (default value corresponds to the `lang` property of the object)<br>**• sets:** `array` *optional* (default value corresponds to the `sets` property of the object)<br><br>Loads the language files indicated by language and set, and updates the HTML elements marked with the CSS selector. |
+| refresh | `void`      | `refresh([selector[, lang]])`<br><br>Arguments:**• selector:** `string` *optional* (default value corresponds to the `selector` property of the object)<br>**• lang:** `string` *optional* (default value corresponds to the `lang` property of the object)<br><br>Reloads the text contained in the nested elements of the HTML element specified in the `selector` argument. |
 
 #### Implementation
 
@@ -1682,6 +1683,7 @@ Advanced object for implementing menu bars.
 | expansive | `boolean`  | `true`           | (get/set)<br><br>Define the menu expands. |
 | buttons   | `array`    | `[]`             | (get/set)<br><br>List of menu buttons, as defined by **Button Options**. |
 | onClick   | `function` | `null`           | (get/set)<br><br>Function called when a button is clicked. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
+| onSelect  | `function` | `null`           | (get/set)<br><br>Function called when a button with the `selectable` property is selected. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
 
 #### Button Options
 
@@ -1691,6 +1693,8 @@ Advanced object for implementing menu bars.
 | iconClass    | `string`   | `undefined`   | CSS styles that define the menu button icon. This option can optionally be used with the [WUIIcon](#WUIIcon) library by using the `wui-icon` style in conjunction with a specific icon style. |
 | label        | `string`   | `""`          | Label text associated with the menu button. |
 | section      | `string`   | `"main"`      | Section where the button is added.<br><br>Values:<br>• `"main"`<br>• `"bottom"` |
+| selectable   | `boolean`  | `true`        | Defines whether the button is selectable. |
+| radio        | `boolean`  | `true`        | Defines whether the button behaves like a radio button. |
 | enabled      | `boolean`  | `true`        | Defines whether the button is enabled. |
 | onClick      | `function` | `null`        | Function called when the button is clicked. If defined, this option takes precedence over the `onClick` property. |
 
