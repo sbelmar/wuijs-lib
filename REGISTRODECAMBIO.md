@@ -6,7 +6,7 @@ Características:
 
 1. Versión de lanzamiento.
 
-## [v0.2.0] - 2025-09-01
+## [v0.2.0] - 2025-12-01
 
 Características:
 
@@ -14,7 +14,8 @@ Características:
 2. Se agregó clase WUIIntensity versión 0.1.
 3. Actualización versión clase WUILanguage a 0.2.
 	- Se cambió el valor por defecto de la propiedad `lang` a `"en"`.
-	- Se agregó soporte para archivo de lenguaje en formato JSON.
+	- Se agregó la propiedad `mode`, para dar soporte a archivo de lenguaje en formato JS y JSON.
+	- Se agregó el método `refresh()`, que permite actualizar el contenido de un elemento HTML específico.
 	- Se eliminó la constante global `languajes` y se reemplazó por una definición variable, opcional y externa a la clase, que es asignada mediante la propiedad `onLoad()` (ver ejemplo de implementación en [Documentación](./LEEME.md?#wuiLanguage)).
 4. Actualización versión clase WUIScrolly a 0.2.
 	- Se agregó el alias `.fadein-top` a la clase de estilo `fadein-up`.

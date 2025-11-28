@@ -1476,7 +1476,8 @@ Conjunto de íconos prediseñados y carga mediante CSS, para uso en interfaces.
 | ![](./imgs/Icons/time-line.svg)        | .time-line        | ![](./imgs/Icons/time-fill.svg)        | .time-fill        | ![](./imgs/Icons/trash-line.svg)      | .trash-line      | ![](./imgs/Icons/trash-fill.svg)      | .trash-fill      |
 | ![](./imgs/Icons/trophy-line.svg)      | .trophy-line      | ![](./imgs/Icons/trophy-fill.svg)      | .trophy-fill      | ![](./imgs/Icons/unlock-line.svg)     | .unlock-line     | ![](./imgs/Icons/unlock-fill.svg)     | .unlock-fill     |
 | ![](./imgs/Icons/wallet-line.svg)      | .wallet-line      | ![](./imgs/Icons/wallet-fill.svg)      | .wallet-fill      | ![](./imgs/Icons/wifi-on-line.svg)    | .wifi-on-line    | ![](./imgs/Icons/wifi-off-line.svg)   | .wifi-off-line   |
-| ![](./imgs/Icons/window-app-line.svg)  | .window-app-line  | ![](./imgs/Icons/window-app-fill.svg)  | .window-app-fill  | ![](./imgs/Icons/zoomin-line.svg)     | .zoomin-line     | ![](./imgs/Icons/zoomout-line.svg)    | .zoomout-line    |
+| ![](./imgs/Icons/window-app-line.svg)  | .window-app-line  | ![](./imgs/Icons/window-app-fill.svg)  | .window-app-fill  | ![](./imgs/Icons/wrench-line.svg)     | .wrench-line     | ![](./imgs/Icons/wrench-fill.svg)     | .wrench-fill     |
+| ![](./imgs/Icons/zoomin-line.svg)      | .zoomin-line      | ![](./imgs/Icons/zoomout-line.svg)     | .zoomout-line     |
 
 #### Tabla de Íconos de Compositor
 
@@ -1690,9 +1691,10 @@ Objeto avanzado para implementación de barras de menú.
 | Propiedad    | Tipo       | Valor predeterminado | Descripción |
 | ------------ | ---------- | -------------------- | ----------- |
 | id           | `string`   | `undefined`          | Identificador único de botón. |
+| iconImage    | `string`   | `undefined`          | URL de la imagen asociada al botón de menú. |
 | iconClass    | `string`   | `undefined`          | Estilos CSS que define el ícono del botón de menú. Esta opción puede ser utilizado opcionalmente con la librería [WUIIcon](#wuiIcon) mediante el estilo `wui-icon` conjuntamente a un estilo de ícono específico. |
 | label        | `string`   | `""`                 | Texto de la etiqueta asociada al botón de menú. |
-| section      | `string`   | `"main"`             | Sección donde se agregado el botón.<br><br>Valores:<br>• `"main"`<br>• `"bottom"` |
+| selected     | `boolean`  | `false`              | Define si el botón se encuentra seleccionado. |
 | selectable   | `boolean`  | `true`               | Define si el botón es seleccionable. |
 | radio        | `boolean`  | `true`               | Define si el botón se comporta como un botón de radio. |
 | enabled      | `boolean`  | `true`               | Define si el botón está habilitado. |

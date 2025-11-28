@@ -1476,7 +1476,8 @@ Set of pre-designed icons loaded via CSS, for use in interfaces.
 | ![](./imgs/Icons/time-line.svg)        | .time-line        | ![](./imgs/Icons/time-fill.svg)        | .time-fill        | ![](./imgs/Icons/trash-line.svg)      | .trash-line      | ![](./imgs/Icons/trash-fill.svg)      | .trash-fill      |
 | ![](./imgs/Icons/trophy-line.svg)      | .trophy-line      | ![](./imgs/Icons/trophy-fill.svg)      | .trophy-fill      | ![](./imgs/Icons/unlock-line.svg)     | .unlock-line     | ![](./imgs/Icons/unlock-fill.svg)     | .unlock-fill     |
 | ![](./imgs/Icons/wallet-line.svg)      | .wallet-line      | ![](./imgs/Icons/wallet-fill.svg)      | .wallet-fill      | ![](./imgs/Icons/wifi-on-line.svg)    | .wifi-on-line    | ![](./imgs/Icons/wifi-off-line.svg)   | .wifi-off-line   |
-| ![](./imgs/Icons/window-app-line.svg)  | .window-app-line  | ![](./imgs/Icons/window-app-fill.svg)  | .window-app-fill  | ![](./imgs/Icons/zoomin-line.svg)     | .zoomin-line     | ![](./imgs/Icons/zoomout-line.svg)    | .zoomout-line    |
+| ![](./imgs/Icons/window-app-line.svg)  | .window-app-line  | ![](./imgs/Icons/window-app-fill.svg)  | .window-app-fill  | ![](./imgs/Icons/wrench-line.svg)     | .wrench-line     | ![](./imgs/Icons/wrench-fill.svg)     | .wrench-fill     |
+| ![](./imgs/Icons/zoomin-line.svg)      | .zoomin-line      | ![](./imgs/Icons/zoomout-line.svg)     | .zoomout-line     |
 
 #### Composer Icon Table
 
@@ -1690,9 +1691,10 @@ Advanced object for implementing menu bars.
 | Property     | Type       | Default value | Description |
 | ------------ | ---------- | ------------- | ----------- |
 | id           | `string`   | `undefined`   | Unique button identifier. |
+| iconImage    | `string`   | `undefined`   | URL of the image associated with the menu button. |
 | iconClass    | `string`   | `undefined`   | CSS styles that define the menu button icon. This option can optionally be used with the [WUIIcon](#WUIIcon) library by using the `wui-icon` style in conjunction with a specific icon style. |
 | label        | `string`   | `""`          | Label text associated with the menu button. |
-| section      | `string`   | `"main"`      | Section where the button is added.<br><br>Values:<br>• `"main"`<br>• `"bottom"` |
+| selected     | `boolean`  | `false`       | Defines whether the button is selected. |
 | selectable   | `boolean`  | `true`        | Defines whether the button is selectable. |
 | radio        | `boolean`  | `true`        | Defines whether the button behaves like a radio button. |
 | enabled      | `boolean`  | `true`        | Defines whether the button is enabled. |

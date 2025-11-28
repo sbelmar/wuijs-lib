@@ -6,7 +6,7 @@ Features:
 
 1. Release version.
 
-## [v0.2.0] - 2025-09-01
+## [v0.2.0] - 2025-12-01
 
 Features:
 
@@ -14,7 +14,8 @@ Features:
 2. Added WUIIntensity class version 0.1.
 3. WUILanguage version class update to 0.2.
 	- Changed the default value of the `lang` property by `"en"`.
-	- Added files in JSON format support.
+	- Added the `mode` property, to support files in JS and JSON format.
+	- Added the `refresh()` method, which allows updating the content of a specific HTML element.
 	- Removed global constant `languages` and replaced with a variable definition, optional and external to the class, which is assigned using the `onLoad()` property (see implementation example in [Documentation](./README.md?#wuiLanguage)).
 4. WUIScrolly version class update to 0.2.
 	- Added `.fadein-top` alias to the style class `fadein-up`.
