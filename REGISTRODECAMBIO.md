@@ -29,6 +29,7 @@ Características:
 	- Se agregó la propiedad `direction`.
 	- Se agregaron los argumentos `sceneIndex`, `sceneStep` y `sceneProgress` a la propuedad `onMove()`.
 8. Actualización versión clase WUIModal a 0.2.
+	- Se agregó soporte para valores privados.
 	- Se agregó el método `destroy()`.
 	- Se corrigió error en el evento de arrastre al maximizar y cerrar un modal con estilo página usando el evento `mousedown`, habilitándo únicamente cuando el botón izquierdo permanece presionado.
 9. Actualización versión clase WUISlider a 0.2.

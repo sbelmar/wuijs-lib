@@ -29,6 +29,7 @@ Features:
 	- Added `direction` property.
 	- Added `sceneIndex`, `sceneStep` and `sceneProgress` arguments were added to the `onMove()` property.
 8. WUIModal version class update to 0.2.
+	- Added support for private values.
 	- Added `destroy()` method.
 	- Fixed bug in drag event when maximizing and closing a page-style modal using the `mousedown` event, enabling it only when the left mouse button remains pressed.
 9. WUISlider version class update to 0.2.

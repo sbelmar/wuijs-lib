@@ -19,6 +19,12 @@ class WUIBody {
 	static #jsCount = 0;
 	static #partCount = 0;
 
+	#environment;
+	#importDirectory;
+	#importMode;
+	#onCompleted;
+	#debug;
+
 	static openURL(url, download = "") {
 		const link = document.createElement("a");
 		link.href = url;
@@ -30,12 +36,6 @@ class WUIBody {
 		link.click();
 		document.body.removeChild(link);
 	}
-
-	#environment;
-	#importDirectory;
-	#importMode;
-	#onCompleted;
-	#debug;
 
 	constructor(properties) {
 		const defaults = structuredClone(WUIBody.#defaults);

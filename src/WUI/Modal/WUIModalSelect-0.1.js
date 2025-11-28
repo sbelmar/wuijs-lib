@@ -8,7 +8,7 @@ class WUIModalSelect extends WUIModal {
 
 	static version = "0.1";
 
-	constructor (properties) {
+	constructor(properties) {
 		super(properties);
 		this._input = null;
 		this._value = "";
@@ -24,7 +24,7 @@ class WUIModalSelect extends WUIModal {
 		this._cancelDisplay = true;
 		this._cancelOnClick = null;
 		this._onSelect = null;
-		super.setProperties(properties);
+		this.setProperties(properties);
 	}
 
 	get value() {
@@ -80,7 +80,7 @@ class WUIModalSelect extends WUIModal {
 	}
 
 	set value(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._value = value;
 		}
 	}
@@ -92,67 +92,67 @@ class WUIModalSelect extends WUIModal {
 	}
 
 	set multiple(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._multiple = value;
 		}
 	}
 
 	set emptyText(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._emptyText = value;
 		}
 	}
 
 	set selecteableText(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._selecteableText = value;
 		}
 	}
 
 	set maxScreenWidth(value) {
-		if (typeof(value) == "integer") {
+		if (typeof (value) == "integer") {
 			this._maxScreenWidth = value;
 		}
 	}
 
 	set acceptButton(value) {
-		if (typeof(value) == "object" && value.constructor.name == "WUIButton") {
+		if (typeof (value) == "object" && value.constructor.name == "WUIButton") {
 			this._acceptButton = value;
 		}
 	}
 
 	set acceptDisplay(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._acceptDisplay = value;
 		}
 	}
 
 	set acceptOnClick(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._acceptOnClick = value;
 		}
 	}
 
 	set cancelButton(value) {
-		if (typeof(value) == "object" && value.constructor.name == "WUIButton") {
+		if (typeof (value) == "object" && value.constructor.name == "WUIButton") {
 			this._cancelButton = value;
 		}
 	}
 
 	set cancelDisplay(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._cancelDisplay = value;
 		}
 	}
 
 	set cancelOnClick(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._cancelOnClick = value;
 		}
 	}
 
 	set onSelect(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onSelect = value;
 		}
 	}
@@ -180,8 +180,8 @@ class WUIModalSelect extends WUIModal {
 
 	init() {
 		super.init();
-		this._acceptButton = new WUIButton({selector: this._selector+" > .box > .footer > button.submit"});
-		this._cancelButton = new WUIButton({selector: this._selector+" > .box > .footer > button.cancel"});
+		this._acceptButton = new WUIButton({ selector: this._selector + " > .box > .footer > button.submit" });
+		this._cancelButton = new WUIButton({ selector: this._selector + " > .box > .footer > button.cancel" });
 		this._acceptButton.onClick = () => {
 			let indexes = [];
 			let values = [];
@@ -196,14 +196,14 @@ class WUIModalSelect extends WUIModal {
 				this._input.value = this._value;
 				this._input.dispatchEvent(new Event("change"));
 			}
-			if (typeof(this._acceptOnClick) == "function") {
+			if (typeof (this._acceptOnClick) == "function") {
 				this._acceptOnClick(this._value, indexes.join(","), texts.join(","));
 			}
 			this.close();
 		};
 		this._acceptButton.init();
 		this._cancelButton.onClick = () => {
-			if (typeof(this._cancelOnClick) == "function") {
+			if (typeof (this._cancelOnClick) == "function") {
 				this._cancelOnClick();
 			}
 			this.close();
@@ -212,14 +212,14 @@ class WUIModalSelect extends WUIModal {
 	}
 
 	prepareInput(input, options = {}) {
-		if (typeof(input) == "object" && input instanceof HTMLElement && input.tagName.toLowerCase() == "select") {
+		if (typeof (input) == "object" && input instanceof HTMLElement && input.tagName.toLowerCase() == "select") {
 			const defaults = {
 				emptyText: this._emptyText,
 				direction: "ltr",
 				force: false
 			};
 			Object.entries(defaults).forEach(([name, value]) => {
-				if (typeof(options[name]) == "undefined") {
+				if (typeof (options[name]) == "undefined") {
 					options[name] = value;
 				}
 			});
@@ -287,12 +287,12 @@ class WUIModalSelect extends WUIModal {
 				const icon = document.createElement("div");
 				const text = document.createElement("div");
 				/*const checker = this.multiple ? document.createElement("div") : null;*/
-				const enabled = typeof(opt.enabled) == "boolean" && !opt.enabled ? false : true;
+				const enabled = typeof (opt.enabled) == "boolean" && !opt.enabled ? false : true;
 				const selected = Boolean(opt.selected);
-				icon.className = "icon "+(typeof(opt.icon) == "string" && opt.icon != "" ? opt.icon : "wui-icon check-line");
-				text.className = "text "+(this._selecteableText ? "selecteable" : "");
-				text.innerHTML = opt.value == "" ? "<i class='empty'>"+this._emptyText+"</i>" : opt.text;
-				option.className = "option"+(selected ? " selected" : "");
+				icon.className = "icon " + (typeof (opt.icon) == "string" && opt.icon != "" ? opt.icon : "wui-icon check-line");
+				text.className = "text " + (this._selecteableText ? "selecteable" : "");
+				text.innerHTML = opt.value == "" ? "<i class='empty'>" + this._emptyText + "</i>" : opt.text;
+				option.className = "option" + (selected ? " selected" : "");
 				option.dataset.index = i;
 				option.dataset.value = opt.value;
 				option.dataset.text = opt.text;
@@ -309,9 +309,9 @@ class WUIModalSelect extends WUIModal {
 								opt.dataset.selected = false;
 							}
 						});
-						if (typeof(this._onSelect) == "function") {
+						if (typeof (this._onSelect) == "function") {
 							this._onSelect(value, index);
-						}	
+						}
 					}
 				});
 				option.appendChild(icon);

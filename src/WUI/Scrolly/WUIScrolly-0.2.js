@@ -18,20 +18,6 @@ class WUIScrolly {
 		debug: false
 	};
 
-	static screenWidth = () => {
-		return Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-	}
-
-	static screenHeight = () => {
-		return Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-	}
-
-	static bodyHeight = () => {
-		const html = document.documentElement;
-		const body = document.body;
-		return Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
-	}
-
 	#sections;
 	#behavior;
 	#dataScrollY;
@@ -54,6 +40,20 @@ class WUIScrolly {
 	#truncated;
 	#stop;
 	#lock;
+
+	static screenWidth = () => {
+		return Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+	}
+
+	static screenHeight = () => {
+		return Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+	}
+
+	static bodyHeight = () => {
+		const html = document.documentElement;
+		const body = document.body;
+		return Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+	}
 
 	constructor(properties) {
 		const defaults = structuredClone(WUIScrolly.#defaults);
