@@ -222,7 +222,7 @@ class WUIMenubar {
 		}
 		text.innerHTML = options.label || "";
 		text.className = "text";
-		tooltip.className = "tooltip hidden";
+		tooltip.className = "tooltip" + (!options.label ? " hidden" : "");
 		tooltip.innerHTML = options.label || "";
 		bubble.className = "bubble hidden";
 		bubble.innerText = 0;
