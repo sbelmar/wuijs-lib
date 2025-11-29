@@ -16,7 +16,6 @@ class WUIMenubar {
 		onClick: null,
 		onSelect: null
 	};
-
 	static #icons = {
 		"barexpander-expand": ""
 			+ "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
@@ -32,24 +31,27 @@ class WUIMenubar {
 			+ "</svg>"
 	};
 
-	#selector;
-	#expansive;
-	#topButtons;
-	#mainButtons;
-	#bottomButtons;
-	#onClick;
-	#onSelect;
-
-	#element;
-	#bar;
-	#barHeader;
-	#barTop;
-	#barMain;
-	#barBottom;
-	#submenu;
-	#submenuMain;
-	#expander;
-	#expanderIcon;
+	#properties = {
+		selector: null,
+		expansive: null,
+		topButtons: null,
+		mainButtons: null,
+		bottomButtons: null,
+		onClick: null,
+		onSelect: null
+	};
+	#htmlElement;
+	#htmlElements = {
+		bar: null,
+		barHeader: null,
+		barTop: null,
+		barMain: null,
+		barBottom: null,
+		submenu: null,
+		submenuMain: null,
+		expander: null,
+		expanderIcon: null
+	};
 	#buttons;
 
 	constructor(properties) {
@@ -60,78 +62,78 @@ class WUIMenubar {
 	}
 
 	get selector() {
-		return this.#selector;
+		return this.#properties.selector;
 	}
 
 	get expansive() {
-		return this.#expansive;
+		return this.#properties.expansive;
 	}
 
 	get topButtons() {
-		return this.#topButtons;
+		return this.#properties.topButtons;
 	}
 
 	get mainButtons() {
-		return this.#mainButtons;
+		return this.#properties.mainButtons;
 	}
 
 	get bottomButtons() {
-		return this.#bottomButtons;
+		return this.#properties.bottomButtons;
 	}
 
 	get onClick() {
-		return this.#onClick;
+		return this.#properties.onClick;
 	}
 
 	get onSelect() {
-		return this.#onSelect;
+		return this.#properties.onSelect;
 	}
 
 	set selector(value) {
 		if (typeof (value) == "string" && value != "") {
-			this.#selector = value;
-			this.#element = document.querySelector(value);
+			this.#properties.selector = value;
+			this.#htmlElement = document.querySelector(value);
 		}
 	}
 
 	set expansive(value) {
 		if (typeof (value) == "boolean") {
-			this.#expansive = value;
+			this.#properties.expansive = value;
 		}
 	}
 
 	set topButtons(value) {
 		if (Array.isArray(value)) {
-			this.#topButtons = value;
+			this.#properties.topButtons = value;
 		}
 	}
 
 	set mainButtons(value) {
 		if (Array.isArray(value)) {
-			this.#mainButtons = value;
+			this.#properties.mainButtons = value;
 		}
 	}
 
 	set bottomButtons(value) {
 		if (Array.isArray(value)) {
-			this.#bottomButtons = value;
+			this.#properties.bottomButtons = value;
 		}
 	}
 
 	set onClick(value) {
-		if (typeof (value) == "function") {
-			this.#onClick = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onClick = value;
 		}
 	}
 
 	set onSelect(value) {
-		if (typeof (value) == "function") {
-			this.#onSelect = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onSelect = value;
 		}
 	}
 
 	getElement() {
-		return this.#element;
+		return this.#htmlElement;
 	}
 
 	getButton(id, buttons = this.#buttons) {
@@ -148,59 +150,59 @@ class WUIMenubar {
 	}
 
 	#getSRCIcon(name) {
-		const element = this.#element || document.documentElement;
+		const element = this.#htmlElement || document.documentElement;
 		const src = getComputedStyle(element).getPropertyValue("--wui-menubar-" + name + "icon-src");
 		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml," + WUIMenubar.#icons[name] + "\")";
 	}
 
 	init() {
-		this.#bar = document.createElement("div");
-		this.#barHeader = document.createElement("div");
-		this.#barTop = document.createElement("div");
-		this.#barMain = document.createElement("div");
-		this.#barBottom = document.createElement("div");
-		this.#submenu = document.createElement("div");
-		this.#submenuMain = document.createElement("div");
-		this.#element.append(this.#bar);
-		this.#element.append(this.#submenu);
-		this.#bar.className = "bar";
-		this.#bar.append(this.#barHeader);
-		this.#bar.append(this.#barTop);
-		this.#bar.append(this.#barMain);
-		this.#bar.append(this.#barBottom);
-		this.#barHeader.className = "header";
-		this.#barTop.className = "top";
-		this.#barMain.className = "main";
-		this.#barBottom.className = "bottom";
-		this.#submenu.className = "submenu";
-		this.#submenu.append(this.#submenuMain);
-		this.#submenuMain.className = "main";
-		if (this.#expansive) {
-			this.#expander = document.createElement("div");
-			this.#expanderIcon = document.createElement("div");
-			this.#expander.append(this.#expanderIcon);
-			this.#expander.className = "expander";
-			this.#expanderIcon.className = "icon";
-			this.#expanderIcon.style.maskImage = this.#getSRCIcon("barexpander-expand");
-			this.#expander.addEventListener("click", () => {
-				const expanded = this.#element.classList.contains("expanded");
-				this.#element.classList.toggle("expanded");
-				this.#expanderIcon.style.maskImage = this.#getSRCIcon("barexpander-" + (expanded ? "expand" : "contract"));
+		this.#htmlElements.bar = document.createElement("div");
+		this.#htmlElements.barHeader = document.createElement("div");
+		this.#htmlElements.barTop = document.createElement("div");
+		this.#htmlElements.barMain = document.createElement("div");
+		this.#htmlElements.barBottom = document.createElement("div");
+		this.#htmlElements.submenu = document.createElement("div");
+		this.#htmlElements.submenuMain = document.createElement("div");
+		this.#htmlElement.append(this.#htmlElements.bar);
+		this.#htmlElement.append(this.#htmlElements.submenu);
+		this.#htmlElements.bar.className = "bar";
+		this.#htmlElements.bar.append(this.#htmlElements.barHeader);
+		this.#htmlElements.bar.append(this.#htmlElements.barTop);
+		this.#htmlElements.bar.append(this.#htmlElements.barMain);
+		this.#htmlElements.bar.append(this.#htmlElements.barBottom);
+		this.#htmlElements.barHeader.className = "header";
+		this.#htmlElements.barTop.className = "top";
+		this.#htmlElements.barMain.className = "main";
+		this.#htmlElements.barBottom.className = "bottom";
+		this.#htmlElements.submenu.className = "submenu";
+		this.#htmlElements.submenu.append(this.#htmlElements.submenuMain);
+		this.#htmlElements.submenuMain.className = "main";
+		if (this.#properties.expansive) {
+			this.#htmlElements.expander = document.createElement("div");
+			this.#htmlElements.expanderIcon = document.createElement("div");
+			this.#htmlElements.expander.append(this.#htmlElements.expanderIcon);
+			this.#htmlElements.expander.className = "expander";
+			this.#htmlElements.expanderIcon.className = "icon";
+			this.#htmlElements.expanderIcon.style.maskImage = this.#getSRCIcon("barexpander-expand");
+			this.#htmlElements.expander.addEventListener("click", () => {
+				const expanded = this.#htmlElement.classList.contains("expanded");
+				this.#htmlElement.classList.toggle("expanded");
+				this.#htmlElements.expanderIcon.style.maskImage = this.#getSRCIcon("barexpander-" + (expanded ? "expand" : "contract"));
 			});
-			this.#barHeader.append(this.#expander);
+			this.#htmlElements.barHeader.append(this.#htmlElements.expander);
 		}
 		this.#buttons = [];
-		this.#topButtons.forEach(options => {
+		this.#properties.topButtons.forEach(options => {
 			this.#buttons.push(options);
-			this.#barTop.append(this.#addButton(options));
+			this.#htmlElements.barTop.append(this.#addButton(options));
 		});
-		this.#mainButtons.forEach(options => {
+		this.#properties.mainButtons.forEach(options => {
 			this.#buttons.push(options);
-			this.#barMain.append(this.#addButton(options));
+			this.#htmlElements.barMain.append(this.#addButton(options));
 		});
-		this.#bottomButtons.forEach(options => {
+		this.#properties.bottomButtons.forEach(options => {
 			this.#buttons.push(options);
-			this.#barBottom.append(this.#addButton(options));
+			this.#htmlElements.barBottom.append(this.#addButton(options));
 		});
 	}
 
@@ -229,7 +231,7 @@ class WUIMenubar {
 		button.append(tooltip);
 		button.append(bubble);
 		button.dataset.id = options.id;
-		button.className = "button" + (options.enabled == false ? " disabled" : "");
+		button.className = "button" + (options.selected ? " selected" : "") + (options.enabled == false ? " disabled" : "");
 		options.submenu = false;
 		if (typeof (options.buttons) == "object" && Array.isArray(options.buttons) && options.buttons.length > 0) {
 			const opener = document.createElement("div");
@@ -251,8 +253,8 @@ class WUIMenubar {
 							this.selectButton(opt.id, false);
 						}
 					});
-					if (this.#onSelect && typeof (this.#onSelect) == "function") {
-						this.#onSelect(options.id);
+					if (this.#properties.onSelect && typeof (this.#properties.onSelect) == "function") {
+						this.#properties.onSelect(options.id);
 					}
 				}
 				if (!options.submenu) {
@@ -260,8 +262,8 @@ class WUIMenubar {
 				}
 				if (options.onClick && typeof (options.onClick) == "function") {
 					options.onClick();
-				} else if (this.#onClick && typeof (this.#onClick) == "function") {
-					this.#onClick(options.id);
+				} else if (this.#properties.onClick && typeof (this.#properties.onClick) == "function") {
+					this.#properties.onClick(options.id);
 				}
 			}
 		});
@@ -272,7 +274,7 @@ class WUIMenubar {
 	}
 
 	selectButton(id, selected = true) {
-		const button = this.#element.querySelector(`[data-id='${id}'].button`);
+		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
 		if (button != null && !button.classList.contains("disabled")) {
 			if (selected) {
 				button.classList.add("selected");
@@ -284,7 +286,7 @@ class WUIMenubar {
 	}
 
 	enableButton(id, enabled = true) {
-		const button = this.#element.querySelector(`[data-id='${id}'].button`);
+		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
 		if (button != null) {
 			if (enabled) {
 				button.classList.remove("disabled");
@@ -296,7 +298,7 @@ class WUIMenubar {
 	}
 
 	setBubble(optionId, number = 0) {
-		const bubble = this.#element.querySelector(`[data-id='${optionId}'].button > .bubble`);
+		const bubble = this.#htmlElement.querySelector(`[data-id='${optionId}'].button > .bubble`);
 		bubble.textContent = number;
 		if (number > 0) {
 			bubble.classList.remove("hidden");
@@ -307,22 +309,22 @@ class WUIMenubar {
 
 	#open(id) {
 		const buttons = this.getButton(id).buttons || [];
-		this.#submenuMain.innerHTML = "";
+		this.#htmlElements.submenuMain.innerHTML = "";
 		buttons.forEach(options => {
 			const button = this.#addButton(options);
-			this.#submenuMain.append(button);
+			this.#htmlElements.submenuMain.append(button);
 		});
-		this.#submenu.classList.add("opened");
+		this.#htmlElements.submenu.classList.add("opened");
 	}
 
 	close() {
-		this.#submenu.classList.remove("opened");
+		this.#htmlElements.submenu.classList.remove("opened");
 	}
 
 	destroy() {
 		this.#buttons = [];
-		if (this.#element) {
-			this.#element.innerHTML = "";
+		if (this.#htmlElement) {
+			this.#htmlElement.innerHTML = "";
 		}
 	}
 }

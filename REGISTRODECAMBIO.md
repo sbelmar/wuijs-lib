@@ -32,37 +32,40 @@ Características:
 	- Se agregó soporte para valores privados.
 	- Se agregó el método `destroy()`.
 	- Se corrigió error en el evento de arrastre al maximizar y cerrar un modal con estilo página usando el evento `mousedown`, habilitándo únicamente cuando el botón izquierdo permanece presionado.
-9. Actualización versión clase WUISlider a 0.2.
+9. Actualización versión clase WUIModalSelect a 0.2.
+	- Se agregó soporte para valores privados.
+	- Se agregó el método `destroy()`.
+10. Actualización versión clase WUISlider a 0.2.
 	- Se corrigió error en el evento de arrastre al desplazar una diapositiva usando el evento `mousedown`, habilitándo únicamente cuando el botón izquierdo permanece presionado.
-10. Actualización versión clase WUIList a 0.2.
+11. Actualización versión clase WUIList a 0.2.
 	- Se agregó soporte para paginado.
 	- Se agregó la variable CSS `--wui-list-shadowcolor`.
 	- Se agregó el método `destroy()`.
 	- Se corrigió error en el evento de arrastre al aperturar y cerrar la botonoera de cada fila usando el evento `mousedown`, habilitándo únicamente cuando el botón izquierdo permanece presionado.
-11. Actualización versión clase WUITable a 0.2.
+12. Actualización versión clase WUITable a 0.2.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó la variable CSS `--wui-table-shadowcolor`.
 	- Se agregó el método `destroy()`.
-12. Actualización versión clase WUIForm a 0.2.
+13. Actualización versión clase WUIForm a 0.2.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó la variable CSS `--wui-form-message-shadowcolor`.
-13. Actualización versión clase WUIFormat a 0.2.
+14. Actualización versión clase WUIFormat a 0.2.
 	- Se agregó soporte para `"Windows Phone"` en los métodos `getOS()` y `getMobileOS()`.
 	- Se agregó manejo de error en el método `wuiToString()`.
-14. Actualización versión clase WUISelectpicker a 0.2.
+15. Actualización versión clase WUISelectpicker a 0.2.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó la variable CSS `--wui-selectpicker-box-shadowcolor`.
 	- Se corrigió error en el método privado `#addHTMLOption()`.
-15. Actualización versión clase WUIDatepicker a 0.2.
+16. Actualización versión clase WUIDatepicker a 0.2.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó la variable CSS `--wui-datepicker-box-shadowcolor`.
-16. Actualización versión clase WUITimepicker a 0.2.
+17. Actualización versión clase WUITimepicker a 0.2.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó la variable CSS `--wui-timepicker-box-shadowcolor`.
-17. Actualización versión clase WUIColorpicker a 0.2.
+18. Actualización versión clase WUIColorpicker a 0.2.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó la variable CSS `--wui-colorpicker-box-shadowcolor`.
-18. Actualización versión clase WUICheckbox a 0.2.
+19. Actualización versión clase WUICheckbox a 0.2.
 	- Se corrigió error en el evento de arrastre al seleccionar y deseleccionar la caja de verificación usando el evento `mousedown`, habilitándo únicamente cuando el botón izquierdo permanece presionado.
-19. Actualización versión clase WUIButton a 0.2.
+20. Actualización versión clase WUIButton a 0.2.
 	- Se agregó propiedad `onDblClick`.

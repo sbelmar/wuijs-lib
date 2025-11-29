@@ -32,37 +32,40 @@ Features:
 	- Added support for private values.
 	- Added `destroy()` method.
 	- Fixed bug in drag event when maximizing and closing a page-style modal using the `mousedown` event, enabling it only when the left mouse button remains pressed.
-9. WUISlider version class update to 0.2.
+9. WUIModalSelect version class update to 0.2.
+	- Added support for private values.
+	- Added `destroy()` method.
+10. WUISlider version class update to 0.2.
 	- Fixed bug in drag event when moving a scene using the `mousedown` event, enabling it only when the left button remains pressed.
-10. WUIList version class update to 0.2.
+11. WUIList version class update to 0.2.
 	- Added support for paging.
 	- Added `--wui-list-shadowcolor` CSS var.
 	- Added `destroy()` method.
-	- Fixed bug in drag event when opening and closing the button panel of each row, using the `mousedown` event, enabling it only when the left button remains pressed.
-11. WUITable version class update to 0.2.
+	- Fixed bug in drag event when opening and closing the button bar of each row using the `mousedown` event, enabling it only when the left mouse button remains pressed.
+12. WUITable version class update to 0.2.
 	- Added support for light/dark CSS formatting.
 	- Added `--wui-table-shadowcolor` CSS var.
 	- Added `destroy()` method.
-12. WUIForm version class update to 0.2.
+13. WUIForm version class update to 0.2.
 	- Added support for light/dark CSS formatting.
 	- Added `--wui-form-message-shadowcolor` CSS var.
-13. WUIFormat version class update to 0.2.
+14. WUIFormat version class update to 0.2.
 	- Added support for `Windows Phone` in the `getOS()` and `getMobileOS()` methods.
 	- Added error handling to the `wuiToString()` method.
-14. WUISelectpicker version class update to 0.2.
+15. WUISelectpicker version class update to 0.2.
 	- Added support for light/dark CSS formatting.
 	- Added `--wui-selectpicker-box-shadowcolor` CSS var.
 	- Fixed bug in private method `#addHTMLOption()`.
-15. WUIDatepicker version class update to 0.2.
+16. WUIDatepicker version class update to 0.2.
 	- Added support for light/dark CSS formatting.
 	- Added `--wui-datepicker-box-shadowcolor` CSS var.
-16. WUITimepicker version class update to 0.2.
+17. WUITimepicker version class update to 0.2.
 	- Added support for light/dark CSS formatting.
 	- Added `--wui-timepicker-box-shadowcolor` CSS var.
-17. WUIColorpicker version class update to 0.2.
+18. WUIColorpicker version class update to 0.2.
 	- Added support for light/dark CSS formatting.
 	- Added `--wui-colorpicker-box-shadowcolor` CSS var.
-18. WUICheckbox version class update to 0.2.
+19. WUICheckbox version class update to 0.2.
 	- Fixed bug in drag event when selecting and deselecting the checkbox using the `mousedown` event, enabling it only when the left button remains pressed.
-19. WUIButton version class update to 0.2.
+20. WUIButton version class update to 0.2.
 	- Added `onDblClick` property.

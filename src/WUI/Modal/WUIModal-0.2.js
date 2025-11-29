@@ -20,25 +20,28 @@ class WUIModal {
 	};
 	static #instances = [];
 
-	#selector;
-	#openDelay;
-	#onStartOpen;
-	#onOpen;
-	#onMaximize;
-	#onScrolling;
-	#onStartClose;
-	#onClose;
-	#onBack;
-
-	#element;
-	#box;
-	#header;
-	#back;
-	#topbar;
-	#title;
-	#close;
-	#body;
-	#footer;
+	#properties = {
+		selector: null,
+		openDelay: null,
+		onStartOpen: null,
+		onOpen: null,
+		onMaximize: null,
+		onScrolling: null,
+		onStartClose: null,
+		onClose: null,
+		onBack: null
+	};
+	#htmlElement;
+	#htmlElements = {
+		box: null,
+		header: null,
+		back: null,
+		topbar: null,
+		title: null,
+		close: null,
+		body: null,
+		footer: null
+	};
 	#bodyStyle;
 	#drag;
 	#initY;
@@ -56,7 +59,7 @@ class WUIModal {
 		document.addEventListener("keydown", event => {
 			if (event.key == "Escape") {
 				WUIModal.getAllInstances().every(modal => {
-					const classList = modal._element.classList;
+					const classList = modal.#htmlElement.classList;
 					if (classList.contains("opened") && !classList.contains("under")) {
 						setTimeout(() => {
 							modal.close();
@@ -86,168 +89,164 @@ class WUIModal {
 	}
 
 	constructor(properties) {
-		this.setProperties(properties);
+		const defaults = structuredClone(WUIModal.#defaults);
+		Object.entries(defaults).forEach(([key, defValue]) => {
+			this[key] = key in properties ? properties[key] : defValue;
+		});
 		WUIModal.#instances.push(this);
 	}
 
 	get selector() {
-		return this.#selector;
+		return this.#properties.selector;
 	}
 
 	get openDelay() {
-		return this.#openDelay;
+		return this.#properties.openDelay;
 	}
 
 	get onStartOpen() {
-		return this.#onStartOpen;
+		return this.#properties.onStartOpen;
 	}
 
 	get onOpen() {
-		return this.#onOpen;
+		return this.#properties.onOpen;
 	}
 
 	get onMaximize() {
-		return this.#onMaximize;
+		return this.#properties.onMaximize;
 	}
 
 	get onScrolling() {
-		return this.#onScrolling;
+		return this.#properties.onScrolling;
 	}
 
 	get onStartClose() {
-		return this.#onStartClose;
+		return this.#properties.onStartClose;
 	}
 
 	get onClose() {
-		return this.#onClose;
+		return this.#properties.onClose;
 	}
 
 	get onBack() {
-		return this.#onBack;
+		return this.#properties.onBack;
 	}
 
 	set selector(value) {
 		if (typeof (value) == "string" && value != "") {
-			this.#selector = value;
-			this.#element = document.querySelector(value);
-			this.#box = document.querySelector(value + " > .box");
-			this.#header = document.querySelector(value + " > .box > .header");
-			this.#back = this.#header ? document.querySelector(value + " > .box > .header > .back") : null;
-			this.#topbar = this.#header ? document.querySelector(value + " > .box > .header > .topbar") : null;
-			this.#title = this.#header ? document.querySelector(value + " > .box > .header > .title") : null;
-			this.#close = this.#header ? document.querySelector(value + " > .box > .header > .close") : null;
-			this.#body = document.querySelector(value + " > .box > .body");
-			this.#footer = document.querySelector(value + " > .box > .footer");
+			this.#properties.selector = value;
+			this.#htmlElement = document.querySelector(value);
+			this.#htmlElements.box = document.querySelector(value + " > .box");
+			this.#htmlElements.header = document.querySelector(value + " > .box > .header");
+			this.#htmlElements.back = this.#htmlElements.header ? document.querySelector(value + " > .box > .header > .back") : null;
+			this.#htmlElements.topbar = this.#htmlElements.header ? document.querySelector(value + " > .box > .header > .topbar") : null;
+			this.#htmlElements.title = this.#htmlElements.header ? document.querySelector(value + " > .box > .header > .title") : null;
+			this.#htmlElements.close = this.#htmlElements.header ? document.querySelector(value + " > .box > .header > .close") : null;
+			this.#htmlElements.body = document.querySelector(value + " > .box > .body");
+			this.#htmlElements.footer = document.querySelector(value + " > .box > .footer");
 		}
 	}
 
 	set openDelay(value) {
 		if (typeof (value) == "number") {
-			this.#openDelay = value;
+			this.#properties.openDelay = value;
 		}
 	}
 
 	set onStartOpen(value) {
-		if (typeof (value) == "function") {
-			this.#onStartOpen = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onStartOpen = value;
 		}
 	}
 
 	set onOpen(value) {
-		if (typeof (value) == "function") {
-			this.#onOpen = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onOpen = value;
 		}
 	}
 
 	set onMaximize(value) {
-		if (typeof (value) == "function") {
-			this.#onMaximize = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onMaximize = value;
 		}
 	}
 
 	set onScrolling(value) {
-		if (typeof (value) == "function") {
-			this.#onScrolling = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onScrolling = value;
 		}
 	}
 
 	set onStartClose(value) {
-		if (typeof (value) == "function") {
-			this.#onStartClose = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onStartClose = value;
 		}
 	}
 
 	set onClose(value) {
-		if (typeof (value) == "function") {
-			this.#onClose = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onClose = value;
 		}
 	}
 
 	set onBack(value) {
-		if (typeof (value) == "function") {
-			this.#onBack = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onBack = value;
 		}
 	}
 
 	getElement() {
-		return this.#element;
+		return this.#htmlElement;
 	}
 
 	getBox() {
-		return this.#box;
+		return this.#htmlElements.box;
 	}
 
 	getHeader() {
-		return this.#header;
+		return this.#htmlElements.header;
 	}
 
 	getBack() {
-		return this.#back;
+		return this.#htmlElements.back;
 	}
 
 	getTopbar() {
-		return this.#topbar;
+		return this.#htmlElements.topbar;
 	}
 
 	getTitle() {
-		return this.#title;
+		return this.#htmlElements.title;
 	}
 
 	getClose() {
-		return this.#close;
+		return this.#htmlElements.close;
 	}
 
 	getBody() {
-		return this.#body;
+		return this.#htmlElements.body;
 	}
 
 	getFooter() {
-		return this.#footer;
+		return this.#htmlElements.footer;
 	}
 
 	getStatus() {
 		let status = [];
 		["opened", "maximized", "under", "close"].forEach(className => {
-			if (this.#element.classList.contains(className)) {
+			if (this.#htmlElement.classList.contains(className)) {
 				status.push(className);
 			}
 		});
 		return status.join(",");
 	}
 
-	setProperties(properties) {
-		const defaults = structuredClone(WUIModal.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
-		});
-	}
-
 	setHeadBorder(border) {
-		if (this.#header != null) {
+		if (this.#htmlElements.header != null) {
 			if (border) {
-				this.#header.classList.remove("border");
+				this.#htmlElements.header.classList.remove("border");
 			} else {
-				this.#header.classList.add("border");
+				this.#htmlElements.header.classList.add("border");
 			}
 		}
 	}
@@ -266,14 +265,14 @@ class WUIModal {
 		};
 		this.#bodyStyle = {};
 		if (navigator.userAgent.match(/iphone|ipad|android/i) && navigator.maxTouchPoints > 1) {
-			this.#element.classList.add("mobile");
+			this.#htmlElement.classList.add("mobile");
 		}
-		if (this.#topbar != null) {
+		if (this.#htmlElements.topbar != null) {
 			this.#drag = false;
 			this.#initY = null;
 			this.#direction = null;
 			["touchstart", "mousedown"].forEach(type => {
-				this.#topbar.addEventListener(type, event => {
+				this.#htmlElements.topbar.addEventListener(type, event => {
 					if (!this.#drag) {
 						const initY = (event.type == "touchstart" ? event.touches[0].clientY : event.clientY || event.pageY) - event.target.offsetParent.offsetTop;
 						this.#initY = initY;
@@ -282,7 +281,7 @@ class WUIModal {
 				});
 			});
 			["touchmove", "mousemove"].forEach(type => {
-				this.#topbar.addEventListener(type, event => {
+				this.#htmlElements.topbar.addEventListener(type, event => {
 					if (this.#drag) {
 						const initY = parseFloat(this.#initY);
 						const moveY = (event.type == "touchmove" ? event.touches[0].clientY : event.clientY || event.pageY) - event.target.offsetParent.offsetTop;
@@ -311,30 +310,30 @@ class WUIModal {
 				});
 			});
 		}
-		if (this.#back != null) {
-			this.#back.addEventListener("click", () => {
-				if (typeof (this.#onBack) == "function") {
-					this.#onBack();
+		if (this.#htmlElements.back != null) {
+			this.#htmlElements.back.addEventListener("click", () => {
+				if (typeof (this.#properties.onBack) == "function") {
+					this.#properties.onBack();
 				}
 			});
 		}
-		if (this.#close != null) {
-			this.#close.addEventListener("click", () => {
+		if (this.#htmlElements.close != null) {
+			this.#htmlElements.close.addEventListener("click", () => {
 				this.close();
 			});
 		}
-		if (this.#box != null && this.#body != null) {
-			this.#box.dataset.scrollBody = 0;
-			if (this.#body.classList.contains("scroll")) {
+		if (this.#htmlElements.box != null && this.#htmlElements.body != null) {
+			this.#htmlElements.box.dataset.scrollBody = 0;
+			if (this.#htmlElements.body.classList.contains("scroll")) {
 				["scroll", "touchmove"].forEach(type => {
-					this.#body.addEventListener(type, debounce(() => {
-						let top = this.#body.scrollTop;
+					this.#htmlElements.body.addEventListener(type, debounce(() => {
+						let top = this.#htmlElements.body.scrollTop;
 						if (top < 0) {
 							top = 0;
 						}
-						this.#box.dataset.scrollBody = top;
-						if (typeof (this.#onScrolling) == "function") {
-							this.#onScrolling(top);
+						this.#htmlElements.box.dataset.scrollBody = top;
+						if (typeof (this.#properties.onScrolling) == "function") {
+							this.#properties.onScrolling(top);
 						}
 					}), { passive: true });
 				});
@@ -342,36 +341,36 @@ class WUIModal {
 		}
 	}
 
-	open(onOpen = this.#onOpen, delay = this.#openDelay) {
-		const page = Boolean(this.#element.classList.contains("page"));
-		const slide = Boolean(this.#element.classList.contains("slide"));
-		const small = Boolean(this.#element.classList.contains("small"));
+	open(onOpen = this.#properties.onOpen, delay = this.#properties.openDelay) {
+		const page = Boolean(this.#htmlElement.classList.contains("page"));
+		const slide = Boolean(this.#htmlElement.classList.contains("slide"));
+		const small = Boolean(this.#htmlElement.classList.contains("small"));
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		const bodyHeight = document.body.offsetHeight;
 		const bodyStyle = getComputedStyle(document.body);
-		const slideMargin = parseInt(getComputedStyle(this.#element).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
+		const slideMargin = parseInt(getComputedStyle(this.#htmlElement).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
 		let under = null;
 		let pages = 1;
 		let step = delay > 0 ? 0 : 100;
 		WUIModal.#instances.forEach(modal => {
-			if (modal._element.classList.contains("opened") && !modal._element.classList.contains("under") && modal._selector != this.#selector) {
-				modal._element.classList.add("under");
+			if (modal.#htmlElement.classList.contains("opened") && !modal.#htmlElement.classList.contains("under") && modal.#properties.selector != this.#properties.selector) {
+				modal.#htmlElement.classList.add("under");
 				under = modal;
 			}
-			if (modal._element.classList.contains("opened") && modal._element.classList.contains("page") && modal._element.classList.contains("under")) {
+			if (modal.#htmlElement.classList.contains("opened") && modal.#htmlElement.classList.contains("page") && modal.#htmlElement.classList.contains("under")) {
 				pages++;
 			}
 		});
-		this.#element.style.display = "flex";
-		this.#element.style.zIndex = 103 + pages;
-		this.#element.style.visibility = "hidden";
-		this.#element.style.opacity = 0;
-		this.#element.style.visibility = "visible";
-		this.#element.classList.remove("maximized");
-		this.#element.classList.remove("closed");
-		this.#element.classList.add("opened");
-		if (this.#box != null) {
-			const boxStyle = getComputedStyle(this.#box);
+		this.#htmlElement.style.display = "flex";
+		this.#htmlElement.style.zIndex = 103 + pages;
+		this.#htmlElement.style.visibility = "hidden";
+		this.#htmlElement.style.opacity = 0;
+		this.#htmlElement.style.visibility = "visible";
+		this.#htmlElement.classList.remove("maximized");
+		this.#htmlElement.classList.remove("closed");
+		this.#htmlElement.classList.add("opened");
+		if (this.#htmlElements.box != null) {
+			const boxStyle = getComputedStyle(this.#htmlElements.box);
 			const scrollbarWidth = window.innerWidth - document.body.clientWidth;
 			const scrollbarHeight = window.innerHeight - document.body.clientHeight;
 			["overflowY", "overflowX", "background", "backgroundColor", "backgroundImage", "paddingRight", "paddingBottom"].forEach(key => {
@@ -384,22 +383,22 @@ class WUIModal {
 			document.body.style.paddingRight = scrollbarWidth + "px";
 			document.body.style.paddingBottom = scrollbarHeight + "px";
 			if (page) {
-				this.#box.style.top = mobile ? "100%" : slide ? slideMargin + "px" : "auto";
-				this.#box.style.left = mobile ? "0px" : "auto";
-				this.#box.style.right = mobile ? "0px" : "auto";
-				this.#box.style.bottom = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
-				this.#box.style.width = mobile ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-width)";
-				this.#box.style.height = mobile || slide ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-height)";
-				this.#boxWidth = this.#box.clientWidth;
-				this.#boxHeight = this.#box.clientHeight;
+				this.#htmlElements.box.style.top = mobile ? "100%" : slide ? slideMargin + "px" : "auto";
+				this.#htmlElements.box.style.left = mobile ? "0px" : "auto";
+				this.#htmlElements.box.style.right = mobile ? "0px" : "auto";
+				this.#htmlElements.box.style.bottom = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
+				this.#htmlElements.box.style.width = mobile ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-width)";
+				this.#htmlElements.box.style.height = mobile || slide ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-height)";
+				this.#boxWidth = this.#htmlElements.box.clientWidth;
+				this.#boxHeight = this.#htmlElements.box.clientHeight;
 			}
 			if (page && mobile) {
 				document.body.style.backgroundImage = "none";
 				document.body.style.backgroundColor = boxStyle.backgroundColor;
 			}
 		}
-		if (typeof (this.#onStartOpen) == "function") {
-			this.#onStartOpen();
+		if (typeof (this.#properties.onStartOpen) == "function") {
+			this.#properties.onStartOpen();
 		}
 		const interval = setInterval(() => {
 			const t = step / 100;
@@ -408,29 +407,29 @@ class WUIModal {
 				clearInterval(interval);
 				ease = 1;
 			}
-			this.#element.style.opacity = ease == 1 ? null : ease;
-			if (this.#box != null && page) {
+			this.#htmlElement.style.opacity = ease == 1 ? null : ease;
+			if (this.#htmlElements.box != null && page) {
 				if (!mobile && slide) {
-					this.#box.style.right = (this.#boxWidth * (ease - 1) + slideMargin) + "px";
+					this.#htmlElements.box.style.right = (this.#boxWidth * (ease - 1) + slideMargin) + "px";
 				} else if (mobile) {
 					if (small) {
-						this.#box.style.top = (bodyHeight - this.#boxHeight * ease) + "px";
+						this.#htmlElements.box.style.top = (bodyHeight - this.#boxHeight * ease) + "px";
 					} else {
-						this.#box.style.top = (bodyHeight - (bodyHeight - 44) * ease) + "px";
+						this.#htmlElements.box.style.top = (bodyHeight - (bodyHeight - 44) * ease) + "px";
 					}
 				}
 			}
 			if (under != null) {
-				const underPage = Boolean(under._element.classList.contains("page"));
-				const underSlide = Boolean(under._element.classList.contains("slide"));
-				const underMaximized = Boolean(under._element.classList.contains("maximized"));
-				this.#element.classList.add("over");
-				if (under._box != null && underPage && page) {
+				const underPage = Boolean(under.#htmlElement.classList.contains("page"));
+				const underSlide = Boolean(under.#htmlElement.classList.contains("slide"));
+				const underMaximized = Boolean(under.#htmlElement.classList.contains("maximized"));
+				this.#htmlElement.classList.add("over");
+				if (under.#htmlElements.box != null && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
 					} else if (mobile && !underMaximized) {
-						under._box.style.top = (bodyHeight - (bodyHeight - 44) - 44 * ease) + "px";
-						under._box.style.scale = (1 - ease / 10);
+						under.#htmlElements.box.style.top = (bodyHeight - (bodyHeight - 44) - 44 * ease) + "px";
+						under.#htmlElements.box.style.scale = (1 - ease / 10);
 					}
 				}
 			}
@@ -442,31 +441,31 @@ class WUIModal {
 	}
 
 	resposive() {
-		const page = Boolean(this.#element.classList.contains("page"));
-		const slide = Boolean(this.#element.classList.contains("slide"));
-		const small = Boolean(this.#element.classList.contains("small"));
+		const page = Boolean(this.#htmlElement.classList.contains("page"));
+		const slide = Boolean(this.#htmlElement.classList.contains("slide"));
+		const small = Boolean(this.#htmlElement.classList.contains("small"));
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		const bodyHeight = document.body.offsetHeight;
-		const slideMargin = parseInt(getComputedStyle(this.#element).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
-		if (this.#box != null && page) {
-			this.#element.classList.remove("maximized");
-			this.#box.style.top = mobile ? "44px" : slide ? slideMargin + "px" : small ? (bodyHeight - this.#boxHeight) + "px" : "auto";
-			this.#box.style.left = mobile ? "0px" : "auto";
-			this.#box.style.right = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
-			this.#box.style.bottom = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
-			this.#box.style.width = mobile ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-width)";
-			this.#box.style.height = mobile || slide ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-height)";
+		const slideMargin = parseInt(getComputedStyle(this.#htmlElement).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
+		if (this.#htmlElements.box != null && page) {
+			this.#htmlElement.classList.remove("maximized");
+			this.#htmlElements.box.style.top = mobile ? "44px" : slide ? slideMargin + "px" : small ? (bodyHeight - this.#boxHeight) + "px" : "auto";
+			this.#htmlElements.box.style.left = mobile ? "0px" : "auto";
+			this.#htmlElements.box.style.right = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
+			this.#htmlElements.box.style.bottom = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
+			this.#htmlElements.box.style.width = mobile ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-width)";
+			this.#htmlElements.box.style.height = mobile || slide ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-height)";
 		}
 	}
 
-	maximize(onMaximize = this.#onMaximize, delay = this.#openDelay) {
-		const page = Boolean(this.#element.classList.contains("page"));
-		const slide = Boolean(this.#element.classList.contains("slide"));
-		const maximized = Boolean(this.#element.classList.contains("maximized"));
+	maximize(onMaximize = this.#properties.onMaximize, delay = this.#properties.openDelay) {
+		const page = Boolean(this.#htmlElement.classList.contains("page"));
+		const slide = Boolean(this.#htmlElement.classList.contains("slide"));
+		const maximized = Boolean(this.#htmlElement.classList.contains("maximized"));
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		let step = 10;
-		this.#element.classList.add("maximized");
-		this.#boxTop = this.#box != null ? this.#box.offsetTop : 0;
+		this.#htmlElement.classList.add("maximized");
+		this.#boxTop = this.#htmlElements.box != null ? this.#htmlElements.box.offsetTop : 0;
 		const interval = setInterval(() => {
 			const t = step / 10;
 			let ease = t > 0.5 ? 4 * Math.pow((t - 1), 3) + 1 : 4 * Math.pow(t, 3);
@@ -474,11 +473,11 @@ class WUIModal {
 				clearInterval(interval);
 				ease = 0;
 			}
-			if (this.#box != null && page) {
+			if (this.#htmlElements.box != null && page) {
 				if (!mobile && slide) {
 					// ...
 				} else if (mobile && !maximized) {
-					this.#box.style.top = (this.#boxTop * ease) + "px";
+					this.#htmlElements.box.style.top = (this.#boxTop * ease) + "px";
 				}
 			}
 			if (ease == 0 && typeof (onMaximize) == "function") {
@@ -488,37 +487,37 @@ class WUIModal {
 		}, delay / 100);
 	}
 
-	close(onClose = this.#onClose, delay = this.#openDelay) {
-		const page = Boolean(this.#element.classList.contains("page"));
-		const slide = Boolean(this.#element.classList.contains("slide"));
+	close(onClose = this.#properties.onClose, delay = this.#properties.openDelay) {
+		const page = Boolean(this.#htmlElement.classList.contains("page"));
+		const slide = Boolean(this.#htmlElement.classList.contains("slide"));
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		const bodyHeight = document.body.offsetHeight;
-		const slideMargin = parseInt(getComputedStyle(this.#element).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
+		const slideMargin = parseInt(getComputedStyle(this.#htmlElement).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
 		let under = null;
 		let step = delay > 0 ? 100 : 0;
-		if (typeof (this.#onStartClose) == "function") {
-			this.#onStartClose();
+		if (typeof (this.#properties.onStartClose) == "function") {
+			this.#properties.onStartClose();
 		}
 		WUIModal.#instances.forEach(modal => {
-			if (modal._element.classList.contains("under")) {
-				modal._element.classList.remove("under");
+			if (modal.#htmlElement.classList.contains("under")) {
+				modal.#htmlElement.classList.remove("under");
 				under = modal;
 			}
 		});
-		this.#element.classList.remove("maximized");
-		this.#element.classList.remove("opened");
-		this.#element.classList.add("closed");
-		if (this.#topbar != null) {
+		this.#htmlElement.classList.remove("maximized");
+		this.#htmlElement.classList.remove("opened");
+		this.#htmlElement.classList.add("closed");
+		if (this.#htmlElements.topbar != null) {
 			this.#initY = null;
 			this.#drag = false;
 		}
-		if (this.#box != null) {
+		if (this.#htmlElements.box != null) {
 			Object.keys(this.#bodyStyle).forEach(key => {
 				document.body.style[key] = this.#bodyStyle[key];
 			});
-			this.#box.scrollTop = 0;
-			this.#boxWidth = this.#box.clientWidth;
-			this.#boxHeight = this.#box.clientHeight;
+			this.#htmlElements.box.scrollTop = 0;
+			this.#boxWidth = this.#htmlElements.box.clientWidth;
+			this.#boxHeight = this.#htmlElements.box.clientHeight;
 		}
 		const interval = setInterval(() => {
 			const t = step / 100;
@@ -528,28 +527,28 @@ class WUIModal {
 				ease = 0;
 			}
 			if (ease == 0) {
-				this.#element.style.display = "none";
-				this.#element.style.visibility = "hidden";
+				this.#htmlElement.style.display = "none";
+				this.#htmlElement.style.visibility = "hidden";
 			}
-			this.#element.style.opacity = ease;
-			if (this.#box != null && page) {
+			this.#htmlElement.style.opacity = ease;
+			if (this.#htmlElements.box != null && page) {
 				if (!mobile && slide) {
-					this.#box.style.right = (this.#boxWidth * (ease - 1) + slideMargin) + "px";
+					this.#htmlElements.box.style.right = (this.#boxWidth * (ease - 1) + slideMargin) + "px";
 				} else if (mobile) {
-					this.#box.style.top = (bodyHeight - this.#boxHeight * ease) + "px";
+					this.#htmlElements.box.style.top = (bodyHeight - this.#boxHeight * ease) + "px";
 				}
 			}
 			if (under != null) {
-				const underPage = Boolean(under._element.classList.contains("page"));
-				const underSlide = Boolean(under._element.classList.contains("slide"));
-				const underMaximized = Boolean(under._element.classList.contains("maximized"));
-				this.#element.classList.remove("over");
-				if (under._box != null && underPage && page) {
+				const underPage = Boolean(under.#htmlElement.classList.contains("page"));
+				const underSlide = Boolean(under.#htmlElement.classList.contains("slide"));
+				const underMaximized = Boolean(under.#htmlElement.classList.contains("maximized"));
+				this.#htmlElement.classList.remove("over");
+				if (under.#htmlElements.box != null && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
 					} else if (mobile && !underMaximized) {
-						under._box.style.top = (bodyHeight - (bodyHeight - 44) - 44 * ease) + "px";
-						under._box.style.scale = (1 - ease / 10);
+						under.#htmlElements.box.style.top = (bodyHeight - (bodyHeight - 44) - 44 * ease) + "px";
+						under.#htmlElements.box.style.scale = (1 - ease / 10);
 					}
 				}
 			}
@@ -565,16 +564,16 @@ class WUIModal {
 	}
 
 	destroy() {
-		if (this.#element) {
-			this.#element.innerHTML = "";
-			this.#box = null;
-			this.#header = null;
-			this.#back = null;
-			this.#topbar = null;
-			this.#title = null;
-			this.#close = null;
-			this.#body = null;
-			this.#footer = null;
+		if (this.#htmlElement) {
+			this.#htmlElement.innerHTML = "";
+			this.#htmlElements.box = null;
+			this.#htmlElements.header = null;
+			this.#htmlElements.back = null;
+			this.#htmlElements.topbar = null;
+			this.#htmlElements.title = null;
+			this.#htmlElements.close = null;
+			this.#htmlElements.body = null;
+			this.#htmlElements.footer = null;
 		}
 	}
 }

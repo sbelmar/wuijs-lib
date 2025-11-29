@@ -651,7 +651,7 @@ Código HTML:
 		<script type="text/javascript" src="./Libraries/WUI/Loader/WUILoader-0.1.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Tooltip/WUITooltip-0.1.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Modal/WUIModal-0.2.js"></script>
-		<script type="text/javascript" src="./Libraries/WUI/Modal/WUIModalSelect-0.1.js"></script>
+		<script type="text/javascript" src="./Libraries/WUI/Modal/WUIModalSelect-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Slider/WUISlider-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Paging/WUIPaging-0.1.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Tabs/WUITabs-0.1.js"></script>

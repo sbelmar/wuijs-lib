@@ -14,48 +14,50 @@ class WUICookie {
 		overssl: false
 	};
 
-	#domain;
-	#path;
-	#minutes;
-	#overssl;
+	#properties = {
+		domain: null,
+		path: null,
+		minutes: null,
+		overssl: null
+	};
 
 	get domain() {
-		return this.#domain;
+		return this.#properties.domain;
 	}
 
 	get path() {
-		return this.#path;
+		return this.#properties.path;
 	}
 
 	get minutes() {
-		return this.#minutes;
+		return this.#properties.minutes;
 	}
 
 	get overssl() {
-		return this.#overssl;
+		return this.#properties.overssl;
 	}
 
 	set domain(value) {
 		if (typeof (value) == "string" && value != "") {
-			this.#domain = value;
+			this.#properties.domain = value;
 		}
 	}
 
 	set path(value) {
 		if (typeof (value) == "string") {
-			this.#path = value;
+			this.#properties.path = value;
 		}
 	}
 
 	set minutes(value) {
 		if (typeof (value) == "number" && value.toString().match(/^\d+$/)) {
-			this.#minutes = value;
+			this.#properties.minutes = value;
 		}
 	}
 
 	set overssl(value) {
 		if (typeof (value) == "boolean") {
-			this.#overssl = value;
+			this.#properties.overssl = value;
 		}
 	}
 

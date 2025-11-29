@@ -19,15 +19,16 @@ class WUILanguage {
 	};
 	static #log = [];
 
-	#selector;
-	#directory;
-	#sets;
-	#lang;
-	#mode;
-	#dataKey;
-	#dataOutput;
-	#onLoad;
-
+	#properties = {
+		selector: null,
+		directory: null,
+		sets: null,
+		lang: null,
+		mode: null,
+		dataKey: null,
+		dataOutput: null,
+		onLoad: null
+	};
 	#languages = {};
 
 	constructor(properties) {
@@ -38,86 +39,86 @@ class WUILanguage {
 	}
 
 	get selector() {
-		return this.#selector;
+		return this.#properties.selector;
 	}
 
 	get directory() {
-		return this.#directory;
+		return this.#properties.directory;
 	}
 
 	get sets() {
-		return this.#sets;
+		return this.#properties.sets;
 	}
 
 	get lang() {
-		return this.#lang;
+		return this.#properties.lang;
 	}
 
 	get mode() {
-		return this.#mode;
+		return this.#properties.mode;
 	}
 
 	get dataKey() {
-		return this.#dataKey;
+		return this.#properties.dataKey;
 	}
 
 	get dataOutput() {
-		return this.#dataOutput;
+		return this.#properties.dataOutput;
 	}
 
 	get onLoad() {
-		return this.#onLoad;
+		return this.#properties.onLoad;
 	}
 
 	set selector(value) {
 		if (typeof (value) == "string") {
-			this.#selector = value;
+			this.#properties.selector = value;
 		}
 	}
 
 	set directory(value) {
 		if (typeof (value) == "string") {
-			this.#directory = value;
+			this.#properties.directory = value;
 		}
 	}
 
 	set sets(value) {
 		if (Array.isArray(value)) {
-			this.#sets = value;
+			this.#properties.sets = value;
 		}
 	}
 
 	set lang(value) {
 		if (typeof (value) == "string") {
-			this.#lang = value;
+			this.#properties.lang = value;
 		}
 	}
 
 	set mode(value) {
 		if (typeof (value) == "string" && value.toString().match(/^(js|json)$/i)) {
-			this.#mode = value.toLowerCase();
+			this.#properties.mode = value.toLowerCase();
 		}
 	}
 
 	set dataKey(value) {
 		if (typeof (value) == "string") {
-			this.#dataKey = value;
+			this.#properties.dataKey = value;
 		}
 	}
 
 	set dataOutput(value) {
 		if (typeof (value) == "string") {
-			this.#dataOutput = value;
+			this.#properties.dataOutput = value;
 		}
 	}
 
 	set onLoad(value) {
-		if (typeof (value) == "function") {
-			this.#onLoad = value;
+		if (typeof (value) == "function" || value === null) {
+			this.#properties.onLoad = value;
 		}
 	}
 
-	load(lang = this.#lang, sets = this.#sets) {
+	load(lang = this.#properties.lang, sets = this.#properties.sets) {
 		const temp = {};
 		const onLoad = (set) => {
 			total++;
@@ -140,14 +141,14 @@ class WUILanguage {
 					});
 				});
 				this.refresh();
-				if (typeof (this.#onLoad) == "function") {
-					this.#onLoad(lang, this.#languages);
+				if (typeof (this.#properties.onLoad) == "function") {
+					this.#properties.onLoad(lang, this.#languages);
 				}
 			}
 		}
 		let total = 0;
-		this.#lang = lang;
-		this.#sets = sets;
+		this.#properties.lang = lang;
+		this.#properties.sets = sets;
 		if (!(lang in this.#languages)) {
 			this.#languages[lang] = {};
 		}
@@ -156,17 +157,17 @@ class WUILanguage {
 			if (WUILanguage.#log.indexOf(key) == -1) {
 				const xhr = new XMLHttpRequest();
 				const token = new Date().getTime();
-				const url = `${this.#directory}${set}-${lang}.${this.#mode}?_=${token}`;
-				if (this.#mode == "js") {
+				const url = `${this.#properties.directory}${set}-${lang}.${this.#properties.mode}?_=${token}`;
+				if (this.#properties.mode == "js") {
 					xhr.overrideMimeType("text/plain");
-				} else if (this.#mode == "json") {
+				} else if (this.#properties.mode == "json") {
 					xhr.responseType = "json";
 					xhr.overrideMimeType("application/json");
 				}
 				xhr.onload = () => {
 					if (xhr.status == 200 || xhr.status == 0) {
 						const content = xhr.responseText;
-						if (this.#mode == "js") {
+						if (this.#properties.mode == "js") {
 							if (content.trim().replace(/[\n\r]+/g, " ").match(/^return\s*\{.+\}\s*;?$/)) {
 								try {
 									let jsObject = {};
@@ -176,7 +177,7 @@ class WUILanguage {
 									console.error(`error stringify-parse JS file '${url}': ${error}`);
 								}
 							}
-						} else if (this.#mode == "json") {
+						} else if (this.#properties.mode == "json") {
 							try {
 								temp[set] = JSON.parse(content);
 							} catch (error) {
@@ -185,7 +186,7 @@ class WUILanguage {
 						}
 						onLoad(set);
 					} else {
-						console.error(`error load ${this.#mode.toUpperCase()} file '${url}'`);
+						console.error(`error load ${this.#properties.mode.toUpperCase()} file '${url}'`);
 					}
 				}
 				xhr.open("GET", url, true);
@@ -197,11 +198,11 @@ class WUILanguage {
 		});
 	}
 
-	refresh(selector = this.#selector, lang = this.#lang) {
+	refresh(selector = this.#properties.selector, lang = this.#properties.lang) {
 		document.querySelectorAll(selector).forEach(element => {
 			const tagName = element.tagName;
-			const dataKey = element.dataset[this.#dataKey];
-			const dataOutput = element.dataset[this.#dataOutput];
+			const dataKey = element.dataset[this.#properties.dataKey];
+			const dataOutput = element.dataset[this.#properties.dataOutput];
 			if (dataKey != "") {
 				const keys = dataKey.split(".");
 				let text = this.#languages[lang];
@@ -214,7 +215,7 @@ class WUILanguage {
 					}
 				}
 				if (typeof (dataOutput) != "undefined") {
-					element.dataset[this.#dataOutput] = text;
+					element.dataset[this.#properties.dataOutput] = text;
 				} else if (tagName.match(/^(meta)$/i)) {
 					element.setAttribute("content", text);
 				} else if (tagName.match(/^(h1|h2|h3|h4|h5|h6|div|span|p|i|li|a|legend|label|option|data|button)$/i)) {

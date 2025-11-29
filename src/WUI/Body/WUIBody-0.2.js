@@ -19,11 +19,13 @@ class WUIBody {
 	static #jsCount = 0;
 	static #partCount = 0;
 
-	#environment;
-	#importDirectory;
-	#importMode;
-	#onCompleted;
-	#debug;
+	#properties = {
+		environment: null,
+		importDirectory: null,
+		importMode: null,
+		onCompleted: null,
+		debug: null
+	};
 
 	static openURL(url, download = "") {
 		const link = document.createElement("a");
@@ -45,60 +47,60 @@ class WUIBody {
 	}
 
 	get environment() {
-		return this.#environment;
+		return this.#properties.environment;
 	}
 
 	get importDirectory() {
-		return this.#importDirectory;
+		return this.#properties.importDirectory;
 	}
 
 	get importMode() {
-		return this.#importMode;
+		return this.#properties.importMode;
 	}
 
 	get onCompleted() {
-		return this.#onCompleted;
+		return this.#properties.onCompleted;
 	}
 
 	get debug() {
-		return this.#debug;
+		return this.#properties.debug;
 	}
 
 	set environment(value) {
 		if (typeof (value) == "string" && value.match(/^(native\.android|native\.ios|web)?$/i)) {
-			this.#environment = value.toLowerCase();
+			this.#properties.environment = value.toLowerCase();
 		}
 	}
 
 	set importDirectory(value) {
 		if (typeof (value) == "string") {
-			this.#importDirectory = value;
+			this.#properties.importDirectory = value;
 		}
 	}
 
 	set importMode(value) {
 		if (typeof (value) == "string" && value.match(/^(fetch|xhr)?$/i)) {
-			this.#importMode = value;
+			this.#properties.importMode = value;
 		}
 	}
 
 	set onCompleted(value) {
-		if (typeof (value) == "function") {
-			this.#onCompleted = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onCompleted = value;
 		}
 	}
 
 	set debug(value) {
 		if (typeof (value) == "boolean") {
-			this.#debug = value;
+			this.#properties.debug = value;
 		}
 	}
 
 	import(id, path, done) {
 		const token = Date.now();
-		const cssPath = `${this.#importDirectory}${path}.css?_=${token}`;
-		const htmlPath = `${this.#importDirectory}${path}.htm?_=${token}`;
-		const jsPath = `${this.#importDirectory}${path}.js?_=${token}`;
+		const cssPath = `${this.#properties.importDirectory}${path}.css?_=${token}`;
+		const htmlPath = `${this.#properties.importDirectory}${path}.htm?_=${token}`;
+		const jsPath = `${this.#properties.importDirectory}${path}.js?_=${token}`;
 		const checkPath = (url) => {
 			const xhr = new XMLHttpRequest();
 			try {
@@ -108,8 +110,8 @@ class WUIBody {
 			return xhr.status != 404;
 		}
 		const checkStatus = () => {
-			if (2 * WUIBody.#partCount == WUIBody.#htmlCount + WUIBody.#jsCount && typeof (this.#onCompleted) == "function") {
-				this.#onCompleted();
+			if (2 * WUIBody.#partCount == WUIBody.#htmlCount + WUIBody.#jsCount && typeof (this.#properties.onCompleted) == "function") {
+				this.#properties.onCompleted();
 			}
 		}
 		const loadHTML = (html) => {
@@ -163,7 +165,7 @@ class WUIBody {
 			xhr.send();
 		}
 		if (checkPath(htmlPath)) {
-			if (this.#importMode == "fetch") {
+			if (this.#properties.importMode == "fetch") {
 				fetch(htmlPath).then(response => {
 					return response.text();
 				}).then(html => {
@@ -185,7 +187,7 @@ class WUIBody {
 						WUIBody.#jsCount++;
 					}
 				});
-			} else if (this.#importMode == "xhr") {
+			} else if (this.#properties.importMode == "xhr") {
 				xhrRequest(htmlPath, html => {
 					loadHTML(html);
 					if (checkPath(cssPath)) {

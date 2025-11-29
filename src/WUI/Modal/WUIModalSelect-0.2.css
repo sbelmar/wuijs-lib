@@ -1,0 +1,172 @@
+/*
+ * WUIModalSelector - v0.2
+ * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ */
+
+.wui-modal.select > .box {
+	width: var(--wui-modal-select-box-width);
+	height: auto;
+	min-height: 96px;
+	overflow: hidden;
+	background-color: var(--wui-modal-select-box-bgcolor);
+}
+
+.wui-modal.select > .box > .options,
+.wui-modal.select > .box > .options > .option {
+	display: flex;
+	position: relative;
+	flex-grow: 1;
+	flex-shrink: 0;
+}
+
+.wui-modal.select > .box > .options {
+	max-height: calc(calc(10 * 44px) - 1px);
+	overflow: auto;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+}
+
+.wui-modal.select > .box > .options > .option {
+	width: 100%;
+	height: 44px;
+	border-bottom: 1px solid var(--wui-modal-select-option-bordercolor-out);
+	background-color: var(--wui-modal-select-option-bgcolor-out);
+	padding: 0 10px;
+	align-items: center;
+	gap: 10px;
+}
+
+.wui-modal.select > .box > .options > .option > .icon {
+	visibility: hidden;
+	width: 24px;
+	height: 24px;
+	flex-shrink: 0;
+}
+
+.wui-modal.select > .box > .options > .option > .icon:not([class$="color"]) {
+	background-color: var(--wui-modal-select-option-iconcolor-out);
+}
+
+.wui-modal.select > .box > .options > .option > .icon.visible,
+.wui-modal.select > .box > .options > .option.selected > .icon {
+	visibility: visible;
+}
+
+.wui-modal.select > .box > .options > .option > .text {
+	cursor: default;
+	overflow: hidden;
+	flex-grow: 1;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: var(--wui-modal-select-option-textcolor-out);
+}
+
+.wui-modal.select > .box > .options > .option.selected > .text.selecteable {
+	color: var(--wui-modal-select-option-textcolor-selected) !important;
+}
+
+.wui-modal.select > .box > .options > .option > .text > .empty {
+	-khtml-opacity: .7;
+	-moz-opacity: .7;
+	opacity: .7;
+}
+
+.wui-modal.select > .box > .options > .option:not(.disabled):is(:hover, :focus, :focus-within) {
+	border-color: var(--wui-modal-select-option-bordercolor-over);
+	background-color: var(--wui-modal-select-option-bgcolor-over);
+}
+
+.wui-modal.select > .box > .options > .option:not(.disabled):is(:hover, :focus, :focus-within) > .icon {
+	background-color: var(--wui-modal-select-option-iconcolor-over);
+}
+
+.wui-modal.select > .box > .options > .option:not(.disabled):is(:hover, :focus, :focus-within) > .text {
+	color: var(--wui-modal-select-option-textcolor-over);
+}
+
+.wui-modal.select > .box > .options > .option.disabled > .icon {
+	background-color: var(--wui-modal-select-option-iconcolor-disabled);
+}
+
+.wui-modal.select > .box > .options > .option.disabled > .text {
+	color: var(--wui-modal-select-option-textcolor-disabled);
+}
+
+/*.wui-modal.select.multiple > .box > .options > .text {
+	padding-right: 30px;
+}
+
+.wui-modal.select.multiple > .box > .options > .option > .checker {
+	width: 20px;
+	height: 20px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	border: 1px solid var(--wui-modal-select-option-checker-bordercolor-out);
+	background-color: var(--wui-modal-select-option-checker-bgcolor-out);
+}
+
+.wui-modal.select.multiple > .box > .options > .option.selected > .checker {
+	border-color: var(--wui-modal-select-option-checker-bordercolor-selected);
+	background-color: var(--wui-modal-select-option-checker-bgcolor-selected);
+}*/
+
+.wui-modal.select > .box > .footer {
+	height: 70px;
+}
+
+.wui-modal.select > .box > .footer > button {
+	min-width: 120px;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 15px;
+}
+
+@media screen and (max-width: 767px) {
+	.wui-modal.select > .box > .options {
+		scrollbar-color: var(--wui-modal-body-scroll-bgcolor-out) transparent;
+	}
+
+	.wui-modal.select > .box > .options::-webkit-scrollbar {
+		width: 4px;
+		background-color: transparent;
+	}
+
+	.wui-modal.select > .box > .options::-webkit-scrollbar-thumb {
+		border-radius: 2px;
+		background-color: var(--wui-modal-body-scroll-bgcolor-out);
+	}
+
+	.wui-modal.select > .box > .options::-webkit-scrollbar-thumb:is(:hover, :active) {
+		background-color: var(--wui-modal-body-scroll-bgcolor-over);
+	}
+
+	.wui-modal.select > .box > .options::-webkit-scrollbar-track {
+		background-color: transparent;
+	}
+
+	.wui-modal.select > .box > .options > .option:last-child {
+		border: 0;
+	}
+
+	.wui-modal.select > .box > .footer {
+		height: 52px;
+		border-top: 1px solid var(--wui-modal-select-button-bordercolor);
+	}
+
+	.wui-modal.select > .box > .footer > button {
+		margin-top: 0;
+		margin-left: 0;
+		margin-right: 0;
+		border-top: 0;
+		border-bottom: 0;
+		font-size: 17px;
+	}
+
+	.wui-modal.select > .box > .footer > button:first-child {
+		border-right: 1px solid var(--wui-modal-select-button-bordercolor);
+	}
+}
