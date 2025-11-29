@@ -55,9 +55,9 @@ WUI, acrónimo del inglés *Web User Interface JavaScript library*, es una bibli
 
 | Clase                         | Version | Descripción |
 | ----------------------------- | -------:| ----------- |
-| [WUICookie](#WUICookie)       | `0.1`   | Administrador de cookies. |
+| [WUICookie](#WUICookie)       | `0.2`   | Administrador de cookies. |
 | [WUIHead](#WUIHead)           | `0.1`   | Administrador de cabecera HTML. |
-| [WUIBody](#WUIBody)           | `0.1`   | Administrador de cuerpo HTML. Permite la importación de contenido CSS/JS/HTML y facilita la implementación en entornos nativos móviles. |
+| [WUIBody](#WUIBody)           | `0.2`   | Administrador de cuerpo HTML. Permite la importación de contenido CSS/JS/HTML y facilita la implementación en entornos nativos móviles. |
 | [WUILanguage](#WUILanguage)   | `0.2`   | Administrador de idioma para interfaces web. Permite cargar archivos de idioma en formato JS o JSON y actualizar dinámicamente el contenido de los elementos HTML según el idioma. |
 | [WUIScrolly](#WUIScrolly)     | `0.2`   | Herramienta para animación de elementos HTML mediante el evento "onscroll" del cuerpo de la página HTML. |
 | [WUIIcon](#WUIIcon)           | `0.1`   | Conjunto de íconos prediseñados y carga mediante CSS, para uso en interfaces. |
@@ -642,9 +642,9 @@ Código HTML:
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Checkbox/WUICheckbox-0.2.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Intensity/WUIIntensity-0.1.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Button/WUIButton-0.2.css">
-		<script type="text/javascript" src="./Libraries/WUI/Cookie/WUICookie-0.1.js"></script>
+		<script type="text/javascript" src="./Libraries/WUI/Cookie/WUICookie-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Head/WUIHead-0.1.js"></script>
-		<script type="text/javascript" src="./Libraries/WUI/Body/WUIBody-0.1.js"></script>
+		<script type="text/javascript" src="./Libraries/WUI/Body/WUIBody-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Language/WUILanguage-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Scrolly/WUIScrolly-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Fade/WUIFade-0.1.js"></script>
@@ -690,7 +690,7 @@ Este método de implementación permite la estandarización del diseño de la in
 
 ### WUICookie
 
-Versión: `0.1`
+Versión: `0.2`
 
 Administrador de cookies.
 
@@ -721,7 +721,7 @@ Administrador de cookies.
 Cabecera HTML:
 
 ```html
-<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Cookie/WUICookie-0.1.js"></script>
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Cookie/WUICookie-0.2.js"></script>
 ```
 
 Código JS:
@@ -801,7 +801,7 @@ head.setThemeColor("#1e90ff");
 
 ### WUIBody
 
-Versión: `0.1`
+Versión: `0.2`
 
 Administrador de cuerpo HTML. Permite la importación de contenido CSS/JS/HTML y facilita la implementación en entornos nativos móviles.
 
@@ -860,7 +860,7 @@ const testContentLog = (content) => {
 Cabecera HTML:
 
 ```html
-<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Body/WUIBody-0.1.js"></script>
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Body/WUIBody-0.2.js"></script>
 ```
 
 Código HTML:
