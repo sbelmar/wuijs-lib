@@ -134,7 +134,7 @@
 	justify-content: center;
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > :is(img, .icon) {
+.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > :is(img, .icon, .photo) {
 	width: var(--wui-menubar-barbutton-iconsize);
 	height: var(--wui-menubar-barbutton-iconsize);
 }
@@ -146,8 +146,6 @@
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
 	display: block;
 	position: absolute;
-	width: 24px;
-	height: 24px;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
@@ -184,7 +182,6 @@
 	line-height: 20px;
 	text-align: center;
 	white-space: nowrap;
-	font-size: 12px;
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .bubble {
@@ -329,13 +326,15 @@
 
 	.wui-menubar > .submenu {
 		--submenu-transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
-		left: calc(60px - 2 * var(--wui-menubar-borderradius));
+		left: calc(60px - 2 * var(--wui-menubar-borderradius) + 2px);
 		width: 0px;
 		height: 100%;
+		overflow: hidden;
 	}
 
 	.wui-menubar > .submenu.opened {
-		width: calc(60px + 2 * var(--wui-menubar-borderradius));
+		width: calc(60px + 2 * var(--wui-menubar-borderradius) + 2px);
+		overflow: visible;
 	}
 
 	.wui-menubar > .submenu > .main {
@@ -368,7 +367,7 @@
 		width: 0px;
 		overflow: hidden;
 		padding-left: 0px;
-		font-size: 14px;
+		font-size: 12px;
 		-khtml-opacity: 0;
 		-moz-opacity: 0;
 		opacity: 0;
@@ -379,6 +378,7 @@
 
 	.wui-menubar:not(.expanded) > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.disabled) > .tooltip {
 		display: block;
+		font-size: 12px;
 	}
 
 	.wui-menubar.expanded {

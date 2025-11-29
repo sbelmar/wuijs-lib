@@ -11,6 +11,7 @@
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
+
 .wui-list,
 .wui-list > .row > .strip,
 .wui-list > .row > .strip > .cell,
@@ -20,10 +21,12 @@
 .wui-list > .footer {
 	display: flex;
 }
+
 .wui-list,
 .wui-list > .row {
 	position: relative;
 }
+
 .wui-list {
 	--row-shadow: rgb(from var(--wui-list-shadowcolor) r g b / 40%) 0px 4px 12px;
 	width: 100%;
@@ -37,6 +40,7 @@
 	flex-direction: column;
 	font-size: 14px;
 }
+
 .wui-list > .row {
 	width: 100%;
 	height: var(--wui-list-row-height);
@@ -49,6 +53,7 @@
 	border-right-color: var(--wui-list-bordercolor);
 	border-bottom-width: 0px;
 }
+
 .wui-list > .row:first-child {
 	border-top-width: var(--wui-list-borderwidth);
 	border-top-color: var(--wui-list-bordercolor);
@@ -59,6 +64,7 @@
 	border-top-left-radius: var(--wui-list-borderradius);
 	border-top-right-radius: var(--wui-list-borderradius);
 }
+
 .wui-list > .row:last-child {
 	border-bottom-width: var(--wui-list-borderwidth);
 	border-bottom-color: var(--wui-list-bordercolor);
@@ -69,6 +75,7 @@
 	border-bottom-left-radius: var(--wui-list-borderradius);
 	border-bottom-right-radius: var(--wui-list-borderradius);
 }
+
 .wui-list > .row > .strip {
 	--strip-transition: margin-right .4s cubic-bezier(0, 0, .05, 1);
 	position: relative;
@@ -83,48 +90,59 @@
 	-moz-transition: var(--strip-transition);
 	transition: var(--strip-transition);
 }
+
 .wui-list > .row:not(.disabled) > .strip:is(:hover, :focus, :focus-within) {
 	border-color: var(--wui-list-row-bordercolor-over);
 	background-color: var(--wui-list-row-bgcolor-over);
 	color: var(--wui-list-row-textcolor-over);
 }
+
 .wui-list > .row.disabled > .strip {
 	color: var(--wui-list-row-textcolor-disabled);
 }
+
 .wui-list > .row > .strip > .cell {
 	overflow: hidden;
 	align-items: center;
 }
+
 .wui-list > .row > .strip > .cell.left {
 	justify-content: flex-start;
 }
+
 .wui-list > .row > .strip > .cell.center {
 	justify-content: center;
 }
+
 .wui-list > .row > .strip > .cell.right {
 	justify-content: flex-end;
 }
+
 .wui-list > .row > .strip > .cell .text-overflow {
 	display: -webkit-box;
 	display: -moz-box;
 	width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
 	line-clamp: 1;
-    -webkit-box-orient: vertical;
+	-webkit-box-orient: vertical;
 	box-orient: vertical;
 }
+
 .wui-list > .row:not(:last-child) > .strip > .cell:not(:first-child) {
 	border-bottom: var(--wui-list-row-borderwidth) solid var(--wui-list-row-bordercolor-out);
 }
+
 .wui-list > .row:last-child > .strip {
 	border-bottom: 0;
 }
+
 .wui-list > .row.slider,
 .wui-list > .row.slider > .strip {
 	z-index: 2;
 }
+
 .wui-list > .row.slider > .buttons {
 	position: absolute;
 	z-index: 1;
@@ -135,12 +153,14 @@
 	align-items: center;
 	justify-content: stretch;
 }
+
 .wui-list > .row.slider > .buttons > .button {
 	cursor: pointer;
 	width: var(--wui-list-button-size);
 	align-items: center;
 	justify-content: center;
 }
+
 .wui-list > .row.slider > .buttons > .button.round {
 	--size: min(var(--wui-list-button-size), var(--wui-list-row-height));
 	width: var(--size);
@@ -151,19 +171,23 @@
 	border-radius: var(--wui-list-button-borderradius);
 	background-color: var(--wui-list-button-bgcolor-enabled);
 }
+
 .wui-list > .row.slider > .buttons > .button.stretch {
 	height: 100%;
 }
+
 .wui-list > .row.slider:first-child > .buttons > .button.stretch:last-child {
 	-webkit-border-top-right-radius: var(--wui-list-borderradius);
 	-moz-border-radius-topright: var(--wui-list-borderradius);
 	border-top-right-radius: var(--wui-list-borderradius);
 }
+
 .wui-list > .row.slider:last-child > .buttons > .button.stretch:last-child {
 	-webkit-border-bottom-right-radius: var(--wui-list-borderradius);
 	-moz-border-radius-bottomright: var(--wui-list-borderradius);
 	border-bottom-right-radius: var(--wui-list-borderradius);
 }
+
 .wui-list > .row.slider > .strip > .cell,
 .wui-list > .row.slider > .buttons > .button {
 	-webkit-touch-callout: none;
@@ -172,9 +196,11 @@
 	-moz-user-select: none;
 	user-select: none;
 }
+
 .wui-list > .row > .buttons > .button.disabled {
 	background-color: var(--wui-list-button-bgcolor-disabled);
 }
+
 .wui-list > .inner-row {
 	width: 100%;
 	min-height: var(--wui-list-row-height);
@@ -192,6 +218,7 @@
 	justify-content: start;
 	color: var(--wui-list-innerrow-textcolor);
 }
+
 .wui-list > .inner-row:last-child {
 	-webkit-border-bottom-left-radius: var(--wui-list-borderradius);
 	-webkit-border-bottom-right-radius: var(--wui-list-borderradius);
@@ -200,38 +227,47 @@
 	border-bottom-left-radius: var(--wui-list-borderradius);
 	border-bottom-right-radius: var(--wui-list-borderradius);
 }
+
 .wui-list > .inner-row.hidden {
 	display: none;
 }
+
 .wui-list.scroll {
 	max-height: 100%;
 	overflow-y: auto;
 }
+
 .wui-list.scroll > .row {
 	flex-shrink: 0;
 }
+
 @media screen and (max-width: 767px) {
 	.wui-list {
 		font-size: 15px;
 	}
 }
+
 @media screen and (min-width: 768px) {
 	.wui-list.scroll {
 		scrollbar-color: var(--wui-list-scroll-bgcolor-out) transparent;
 	}
+
 	.wui-list.scroll::-webkit-scrollbar {
 		width: 4px;
 		background-color: transparent;
 	}
+
 	.wui-list.scroll::-webkit-scrollbar-thumb {
 		-webkit-border-radius: 2px;
 		-moz-border-radius: 2px;
 		border-radius: 2px;
 		background-color: var(--wui-list-scroll-bgcolor-out);
 	}
+
 	.wui-list.scroll::-webkit-scrollbar-thumb:is(:hover, :active) {
 		background-color: var(--wui-list-scroll-bgcolor-over);
 	}
+
 	.wui-list.scroll::-webkit-scrollbar-track {
 		background-color: transparent;
 	}
@@ -243,17 +279,20 @@
 	--wui-icon-bgcolor-out: var(--wui-list-row-textcolor-disabled);
 	--wui-icon-bgcolor-over: var(--wui-list-row-textcolor-disabled);
 }
+
 .wui-list > .row > .buttons > .button > .wui-icon {
 	--wui-icon-bgcolor-out: rgba(255, 255, 255, .9);
 	--wui-icon-bgcolor-over: rgba(255, 255, 255, 1);
 	width: 20px;
 	height: 20px;
 }
+
 .wui-list > .row.disabled > .buttons > .button > .wui-icon,
 .wui-list > .row > .buttons > .button.disabled > .wui-icon {
 	--wui-icon-bgcolor-out: rgba(255, 255, 255, .9);
 	--wui-icon-bgcolor-over: rgba(255, 255, 255, 1);
 }
+
 .wui-list > .message > .wui-icon {
 	--wui-icon-bgcolor-out: #eee;
 	--wui-icon-bgcolor-over: #eee;

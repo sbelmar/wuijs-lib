@@ -10,14 +10,17 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
 .wui-slider,
 .wui-slider > .body {
 	position: relative;
 }
+
 .wui-slider {
 	display: flex;
 	justify-content: center;
 }
+
 .wui-slider,
 .wui-slider > .body,
 .wui-slider > .body > .slide {
@@ -27,12 +30,15 @@
 	height: 100%;
 	overflow: hidden;
 }
+
 .wui-slider > .body > .slide {
 	left: -100%;
 }
+
 .wui-slider > .body > .slide.scroll {
 	overflow-y: auto !important;
 }
+
 .wui-slider > .body > .slide.image {
 	cursor: pointer;
 	position: absolute;
@@ -49,6 +55,7 @@
 	-moz-background-size: cover;
 	background-size: cover;
 }
+
 .wui-slider > .dots {
 	display: flex;
 	position: absolute;
@@ -64,6 +71,7 @@
 	padding: 0 10px;
 	gap: 10px;
 }
+
 .wui-slider > .dots > div {
 	width: 5px;
 	height: 5px;
@@ -72,6 +80,7 @@
 	border-radius: 50%;
 	background-color: var(--wui-slider-dot-bgcolor);
 }
+
 .wui-slider > .dots > div.selected {
 	background-color: var(--wui-slider-dot-bgcolor-selected);
 }

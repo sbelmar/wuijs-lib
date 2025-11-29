@@ -20,17 +20,7 @@ class WUIModal {
 	};
 	static #instances = [];
 
-	#properties = {
-		selector: null,
-		openDelay: null,
-		onStartOpen: null,
-		onOpen: null,
-		onMaximize: null,
-		onScrolling: null,
-		onStartClose: null,
-		onClose: null,
-		onBack: null
-	};
+	#properties = {};
 	#htmlElement;
 	#htmlElements = {
 		box: null,
@@ -242,7 +232,7 @@ class WUIModal {
 	}
 
 	setHeadBorder(border) {
-		if (this.#htmlElements.header != null) {
+		if (this.#htmlElements.header instanceof HTMLElement) {
 			if (border) {
 				this.#htmlElements.header.classList.remove("border");
 			} else {
@@ -267,7 +257,7 @@ class WUIModal {
 		if (navigator.userAgent.match(/iphone|ipad|android/i) && navigator.maxTouchPoints > 1) {
 			this.#htmlElement.classList.add("mobile");
 		}
-		if (this.#htmlElements.topbar != null) {
+		if (this.#htmlElements.topbar instanceof HTMLElement) {
 			this.#drag = false;
 			this.#initY = null;
 			this.#direction = null;
@@ -310,19 +300,19 @@ class WUIModal {
 				});
 			});
 		}
-		if (this.#htmlElements.back != null) {
+		if (this.#htmlElements.back instanceof HTMLElement) {
 			this.#htmlElements.back.addEventListener("click", () => {
 				if (typeof (this.#properties.onBack) == "function") {
 					this.#properties.onBack();
 				}
 			});
 		}
-		if (this.#htmlElements.close != null) {
+		if (this.#htmlElements.close instanceof HTMLElement) {
 			this.#htmlElements.close.addEventListener("click", () => {
 				this.close();
 			});
 		}
-		if (this.#htmlElements.box != null && this.#htmlElements.body != null) {
+		if (this.#htmlElements.box instanceof HTMLElement && this.#htmlElements.body instanceof HTMLElement) {
 			this.#htmlElements.box.dataset.scrollBody = 0;
 			if (this.#htmlElements.body.classList.contains("scroll")) {
 				["scroll", "touchmove"].forEach(type => {
@@ -369,7 +359,7 @@ class WUIModal {
 		this.#htmlElement.classList.remove("maximized");
 		this.#htmlElement.classList.remove("closed");
 		this.#htmlElement.classList.add("opened");
-		if (this.#htmlElements.box != null) {
+		if (this.#htmlElements.box instanceof HTMLElement) {
 			const boxStyle = getComputedStyle(this.#htmlElements.box);
 			const scrollbarWidth = window.innerWidth - document.body.clientWidth;
 			const scrollbarHeight = window.innerHeight - document.body.clientHeight;
@@ -408,7 +398,7 @@ class WUIModal {
 				ease = 1;
 			}
 			this.#htmlElement.style.opacity = ease == 1 ? null : ease;
-			if (this.#htmlElements.box != null && page) {
+			if (this.#htmlElements.box instanceof HTMLElement && page) {
 				if (!mobile && slide) {
 					this.#htmlElements.box.style.right = (this.#boxWidth * (ease - 1) + slideMargin) + "px";
 				} else if (mobile) {
@@ -419,12 +409,12 @@ class WUIModal {
 					}
 				}
 			}
-			if (under != null) {
+			if (under instanceof WUIModal) {
 				const underPage = Boolean(under.#htmlElement.classList.contains("page"));
 				const underSlide = Boolean(under.#htmlElement.classList.contains("slide"));
 				const underMaximized = Boolean(under.#htmlElement.classList.contains("maximized"));
 				this.#htmlElement.classList.add("over");
-				if (under.#htmlElements.box != null && underPage && page) {
+				if (under.#htmlElements.box instanceof HTMLElement && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
 					} else if (mobile && !underMaximized) {
@@ -447,7 +437,7 @@ class WUIModal {
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		const bodyHeight = document.body.offsetHeight;
 		const slideMargin = parseInt(getComputedStyle(this.#htmlElement).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
-		if (this.#htmlElements.box != null && page) {
+		if (this.#htmlElements.box instanceof HTMLElement && page) {
 			this.#htmlElement.classList.remove("maximized");
 			this.#htmlElements.box.style.top = mobile ? "44px" : slide ? slideMargin + "px" : small ? (bodyHeight - this.#boxHeight) + "px" : "auto";
 			this.#htmlElements.box.style.left = mobile ? "0px" : "auto";
@@ -465,7 +455,7 @@ class WUIModal {
 		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
 		let step = 10;
 		this.#htmlElement.classList.add("maximized");
-		this.#boxTop = this.#htmlElements.box != null ? this.#htmlElements.box.offsetTop : 0;
+		this.#boxTop = this.#htmlElements.box instanceof HTMLElement ? this.#htmlElements.box.offsetTop : 0;
 		const interval = setInterval(() => {
 			const t = step / 10;
 			let ease = t > 0.5 ? 4 * Math.pow((t - 1), 3) + 1 : 4 * Math.pow(t, 3);
@@ -473,7 +463,7 @@ class WUIModal {
 				clearInterval(interval);
 				ease = 0;
 			}
-			if (this.#htmlElements.box != null && page) {
+			if (this.#htmlElements.box instanceof HTMLElement && page) {
 				if (!mobile && slide) {
 					// ...
 				} else if (mobile && !maximized) {
@@ -507,11 +497,11 @@ class WUIModal {
 		this.#htmlElement.classList.remove("maximized");
 		this.#htmlElement.classList.remove("opened");
 		this.#htmlElement.classList.add("closed");
-		if (this.#htmlElements.topbar != null) {
+		if (this.#htmlElements.topbar instanceof HTMLElement) {
 			this.#initY = null;
 			this.#drag = false;
 		}
-		if (this.#htmlElements.box != null) {
+		if (this.#htmlElements.box instanceof HTMLElement) {
 			Object.keys(this.#bodyStyle).forEach(key => {
 				document.body.style[key] = this.#bodyStyle[key];
 			});
@@ -531,19 +521,19 @@ class WUIModal {
 				this.#htmlElement.style.visibility = "hidden";
 			}
 			this.#htmlElement.style.opacity = ease;
-			if (this.#htmlElements.box != null && page) {
+			if (this.#htmlElements.box instanceof HTMLElement && page) {
 				if (!mobile && slide) {
 					this.#htmlElements.box.style.right = (this.#boxWidth * (ease - 1) + slideMargin) + "px";
 				} else if (mobile) {
 					this.#htmlElements.box.style.top = (bodyHeight - this.#boxHeight * ease) + "px";
 				}
 			}
-			if (under != null) {
+			if (under instanceof WUIModal) {
 				const underPage = Boolean(under.#htmlElement.classList.contains("page"));
 				const underSlide = Boolean(under.#htmlElement.classList.contains("slide"));
 				const underMaximized = Boolean(under.#htmlElement.classList.contains("maximized"));
 				this.#htmlElement.classList.remove("over");
-				if (under.#htmlElements.box != null && underPage && page) {
+				if (under.#htmlElements.box instanceof HTMLElement && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
 					} else if (mobile && !underMaximized) {
@@ -565,15 +555,12 @@ class WUIModal {
 
 	destroy() {
 		if (this.#htmlElement) {
-			this.#htmlElement.innerHTML = "";
-			this.#htmlElements.box = null;
-			this.#htmlElements.header = null;
-			this.#htmlElements.back = null;
-			this.#htmlElements.topbar = null;
-			this.#htmlElements.title = null;
-			this.#htmlElements.close = null;
-			this.#htmlElements.body = null;
-			this.#htmlElements.footer = null;
+			this.#htmlElements.forEach(element => {
+				if (element) {
+					element.remove();
+				}
+			});
+			this.#htmlElement.remove();
 		}
 	}
 }

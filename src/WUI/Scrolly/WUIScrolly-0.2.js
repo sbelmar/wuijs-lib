@@ -18,16 +18,7 @@ class WUIScrolly {
 		debug: false
 	};
 
-	#properties = {
-		sections: null,
-		behavior: null,
-		dataScrollY: null,
-		dataDelay: null,
-		onStart: null,
-		onMove: null,
-		onStop: null,
-		debug: null
-	};
+	#properties = {};
 	#bodyHeight;
 	#screenHeight;
 	#maxScrollTop;

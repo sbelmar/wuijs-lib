@@ -31,15 +31,7 @@ class WUIMenubar {
 			+ "</svg>"
 	};
 
-	#properties = {
-		selector: null,
-		expansive: null,
-		topButtons: null,
-		mainButtons: null,
-		bottomButtons: null,
-		onClick: null,
-		onSelect: null
-	};
+	#properties = {};
 	#htmlElement;
 	#htmlElements = {
 		bar: null,
@@ -209,6 +201,7 @@ class WUIMenubar {
 	#addButton(options) {
 		const button = document.createElement("div");
 		const icon = document.createElement(options.iconImage ? "img" : "div");
+		const photo = document.createElement("div");
 		const text = document.createElement("div");
 		const tooltip = document.createElement("div");
 		const bubble = document.createElement("div");
@@ -227,6 +220,10 @@ class WUIMenubar {
 		bubble.className = "bubble hidden";
 		bubble.innerText = 0;
 		button.append(icon);
+		if (typeof (options.photoImage) == "string") {
+			photo.style.backgroundImage = "url(" + options.photoImage + ")";
+			button.append(photo);
+		}
 		button.append(text);
 		button.append(tooltip);
 		button.append(bubble);
@@ -275,7 +272,7 @@ class WUIMenubar {
 
 	selectButton(id, selected = true) {
 		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
-		if (button != null && !button.classList.contains("disabled")) {
+		if (button instanceof HTMLElement && !button.classList.contains("disabled")) {
 			if (selected) {
 				button.classList.add("selected");
 			} else {
@@ -287,7 +284,7 @@ class WUIMenubar {
 
 	enableButton(id, enabled = true) {
 		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
-		if (button != null) {
+		if (button instanceof HTMLElement) {
 			if (enabled) {
 				button.classList.remove("disabled");
 			} else {
@@ -299,11 +296,13 @@ class WUIMenubar {
 
 	setBubble(optionId, number = 0) {
 		const bubble = this.#htmlElement.querySelector(`[data-id='${optionId}'].button > .bubble`);
-		bubble.textContent = number;
-		if (number > 0) {
-			bubble.classList.remove("hidden");
-		} else {
-			bubble.classList.add("hidden");
+		if (bubble instanceof HTMLElement) {
+			bubble.textContent = number;
+			if (number > 0) {
+				bubble.classList.remove("hidden");
+			} else {
+				bubble.classList.add("hidden");
+			}
 		}
 	}
 
@@ -322,10 +321,19 @@ class WUIMenubar {
 	}
 
 	destroy() {
-		this.#buttons = [];
-		if (this.#htmlElement) {
+		if (this.#htmlElement instanceof HTMLElement) {
+			Object.entries(this.#htmlElements).forEach(([key, element]) => {
+				if (element) {
+					element.remove();
+				}
+				this.#htmlElements[key] = null;
+			});
 			this.#htmlElement.innerHTML = "";
 		}
+		Object.keys(this.#properties).forEach(name => {
+			delete this.#properties[name];
+		});
+		this.#buttons = undefined;
 	}
 }
 

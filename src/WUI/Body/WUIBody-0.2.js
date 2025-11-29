@@ -19,13 +19,7 @@ class WUIBody {
 	static #jsCount = 0;
 	static #partCount = 0;
 
-	#properties = {
-		environment: null,
-		importDirectory: null,
-		importMode: null,
-		onCompleted: null,
-		debug: null
-	};
+	#properties = {};
 
 	static openURL(url, download = "") {
 		const link = document.createElement("a");

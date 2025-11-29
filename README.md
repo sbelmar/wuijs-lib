@@ -5,7 +5,7 @@
 
 Library version: `0.2.0` ([Change Log](./CHANGELOG.md))
 
-Document version: `0.2.0.20251128.1`
+Document version: `0.2.0.20251129.1`
 
 Licence: `Apache License 2.0`
 
@@ -62,10 +62,10 @@ WUI, an acronym for *Web User Interface JavaScript library*, is an open source J
 | [WUIScrolly](#WUIScrolly)     | `0.2`   | Tool for animating HTML elements using the "onscroll" event of the HTML page body. |
 | [WUIIcon](#WUIIcon)           | `0.1`   | Set of pre-designed icons loaded via CSS, for use in interfaces. |
 | [WUIFade](#WUIFade)           | `0.1`   | Tool for fading out and fading in HTML elements with opacity. |
-| WUILoader                     | `0.1`   | Simple object for loading animation. |
+| WUILoader                     | `0.2`   | Simple object for loading animation. |
 | WUITooltip                    | `0.1`   | Simple object for hover text. |
 | WUIModal                      | `0.2`   | Advanced object for implementing dialog boxes (type `message`) and pop-up windows (type `page`). |
-| WUIModalSelector              | `0.1`   | Extended object of `WUIModal` for implementing selection lists based on arrays or data inputs of type `<select>`. |
+| WUIModalSelector              | `0.2`   | Extended object of `WUIModal` for implementing selection lists based on arrays or data inputs of type `<select>`. |
 | WUISlider                     | `0.2`   | Advanced object for implementing mouse-controlled and/or event-controlled blinds. |
 | WUIPaging                     | `0.1`   | Advanced object for implementing paginated views. |
 | WUITabs                       | `0.1`   | Advanced object for implementing views accessible by tab selection. |
@@ -624,7 +624,7 @@ HTML code:
 		<link type="text/css" rel="stylesheet" href="./Settings/WUI.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Scrolly/WUIScrolly-0.2.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Icon/WUIIcon-0.1.css">
-		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Loader/WUILoader-0.1.css">
+		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Loader/WUILoader-0.2.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Tooltip/WUITooltip-0.1.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Modal/WUIModal-0.2.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Modal/WUIModalSelect-0.1.css">
@@ -648,7 +648,7 @@ HTML code:
 		<script type="text/javascript" src="./Libraries/WUI/Language/WUILanguage-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Scrolly/WUIScrolly-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Fade/WUIFade-0.1.js"></script>
-		<script type="text/javascript" src="./Libraries/WUI/Loader/WUILoader-0.1.js"></script>
+		<script type="text/javascript" src="./Libraries/WUI/Loader/WUILoader-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Tooltip/WUITooltip-0.1.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Modal/WUIModal-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Modal/WUIModalSelect-0.2.js"></script>

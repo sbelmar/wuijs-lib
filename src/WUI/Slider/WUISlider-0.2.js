@@ -12,45 +12,55 @@ class WUISlider {
 		onChange: null
 	};
 
-	constructor (properties) {
-		Object.keys(WUISlider.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUISlider.#defaults ? WUISlider.#defaults[prop] : null;
+	#properties = {};
+	#htmlElement;
+	#htmlElements = {
+		body: null,
+		dots: null
+	};
+	#index;
+	#data;
+
+	constructor(properties) {
+		const defaults = structuredClone(WUISlider.#defaults);
+		Object.entries(defaults).forEach(([key, defValue]) => {
+			this[key] = key in properties ? properties[key] : defValue;
 		});
 	}
 
 	get selector() {
-		return this._selector;
+		return this.#properties.selector;
 	}
 
 	get onChange() {
-		return this._onChange;
+		return this.#properties.onChange;
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
-			this._selector = value;
-			this._element = document.querySelector(value);
-			this._body = this._element.querySelector(".body");
-			this._dots = this._element.querySelector(".dots");
+		if (typeof (value) == "string" && value != "") {
+			this.#properties.selector = value;
+			this.#htmlElement = document.querySelector(value);
+			this.#htmlElements.body = this.#htmlElement.querySelector(".body");
+			this.#htmlElements.dots = this.#htmlElement.querySelector(".dots");
 		}
 	}
 
 	set onChange(value) {
-		if (typeof(value) == "function") {
-			this._onChange = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onChange = value;
 		}
 	}
 
 	getElement() {
-		return this._element;
+		return this.#htmlElement;
 	}
 
 	getBody() {
-		return this._body;
+		return this.#htmlElements.body;
 	}
 
 	getIndex() {
-		return this._index;
+		return this.#index;
 	}
 
 	init() {
@@ -58,14 +68,14 @@ class WUISlider {
 	}
 
 	load() {
-		if (this._body != null) {
-			if (this._dots != null) {
-				this._dots.innerHTML = "";
+		if (this.#htmlElements.body instanceof HTMLElement) {
+			if (this.#htmlElements.dots instanceof HTMLElement) {
+				this.#htmlElements.dots.innerHTML = "";
 			}
-			this._index = null;
-			this._data = [];
-			this._body.querySelectorAll(".slide").forEach((slide, i) => {
-				this._data[i] = {
+			this.#index = null;
+			this.#data = [];
+			this.#htmlElements.body.querySelectorAll(".slide").forEach((slide, i) => {
+				this.#data[i] = {
 					slide: slide,
 					dot: document.createElement("div"),
 					drag: false,
@@ -74,49 +84,48 @@ class WUISlider {
 					lock: false
 				};
 			});
-			for (let i=0; i<this._data.length; i++) {
+			for (let i = 0; i < this.#data.length; i++) {
 				if (i == 0) {
-					this._index = i;
-					this._data[i].slide.style.left = "0px";
-					if (this._dots != null) {
-						this._data[i].dot.classList.add("selected");
+					this.#index = i;
+					this.#data[i].slide.style.left = "0px";
+					if (this.#htmlElements.dots instanceof HTMLElement) {
+						this.#data[i].dot.classList.add("selected");
 					}
 				}
 				["touchstart", "mousedown"].forEach(type => {
-					this._data[i].slide.addEventListener(type, event => {
-						if (!this._data[i].drag) {
+					this.#data[i].slide.addEventListener(type, event => {
+						if (!this.#data[i].drag) {
 							const initX = (event.type == "touchstart" ? event.touches[0].clientX : event.clientX || event.pageX) - event.target.offsetParent.offsetLeft;
-							this._data[i].initX = initX;
-							this._data[i].drag = Boolean(type == "touchstart" || event.buttons == 1);
+							this.#data[i].initX = initX;
+							this.#data[i].drag = Boolean(type == "touchstart" || event.buttons == 1);
 						}
 					});
 				});
 				["touchmove", "mousemove"].forEach(type => {
-					this._data[i].slide.addEventListener(type, event => {
-						if (this._data[i].drag && !this._data[i].lock) {
-							const initX = parseFloat(this._data[i].initX);
+					this.#data[i].slide.addEventListener(type, event => {
+						if (this.#data[i].drag && !this.#data[i].lock) {
+							const initX = parseFloat(this.#data[i].initX);
 							const moveX = (event.type == "touchmove" ? event.touches[0].clientX : event.clientX || event.pageX) - event.target.offsetParent.offsetLeft;
 							const diffX = moveX - initX;
-							const direction = diffX > 10 ? "prev" : diffX < -10 ? "next" : null;
-							this._direction = direction;
+							this.#data[i].direction = diffX > 10 ? "prev" : diffX < -10 ? "next" : null;
 						}
 					});
 				});
 				["touchend", "mouseup"].forEach(type => {
 					document.addEventListener(type, () => {
-						if (typeof(this._data[i]) == "object" && this._data[i].drag) {
-							this._data[i].initX = null;
-							this._data[i].drag = false;
-							if (direction == "next" && i < this._data.length -1) {
+						if (typeof (this.#data[i]) == "object" && this.#data[i].drag) {
+							this.#data[i].initX = null;
+							this.#data[i].drag = false;
+							if (this.#data[i].direction == "next" && i < this.#data.length - 1) {
 								this.next();
-							} else if (direction == "prev" && i > 0) {
+							} else if (this.#data[i].direction == "prev" && i > 0) {
 								this.prev();
 							}
 						}
 					});
 				});
-				if (this._dots != null) {
-					this._dots.append(this._data[i].dot);
+				if (this.#htmlElements.dots instanceof HTMLElement) {
+					this.#htmlElements.dots.append(this.#data[i].dot);
 				}
 			}
 		}
@@ -124,79 +133,79 @@ class WUISlider {
 
 	prev() {
 		const delay = 200;
-		let index = this._index;
+		let index = this.#index;
 		let step = 0;
-		if (index > 0 && !this._data[index].lock) {
-			this._data[index].lock = true;
+		if (index > 0 && !this.#data[index].lock) {
+			this.#data[index].lock = true;
 			const interval = setInterval(() => {
 				if (step >= 1) {
 					clearInterval(interval);
 					step = 1;
 				}
-				this._data[index -1].slide.style.left = (100*(step -1))+"%";
-				this._data[index].slide.style.left = (100*step)+"%";
+				this.#data[index - 1].slide.style.left = (100 * (step - 1)) + "%";
+				this.#data[index].slide.style.left = (100 * step) + "%";
 				if (step == 1) {
-					this._index = index -1;
-					if (this._dots != null) {
-						this._data[index].dot.classList.remove("selected");
-						this._data[index -1].dot.classList.add("selected");
+					this.#index = index - 1;
+					if (this.#htmlElements.dots instanceof HTMLElement) {
+						this.#data[index].dot.classList.remove("selected");
+						this.#data[index - 1].dot.classList.add("selected");
 					}
-					if (typeof(this._onChange) == "function") {
-						this._onChange(this._index);
+					if (typeof (this.#properties.onChange) == "function") {
+						this.#properties.onChange(this.#index);
 					}
-					this._data[index].lock = false;
+					this.#data[index].lock = false;
 				}
 				step += .1;
-			}, delay/10);
+			}, delay / 10);
 		}
 	}
 
 	next() {
 		const delay = 200;
-		let index = this._index;
+		let index = this.#index;
 		let step = 0;
-		if (index < this._data.length -1 && !this._data[index].lock) {
-			this._data[index].lock = true;
+		if (index < this.#data.length - 1 && !this.#data[index].lock) {
+			this.#data[index].lock = true;
 			const interval = setInterval(() => {
 				if (step >= 1) {
 					clearInterval(interval);
 					step = 1;
 				}
-				this._data[index].slide.style.left = (100*(-step))+"%";
-				this._data[index +1].slide.style.left = (100*(1 -step))+"%";
+				this.#data[index].slide.style.left = (100 * (-step)) + "%";
+				this.#data[index + 1].slide.style.left = (100 * (1 - step)) + "%";
 				if (step == 1) {
-					this._index = index +1;
-					if (this._dots != null) {
-						this._data[index].dot.classList.remove("selected");
-						this._data[index +1].dot.classList.add("selected");
+					this.#index = index + 1;
+					if (this.#htmlElements.dots instanceof HTMLElement) {
+						this.#data[index].dot.classList.remove("selected");
+						this.#data[index + 1].dot.classList.add("selected");
 					}
-					if (typeof(this._onChange) == "function") {
-						this._onChange(this._index);
+					if (typeof (this.#properties.onChange) == "function") {
+						this.#properties.onChange(this.#index);
 					}
-					this._data[index].lock = false;
+					this.#data[index].lock = false;
 				}
 				step += .1;
-			}, delay/10);
+			}, delay / 10);
 		}
 	}
 
 	go(index) {
-		if (index < this._data.length && index != this._index) {
-			if (index < this._index) {
-				for (let i=this._index; i>index; i--) {
-					this._data[i].slide.style.left = "100%";
+		if (index < this.#data.length && index != this.#index) {
+			if (index < this.#index) {
+				for (let i = this.#index; i > index; i--) {
+					this.#data[i].slide.style.left = "100%";
 				}
-			} else if (index > this._index) {
-				for (let i=this._index; i<index; i++) {
-					this._data[i].slide.style.left = "-100%";
+			} else if (index > this.#index) {
+				for (let i = this.#index; i < index; i++) {
+					this.#data[i].slide.style.left = "-100%";
 				}
 			}
-			this._data[index].slide.style.left = "0%";
-			if (this._dots != null) {
-				this._data[this._index].dot.classList.remove("selected");
-				this._data[index].dot.classList.add("selected");
+			this.#data[index].slide.style.left = "0%";
+			if (this.#htmlElements.dots instanceof HTMLElement) {
+				this.#data[this.#index].dot.classList.remove("selected");
+				this.#data[index].dot.classList.add("selected");
 			}
-			this._index = index;
+			this.#index = index;
 		}
 	}
 }

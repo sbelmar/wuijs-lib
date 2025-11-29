@@ -19,16 +19,7 @@ class WUILanguage {
 	};
 	static #log = [];
 
-	#properties = {
-		selector: null,
-		directory: null,
-		sets: null,
-		lang: null,
-		mode: null,
-		dataKey: null,
-		dataOutput: null,
-		onLoad: null
-	};
+	#properties = {};
 	#languages = {};
 
 	constructor(properties) {

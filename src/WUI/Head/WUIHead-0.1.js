@@ -13,7 +13,7 @@ class WUIHead {
 	}
 
 	setMetaContent(name, content = "") {
-		document.head.querySelector("meta[name='"+name+"']").setAttribute("content", content);
+		document.head.querySelector("meta[name='" + name + "']").setAttribute("content", content);
 	}
 
 	setApplicationName(value = "") {
@@ -27,7 +27,7 @@ class WUIHead {
 	refresh = () => {
 		const token = Date.now();
 		const url = (url) => {
-			return url+(url.match(/\?/) ? "&" : "?")+token;
+			return url + (url.match(/\?/) ? "&" : "?") + token;
 		};
 		document.head.querySelectorAll("link[href]").forEach(link => {
 			link.href = url(link.href);
