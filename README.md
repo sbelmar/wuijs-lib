@@ -5,7 +5,7 @@
 
 Library version: `0.2.0` ([Change Log](./CHANGELOG.md))
 
-Document version: `0.2.0.20251129.1`
+Document version: `0.2.0.20251130.1`
 
 Licence: `Apache License 2.0`
 
@@ -1723,8 +1723,40 @@ Advanced object for implementing menu bars.
 
 #### CSS Variables
 
-| Variable                             | Description |
-| ------------------------------------ | ----------- |
+| Variable                                    | Description |
+| ------------------------------------------- | ----------- |
+| `--wui-menubar-shadowcolor`                 | 
+| `--wui-menubar-margin`                      | 
+| `--wui-menubar-borderradius`                | 
+| `--wui-menubar-bar-bordercolor`             | 
+| `--wui-menubar-bar-bgcolor-top`             | 
+| `--wui-menubar-bar-bgcolor-bottom`          | 
+| `--wui-menubar-expander-bgcolor-out`        | 
+| `--wui-menubar-expander-bgcolor-over`       | 
+| `--wui-menubar-expander-iconsize`           | 
+| `--wui-menubar-expander-iconcolor-out`      | 
+| `--wui-menubar-expander-iconcolor-over`     | 
+| `--wui-menubar-expander-expandicon-src`     | 
+| `--wui-menubar-expander-contracticon-src`   | 
+| `--wui-menubar-submenu-opener-iconsize`     | 
+| `--wui-menubar-submenu-opener-openicon-src` | 
+| `--wui-menubar-submenu-bordercolor`         | 
+| `--wui-menubar-submenu-bgcolor`             | 
+| `--wui-menubar-button-bgcolor-out`          | 
+| `--wui-menubar-button-bgcolor-over`         | 
+| `--wui-menubar-button-bgcolor-selected`     | 
+| `--wui-menubar-button-bgcolor-disabled`     | 
+| `--wui-menubar-button-iconsize`             | 
+| `--wui-menubar-button-iconcolor-out`        | 
+| `--wui-menubar-button-iconcolor-over`       | 
+| `--wui-menubar-button-iconcolor-selected`   | 
+| `--wui-menubar-button-iconcolor-disabled`   | 
+| `--wui-menubar-button-textcolor-out`        | 
+| `--wui-menubar-button-textcolor-over`       | 
+| `--wui-menubar-button-textcolor-selected`   | 
+| `--wui-menubar-button-textcolor-disabled`   | 
+| `--wui-menubar-bubble-bgcolor`              | 
+| `--wui-menubar-bubble-textcolor`            | 
 
 <a name="WUIList"></a>
 
@@ -1809,31 +1841,31 @@ Advanced object for implementing data lists and buttons for each row optionally.
 
 | Variable                             | Description |
 | ------------------------------------ | ----------- |
-| `--wui-list-borderradius`            |
-| `--wui-list-borderwidth`             |
-| `--wui-list-bordercolor`             |
-| `--wui-list-scroll-bgcolor-out`      |
-| `--wui-list-scroll-bgcolor-over`     |
-| `--wui-list-row-height`              |
-| `--wui-list-row-borderwidth`         |
-| `--wui-list-row-bordercolor-out`     |
-| `--wui-list-row-bordercolor-over`    |
-| `--wui-list-row-bgcolor-out`         |
-| `--wui-list-row-bgcolor-over`        |
-| `--wui-list-row-textcolor-out`       |
-| `--wui-list-row-textcolor-over`      |
-| `--wui-list-row-textcolor-disabled`  |
-| `--wui-list-innerrow-borderwidth`    |
-| `--wui-list-innerrow-bordercolor`    |
-| `--wui-list-innerrow-bgcolor`        |
-| `--wui-list-innerrow-textcolor`      |
-| `--wui-list-buttons-bgcolor`         |
-| `--wui-list-button-size`             |
-| `--wui-list-button-hmargin`          |
-| `--wui-list-button-borderradius`     |
-| `--wui-list-button-bgcolor-enabled`  |
-| `--wui-list-button-bgcolor-disabled` |
-| `--wui-list-message-textcolor`       |
+| `--wui-list-shadowcolor`             | 
+| `--wui-list-borderradius`            | 
+| `--wui-list-borderwidth`             | 
+| `--wui-list-bordercolor`             | 
+| `--wui-list-scroll-bgcolor-out`      | 
+| `--wui-list-scroll-bgcolor-over`     | 
+| `--wui-list-row-height`              | 
+| `--wui-list-row-borderwidth`         | 
+| `--wui-list-row-bordercolor-out`     | 
+| `--wui-list-row-bordercolor-over`    | 
+| `--wui-list-row-bgcolor-out`         | 
+| `--wui-list-row-bgcolor-over`        | 
+| `--wui-list-row-textcolor-out`       | 
+| `--wui-list-row-textcolor-over`      | 
+| `--wui-list-row-textcolor-disabled`  | 
+| `--wui-list-innerrow-borderwidth`    | 
+| `--wui-list-innerrow-bordercolor`    | 
+| `--wui-list-innerrow-bgcolor`        | 
+| `--wui-list-innerrow-textcolor`      | 
+| `--wui-list-buttons-bgcolor`         | 
+| `--wui-list-button-size`             | 
+| `--wui-list-button-hmargin`          | 
+| `--wui-list-button-borderradius`     | 
+| `--wui-list-button-bgcolor-enabled`  | 
+| `--wui-list-button-bgcolor-disabled` | 
 
 #### Implementation
 
