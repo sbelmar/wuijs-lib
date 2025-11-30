@@ -61,12 +61,12 @@
 	-webkit-border-radius: var(--wui-menubar-borderradius);
 	-moz-border-radius: var(--wui-menubar-borderradius);
 	border-radius: var(--wui-menubar-borderradius);
-	background-color: var(--wui-menubar-barexpander-bgcolor-out);
+	background-color: var(--wui-menubar-expander-bgcolor-out);
 }
 
 .wui-menubar > .bar > .header > .expander > .icon {
-	width: var(--wui-menubar-barexpander-iconsize);
-	height: var(--wui-menubar-barexpander-iconsize);
+	width: var(--wui-menubar-expander-iconsize);
+	height: var(--wui-menubar-expander-iconsize);
 	-webkit-mask-image: url();
 	-webkit-mask-position: center;
 	-webkit-mask-repeat: no-repeat;
@@ -76,15 +76,15 @@
 	mask-image: url();
 	mask-position: center;
 	mask-repeat: no-repeat;
-	background-color: var(--wui-menubar-barexpander-iconcolor-out);
+	background-color: var(--wui-menubar-expander-iconcolor-out);
 }
 
 .wui-menubar > .bar > .header > .expander:hover {
-	background-color: var(--wui-menubar-barexpander-bgcolor-over);
+	background-color: var(--wui-menubar-expander-bgcolor-over);
 }
 
 .wui-menubar > .bar > .header > .expander:hover > .icon {
-	background-color: var(--wui-menubar-barexpander-iconcolor-over);
+	background-color: var(--wui-menubar-expander-iconcolor-over);
 }
 
 .wui-menubar > .bar > .top {
@@ -129,18 +129,18 @@
 	-webkit-border-radius: var(--wui-menubar-borderradius);
 	-moz-border-radius: var(--wui-menubar-borderradius);
 	border-radius: var(--wui-menubar-borderradius);
-	background-color: var(--wui-menubar-barbutton-bgcolor-out);
+	background-color: var(--wui-menubar-button-bgcolor-out);
 	align-items: center;
 	justify-content: center;
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > :is(img, .icon, .photo) {
-	width: var(--wui-menubar-barbutton-iconsize);
-	height: var(--wui-menubar-barbutton-iconsize);
+	width: var(--wui-menubar-button-iconsize);
+	height: var(--wui-menubar-button-iconsize);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .icon {
-	background-color: var(--wui-menubar-barbutton-iconcolor-out);
+	background-color: var(--wui-menubar-button-iconcolor-out);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
@@ -156,7 +156,7 @@
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text {
 	display: none;
-	color: var(--wui-menubar-barbutton-textcolor-out);
+	color: var(--wui-menubar-button-textcolor-out);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text,
@@ -216,39 +216,39 @@
 	mask-image: url();
 	mask-position: center;
 	mask-repeat: no-repeat;
-	background-color: var(--wui-menubar-barbutton-iconcolor-out);
+	background-color: var(--wui-menubar-button-iconcolor-out);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.selected, .disabled) {
-	background-color: var(--wui-menubar-barbutton-bgcolor-over);
+	background-color: var(--wui-menubar-button-bgcolor-over);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
-	background-color: var(--wui-menubar-barbutton-iconcolor-over);
+	background-color: var(--wui-menubar-button-iconcolor-over);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.selected, .disabled) > .text {
-	color: var(--wui-menubar-barbutton-textcolor-over);
+	color: var(--wui-menubar-button-textcolor-over);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button.selected {
-	background-color: var(--wui-menubar-barbutton-bgcolor-selected);
+	background-color: var(--wui-menubar-button-bgcolor-selected);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button.selected > :is(.icon, .opener) {
-	background-color: var(--wui-menubar-barbutton-iconcolor-selected);
+	background-color: var(--wui-menubar-button-iconcolor-selected);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button.selected > .text {
-	color: var(--wui-menubar-barbutton-textcolor-selected);
+	color: var(--wui-menubar-button-textcolor-selected);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button.disabled {
-	background-color: var(--wui-menubar-barbutton-bgcolor-disabled);
+	background-color: var(--wui-menubar-button-bgcolor-disabled);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button.disabled > :is(.icon, .opener) {
-	background-color: var(--wui-menubar-barbutton-iconcolor-disabled);
+	background-color: var(--wui-menubar-button-iconcolor-disabled);
 }
 
 .wui-menubar > :is(.bar, .submenu) > .hidden,
@@ -417,16 +417,16 @@
 /* wui-icon */
 
 .wui-menubar > .bar > :is(.top, .main, .bottom) > .button > .wui-icon {
-	--wui-icon-bgcolor-out: var(--wui-menubar-barbutton-iconcolor-out);
-	--wui-icon-bgcolor-over: var(--wui-menubar-barbutton-iconcolor-over);
+	--wui-icon-bgcolor-out: var(--wui-menubar-button-iconcolor-out);
+	--wui-icon-bgcolor-over: var(--wui-menubar-button-iconcolor-over);
 }
 
 .wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected > .wui-icon {
-	--wui-icon-bgcolor-out: var(--wui-menubar-barbutton-iconcolor-selected);
-	--wui-icon-bgcolor-over: var(--wui-menubar-barbutton-iconcolor-selected);
+	--wui-icon-bgcolor-out: var(--wui-menubar-button-iconcolor-selected);
+	--wui-icon-bgcolor-over: var(--wui-menubar-button-iconcolor-selected);
 }
 
 .wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled > .wui-icon {
-	--wui-icon-bgcolor-out: var(--wui-menubar-barbutton-iconcolor-disabled);
-	--wui-icon-bgcolor-over: var(--wui-menubar-barbutton-iconcolor-disabled);
+	--wui-icon-bgcolor-out: var(--wui-menubar-button-iconcolor-disabled);
+	--wui-icon-bgcolor-over: var(--wui-menubar-button-iconcolor-disabled);
 }

@@ -27,7 +27,6 @@ Author: `Sergio E. Belmar V. <sbelmar@wuijs.dev>`
 	*   WUILoader
 	*   WUITooltip
 	*   WUIModal
-	*   WUIModalSelector
 	*   WUISlider
 	*   WUIPaging
 	*   WUITabs
@@ -65,7 +64,6 @@ WUI, an acronym for *Web User Interface JavaScript library*, is an open source J
 | WUILoader                     | `0.2`   | Simple object for loading animation. |
 | WUITooltip                    | `0.1`   | Simple object for hover text. |
 | WUIModal                      | `0.2`   | Advanced object for implementing dialog boxes (type `message`) and pop-up windows (type `page`). |
-| WUIModalSelector              | `0.2`   | Extended object of `WUIModal` for implementing selection lists based on arrays or data inputs of type `<select>`. |
 | WUISlider                     | `0.2`   | Advanced object for implementing mouse-controlled and/or event-controlled blinds. |
 | WUIPaging                     | `0.1`   | Advanced object for implementing paginated views. |
 | WUITabs                       | `0.1`   | Advanced object for implementing views accessible by tab selection. |
@@ -221,20 +219,32 @@ CSS code in the `WUI.css` file:
 	--wui-menubar-bar-bordercolor: #f0f0f3;
 	--wui-menubar-bar-bgcolor-top: #f0f0f3;
 	--wui-menubar-bar-bgcolor-bottom: #f0f0f3;
-	--wui-menubar-barexpander-iconsize: 24px;
-	--wui-menubar-barexpander-bgcolor-out: #444;
-	--wui-menubar-barexpander-bgcolor-over: #000;
-	--wui-menubar-barexpander-expandicon-src: none;
-	--wui-menubar-barexpander-contracticon-src: none;
-	--wui-menubar-barbutton-bgcolor-out: transparent;
-	--wui-menubar-barbutton-bgcolor-over: transparent;
-	--wui-menubar-barbutton-bgcolor-selected: #1e90ff;
-	--wui-menubar-barbutton-bgcolor-disabled: transparent;
-	--wui-menubar-barbutton-iconsize: 24px;
-	--wui-menubar-barbutton-iconcolor-out: rgb(from #353a40 r g b / 70%);
-	--wui-menubar-barbutton-iconcolor-over: #353a40;
-	--wui-menubar-barbutton-iconcolor-selected: #1e90ff;
-	--wui-menubar-barbutton-iconcolor-disabled: #d5dce3;
+	--wui-menubar-expander-bgcolor-out: transparent;
+	--wui-menubar-expander-bgcolor-over: rgb(from #d5dce3 r g b / 40%);
+	--wui-menubar-expander-iconsize: 16px;
+	--wui-menubar-expander-iconcolor-out: #444;
+	--wui-menubar-expander-iconcolor-over: #000;
+	--wui-menubar-expander-expandicon-src: none;
+	--wui-menubar-expander-contracticon-src: none;
+	--wui-menubar-submenu-opener-iconsize: 16px;
+	--wui-menubar-submenu-opener-openicon-src: none;
+	--wui-menubar-submenu-bordercolor: #f0f0f3;
+	--wui-menubar-submenu-bgcolor: #fdfdfe;
+	--wui-menubar-button-bgcolor-out: transparent;
+	--wui-menubar-button-bgcolor-over: rgb(from #d5dce3 r g b / 40%);
+	--wui-menubar-button-bgcolor-selected: #1e90ff;
+	--wui-menubar-button-bgcolor-disabled: transparent;
+	--wui-menubar-button-iconsize: 24px;
+	--wui-menubar-button-iconcolor-out: rgb(from #353a40 r g b / 70%);
+	--wui-menubar-button-iconcolor-over: #353a40;
+	--wui-menubar-button-iconcolor-selected: #f6f6fa;
+	--wui-menubar-button-iconcolor-disabled: #d5dce3;
+	--wui-menubar-button-textcolor-out: #2d3a47;
+	--wui-menubar-button-textcolor-over: #1f2937;
+	--wui-menubar-button-textcolor-selected: #f6f6fa;
+	--wui-menubar-button-textcolor-disabled: #d5dce3;
+	--wui-menubar-bubble-bgcolor: #f44343;
+	--wui-menubar-bubble-textcolor: #fff;
 
 	/* wui-list */
 
@@ -384,8 +394,8 @@ CSS code in the `WUI.css` file:
 
 	--wui-selectpicker-opener-iconsize: 30px;
 	--wui-selectpicker-opener-iconcolor-out: #000;
-	--wui-selectpicker-opener-iconcolor-over: var(--wui-form-select-opencolor-over);
-	--wui-selectpicker-opener-iconcolor-disabled: var(--wui-form-select-opencolor-disabled);
+	--wui-selectpicker-opener-iconcolor-over: #1e90ff;
+	--wui-selectpicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-selectpicker-opener-openicon-src: none;
 	--wui-selectpicker-opener-closeicon-src: none;
 	--wui-selectpicker-input-textcolor-out: var(--wui-form-input-textcolor-out);
@@ -421,9 +431,9 @@ CSS code in the `WUI.css` file:
 	/* wui-datepicker */
 
 	--wui-datepicker-opener-iconsize: 30px;
-	--wui-datepicker-opener-iconcolor-out: var(--wui-form-select-opencolor-out);
-	--wui-datepicker-opener-iconcolor-over: var(--wui-form-select-opencolor-over);
-	--wui-datepicker-opener-iconcolor-disabled: var(--wui-form-select-opencolor-disabled);
+	--wui-datepicker-opener-iconcolor-out: #000;
+	--wui-datepicker-opener-iconcolor-over: #1e90ff;
+	--wui-datepicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-datepicker-opener-openicon-src: none;
 	--wui-datepicker-opener-closeicon-src: none;
 	--wui-datepicker-box-shadowcolor: #959da5;
@@ -462,9 +472,9 @@ CSS code in the `WUI.css` file:
 	/* wui-timepicker */
 
 	--wui-timepicker-opener-iconsize: 30px;
-	--wui-timepicker-opener-iconcolor-out: var(--wui-form-select-opencolor-out);
-	--wui-timepicker-opener-iconcolor-over: var(--wui-form-select-opencolor-over);
-	--wui-timepicker-opener-iconcolor-disabled: var(--wui-form-select-opencolor-disabled);
+	--wui-timepicker-opener-iconcolor-out: #000;
+	--wui-timepicker-opener-iconcolor-over: #1e90ff;
+	--wui-timepicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-timepicker-opener-openicon-src: none;
 	--wui-timepicker-opener-closeicon-src: none;
 	--wui-timepicker-box-shadowcolor: #959da5;
@@ -492,9 +502,9 @@ CSS code in the `WUI.css` file:
 	--wui-colorpicker-button-bgcolor-over: transparent;
 	--wui-colorpicker-button-bgcolor-disabled: transparent;
 	--wui-colorpicker-opener-iconsize: 30px;
-	--wui-colorpicker-opener-iconcolor-out: var(--wui-form-select-opencolor-out);
-	--wui-colorpicker-opener-iconcolor-over: var(--wui-form-select-opencolor-over);
-	--wui-colorpicker-opener-iconcolor-disabled: var(--wui-form-select-opencolor-disabled);
+	--wui-colorpicker-opener-iconcolor-out: #000;
+	--wui-colorpicker-opener-iconcolor-over: #1e90ff;
+	--wui-colorpicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-colorpicker-opener-openicon-src: none;
 	--wui-colorpicker-opener-closeicon-src: none;
 	--wui-colorpicker-viewcolor-borderwidth: 1px;
@@ -556,7 +566,7 @@ CSS code in the `WUI.css` file:
 
 	--wui-button-default-minwidth: 200px;
 	--wui-button-default-height: 34px;
-	--wui-button-default-bordercolor-out: #d5dce3;
+	--wui-button-default-bordercolor-out: #b5bbc1;
 	--wui-button-default-bordercolor-over: #1e90ff;
 	--wui-button-default-bordercolor-selected: #1e90ff;
 	--wui-button-default-bordercolor-disabled: #d5dce3;
@@ -627,7 +637,6 @@ HTML code:
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Loader/WUILoader-0.2.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Tooltip/WUITooltip-0.1.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Modal/WUIModal-0.2.css">
-		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Modal/WUIModalSelect-0.1.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Slider/WUISlider-0.2.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Paging/WUIPaging-0.1.css">
 		<link type="text/css" rel="stylesheet" href="./Libraries/WUI/Tabs/WUITabs-0.1.css">
@@ -651,7 +660,6 @@ HTML code:
 		<script type="text/javascript" src="./Libraries/WUI/Loader/WUILoader-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Tooltip/WUITooltip-0.1.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Modal/WUIModal-0.2.js"></script>
-		<script type="text/javascript" src="./Libraries/WUI/Modal/WUIModalSelect-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Slider/WUISlider-0.2.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Paging/WUIPaging-0.1.js"></script>
 		<script type="text/javascript" src="./Libraries/WUI/Tabs/WUITabs-0.1.js"></script>
