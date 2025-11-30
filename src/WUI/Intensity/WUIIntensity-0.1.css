@@ -13,6 +13,7 @@
 	border-radius: var(--wui-intensity-borderradius);
 	border: 1px solid var(--wui-intensity-bordercolor-out);
 }
+
 .wui-intensity > input[type="range"] {
 	cursor: pointer;
 	position: absolute;
@@ -26,12 +27,15 @@
 	appearance: none;
 	background-color: transparent;
 }
+
 .wui-intensity > input[type="range"]::-webkit-slider-runnable-track {
 	height: var(--wui-intensity-height);
 }
+
 .wui-intensity > input[type="range"]::-moz-range-track {
 	height: var(--wui-intensity-height);
 }
+
 .wui-intensity > input[type="range"]::-webkit-slider-thumb {
 	width: 0px;
 	height: var(--wui-intensity-height);
@@ -41,27 +45,34 @@
 	box-shadow: 127px 0 0 120px var(--wui-intensity-bgcolor-none);
 	background-color: transparent;
 }
+
 .wui-intensity > input[type="range"]::-moz-range-thumb {
 	width: 10px;
 	height: var(--wui-intensity-height);
 	box-shadow: 127px 0 0 120px var(--wui-intensity-bgcolor-none);
 	background-color: transparent;
 }
+
 [data-value="none"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-none);
 }
+
 [data-value="low"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-low);
 }
+
 [data-value="low"].wui-intensity > input[type="range"] {
 	right: 16px;
 }
+
 [data-value="half"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-half);
 }
+
 [data-value="half"].wui-intensity > input[type="range"] {
 	right: 6px;
 }
+
 [data-value="high"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-high);
 }

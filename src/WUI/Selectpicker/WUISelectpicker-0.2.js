@@ -631,6 +631,7 @@ class WUISelectpicker {
 	}
 
 	destroy() {
+		this.close();
 		if (this.#htmlElement instanceof HTMLElement) {
 			Object.entries(this.#htmlElements).forEach(([key, element]) => {
 				if (element) {
@@ -643,6 +644,9 @@ class WUISelectpicker {
 		Object.keys(this.#properties).forEach(name => {
 			delete this.#properties[name];
 		});
+		this.#value = undefined;
+		this.#targetValue = undefined;
+		this.#cancelValue = undefined;
 		this.#colorScheme = undefined;
 	}
 }

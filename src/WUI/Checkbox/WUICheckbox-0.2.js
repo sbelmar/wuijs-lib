@@ -15,167 +15,177 @@ class WUICheckbox {
 		onChange: null
 	};
 
-	constructor (properties) {
-		Object.keys(WUICheckbox.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUICheckbox.#defaults ? WUICheckbox.#defaults[prop] : null;
+	#properties = {};
+	#htmlElement;
+	#htmlElements = {
+		input: null
+	};
+	#drag;
+	#initX;
+	#direction;
+
+	constructor(properties) {
+		const defaults = structuredClone(WUICheckbox.#defaults);
+		Object.entries(defaults).forEach(([key, defValue]) => {
+			this[key] = key in properties ? properties[key] : defValue;
 		});
 	}
 
 	get selector() {
-		return this._selector;
+		return this.#properties.selector;
 	}
 
 	get value() {
-		return this._input.value;
+		return this.#htmlElements.input.value;
 	}
 
 	get checked() {
-		return this._input.checked;
+		return this.#htmlElements.input.checked;
 	}
 
 	get enabled() {
-		return this._enabled;
+		return this.#properties.enabled;
 	}
 
 	get onChange() {
-		return this._onChange;
+		return this.#properties.onChange;
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
-			this._selector = value;
-			this._element = document.querySelector(value);
-			this._input = document.querySelector(value+" > input[type='checkbox']");
+		if (typeof (value) == "string" && value != "") {
+			this.#properties.selector = value;
+			this.#htmlElement = document.querySelector(value);
+			this.#htmlElements.input = document.querySelector(value + " > input[type='checkbox']");
 		}
 	}
 
 	set value(value) {
-		if (typeof(value).match(/(string|number)/) && (typeof(this._enabled) == "undefined" || this._enabled)) {
-			this._input.value = value;
+		if (typeof (value).match(/(string|number)/) && (typeof (this.#properties.enabled) == "undefined" || this.#properties.enabled)) {
+			this.#htmlElements.input.value = value;
 		}
 	}
 
 	set checked(value) {
-		if (typeof(value) == "boolean" && (typeof(this._enabled) == "undefined" || this._enabled)) {
-			this._checked = value;
-			this._input.checked = value;
+		if (typeof (value) == "boolean" && (typeof (this.#properties.enabled) == "undefined" || this.#properties.enabled)) {
+			this.#htmlElements.input.checked = value;
 			if (value) {
-				this._input.setAttribute("checked", "true");
+				this.#htmlElements.input.setAttribute("checked", "true");
 			} else {
-				this._input.removeAttribute("checked");
+				this.#htmlElements.input.removeAttribute("checked");
 			}
 			this.#setStyle();
 		}
 	}
 
 	set enabled(value) {
-		if (typeof(value) == "boolean") {
-			this._enabled = value;
-			this._input.disabled = !value;
+		if (typeof (value) == "boolean") {
+			this.#properties.enabled = value;
+			this.#htmlElements.input.disabled = !value;
 			if (value) {
-				this._input.removeAttribute("disabled");
+				this.#htmlElements.input.removeAttribute("disabled");
 			} else {
-				this._input.setAttribute("disabled", "true");
+				this.#htmlElements.input.setAttribute("disabled", "true");
 			}
 			this.#setStyle();
 		}
 	}
 
 	set onChange(value) {
-		if (typeof(value) == "function") {
-			this._onChange = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onChange = value;
 		}
 	}
 
 	getElement() {
-		return this._element;
+		return this.#htmlElement;
 	}
 
 	getFocusableElements() {
-		return [this._input];
+		return [this.#htmlElements.input];
 	}
 
 	getInput() {
-		return this._input;
+		return this.#htmlElements.input;
 	}
 
 	#setStyle() {
-		const checked = this._input.checked;
-		const disabled = this._input.disabled;
+		const checked = this.#htmlElements.input.checked;
+		const disabled = this.#htmlElements.input.disabled;
 		if (checked) {
-			this._element.classList.add("checked");
+			this.#htmlElement.classList.add("checked");
 		} else {
-			this._element.classList.remove("checked");
+			this.#htmlElement.classList.remove("checked");
 		}
 		if (disabled) {
-			this._element.classList.add("disabled");
+			this.#htmlElement.classList.add("disabled");
 		} else {
-			this._element.classList.remove("disabled");
+			this.#htmlElement.classList.remove("disabled");
 		}
 	}
 
 	init() {
-		this._drag = false;
-		this._initX = null;
-		this._direction = null;
+		this.#drag = false;
+		this.#initX = null;
+		this.#direction = null;
 		["touchstart", "mousedown"].forEach(type => {
-			this._element.addEventListener(type, event => {
-				if (!this._drag) {
+			this.#htmlElement.addEventListener(type, event => {
+				if (!this.#drag) {
 					const initX = (event.type == "touchstart" ? event.touches[0].clientX : event.clientX || event.pageX) - event.target.offsetParent.offsetLeft;
-					this._initX = initX;
-					this._drag = Boolean(type == "touchstart" || event.buttons == 1);
+					this.#initX = initX;
+					this.#drag = Boolean(type == "touchstart" || event.buttons == 1);
 				}
 			});
 		});
 		["touchmove", "mousemove"].forEach(type => {
-			this._element.addEventListener(type, event => {
-				if (this._drag) {
-					const initX = parseFloat(this._initX);
+			this.#htmlElement.addEventListener(type, event => {
+				if (this.#drag) {
+					const initX = parseFloat(this.#initX);
 					const moveX = (event.type == "touchmove" ? event.touches[0].clientX : event.clientX || event.pageX) - event.target.offsetParent.offsetLeft;
-					const diffX = moveX -initX;
+					const diffX = moveX - initX;
 					const direction = diffX > 10 ? "right" : diffX < -10 ? "left" : null;
-					this._direction = direction;
+					this.#direction = direction;
 				}
 			});
 		});
 		["touchend", "mouseup"].forEach(type => {
 			document.addEventListener(type, () => {
-				if (this._drag) {
-					this._drag = false;
-					this._initX = null;
-					if (this._direction != null) {
+				if (this.#drag) {
+					this.#drag = false;
+					this.#initX = null;
+					if (this.#direction != null) {
 						const event = new Event("change");
-						this.checked = this._direction == "left" ? false : this._direction == "right" ? true : false;
-						this._input.dispatchEvent(event);
+						this.checked = this.#direction == "left" ? false : this.#direction == "right" ? true : false;
+						this.#htmlElements.input.dispatchEvent(event);
 						setTimeout(() => {
-							this._direction = null;
+							this.#direction = null;
 						}, 400);
 					}
 				}
 			});
 		});
-		this._element.addEventListener("click", event => {
+		this.#htmlElement.addEventListener("click", event => {
 			if (event.target.classList.contains("wui-checkbox")) {
 				setTimeout(() => {
 					const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-					if (!mobile && this._direction == null) {
+					if (!mobile && this.#direction == null) {
 						const event = new Event("change");
 						this.checked = !this.checked;
-						this._input.dispatchEvent(event);
+						this.#htmlElements.input.dispatchEvent(event);
 					}
 				}, 10);
 			}
 		});
-		this._input.addEventListener("change", event => {
+		this.#htmlElements.input.addEventListener("change", event => {
 			this.#setStyle();
-			if (typeof(this._onChange) == "function") {
-				this._onChange(event, event.target.checked);
+			if (typeof (this.#properties.onChange) == "function") {
+				this.#properties.onChange(event, event.target.checked);
 			}
 		});
+		this.#setStyle();
 	}
 
 	toggle() {
-		this.checked = !this._input.checked;
+		this.checked = !this.#htmlElements.input.checked;
 	}
 }
 

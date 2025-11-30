@@ -71,12 +71,17 @@ Features:
 	- Added `destroy()` method.
 	- Added `--wui-datepicker-box-shadowcolor` CSS var.
 18. WUITimepicker version class update to 0.2.
+	- Added support for private values.
 	- Added support for light/dark CSS formatting.
+	- Added `destroy()` method.
 	- Added `--wui-timepicker-box-shadowcolor` CSS var.
 19. WUIColorpicker version class update to 0.2.
+	- Added support for private values.
 	- Added support for light/dark CSS formatting.
+	- Added `destroy()` method.
 	- Added `--wui-colorpicker-box-shadowcolor` CSS var.
 20. WUICheckbox version class update to 0.2.
+	- Added support for private values.
 	- Fixed bug in drag event when selecting and deselecting the checkbox using the `mousedown` event, enabling it only when the left button remains pressed.
 21. WUIButton version class update to 0.2.
 	- Added `onDblClick` property.

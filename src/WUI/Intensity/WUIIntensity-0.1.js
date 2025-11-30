@@ -14,38 +14,48 @@ class WUIIntensity {
 		onChange: null
 	};
 
-	constructor (properties) {
-		Object.keys(WUIIntensity.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIIntensity.#defaults ? WUIIntensity.#defaults[prop] : null;
+	#properties = {};
+	#htmlElement;
+	#htmlElements = {
+		input: null
+	};
+	#drag;
+	#initX;
+	#diffX;
+
+	constructor(properties) {
+		const defaults = structuredClone(WUIIntensity.#defaults);
+		Object.entries(defaults).forEach(([key, defValue]) => {
+			this[key] = key in properties ? properties[key] : defValue;
 		});
 	}
 
 	get selector() {
-		return this._selector;
+		return this.#properties.selector;
 	}
 
 	get value() {
-		return this._input.value;
+		return this.#htmlElements.input.value;
 	}
 
 	get enabled() {
-		return this._enabled;
+		return this.#properties.enabled;
 	}
 
 	get onChange() {
-		return this._onChange;
+		return this.#properties.onChange;
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
-			this._selector = value;
-			this._element = document.querySelector(value);
-			this._input = document.querySelector(value+" > input[type='range']");
+		if (typeof (value) == "string" && value != "") {
+			this.#properties.selector = value;
+			this.#htmlElement = document.querySelector(value);
+			this.#htmlElements.input = document.querySelector(value + " > input[type='range']");
 		}
 	}
 
 	set value(value) {
-		if (typeof(value).toString().match(/string|number/) && value.toString().match(/^(0|1|2|3|none|low|half|high)$/i) && (typeof(this._enabled) == "undefined" || this._enabled)) {
+		if (typeof (value).toString().match(/string|number/) && value.toString().match(/^(0|1|2|3|none|low|half|high)$/i) && (typeof (this.#properties.enabled) == "undefined" || this.#properties.enabled)) {
 			switch (value.toString().toLowerCase()) {
 				case "none": value = 0; break;
 				case "low": value = 1; break;
@@ -53,117 +63,119 @@ class WUIIntensity {
 				case "high": value = 3; break;
 				default: value = parseInt(value); break;
 			}
-			this._value = value;
-			this._element.dataset.value = 
-				value == 0 ? "none" :
-				value == 1 ? "low" :
-				value == 2 ? "half" :
-				value == 3 ? "high" :
-				"";
-			this._input.value = value;
+			switch (value) {
+				case 0: this.#htmlElement.dataset.value = "none"; break;
+				case 1: this.#htmlElement.dataset.value = "low"; break;
+				case 2: this.#htmlElement.dataset.value = "half"; break;
+				case 3: this.#htmlElement.dataset.value = "high"; break;
+				default: this.#htmlElement.dataset.value = ""; break;
+			}
+			this.#htmlElements.input.value = value;
 		}
 	}
 
 	set enabled(value) {
-		if (typeof(value) == "boolean") {
-			this._enabled = value;
-			this._input.disabled = !value;
+		if (typeof (value) == "boolean") {
+			this.#properties.enabled = value;
+			this.#htmlElements.input.disabled = !value;
 			if (value) {
-				this._input.removeAttribute("disabled");
+				this.#htmlElements.input.removeAttribute("disabled");
 			} else {
-				this._input.setAttribute("disabled", "true");
+				this.#htmlElements.input.setAttribute("disabled", "true");
 			}
 			this.#setStyle();
 		}
 	}
 
 	set onChange(value) {
-		if (typeof(value) == "function") {
-			this._onChange = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onChange = value;
 		}
 	}
 
 	getElement() {
-		return this._element;
+		return this.#htmlElement;
 	}
 
 	getFocusableElements() {
-		return [this._input];
+		return [this.#htmlElements.input];
 	}
 
 	getInput() {
-		return this._input;
+		return this.#htmlElements.input;
 	}
 
 	#setStyle() {
-		const disabled = this._input.disabled;
+		const disabled = this.#htmlElements.input.disabled;
 		if (disabled) {
-			this._element.classList.add("disabled");
+			this.#htmlElement.classList.add("disabled");
 		} else {
-			this._element.classList.remove("disabled");
+			this.#htmlElement.classList.remove("disabled");
 		}
 	}
 
 	init() {
-		this._input.min = 0;
-		this._input.max = 3;
-		this._input.step = 1;
-		this._drag = false;
-		this._initX = null;
-		this._diffX = 0;
+		this.#htmlElements.input.min = 0;
+		this.#htmlElements.input.max = 3;
+		this.#htmlElements.input.step = 1;
+		this.#drag = false;
+		this.#initX = null;
+		this.#diffX = 0;
 		["touchstart", "mousedown"].forEach(type => {
-			this._element.addEventListener(type, event => {
-				if (!this._drag) {
+			this.#htmlElement.addEventListener(type, event => {
+				if (!this.#drag) {
 					const initX = (event.type == "touchstart" ? event.touches[0].clientX : event.clientX || event.pageX) - event.target.offsetParent.offsetLeft;
-					this._initX = initX;
-					this._drag = true;
+					this.#initX = initX;
+					this.#drag = true;
 				}
 			});
 		});
 		["touchmove", "mousemove"].forEach(type => {
-			this._element.addEventListener(type, event => {
-				if (this._drag) {
-					const initX = parseFloat(this._initX);
+			this.#htmlElement.addEventListener(type, event => {
+				if (this.#drag) {
+					const initX = parseFloat(this.#initX);
 					const moveX = (event.type == "touchmove" ? event.touches[0].clientX : event.clientX || event.pageX) - event.target.offsetParent.offsetLeft;
-					this._diffX = moveX -initX;
+					this.#diffX = moveX - initX;
 				}
 			});
 		});
 		["touchend", "mouseup"].forEach(type => {
 			document.addEventListener(type, () => {
-				if (this._drag) {
-					this._drag = false;
-					this._initX = null;
-					if (Math.abs(this._diffX) > 10) {
-						const iniValue = parseInt(this._input.value);
+				if (this.#drag) {
+					this.#drag = false;
+					this.#initX = null;
+					if (Math.abs(this.#diffX) > 10) {
+						const iniValue = parseInt(this.#htmlElements.input.value);
 						const event = new Event("input");
-						let endValue = iniValue + parseInt(this._diffX/40);
+						let endValue = iniValue + parseInt(this.#diffX / 40);
 						if (endValue < 0) {
 							endValue = 0;
 						} else if (endValue > 3) {
 							endValue = 3;
 						}
 						this.value = endValue;
-						this._input.dispatchEvent(event);
+						this.#htmlElements.input.dispatchEvent(event);
 						setTimeout(() => {
-							this._diffX = 0;
+							this.#diffX = 0;
 						}, 400);
 					}
 				}
 			});
 		});
-		this._input.addEventListener("input", event => {
+		this.#htmlElements.input.addEventListener("input", event => {
 			const value = parseInt(event.target.value);
-			this._element.dataset.value = 
-				value == 0 ? "none" :
-				value == 1 ? "low" :
-				value == 2 ? "half" :
-				value == 3 ? "high" :
-				"";
-			if (typeof(this._onChange) == "function") {
-				this._onChange(event, value);
+			switch (value) {
+				case 0: this.#htmlElement.dataset.value = "none"; break;
+				case 1: this.#htmlElement.dataset.value = "low"; break;
+				case 2: this.#htmlElement.dataset.value = "half"; break;
+				case 3: this.#htmlElement.dataset.value = "high"; break;
+				default: this.#htmlElement.dataset.value = ""; break;
+			}
+			if (typeof (this.#properties.onChange) == "function") {
+				this.#properties.onChange(event, value);
 			}
 		});
+		this.#setStyle();
 	}
 }
 

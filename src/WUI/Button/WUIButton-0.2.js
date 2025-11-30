@@ -17,143 +17,147 @@ class WUIButton {
 		onDblClick: null
 	};
 
-	constructor (properties) {
-		Object.keys(WUIButton.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIButton.#defaults ? WUIButton.#defaults[prop] : null;
+	#properties = {};
+	#htmlElement;
+
+	constructor(properties) {
+		const defaults = structuredClone(WUIButton.#defaults);
+		Object.entries(defaults).forEach(([key, defValue]) => {
+			this[key] = key in properties ? properties[key] : defValue;
 		});
 	}
 
 	get selector() {
-		return this._selector;
+		return this.#properties.selector;
 	}
 
 	get text() {
-		return this._text;
+		return this.#properties.text;
 	}
 
 	get selectable() {
-		return this._selectable;
+		return this.#properties.selectable;
 	}
 
 	get locked() {
-		return this._locked;
+		return this.#properties.locked;
 	}
 
 	get enabled() {
-		return this._enabled;
+		return this.#properties.enabled;
 	}
 
 	get onClick() {
-		return this._onClick;
+		return this.#properties.onClick;
 	}
 
 	get onDblClick() {
-		return this._onDblClick;
+		return this.#properties.onDblClick;
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
-			this._selector = value;
-			this._element = document.querySelector(value);
+		if (typeof (value) == "string" && value != "") {
+			this.#properties.selector = value;
+			this.#htmlElement = document.querySelector(value);
 		}
 	}
 
 	set text(value) {
-		if (typeof(value) == "string" && value != "") {
-			this._text = value;
-			this._element.innerHTML = value;
+		if (typeof (value) == "string" && value != "") {
+			this.#properties.text = value;
+			this.#htmlElement.innerHTML = value;
 		}
 	}
 
 	set selectable(value) {
-		if (typeof(value) == "boolean") {
-			this._selectable = value;
+		if (typeof (value) == "boolean") {
+			this.#properties.selectable = value;
 		}
 	}
 
 	set locked(value) {
-		if (typeof(value) == "boolean") {
-			this._locked = value;
+		if (typeof (value) == "boolean") {
+			this.#properties.locked = value;
 		}
 	}
 
 	set enabled(value) {
-		if (typeof(value) == "boolean") {
-			this._enabled = value;
-			this._element.disabled = !value;
+		if (typeof (value) == "boolean") {
+			this.#properties.enabled = value;
+			this.#htmlElement.disabled = !value;
 			if (value) {
-				this._element.removeAttribute("disabled");
+				this.#htmlElement.removeAttribute("disabled");
 			} else {
-				this._element.setAttribute("disabled", "true");
+				this.#htmlElement.setAttribute("disabled", "true");
 			}
 			this.#setStyle();
 		}
 	}
 
 	set onClick(value) {
-		if (typeof(value) == "function") {
-			this._onClick = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onClick = value;
 		}
 	}
 
 	set onDblClick(value) {
-		if (typeof(value) == "function") {
-			this._onDblClick = value;
+		if (typeof (value) == "function" || value == null) {
+			this.#properties.onDblClick = value;
 		}
 	}
 
 	getElement() {
-		return this._element;
+		return this.#htmlElement;
 	}
 
 	#setStyle() {
-		const disabled = this._element.disabled;
+		const disabled = this.#htmlElement.disabled;
 		if (disabled) {
-			this._element.classList.add("disabled");
+			this.#htmlElement.classList.add("disabled");
 		} else {
-			this._element.classList.remove("disabled");
+			this.#htmlElement.classList.remove("disabled");
 		}
 	}
 
 	init() {
-		this._text = this._element.innerHTML;
+		this.#properties.text = this.#htmlElement.innerHTML;
+		this.#htmlElement.addEventListener("click", () => {
+			this.#setStyle();
+			if (this.#properties.selectable && this.#properties.enabled) {
+				this.#htmlElement.classList.toggle("selected");
+			}
+			if (!this.#properties.locked && this.#properties.enabled && typeof (this.#properties.onClick) == "function") {
+				this.#properties.onClick();
+			}
+		});
+		this.#htmlElement.addEventListener("dblclick", () => {
+			this.#setStyle();
+			if (!this.#properties.locked && this.#properties.enabled && typeof (this.#properties.onDblClick) == "function") {
+				this.#properties.onDblClick();
+			}
+		});
 		this.#setStyle();
-		this._element.addEventListener("click", () => {
-			this.#setStyle();
-			if (this._selectable && this._enabled) {
-				this._element.classList.toggle("selected");
-			}
-			if (!this._locked && this._enabled && typeof(this._onClick) == "function") {
-				this._onClick();
-			}
-		});
-		this._element.addEventListener("dblclick", () => {
-			this.#setStyle();
-			if (!this._locked && this._enabled && typeof(this._onDblClick) == "function") {
-				this._onDblClick();
-			}
-		});
 	}
 
 	focus() {
-		this._element.focus();
+		this.#htmlElement.focus();
 	}
 
 	select() {
-		if (this._selectable && this._enabled) {
-			this._element.classList.add("selected");
+		if (this.#properties.selectable && this.#properties.enabled) {
+			this.#htmlElement.classList.add("selected");
 		}
 	}
 
 	unselect() {
-		if (this._selectable && this._enabled) {
-			this._element.classList.remove("selected");
+		if (this.#properties.selectable && this.#properties.enabled) {
+			this.#htmlElement.classList.remove("selected");
 		}
 	}
 
 	isSelected() {
-		if (this._selectable && this._enabled) {
-			return this._element.classList.contains("selected");
+		if (this.#properties.selectable && this.#properties.enabled) {
+			return this.#htmlElement.classList.contains("selected");
 		}
 		return false;
 	}

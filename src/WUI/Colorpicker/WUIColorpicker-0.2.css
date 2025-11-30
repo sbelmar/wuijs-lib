@@ -11,6 +11,7 @@
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
+
 .wui-colorpicker {
 	width: auto;
 	height: 30px;
@@ -18,9 +19,11 @@
 	border: 0;
 	padding-right: var(--wui-colorpicker-opener-iconsize);
 }
+
 .wui-colorpicker > input[type="color"] {
 	display: none;
 }
+
 .wui-colorpicker > .opener {
 	cursor: pointer;
 	position: absolute;
@@ -42,12 +45,15 @@
 	-moz-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
+
 .wui-colorpicker:not(.disabled):is(:hover, :focus, :focus-within) > .opener {
 	background-color: var(--wui-colorpicker-opener-iconcolor-over);
 }
+
 .wui-colorpicker.disabled > .opener {
 	background-color: var(--wui-colorpicker-opener-iconcolor-disabled) !important;
 }
+
 .wui-colorpicker > button {
 	--button-radius: calc(var(--wui-colorpicker-button-size) / 2);
 	--button-transition: border-color .2s ease-out;
@@ -72,19 +78,23 @@
 	-moz-transition: var(--button-transition);
 	transition: var(--button-transition);
 }
+
 .wui-colorpicker:not(.disabled) > button {
 	border-color: var(--wui-colorpicker-button-bordercolor-out);
 	background-color: var(--wui-colorpicker-button-bgcolor-out);
 }
+
 .wui-colorpicker:not(.disabled):hover > button,
 .wui-colorpicker:not(.disabled):focus-within > button {
 	border-color: var(--wui-colorpicker-button-bordercolor-over);
 	background-color: var(--wui-colorpicker-button-bgcolor-over);
 }
+
 .wui-colorpicker.disabled {
 	border-color: var(--wui-colorpicker-button-bordercolor-disabled);
 	background-color: var(--wui-colorpicker-button-bgcolor-disabled);
 }
+
 .wui-colorpicker > button.button > .color {
 	--color-size: calc(var(--wui-colorpicker-button-size) - 6px);
 	width: var(--color-size);
@@ -106,10 +116,12 @@
 	mask-repeat: no-repeat;
 	background-color: transparent;
 }
+
 .wui-colorpicker > button.button > .color.empty {
 	border: 0;
 	background-color: transparent;
 }
+
 .wui-colorpicker > .background {
 	display: none;
 	position: fixed;
@@ -121,13 +133,16 @@
 	width: 100vw;
 	height: 100vh;
 }
+
 .wui-colorpicker > .background.hidden {
 	display: none;
 }
+
 .wui-colorpicker > .box,
 .wui-colorpicker > .box * {
 	display: flex;
 }
+
 .wui-colorpicker > .box {
 	--box-shadow: rgb(from var(--wui-colorpicker-box-shadowcolor) r g b / 20%) 0px 8px 24px;
 	--box-filter: blur(10px);
@@ -150,15 +165,19 @@
 	flex-direction: column;
 	padding: 5px;
 }
+
 .wui-colorpicker > .box.down {
 	bottom: auto;
 }
+
 .wui-colorpicker > .box.up {
 	bottom: 0;
 }
+
 .wui-colorpicker > .box.hidden {
 	display: none;
 }
+
 .wui-colorpicker > .box > .header {
 	position: relative;
 	height: 40px;
@@ -166,15 +185,18 @@
 	justify-content: flex-start;
 	align-items: center;
 }
+
 .wui-colorpicker > .box > .header > .tab {
 	cursor: pointer;
 	padding: 0 10px;
 	font-size: 14px;
 	color: var(--wui-colorpicker-box-tab-textcolor-out);
 }
+
 .wui-colorpicker > .box > .header > .tab.selected {
 	color: var(--wui-colorpicker-box-tab-textcolor-selected);
 }
+
 .wui-colorpicker > .box > .grid {
 	--grid-radius: calc(var(--wui-colorpicker-box-borderradius) - 5px);
 	display: grid;
@@ -185,13 +207,16 @@
 	border-radius: var(--grid-radius);
 	grid-template-columns: repeat(12, 1fr);
 }
+
 .wui-colorpicker > .box > .grid.hidden {
 	display: none;
 }
+
 .wui-colorpicker > .box > .grid > .color {
 	cursor: pointer;
 	height: 20px;
 }
+
 .wui-colorpicker > .box > .list,
 .wui-colorpicker > .box > .list > .option {
 	display: flex;
@@ -199,6 +224,7 @@
 	flex-grow: 1;
 	flex-shrink: 0;
 }
+
 .wui-colorpicker > .box > .list {
 	position: absolute;
 	top: 45px;
@@ -211,9 +237,11 @@
 	padding: 5px;
 	flex-direction: column;
 }
+
 .wui-colorpicker > .box > .list.hidden {
 	display: none;
 }
+
 .wui-colorpicker > .box > .list > .option {
 	--option-radius: 5px;
 	cursor: pointer;
@@ -227,13 +255,16 @@
 	align-items: center;
 	gap: 10px;
 }
+
 .wui-colorpicker > .box > .list > .option:is(:hover, :focus, :focus-within) {
 	border-color: var(--wui-colorpicker-box-option-bordercolor-over);
 	background-color: var(--wui-colorpicker-box-option-bgcolor-over);
 }
+
 .wui-colorpicker > .box > .list > .option.selected {
 	background-color: var(--wui-colorpicker-box-option-bgcolor-selected);
 }
+
 .wui-colorpicker > .box > .list > .option > .color {
 	width: 24px;
 	height: 24px;
@@ -244,16 +275,20 @@
 	border-style: solid;
 	border-color: var(--wui-colorpicker-viewcolor-bordercolor);
 }
+
 .wui-colorpicker > .box > .list > .option > .text {
 	font-size: 14px;
 	color: var(--wui-colorpicker-box-option-textcolor-out);
 }
+
 .wui-colorpicker > .box > .list > .option:is(:hover, :focus, :focus-within) > .text {
 	color: var(--wui-colorpicker-box-option-textcolor-over);
 }
+
 .wui-colorpicker > .box > .list > .option.selected > .text {
 	color: var(--wui-colorpicker-box-option-textcolor-selected);
 }
+
 .wui-colorpicker > .box > .preview {
 	position: absolute;
 	left: 5px;
@@ -264,6 +299,7 @@
 	align-items: center;
 	gap: 10px;
 }
+
 .wui-colorpicker > .box > .preview > .color {
 	--option-radius: 5px;
 	width: 24px;
@@ -282,18 +318,22 @@
 	mask-repeat: no-repeat;
 	background-color: transparent;
 }
+
 .wui-colorpicker > .box > .preview > .color.empty {
 	border: 0;
 	background-color: transparent;
 }
+
 .wui-colorpicker > .box > .preview > .text {
 	font-size: 14px;
 	color: var(--wui-colorpicker-box-preview-textcolor-out);
 }
+
 .wui-colorpicker > .box > .preview > .text.empty {
 	font-style: italic;
 	color: var(--wui-colorpicker-box-preview-textcolor-empty);
 }
+
 .wui-colorpicker > .box > .footer {
 	display: flex;
 	position: absolute;
@@ -307,6 +347,7 @@
 	flex-grow: 0;
 	flex-wrap: wrap;
 }
+
 .wui-colorpicker > .box > .footer > button {
 	cursor: pointer;
 	height: 100%;
@@ -327,17 +368,21 @@
 	font-size: 14px;
 	color: var(--wui-colorpicker-box-button-textcolor-out);
 }
+
 .wui-colorpicker > .box > .footer > button:hover {
 	color: var(--wui-colorpicker-box-button-textcolor-over);
 }
+
 .wui-colorpicker > .box > .footer > button.accept {
 	font-weight: bold;
 }
+
 @media screen and (max-width: 767px) {
 	.wui-colorpicker > .background {
 		display: block;
 		background-color: var(--wui-colorpicker-mobile-overlay-bgcolor);
 	}
+
 	.wui-colorpicker > .box {
 		--box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 		--box-transform: translate(-50%, -50%);
@@ -351,35 +396,45 @@
 		-moz-transform: var(--box-transform);
 		transform: var(--box-transform);
 	}
+
 	.wui-colorpicker > .box > .header > .tab {
 		font-size: 17px;
 	}
+
 	.wui-colorpicker > .box > .grid > .color {
 		height: 24px;
 	}
+
 	.wui-colorpicker > .box > .list {
 		height: 240px;
 	}
+
 	.wui-colorpicker > .box > .list > .option {
 		--option-radius: 8px;
 		height: 40px;
 	}
+
 	.wui-colorpicker > .box > .list > .option > .color {
 		width: 26px;
 		height: 26px;
 	}
+
 	.wui-colorpicker > .box > .list > .option > .text {
 		font-size: 17px;
 	}
+
 	.wui-colorpicker > .box > .preview {
 		bottom: 40px;
 	}
+
 	.wui-colorpicker > .box > .preview > .text {
 		font-size: 17px;
 	}
+
 	.wui-colorpicker > .box > .footer {
 		height: 40px;
 	}
+
 	.wui-colorpicker > .box > .footer > button {
 		font-size: 17px;
 	}

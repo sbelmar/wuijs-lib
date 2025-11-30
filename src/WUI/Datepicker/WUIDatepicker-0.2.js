@@ -99,7 +99,6 @@ class WUIDatepicker {
 		cancelButton: null,
 		acceptButton: null
 	};
-	#colorScheme;
 	#mode;
 	#todayValue;
 	#todayYear;
@@ -108,6 +107,7 @@ class WUIDatepicker {
 	#targetDate;
 	#cancelValue;
 	#cancelDate;
+	#colorScheme;
 
 	constructor(properties) {
 		const defaults = structuredClone(WUIDatepicker.#defaults);
@@ -738,6 +738,7 @@ class WUIDatepicker {
 	}
 
 	destroy() {
+		this.close();
 		if (this.#htmlElement instanceof HTMLElement) {
 			Object.entries(this.#htmlElements).forEach(([key, element]) => {
 				if (element) {
@@ -750,6 +751,14 @@ class WUIDatepicker {
 		Object.keys(this.#properties).forEach(name => {
 			delete this.#properties[name];
 		});
+		this.#mode = undefined;
+		this.#todayValue = undefined;
+		this.#todayYear = undefined;
+		this.#todayMonth = undefined;
+		this.#targetValue = undefined;
+		this.#targetDate = undefined;
+		this.#cancelValue = undefined;
+		this.#cancelDate = undefined;
 		this.#colorScheme = undefined;
 	}
 }
