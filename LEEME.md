@@ -1719,6 +1719,7 @@ Objeto avanzado para implementación de barras de menú.
 | init         | `void`        | `init()`<br><br>Inicializa el objeto. |
 | selectButton | `void`        | `selectButton(id[, selected])`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• selected:** `boolean`, estado de selección del botón. El valor predeterminado `true`.<br><br>Selecciona o deselecciona un botón de menú. |
 | enableButton | `void`        | `enableButton(id[, enabled])`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• enabled:** `boolean`, estado de habilitación del botón. El valor predeterminado `true`.<br><br>Hablita o deshabilita un botón de menú. |
+| setPhoto     | `void`        | `setPhoto(id[, src])`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• src:** `string`, fuente de la imagen. El valor predeterminado `""`.<br><br>Carga una imagen por encima del ícono de un botón. |
 | setBubble    | `void`        | `setBubble(id, number)`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• number:** `number`, número que aparecerá en la burbuja. El valor `0` oculta la burbuja. |
 | close        | `void`        | `close()`<br><br>Cierra el submenú en caso de estar desplegado. |
 | destroy      | `void`        | `destroy()`<br><br>Destructor. |

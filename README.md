@@ -1719,6 +1719,7 @@ Advanced object for implementing menu bars.
 | init         | `void`        | `init()`<br><br>Initializes the object. |
 | selectButton | `void`        | `selectButton(id[, selected])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• selected:** `boolean`, button selection state. The default value is `true`.<br><br>Select or unselect a menu button. |
 | enableButton | `void`        | `enableButton(id[, enabled])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• enabled:** `boolean`, button enable state. The default value is `true`.<br><br>Enables or disables a menu button. |
+| setPhoto     | `void`        | `setPhoto(id[, src])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• src:** `string`, image source. The default value is `""`.<br><br>Upload an image above a button icon. |
 | setBubble    | `void`        | `setBubble(id, number)`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• number:** `number`, number that will appear in the bubble. The value `0` hides the bubble. |
 | close        | `void`        | `close()`<br><br>Close the submenu if it is open. |
 | destroy      | `void`        | `destroy()`<br><br>Destroyer. |
