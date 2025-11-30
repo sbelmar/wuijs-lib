@@ -1689,10 +1689,10 @@ Objeto avanzado para implementación de barras de menú.
 | Propiedad     | Tipo       | Valor predeterminado | Descripción |
 | ------------- | ---------- | -------------------- | ----------- |
 | selector      | `string`   | `".wui-menubar"`     | (get/set)<br><br>Selector CSS que define el elemento HTML que serán convertido en el objeto avanzado tipo bara de menú. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
-| expansive     | `boolean`  | `true`               | (get/set)<br><br>Define el menú se expande. |
-| topButtons    | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú superior, según la definición de **Opciones de Botón**. |
+| expansive     | `boolean`  | `true`               | (get/set)<br><br>Define el menú se expande. La función de expansión es no es visible en modo móvil (cuando el ancho de la pantalla es inferior a `768px`). |
+| topButtons    | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú superior, según la definición de **Opciones de Botón**. Los botónes de esta sección no son visibles en modo móvil (cuando el ancho de la pantalla es inferior a `768px`). |
 | mainButtons   | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú principal, según la definición de **Opciones de Botón**. |
-| bottomButtons | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú inferior, según la definición de **Opciones de Botón**. |
+| bottomButtons | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú inferior, según la definición de **Opciones de Botón**. Los botónes de esta sección no son visibles en modo móvil (cuando el ancho de la pantalla es inferior a `768px`). |
 | onClick       | `function` | `null`               | (get/set)<br><br>Función que se llama cuando un botón es presionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
 | onSelect      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando un botón con propiedad `selectable` es seleccionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
 

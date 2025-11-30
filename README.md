@@ -1689,10 +1689,10 @@ Advanced object for implementing menu bars.
 | Property      | Type       | Default value.   | Description |
 | ------------- | ---------- | ---------------- | ----------- |
 | selector      | `string`   | `".wui-menubar"` | (get/set)<br><br>CSS selector that defines the HTML element that will be converted into the advanced menu bar object. If more than one element matches the selector, only the first match will be included. |
-| expansive     | `boolean`  | `true`           | (get/set)<br><br>Define the menu expands. |
-| topButtons    | `array`    | `[]`             | (get/set)<br><br>List of menu top buttons, as defined by **Button Options**. |
+| expansive     | `boolean`  | `true`           | (get/set)<br><br>Define the menu expands. The function of expansion is not visible in mobile mode (when the screen width is less than `768px`). |
+| topButtons    | `array`    | `[]`             | (get/set)<br><br>List of menu top buttons, as defined by **Button Options**. These buttons are not visible in mobile mode (when the screen width is less than `768px`). |
 | mainButtons   | `array`    | `[]`             | (get/set)<br><br>List of menu main buttons, as defined by **Button Options**. |
-| bottomButtons | `array`    | `[]`             | (get/set)<br><br>List of menu bottom buttons, as defined by **Button Options**. |
+| bottomButtons | `array`    | `[]`             | (get/set)<br><br>List of menu bottom buttons, as defined by **Button Options**. These buttons are not visible in mobile mode (when the screen width is less than `768px`). |
 | onClick       | `function` | `null`           | (get/set)<br><br>Function called when a button is clicked. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
 | onSelect      | `function` | `null`           | (get/set)<br><br>Function called when a button with the `selectable` property is selected. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
 
