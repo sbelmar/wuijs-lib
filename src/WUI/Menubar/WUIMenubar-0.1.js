@@ -239,29 +239,7 @@ class WUIMenubar {
 		}
 		button.addEventListener("click", () => {
 			if (!button.classList.contains("disabled")) {
-				if (typeof (options.radio) == "boolean" && !options.radio) {
-					this.selectButton(options.id, !options.selected);
-				} else if (typeof (options.selectable) == "undefined" || options.selectable) {
-					this.#buttons.forEach(opt => {
-						if (opt.id == options.id) {
-							this.selectButton(opt.id, true);
-							this.#open(opt.id);
-						} else {
-							this.selectButton(opt.id, false);
-						}
-					});
-					if (this.#properties.onSelect && typeof (this.#properties.onSelect) == "function") {
-						this.#properties.onSelect(options.id);
-					}
-				}
-				if (!options.submenu) {
-					this.close();
-				}
-				if (options.onClick && typeof (options.onClick) == "function") {
-					options.onClick();
-				} else if (this.#properties.onClick && typeof (this.#properties.onClick) == "function") {
-					this.#properties.onClick(options.id);
-				}
+				this.selectButton(options.id, true);
 			}
 		});
 		if (typeof (options.selected) == "boolean" && options.selected) {
@@ -271,12 +249,37 @@ class WUIMenubar {
 	}
 
 	selectButton(id, selected = true) {
+		const options = this.getButton(id);
 		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
 		if (button instanceof HTMLElement && !button.classList.contains("disabled")) {
 			if (selected) {
-				button.classList.add("selected");
+				if (typeof (options.radio) == "boolean" && !options.radio) {
+					if (!options.selected) {
+						button.classList.add("selected");
+					} else {
+						button.classList.remove("selected");
+					}
+				} else if (typeof (options.selectable) == "undefined" || options.selectable) {
+					this.#buttons.filter(opt => opt.id != id).forEach(opt => {
+						const btn = this.#htmlElement.querySelector(`[data-id='${opt.id}'].button`);
+						btn.classList.remove("selected");
+					});
+					button.classList.add("selected");
+					this.#open(options.id);
+				}
 			} else {
 				button.classList.remove("selected");
+			}
+			if (!options.submenu) {
+				this.close();
+			}
+			if (options.onClick && typeof (options.onClick) == "function") {
+				options.onClick();
+			} else if (this.#properties.onClick && typeof (this.#properties.onClick) == "function") {
+				this.#properties.onClick(id);
+			}
+			if (selected && (typeof (options.selectable) == "undefined" || options.selectable) && this.#properties.onSelect && typeof (this.#properties.onSelect) == "function") {
+				this.#properties.onSelect(id);
 			}
 		}
 		this.getButton(id).selected = selected;
