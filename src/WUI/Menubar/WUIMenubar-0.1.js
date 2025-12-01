@@ -221,6 +221,7 @@ class WUIMenubar {
 		bubble.innerText = 0;
 		button.append(icon);
 		if (typeof (options.photoImage) == "string") {
+			photo.className = "photo";
 			photo.style.backgroundImage = "url(" + options.photoImage + ")";
 			button.append(photo);
 		}
@@ -239,22 +240,48 @@ class WUIMenubar {
 		}
 		button.addEventListener("click", () => {
 			if (!button.classList.contains("disabled")) {
-				this.selectButton(options.id, true);
+				this.selectButton(options.id);
 			}
 		});
 		if (typeof (options.selected) == "boolean" && options.selected) {
-			this.selectButton(options.id, true);
+			this.selectButton(options.id);
 		}
 		return button;
+	}
+
+	setPhoto(id, src = "") {
+		const photo = this.#htmlElement.querySelector(`[data-id='${id}'].button > .photo`);
+		this.getButton(id).photoImage = src;
+		if (photo instanceof HTMLElement) {
+			photo.style.backgroundImage = "url(" + src + ")";
+		}
+	}
+
+	setBubble(id, number = 0) {
+		const bubble = this.#htmlElement.querySelector(`[data-id='${id}'].button > .bubble`);
+		this.getButton(id).bubbleNumber = number;
+		if (bubble instanceof HTMLElement) {
+			bubble.textContent = number;
+			if (number > 0) {
+				bubble.classList.remove("hidden");
+			} else {
+				bubble.classList.add("hidden");
+			}
+		}
 	}
 
 	selectButton(id, selected = true) {
 		const options = this.getButton(id);
 		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
+		const prevSelected = options.selected;
+		if (selected && typeof (options.radio) == "boolean" && !options.radio) {
+			selected = !prevSelected;
+		}
+		this.getButton(id).selected = selected;
 		if (button instanceof HTMLElement && !button.classList.contains("disabled")) {
 			if (selected) {
 				if (typeof (options.radio) == "boolean" && !options.radio) {
-					if (!options.selected) {
+					if (!prevSelected) {
 						button.classList.add("selected");
 					} else {
 						button.classList.remove("selected");
@@ -282,37 +309,16 @@ class WUIMenubar {
 				this.#properties.onSelect(id);
 			}
 		}
-		this.getButton(id).selected = selected;
 	}
 
 	enableButton(id, enabled = true) {
 		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
+		this.getButton(id).enabled = enabled;
 		if (button instanceof HTMLElement) {
 			if (enabled) {
 				button.classList.remove("disabled");
 			} else {
 				button.classList.add("disabled");
-			}
-		}
-		this.getButton(id).enabled = enabled;
-	}
-
-	setPhoto(optionId, src = "") {
-		const photo = this.#htmlElement.querySelector(`[data-id='${optionId}'].button > .photo`);
-		if (photo instanceof HTMLElement) {
-			photo.style.backgroundImage = "url(" + src + ")";
-		}
-		this.getButton(id).photoImage = src;
-	}
-
-	setBubble(optionId, number = 0) {
-		const bubble = this.#htmlElement.querySelector(`[data-id='${optionId}'].button > .bubble`);
-		if (bubble instanceof HTMLElement) {
-			bubble.textContent = number;
-			if (number > 0) {
-				bubble.classList.remove("hidden");
-			} else {
-				bubble.classList.add("hidden");
 			}
 		}
 	}
