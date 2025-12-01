@@ -163,6 +163,13 @@
 	transition: var(--submenu-transition);
 }
 
+.wui-menubar > .submenu.opened {
+	--bar-shadow: rgb(from var(--wui-menubar-shadowcolor) r g b / 40%) 0px 4px 12px;
+	-webkit-box-shadow: var(--bar-shadow);
+	-moz-box-shadow: var(--bar-shadow);
+	box-shadow: var(--bar-shadow);
+}
+
 .wui-menubar > .submenu > .main > .button {
 	background-color: var(--wui-menubar-submenu-button-bgcolor-out);
 }
@@ -264,11 +271,12 @@
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	background-color: var(--wui-menubar-submenu-bgcolor);
+	background-color: var(--wui-menubar-tooltip-bgcolor);
 	padding: 0 8px;
 	line-height: 20px;
 	text-align: center;
 	white-space: nowrap;
+	color: var(--wui-menubar-tooltip-textcolor);
 }
 
 .wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .bubble {

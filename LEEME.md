@@ -256,6 +256,8 @@ Código CSS archivo `WUI.css`:
 	--wui-menubar-submenu-button-textcolor-over: #1f2937;
 	--wui-menubar-submenu-button-textcolor-selected: #f6f6fa;
 	--wui-menubar-submenu-button-textcolor-disabled: #d5dce3;
+	--wui-menubar-tooltip-bgcolor: #000;
+	--wui-menubar-tooltip-textcolor: #fff;
 	--wui-menubar-bubble-bgcolor: #f44343;
 	--wui-menubar-bubble-textcolor: #fff;
 
@@ -1784,6 +1786,8 @@ Objeto avanzado para implementación de barras de menú.
 | `--wui-menubar-submenu-button-textcolor-over`     | 
 | `--wui-menubar-submenu-button-textcolor-selected` | 
 | `--wui-menubar-submenu-button-textcolor-disabled` | 
+| `--wui-menubar-tooltip-bgcolor`                   | 
+| `--wui-menubar-tooltip-textcolor`                 | 
 | `--wui-menubar-bubble-bgcolor`                    | 
 | `--wui-menubar-bubble-textcolor`                  | 
 
