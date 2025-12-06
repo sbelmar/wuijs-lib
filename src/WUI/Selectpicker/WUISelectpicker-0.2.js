@@ -63,7 +63,7 @@ class WUISelectpicker {
 				intro: Boolean(event.key == "Enter"),
 				esc: Boolean(event.key == "Escape")
 			};
-			if (active != null && active.enabled) {
+			if (active != null && active.enabled && (keys.up || keys.down || keys.intro || keys.esc)) {
 				if (!active.isOpen()) {
 					if (keys.down) {
 						active.open();
