@@ -91,6 +91,10 @@
 	top: 28px;
 }
 
+.wui-menubar > .bar > .bottom {
+	bottom: 12px;
+}
+
 .wui-menubar > .bar > :is(.top, .main, .bottom) > .button {
 	background-color: var(--wui-menubar-bar-button-bgcolor-out);
 }
@@ -138,10 +142,6 @@
 
 .wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-bar-button-iconcolor-disabled);
-}
-
-.wui-menubar > .bar > .bottom {
-	bottom: 12px;
 }
 
 .wui-menubar > .submenu {
