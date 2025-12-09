@@ -173,7 +173,7 @@ class WUIForm {
 	getValue(name) {
 		const input = this.getInput(name);
 		const data = this.getData(name);
-		return input instanceof HTMLInputElement ? input.value : data instanceof HTMLDataElement ? data.innerHTML : "";
+		return input instanceof HTMLInputElement || input instanceof HTMLSelectElement || input instanceof HTMLTextAreaElement ? input.value : data instanceof HTMLDataElement ? data.innerHTML : "";
 	}
 
 	getData(name) {
@@ -205,7 +205,7 @@ class WUIForm {
 				label.classList.remove("notempty");
 			}
 		}
-		if (input instanceof HTMLInputElement) {
+		if (input instanceof HTMLInputElement || input instanceof HTMLSelectElement || input instanceof HTMLTextAreaElement) {
 			input.value = value;
 		}
 		return input;
@@ -247,15 +247,14 @@ class WUIForm {
 				label.classList.add("disabled");
 			}
 		}
-		if (input instanceof HTMLInputElement) {
+		if (input instanceof HTMLInputElement || input instanceof HTMLSelectElement || input instanceof HTMLTextAreaElement) {
 			input.disabled = !value;
 			if (value) {
-				label.classList.remove("disabled");
+				input.classList.remove("disabled");
 			} else {
-				label.classList.add("disabled");
+				input.classList.add("disabled");
 			}
-		}
-		if (data instanceof HTMLDataElement) {
+		} else if (data instanceof HTMLDataElement) {
 			if (value) {
 				data.classList.remove("disabled");
 			} else {
@@ -305,7 +304,7 @@ class WUIForm {
 			label.addEventListener("click", () => {
 				const field = label.parentNode;
 				const input = field.querySelector("input,select,textarea");
-				if (input instanceof HTMLInputElement) {
+				if (input instanceof HTMLInputElement || input instanceof HTMLSelectElement || input instanceof HTMLTextAreaElement) {
 					input.focus();
 				}
 			});
