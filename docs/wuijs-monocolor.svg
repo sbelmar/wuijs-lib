@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+	<defs>
+		<mask id="cutoutMask">
+			<rect x="0" y="0" width="500" height="500" fill="white"/>
+			<rect x="20" y="20" width="460" height="460" rx="90" ry="90" stroke="black" stroke-width="10" fill="none"/>
+			<text x="50%" y="260" text-anchor="middle" font-family="SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace" font-size="96" font-weight="700" letter-spacing="1" fill="black">
+				<tspan>WUI</tspan>
+				<tspan dx="-22">/</tspan>
+				<tspan dx="-20">JS</tspan>
+			</text>
+			<circle cx="215" cy="320" r="10" fill="black"/>
+			<circle cx="250" cy="320" r="10" fill="black"/>
+			<circle cx="285" cy="320" r="10" fill="black"/>
+		</mask>
+	</defs>
+	<rect x="0" y="0" width="500" height="500" rx="110" ry="110" fill="currentColor" mask="url(#cutoutMask)"/>
+</svg>

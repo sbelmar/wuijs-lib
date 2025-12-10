@@ -3,6 +3,8 @@
 
 # wuijs-lib
 
+![WUIJS Library](https://github.com/sbelmar/wuijs-lib/blob/main/docs/wuijs-color.svg)
+
 Library version: `0.2.0` ([Change Log](./CHANGELOG.md))
 
 Document version: `0.2.0.20251130.1`
@@ -1831,8 +1833,8 @@ HTML head:
 
 ```html
 <link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Icon/WUIIcon-0.1.css">
-<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Menubar/WUIMenubar-0.2.css">
-<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Menubar/WUIMenubar-0.2.js"></script>
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Menubar/WUIMenubar-0.1.css">
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Menubar/WUIMenubar-0.1.js"></script>
 ```
 
 HTML code:
@@ -1851,8 +1853,11 @@ const menubar = new WUIMenubar(".wui-menubar.my-menubar");
 // ...
 
 // Initialize object
-scrolly.init();
+menubar.init();
 ```
+
+> [!TIP]
+> You can check out this working example on CodePen at the link: [https://codepen.io/sbelmar/pen/zxqevgE](https://codepen.io/sbelmar/pen/zxqevgE).
 
 <a name="WUIList"></a>
 
@@ -2752,6 +2757,7 @@ The examples listed in this section are detailed in the "Implementation" section
 | [WUIScrolly](#WUIScrolly) | [https://codepen.io/sbelmar/pen/azdjOQp](https://codepen.io/sbelmar/pen/azdjOQp) |
 | [WUIIcon](#WUIIcon)       | [https://codepen.io/sbelmar/pen/KwVBpoj](https://codepen.io/sbelmar/pen/KwVBpoj) |
 | [WUIFade](#WUIFade)       | [https://codepen.io/sbelmar/pen/KwVeEOv](https://codepen.io/sbelmar/pen/KwVeEOv) |
+| [WUIMenubar](#WUIMenubar) | [https://codepen.io/sbelmar/pen/zxqevgE](https://codepen.io/sbelmar/pen/zxqevgE) |
 | [WUIList](#WUIList)       | [https://codepen.io/sbelmar/pen/vELrGBJ](https://codepen.io/sbelmar/pen/vELrGBJ) |
 | [WUITable](#WUITable)     | [https://codepen.io/sbelmar/pen/zxrapZe](https://codepen.io/sbelmar/pen/zxrapZe) |
 | [WUIButton](#WUIButton)   | [https://codepen.io/sbelmar/pen/gbPyBNJ](https://codepen.io/sbelmar/pen/gbPyBNJ) |
