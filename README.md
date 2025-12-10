@@ -698,6 +698,12 @@ Version: `0.2`
 
 Cookie manager.
 
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| JS   | [./src/WUI/Cookie/WUICookie-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Cookie/WUICookie-0.2.js) |
+
 #### Constructor
 
 | Type      | Description |
@@ -754,6 +760,12 @@ Version: `0.1`
 
 HTML header manager.
 
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| JS   | [./src/WUI/Head/WUIHead-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Head/WUIHead-0.1.js) |
+
 #### Constructor
 
 | Type    | Description |
@@ -809,6 +821,12 @@ Version: `0.2`
 
 HTML body manager. Allows the import of CSS/JS/HTML content and facilitates implementation in native mobile environments.
 
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| JS   | [./src/WUI/Body/WUIBody-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Body/WUIBody-0.2.js) |
+
 #### Constructor
 
 | Type    | Description |
@@ -838,7 +856,8 @@ HTML body manager. Allows the import of CSS/JS/HTML content and facilitates impl
 CSS content of the `./Imports/test-content.css` file:
 
 ```css
-.test a, .test a:visited {
+.test a,
+.test a:visited {
 	text-decoration: none;
 	font-size: 20px;
 	color: blue;
@@ -900,6 +919,12 @@ body.import("testContent", "test-content", () => {
 Version: `0.2`
 
 Language manager for web interfaces. Allows you to load language files in JS or JSON format and dynamically update the content of HTML elements based on the language.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| JS   | [./src/WUI/Language/WUILanguage-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Language/WUILanguage-0.2.js) |
 
 #### Constructor
 
@@ -1026,6 +1051,12 @@ Versión: `0.2`
 
 Tool for animating HTML elements using the "onscroll" event of the HTML page body.
 
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| JS   | [./src/WUI/Scrolly/WUIScrolly-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Scrolly/WUIScrolly-0.2.js) |
+
 #### Constructor
 
 | Type       | Description |
@@ -1112,24 +1143,30 @@ html,
 body {
 	height: 100%; /* necessary */
 }
+
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .wui-scrolly {
 	overflow-x: hidden;
 	margin: 0;
 	padding: 0;
 }
+
 .wui-scrolly > .section {
 	width: 100%;
 	background-color: lightgray;
 }
+
 .wui-scrolly > .section > .scene > .animation {
 	position: relative;
 }
+
 .wui-scrolly > .section1 {
 	background-color: #f1f1f1;
 }
+
 .wui-scrolly > .section2 > .scene.scene2 {
 	display: flex;
 	position: relative; /* necessary */
@@ -1138,15 +1175,19 @@ body {
 	flex-direction: row;
 	gap: 20px;
 }
+
 .wui-scrolly > .section2 {
 	background-color: #e9e9e9;
 }
+
 .wui-scrolly > .section3 {
 	background-color: #e1e1e1;
 }
+
 .wui-scrolly > .section3 > .scene > .animation > .my-element {
 	left: -100px;
 }
+
 .my-element {
 	display: flex;
 	position: relative; /* necessary */
@@ -1159,6 +1200,7 @@ body {
 	justify-content: center;
 	color: #fff;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;
@@ -1293,9 +1335,15 @@ scrolly.init();
 
 ### WUIIcon
 
-Versión: `0.1`
+Version: `0.1`
 
 Set of pre-designed icons loaded via CSS, for use in interfaces.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [./src/WUI/Icon/WUIIcon-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Icon/WUIIcon-0.1.css) |
 
 #### Signals Icon Table
 
@@ -1540,6 +1588,7 @@ CSS code:
 nav {
 	display: flex;
 }
+
 .my-icon {
 	width: 24px;
 	height: 24px;
@@ -1578,6 +1627,12 @@ Version: `0.1`
 Tool for fading out and fading control in HTML elements with opacity.
 
 It is a static class that does not have a constructor or properties.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| JS   | [./src/WUI/Fade/WUIFade-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Fade/WUIFade-0.1.js) |
 
 #### Methods
 
@@ -1618,10 +1673,12 @@ CSS code:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .my-link {
 	margin: 0 10px;
 	text-decoration: none;
 }
+
 .my-element {
 	display: none;
 	width: 64px;
@@ -1671,12 +1728,14 @@ const fadeout = () => {
 
 Version: `0.2`
 
-Sources:
-
-*   [WUILoader-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/Libraries/WUI/Loader/WUILoader-0.2.css)
-*   [WUILoader-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/Libraries/WUI/Loader/WUILoader-0.2.js)
-
 Object for loading animation.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [./src/WUI/Loader/WUILoader-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.css) |
+| JS   | [./src/WUI/Loader/WUILoader-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.js) |
 
 #### Constructor
 
@@ -1689,7 +1748,7 @@ Object for loading animation.
 | Property  | Type     | Default value   | Description |
 | --------- | -------- | --------------- | ----------- |
 | selector  | `string` | `".wui-loader"` | (get/set)<br><br>CSS selector that defines the HTML element that will be converted into the loader object. If more than one element matches the selector, only the first match will be included. |
-| style     | `string` | `"ring"`        | (get/set)<br><br>Loading animation style.<br><br>Values:<br>• `"ring"`, ring shape.<br>• `"dualring"`, dual ring shape.<br>• `"spinner"`, spinner shape.<br>• `"roller"`, roller shape.<br>• `"ellipsis"`, dot shape.<br>• `"grid"`, grid shape. |
+| style     | `string` | `"ring"`        | (get/set)<br><br>Loading animation style.<br><br>Values:<br>• `"ring"`, ring.<br>• `"dualring"`, dual ring.<br>• `"spinner"`, spinner.<br>• `"roller"`, roller.<br>• `"ellipsis"`, dots.<br>• `"grid"`, grid. |
 | size      | `number` | `60`            | (get/set)<br><br>Loading animation size in pixels. |
 | dataStyle | `string` | `"style"`       | (get/set)<br><br>Name of the `data-*` attribute that contains the value of the `style` property. |
 | dataSize  | `string` | `"size"`        | (get/set)<br><br>Name of the `data-*` attribute that contains the value of the `size` property. |
@@ -1714,6 +1773,13 @@ Object for loading animation.
 Versión: `0.1`
 
 Object for implementing menu bars.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [./src/WUI/Menubar/WUIMenubar-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.css) |
+| JS   | [./src/WUI/Menubar/WUIMenubar-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.js) |
 
 #### Constructor
 
@@ -1886,6 +1952,7 @@ CSS code:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .my-output {
 	position: absolute;
 	top: 10px;
@@ -1913,7 +1980,17 @@ JS code:
 ```js
 // Create object
 const output = document.body.querySelector(".my-output");
-const menubar = new WUIMenubar({selector: ".wui-menubar.my-menubar"});
+const menubar = new WUIMenubar({
+	selector: ".wui-menubar.my-menubar",
+	expansive: true,    // Default value, property can be omitted
+	topButtons: [],     // Default value, property can be omitted
+	mainButtons: [],    // Default value, property can be omitted
+	bottomButtons: [],  // Default value, property can be omitted
+	onClick: (id) => {
+		output.textContent = `Click button - id: "${id}"`;
+	},
+	onSelect: null      // Default value, property can be omitted
+});
 
 // Add buttons
 menubar.topButtons = [{
@@ -1974,9 +2051,6 @@ menubar.bottomButtons = [{
 }];
 
 // Initialize object
-menubar.onClick = (id) => {
-	output.textContent = `Click button - id: "${id}"`;
-};
 menubar.init();
 ```
 
@@ -1990,6 +2064,13 @@ menubar.init();
 Versión: `0.2`
 
 Object for implementing data lists and buttons for each row optionally.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [./src/WUI/List/WUIList-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.css) |
+| JS   | [./src/WUI/List/WUIList-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.js) |
 
 #### Constructor
 
@@ -2142,28 +2223,35 @@ CSS code:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 header {
 	max-width: 600px;
 	text-align: right;
 }
+
 .my-link {
 	margin: 0 10px;
 	text-decoration: none;
 }
+
 .my-link.disabled {
 	color: #ccc;
 }
+
 .my-paging {
 	display: inline;
 	font-size: 16px;
 }
+
 nav {
 	width: 600px;
 	margin: 10px 0;
 }
+
 footer {
 	max-width: 600px;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;
@@ -2305,6 +2393,13 @@ list.print();
 Versión: `0.2`
 
 Object for implementing data tables. Unlike the `WUIList` object, the `WUITable` object includes a column header.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [./src/WUI/Table/WUITable-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.css) |
+| JS   | [./src/WUI/Table/WUITable-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.js) |
 
 #### Constructor
 
@@ -2474,28 +2569,35 @@ CSS code:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 header {
 	max-width: 600px;
 	text-align: right;
 }
+
 .my-link {
 	margin: 0 10px;
 	text-decoration: none;
 }
+
 .my-link.disabled {
 	color: #ccc;
 }
+
 .my-paging {
 	display: inline;
 	font-size: 16px;
 }
+
 nav {
 	width: 600px;
 	margin: 10px 0;
 }
+
 footer {
 	max-width: 600px;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;
@@ -2650,6 +2752,13 @@ table.print();
 Versión: `0.2`
 
 Object for button implementation.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [./src/WUI/Button/WUIButton-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.css) |
+| JS   | [./src/WUI/Button/WUIButton-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.js) |
 
 #### Constructor
 
@@ -2810,9 +2919,11 @@ CSS code:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .my-button {
 	margin: 20px;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;

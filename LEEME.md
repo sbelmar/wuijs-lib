@@ -698,6 +698,12 @@ Versión: `0.2`
 
 Administrador de cookies.
 
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| JS   | [./src/WUI/Cookie/WUICookie-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Cookie/WUICookie-0.2.js) |
+
 #### Constructor
 
 | Tipo      | Descripción |
@@ -754,6 +760,12 @@ Versión: `0.1`
 
 Administrador de cabecera HTML.
 
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| JS   | [./src/WUI/Head/WUIHead-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Head/WUIHead-0.1.js) |
+
 #### Constructor
 
 | Tipo    | Descripción |
@@ -809,6 +821,12 @@ Versión: `0.2`
 
 Administrador de cuerpo HTML. Permite la importación de contenido CSS/JS/HTML y facilita la implementación en entornos nativos móviles.
 
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| JS   | [./src/WUI/Body/WUIBody-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Body/WUIBody-0.2.js) |
+
 #### Constructor
 
 | Tipo    | Descripción |
@@ -838,7 +856,8 @@ Administrador de cuerpo HTML. Permite la importación de contenido CSS/JS/HTML y
 Contenido CSS del archivo `./Imports/test-content.css`:
 
 ```css
-.test a, .test a:visited {
+.test a,
+.test a:visited {
 	text-decoration: none;
 	font-size: 20px;
 	color: blue;
@@ -900,6 +919,12 @@ body.import("testContent", "test-content", () => {
 Versión: `0.2`
 
 Administrador de idioma para interfaces web. Permite cargar archivos de idioma en formato JS o JSON y actualizar dinámicamente el contenido de los elementos HTML según el idioma seleccionado.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| JS   | [./src/WUI/Language/WUILanguage-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Language/WUILanguage-0.2.js) |
 
 #### Constructor
 
@@ -1026,6 +1051,12 @@ Versión: `0.2`
 
 Herramienta para animación de elementos HTML mediante el evento "onscroll" del cuerpo de la página HTML.
 
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| JS   | [./src/WUI/Scrolly/WUIScrolly-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Scrolly/WUIScrolly-0.2.js) |
+
 #### Constructor
 
 | Tipo       | Descripción |
@@ -1112,24 +1143,30 @@ html,
 body {
 	height: 100%; /* necessary */
 }
+
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .wui-scrolly {
 	overflow-x: hidden;
 	margin: 0;
 	padding: 0;
 }
+
 .wui-scrolly > .section {
 	width: 100%;
 	background-color: lightgray;
 }
+
 .wui-scrolly > .section > .scene > .animation {
 	position: relative;
 }
+
 .wui-scrolly > .section1 {
 	background-color: #f1f1f1;
 }
+
 .wui-scrolly > .section2 > .scene.scene2 {
 	display: flex;
 	position: relative; /* necessary */
@@ -1138,15 +1175,19 @@ body {
 	flex-direction: row;
 	gap: 20px;
 }
+
 .wui-scrolly > .section2 {
 	background-color: #e9e9e9;
 }
+
 .wui-scrolly > .section3 {
 	background-color: #e1e1e1;
 }
+
 .wui-scrolly > .section3 > .scene > .animation > .my-element {
 	left: -100px;
 }
+
 .my-element {
 	display: flex;
 	position: relative; /* necessary */
@@ -1159,6 +1200,7 @@ body {
 	justify-content: center;
 	color: #fff;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;
@@ -1296,6 +1338,12 @@ scrolly.init();
 Versión: `0.1`
 
 Conjunto de íconos prediseñados y carga mediante CSS, para uso en interfaces.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [./src/WUI/Icon/WUIIcon-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Icon/WUIIcon-0.1.css) |
 
 #### Tabla de Íconos de Señale
 
@@ -1540,6 +1588,7 @@ Código CSS:
 nav {
 	display: flex;
 }
+
 .my-icon {
 	width: 24px;
 	height: 24px;
@@ -1578,6 +1627,12 @@ Versión: `0.1`
 Herramienta para control de salida y entrada con opacidad (fade-out y fade-in respectivamente) de elementos HTML. |
 
 Es una clase estática que no posee un constructor ni propiedades.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| JS   | [./src/WUI/Fade/WUIFade-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Fade/WUIFade-0.1.js) |
 
 #### Métodos
 
@@ -1618,10 +1673,12 @@ Código CSS:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .my-link {
 	margin: 0 10px;
 	text-decoration: none;
 }
+
 .my-element {
 	display: none;
 	width: 64px;
@@ -1671,12 +1728,14 @@ const fadeout = () => {
 
 Version: `0.2`
 
-Fuentes:
-
-*   [WUILoader-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.css)
-*   [WUILoader-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.js)
-
 Objeto para animación de carga.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [./src/WUI/Loader/WUILoader-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.css) |
+| JS   | [./src/WUI/Loader/WUILoader-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.js) |
 
 #### Constructor
 
@@ -1689,7 +1748,7 @@ Objeto para animación de carga.
 | Propiedad | Tipo     | Valor predeterminado | Descripción |
 | --------- | -------- | -------------------- | ----------- |
 | selector  | `string` | `".wui-loader"`      | (get/set)<br><br>Selector CSS que define el elemento HTML que serán convertido en el objeto tipo animación de carga. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
-| style     | `string` | `"ring"`             | (get/set)<br><br>Estilo de la animación de carga.<br><br>Valores:<br>• `"ring"`, forma anillo.<br>• `"dualring"`, forma anillo dual.<br>• `"spinner"`, forma spinner.<br>• `"roller"`, forma roller.<br>• `"ellipsis"`, forma puntos.<br>• `"grid"`, forma grilla. |
+| style     | `string` | `"ring"`             | (get/set)<br><br>Estilo de la animación de carga.<br><br>Valores:<br>• `"ring"`, anillo.<br>• `"dualring"`, anillo dual.<br>• `"spinner"`, spinner.<br>• `"roller"`, roller.<br>• `"ellipsis"`, puntos.<br>• `"grid"`, grilla. |
 | size      | `number` | `60`                 | (get/set)<br><br>Tamaño de la animación de carga en píxeles. |
 | dataStyle | `string` | `"style"`            | (get/set)<br><br>Nombre del atributo `data-*` que contiene el valor de la propiedad `style`. |
 | dataSize  | `string` | `"size"`             | (get/set)<br><br>Nombre del atributo `data-*` que contiene el valor de la propiedad `size`. |
@@ -1714,6 +1773,13 @@ Objeto para animación de carga.
 Versión: `0.1`
 
 Objeto para implementación de barras de menú.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [./src/WUI/Menubar/WUIMenubar-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.css) |
+| JS   | [./src/WUI/Menubar/WUIMenubar-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.js) |
 
 #### Constructor
 
@@ -1886,6 +1952,7 @@ Código CSS:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .my-output {
 	position: absolute;
 	top: 10px;
@@ -1913,7 +1980,17 @@ JS code:
 ```js
 // Crear objeto
 const output = document.body.querySelector(".my-output");
-const menubar = new WUIMenubar({selector: ".wui-menubar.my-menubar"});
+const menubar = new WUIMenubar({
+	selector: ".wui-menubar.my-menubar",
+	expansive: true,    // Valor predeterminado, propiedad puede ser omitida
+	topButtons: [],     // Valor predeterminado, propiedad puede ser omitida
+	mainButtons: [],    // Valor predeterminado, propiedad puede ser omitida
+	bottomButtons: [],  // Valor predeterminado, propiedad puede ser omitida
+	onClick: (id) => {
+		output.textContent = `Click button - id: "${id}"`;
+	},
+	onSelect: null      // Valor predeterminado, propiedad puede ser omitida
+});
 
 // Agregar botones
 menubar.topButtons = [{
@@ -1974,9 +2051,6 @@ menubar.bottomButtons = [{
 }];
 
 // Inicializar objeto
-menubar.onClick = (id) => {
-	output.textContent = `Click botón - índice: "${id}"`;
-};
 menubar.init();
 ```
 
@@ -1990,6 +2064,13 @@ menubar.init();
 Versión: `0.2`
 
 Objeto para implementación de listas de datos y botoneras para cada fila de manera opcional.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [./src/WUI/List/WUIList-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.css) |
+| JS   | [./src/WUI/List/WUIList-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.js) |
 
 #### Constructor
 
@@ -2142,28 +2223,35 @@ Código CSS:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 header {
 	max-width: 600px;
 	text-align: right;
 }
+
 .my-link {
 	margin: 0 10px;
 	text-decoration: none;
 }
+
 .my-link.disabled {
 	color: #ccc;
 }
+
 .my-paging {
 	display: inline;
 	font-size: 16px;
 }
+
 nav {
 	width: 600px;
 	margin: 10px 0;
 }
+
 footer {
 	max-width: 600px;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;
@@ -2305,6 +2393,13 @@ list.print();
 Versión: `0.2`
 
 Objeto para implementación de tablas de datos. A diferencia del objeto `WUIList`, el objeto `WUITable` incluye una cabecera de columnas.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [./src/WUI/Table/WUITable-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.css) |
+| JS   | [./src/WUI/Table/WUITable-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.js) |
 
 #### Constructor
 
@@ -2475,28 +2570,35 @@ Código CSS:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 header {
 	max-width: 600px;
 	text-align: right;
 }
+
 .my-link {
 	margin: 0 10px;
 	text-decoration: none;
 }
+
 .my-link.disabled {
 	color: #ccc;
 }
+
 .my-paging {
 	display: inline;
 	font-size: 16px;
 }
+
 nav {
 	width: 600px;
 	margin: 10px 0;
 }
+
 footer {
 	max-width: 600px;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;
@@ -2651,6 +2753,13 @@ table.print();
 Versión: `0.2`
 
 Objeto para implementación de botones.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [./src/WUI/Button/WUIButton-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.css) |
+| JS   | [./src/WUI/Button/WUIButton-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.js) |
 
 #### Constructor
 
@@ -2811,9 +2920,11 @@ Código CSS:
 body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
+
 .my-button {
 	margin: 20px;
 }
+
 .my-output {
 	margin: 10px;
 	font-family: monospace;
