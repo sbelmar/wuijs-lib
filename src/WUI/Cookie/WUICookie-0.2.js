@@ -90,23 +90,19 @@ class WUICookie {
 	get(name) {
 		const cname = name + "=";
 		let cookies = [];
-		let value = "";
 		if (navigator.cookieEnabled) {
 			try {
 				cookies = decodeURIComponent(document.cookie).split(";");
 			} catch (error) {
 				console.error("WUICookie error:", error);
 			}
-			cookies.forEach(part => {
-				while (part.charAt(0) == " ") {
-					part = part.substring(1);
-				}
-				if (part.indexOf(cname) == 0) {
-					value = part.substring(cname.length, part.length);
-				}
+			const cookie = cookies.find(part => {
+				const trimmed = part.trim();
+				return trimmed.indexOf(cname) == 0;
 			});
+			return cookie ? cookie.substring(cname.length) : "";
 		}
-		return value;
+		return "";
 	}
 
 	remove(name) {

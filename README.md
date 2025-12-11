@@ -91,7 +91,7 @@ To install the WUI library, must be cloned from the GitHib official distribution
 ```bash
 cd ./downloads
 git clone https://git@github.com/sbelmar/wuijs-lib.git
-cp -r ./wuijs-lib/src/WDS ../src/Libraries/
+cp -r ./wuijs-lib/src/WUI ../src/Libraries/
 ```
 
 Optionally, it can be downloaded from the same repositories in ZIP format.
@@ -99,8 +99,8 @@ Optionally, it can be downloaded from the same repositories in ZIP format.
 ```bash
 cd ./downloads
 wget https://github.com/sbelmar/wuijs-lib/archive/refs/heads/main.zip
-tar -xzf main.zip
-cp -r ./wuijs-lib-main/src/WDS ../src/Libraries/
+unzip main.zip
+cp -r ./wuijs-lib-main/src/WUI ../src/Libraries/
 ```
 
 <a name="implementation"></a>
