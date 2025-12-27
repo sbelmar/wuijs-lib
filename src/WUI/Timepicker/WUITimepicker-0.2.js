@@ -68,10 +68,10 @@ class WUITimepicker {
 	#cancelTime;
 	#colorScheme;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUITimepicker.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([name, value]) => {
+			this[name] = name in properties ? properties[name] : value;
 		});
 		this.#colorScheme = null;
 	}
@@ -81,15 +81,15 @@ class WUITimepicker {
 	}
 
 	get value() {
-		return this.#htmlElements.input.value;
+		return (this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.value : this.#properties.value);
 	}
 
 	get min() {
-		return this.#htmlElements.input.min;
+		return (this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.min : this.#properties.min);
 	}
 
 	get max() {
-		return this.#htmlElements.input.max;
+		return (this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.max : this.#properties.max);
 	}
 
 	get lang() {
@@ -133,13 +133,19 @@ class WUITimepicker {
 
 	set min(value) {
 		if (typeof (value) == "string" && value.match(/^(\d{2}:\d{2})?$/)) {
-			this.#htmlElements.input.min = value;
+			this.#properties.min = value;
+			if (this.#htmlElements.input instanceof HTMLInputElement) {
+				this.#htmlElements.input.min = value;
+			}
 		}
 	}
 
 	set max(value) {
 		if (typeof (value) == "string" && value.match(/^(\d{2}:\d{2})?$/)) {
-			this.#htmlElements.input.max = value;
+			this.#properties.max = value;
+			if (this.#htmlElements.input instanceof HTMLInputElement) {
+				this.#htmlElements.input.max = value;
+			}
 		}
 	}
 
@@ -170,7 +176,7 @@ class WUITimepicker {
 		if (typeof (value) == "boolean") {
 			this.#properties.enabled = value;
 			this.#htmlElements.input.disabled = !value;
-			if (typeof (this.#htmlElements.inputs) != "undefined") {
+			if (this.#htmlElements.inputHours instanceof HTMLInputElement && this.#htmlElements.inputMinutes instanceof HTMLInputElement) {
 				this.#htmlElements.inputHours.disabled = !value;
 				this.#htmlElements.inputMinutes.disabled = !value;
 				if (value) {
@@ -180,8 +186,8 @@ class WUITimepicker {
 					this.#htmlElements.inputHours.setAttribute("disabled", "true");
 					this.#htmlElements.inputMinutes.setAttribute("disabled", "true");
 				}
+				this.#setStyle();
 			}
-			this.#setStyle();
 		}
 	}
 
@@ -216,21 +222,28 @@ class WUITimepicker {
 	}
 
 	#setValue(value) {
-		this.#htmlElements.input.value = value;
-		this.#htmlElements.input.dispatchEvent(new Event("change"));
+		this.#properties.value = value;
+		if (this.#htmlElements.input instanceof HTMLInputElement) {
+			this.#htmlElements.input.value = value;
+			this.#htmlElements.input.dispatchEvent(new Event("change"));
+		}
 	}
 
 	#setView(time) {
-		this.#htmlElements.inputHours.value = time instanceof Date ? ("0" + time.getHours()).slice(-2) : "";
-		this.#htmlElements.inputMinutes.value = time instanceof Date ? ("0" + time.getMinutes()).slice(-2) : "";
+		if (this.#htmlElements.inputHours instanceof HTMLInputElement && this.#htmlElements.inputMinutes instanceof HTMLInputElement) {
+			this.#htmlElements.inputHours.value = time instanceof Date ? ("0" + time.getHours()).slice(-2) : "";
+			this.#htmlElements.inputMinutes.value = time instanceof Date ? ("0" + time.getMinutes()).slice(-2) : "";
+		}
 	}
 
 	#setStyle() {
-		const disabled = this.#htmlElements.input.disabled;
-		if (disabled) {
-			this.#htmlElement.classList.add("disabled");
-		} else {
-			this.#htmlElement.classList.remove("disabled");
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLInputElement) {
+			const disabled = this.#htmlElements.input.disabled;
+			if (disabled) {
+				this.#htmlElement.classList.add("disabled");
+			} else {
+				this.#htmlElement.classList.remove("disabled");
+			}
 		}
 	}
 
@@ -247,98 +260,100 @@ class WUITimepicker {
 		this.#htmlElements.footer = document.createElement("div");
 		this.#htmlElements.cancelButton = document.createElement("button");
 		this.#htmlElements.acceptButton = document.createElement("button");
-		this.#htmlElement.appendChild(this.#htmlElements.opener);
-		this.#htmlElement.appendChild(this.#htmlElements.inputs);
-		this.#htmlElement.appendChild(this.#htmlElements.background);
-		this.#htmlElement.appendChild(this.#htmlElements.box);
-		this.#htmlElement.addEventListener("click", event => {
-			if (this.#properties.enabled && (event.target.classList.contains("wui-timepicker") || event.target.classList.contains("opener"))) {
-				this.toggle();
-			}
-		});
-		["min", "max", "style"].forEach(name => {
-			if (this.#htmlElements.input.hasAttribute(name)) {
-				if (name.match(/(min|max)/)) {
-					this[name] = this.#htmlElements.input[name];
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLInputElement) {
+			this.#htmlElement.appendChild(this.#htmlElements.opener);
+			this.#htmlElement.appendChild(this.#htmlElements.inputs);
+			this.#htmlElement.appendChild(this.#htmlElements.background);
+			this.#htmlElement.appendChild(this.#htmlElements.box);
+			this.#htmlElement.addEventListener("click", event => {
+				if (this.#properties.enabled && (event.target.classList.contains("wui-timepicker") || event.target.classList.contains("opener"))) {
+					this.toggle();
 				}
-				if (this.#htmlElements.input.getAttribute(name) != null) {
-					this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode(name));
-				}
-			}
-		});
-		["hours", "minutes"].forEach((part, i) => {
-			const name = part.charAt(0).toUpperCase() + part.slice(1);
-			const input = this.#htmlElements["input" + name];
-			const list = this.#htmlElements["list" + name];
-			const max = part == "hours" ? 23 : 59;
-			input.type = "text";
-			input.name = this.#htmlElements.input.name + name;
-			input.placeholder = part == "hours" ? "hh" : "mm";
-			input.maxLength = 2;
-			input.className = part;
-			input.addEventListener("click", () => { this.toggle(); });
-			input.addEventListener("keyup", event => {
-				const value = event.target.value;
-				const part = event.target.className;
-				const min = 0;
-				const max = part == "hours" ? 23 : 59;
-				event.target.value = parseInt(value) > max ? max : parseInt(value) < min ? min : value;
-				this.#loadValue();
 			});
-			this.#htmlElements.inputs.appendChild(input);
-			if (i < 1) {
-				const span = document.createElement("span");
-				span.textContent = ":";
-				this.#htmlElements.inputs.appendChild(span);
-			}
-			for (let i = 0; i <= max; i++) {
-				const option = document.createElement("li");
-				option.dataset.value = i;
-				option.textContent = i;
-				option.addEventListener("click", () => {
-					const selected = !Boolean(option.classList.contains("selected"));
-					const targetValue =
-						part == "hours" ? ("0" + i).slice(-2) + ":" + ("0" + this.#htmlElements.inputMinutes.value).slice(-2) :
-							part == "minutes" ? ("0" + this.#htmlElements.inputHours.value).slice(-2) + ":" + ("0" + i).slice(-2) :
-								"";
-					const value = selected ? targetValue : "";
-					const time = selected ? new Date("1970-01-01T" + targetValue + ":00") : null;
-					list.scrollTop = option.offsetTop - parseInt(list.clientHeight / 2);
-					list.querySelectorAll("li").forEach(li => {
-						if (typeof (li.dataset.value) != "undefined" && li.dataset.value != i) {
-							li.classList.remove("selected");
-						}
-					});
-					option.classList.toggle("selected");
-					this.#targetValue = value;
-					this.#targetDate = time;
-					this.#setValue(value);
-					this.#setView(time);
+			["min", "max", "style"].forEach(name => {
+				if (this.#htmlElements.input.hasAttribute(name)) {
+					if (name.match(/(min|max)/)) {
+						this[name] = this.#htmlElements.input[name];
+					}
+					if (this.#htmlElements.input.getAttribute(name) != null) {
+						this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode(name));
+					}
+				}
+			});
+			["hours", "minutes"].forEach((part, i) => {
+				const name = part.charAt(0).toUpperCase() + part.slice(1);
+				const input = this.#htmlElements["input" + name];
+				const list = this.#htmlElements["list" + name];
+				const max = part == "hours" ? 23 : 59;
+				input.type = "text";
+				input.name = this.#htmlElements.input.name + name;
+				input.placeholder = part == "hours" ? "hh" : "mm";
+				input.maxLength = 2;
+				input.className = part;
+				input.addEventListener("click", () => { this.toggle(); });
+				input.addEventListener("keyup", event => {
+					const value = event.target.value;
+					const part = event.target.className;
+					const min = 0;
+					const max = part == "hours" ? 23 : 59;
+					event.target.value = parseInt(value) > max ? max : parseInt(value) < min ? min : value;
+					this.#loadValue();
 				});
-				list.appendChild(option);
-			}
-		});
-		this.#htmlElements.opener.className = "opener";
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		this.#htmlElements.inputs.className = "inputs";
-		this.#htmlElements.background.className = "background hidden";
-		this.#htmlElements.box.className = "box " + this.#properties.openDirection + " hidden";
-		this.#htmlElements.box.appendChild(this.#htmlElements.lists);
-		this.#htmlElements.box.appendChild(this.#htmlElements.footer);
-		this.#htmlElements.lists.className = "lists";
-		this.#htmlElements.lists.appendChild(this.#htmlElements.listHours);
-		this.#htmlElements.lists.appendChild(this.#htmlElements.listMinutes);
-		this.#htmlElements.footer.className = "footer";
-		this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
-		this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
-		this.#htmlElements.cancelButton.className = "cancel";
-		this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
-		this.#htmlElements.acceptButton.className = "accept";
-		this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
-		this.#prepare();
-		this.#darkModeListener(() => {
-			this.#setStyle();
-		});
+				this.#htmlElements.inputs.appendChild(input);
+				if (i < 1) {
+					const span = document.createElement("span");
+					span.textContent = ":";
+					this.#htmlElements.inputs.appendChild(span);
+				}
+				for (let i = 0; i <= max; i++) {
+					const option = document.createElement("li");
+					option.dataset.value = i;
+					option.textContent = i;
+					option.addEventListener("click", () => {
+						const selected = !Boolean(option.classList.contains("selected"));
+						const targetValue =
+							part == "hours" ? ("0" + i).slice(-2) + ":" + ("0" + this.#htmlElements.inputMinutes.value).slice(-2) :
+								part == "minutes" ? ("0" + this.#htmlElements.inputHours.value).slice(-2) + ":" + ("0" + i).slice(-2) :
+									"";
+						const value = selected ? targetValue : "";
+						const time = selected ? new Date("1970-01-01T" + targetValue + ":00") : null;
+						list.scrollTop = option.offsetTop - parseInt(list.clientHeight / 2);
+						list.querySelectorAll("li").forEach(li => {
+							if (typeof (li.dataset.value) != "undefined" && li.dataset.value != i) {
+								li.classList.remove("selected");
+							}
+						});
+						option.classList.toggle("selected");
+						this.#targetValue = value;
+						this.#targetDate = time;
+						this.#setValue(value);
+						this.#setView(time);
+					});
+					list.appendChild(option);
+				}
+			});
+			this.#htmlElements.opener.className = "opener";
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			this.#htmlElements.inputs.className = "inputs";
+			this.#htmlElements.background.className = "background hidden";
+			this.#htmlElements.box.className = "box " + this.#properties.openDirection + " hidden";
+			this.#htmlElements.box.appendChild(this.#htmlElements.lists);
+			this.#htmlElements.box.appendChild(this.#htmlElements.footer);
+			this.#htmlElements.lists.className = "lists";
+			this.#htmlElements.lists.appendChild(this.#htmlElements.listHours);
+			this.#htmlElements.lists.appendChild(this.#htmlElements.listMinutes);
+			this.#htmlElements.footer.className = "footer";
+			this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
+			this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
+			this.#htmlElements.cancelButton.className = "cancel";
+			this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
+			this.#htmlElements.acceptButton.className = "accept";
+			this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
+			this.#prepare();
+			this.#darkModeListener(() => {
+				this.#setStyle();
+			});
+		}
 	}
 
 	#prepare() {
@@ -352,12 +367,14 @@ class WUITimepicker {
 		this.#nowValue = now;
 		this.#nowHours = parseInt(this.#nowValue.split(":")[0]);
 		this.#nowMinutes = parseInt(this.#nowValue.split(":")[1]);
-		this.#targetValue = this.#htmlElements.input.value || now;
+		this.#targetValue = this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.value : now;
 		this.#targetTime = new Date("1970-01-01T" + this.#targetValue + ":00");
 		this.#cancelValue = this.#targetValue;
 		this.#cancelTime = new Date("1970-01-01T" + this.#targetValue + ":00");
-		this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
-		this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		if (this.#htmlElements.cancelButton instanceof HTMLButtonElement && this.#htmlElements.acceptButton instanceof HTMLButtonElement) {
+			this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
+			this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		}
 		this.#setView(this.#targetTime);
 	}
 
@@ -369,56 +386,66 @@ class WUITimepicker {
 			const list = this.#htmlElements["list" + name];
 			const value = part == "hours" ? hours : minutes;
 			const nowValue = part == "hours" ? this.#nowHours : this.#nowMinutes;
-			list.querySelectorAll("li").forEach((li, i) => {
-				if (i == nowValue) {
-					li.classList.add("now");
-				} else {
-					li.classList.remove("now");
-				}
-				if (i == value) {
-					list.scrollTop = li.offsetTop - parseInt(list.clientHeight / 2);
-					li.classList.add("selected");
-				} else {
-					li.classList.remove("selected");
-				}
-			});
+			if (list instanceof HTMLUListElement) {
+				list.querySelectorAll("li").forEach((li, i) => {
+					if (i == nowValue) {
+						li.classList.add("now");
+					} else {
+						li.classList.remove("now");
+					}
+					if (i == value) {
+						list.scrollTop = li.offsetTop - parseInt(list.clientHeight / 2);
+						li.classList.add("selected");
+					} else {
+						li.classList.remove("selected");
+					}
+				});
+			}
 		});
 	}
 
 	#loadValue() {
-		const value = this.#htmlElements.input.value;
-		const hours = this.#htmlElements.inputHours.value;
-		const minutes = this.#htmlElements.inputMinutes.value;
-		this.#setValue(hours != "" && minutes != "" ? ("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2) : "");
-		if (this.#htmlElements.input.value != value && typeof (this.#properties.onChange) == "function") {
-			this.#properties.onChange(this.#htmlElements.input.value);
+		if (this.#htmlElements.input instanceof HTMLInputElement && this.#htmlElements.inputHours instanceof HTMLInputElement && this.#htmlElements.inputMinutes instanceof HTMLInputElement) {
+			const value = this.#htmlElements.input.value;
+			const hours = this.#htmlElements.inputHours.value;
+			const minutes = this.#htmlElements.inputMinutes.value;
+			this.#setValue(hours != "" && minutes != "" ? ("0" + hours).slice(-2) + ":" + ("0" + minutes).slice(-2) : "");
+			if (this.#htmlElements.input.value != value && typeof (this.#properties.onChange) == "function") {
+				this.#properties.onChange(this.#htmlElements.input.value);
+			}
 		}
 	}
 
 	open() {
-		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
-		this.#htmlElements.background.classList.remove("hidden");
-		this.#htmlElements.box.classList.remove("hidden");
-		this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
-		this.#prepare();
-		this.#loadBox();
-		if (typeof (this.#properties.onOpen) == "function") {
-			this.#properties.onOpen(this.#htmlElements.input.value);
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
+			this.#htmlElements.background.classList.remove("hidden");
+			this.#htmlElements.box.classList.remove("hidden");
+			this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
+			this.#prepare();
+			this.#loadBox();
+			if (typeof (this.#properties.onOpen) == "function") {
+				this.#properties.onOpen(this.#htmlElements.input.value);
+			}
 		}
 	}
 
 	close() {
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		this.#htmlElements.background.classList.add("hidden");
-		this.#htmlElements.box.classList.add("hidden");
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			this.#htmlElements.background.classList.add("hidden");
+			this.#htmlElements.box.classList.add("hidden");
+		}
 	}
 
 	toggle() {
-		if (this.#htmlElements.box.classList.contains("hidden")) {
-			this.open();
-		} else {
-			this.close();
+		if (this.#htmlElements.box instanceof HTMLDivElement) {
+			if (this.#htmlElements.box.classList.contains("hidden")) {
+				this.open();
+			} else {
+				this.close();
+			}
 		}
 	}
 
@@ -433,15 +460,15 @@ class WUITimepicker {
 	}
 
 	isOpen() {
-		return !Boolean(this.#htmlElements.box.classList.contains("hidden"));
+		return Boolean(this.#htmlElements.box instanceof HTMLDivElement ? !this.#htmlElements.box.classList.contains("hidden") : false);
 	}
 
 	isEmpty() {
-		return this.#htmlElements.input.value == "" || this.#htmlElements.inputHours.value == "" || this.#htmlElements.inputMinutes.value == "";
+		return Boolean(this.#htmlElements.input instanceof HTMLInputElement && this.#htmlElements.inputHours instanceof HTMLInputElement && this.#htmlElements.inputMinutes instanceof HTMLInputElement ? (this.#htmlElements.input.value == "" || this.#htmlElements.inputHours.value == "" || this.#htmlElements.inputMinutes.value == "") : false);
 	}
 
 	isValid() {
-		return this.#htmlElements.input.value.match(/^(\d{2}:\d{2})?$/);
+		return Boolean(this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.value.match(/^(\d{2}:\d{2})?$/) : false);
 	}
 
 	#darkModeListener(callback) {

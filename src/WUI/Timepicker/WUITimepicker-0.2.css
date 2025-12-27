@@ -4,15 +4,16 @@
  * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
  */
 
-.wui-timepicker,
-.wui-timepicker * {
+div.wui-timepicker,
+div.wui-timepicker * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
 
-.wui-timepicker {
+div.wui-timepicker {
+	position: relative;
 	width: 100%;
 	height: 30px;
 	margin: 0;
@@ -20,11 +21,11 @@
 	padding-right: var(--wui-timepicker-opener-iconsize);
 }
 
-.wui-timepicker > input[type="time"] {
+div.wui-timepicker > input[type="time"] {
 	display: none;
 }
 
-.wui-timepicker > .opener {
+div.wui-timepicker > .opener {
 	cursor: pointer;
 	position: absolute;
 	top: 50%;
@@ -46,21 +47,21 @@
 	transform: translateY(-50%);
 }
 
-.wui-timepicker:not(.disabled):is(:hover, :focus, :focus-within) > .opener {
+div.wui-timepicker:not(.disabled):is(:hover, :focus, :focus-within) > .opener {
 	background-color: var(--wui-timepicker-opener-iconcolor-over);
 }
 
-.wui-timepicker.disabled > .opener {
+div.wui-timepicker.disabled > .opener {
 	background-color: var(--wui-timepicker-opener-iconcolor-disabled) !important;
 }
 
-.wui-timepicker > .inputs {
+div.wui-timepicker > .inputs {
 	display: flex;
 	height: 100%;
 	align-items: center;
 }
 
-.wui-timepicker > .inputs > input[type="text"] {
+div.wui-timepicker > .inputs > input[type="text"] {
 	width: 20px;
 	height: 100%;
 	margin: 0;
@@ -73,11 +74,11 @@
 	font-size: 14px;
 }
 
-.wui-timepicker > .inputs > input[type="text"]:last-child {
+div.wui-timepicker > .inputs > input[type="text"]:last-child {
 	width: 24px;
 }
 
-.wui-timepicker > .inputs > span {
+div.wui-timepicker > .inputs > span {
 	margin: 0;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -86,7 +87,7 @@
 	user-select: none;
 }
 
-.wui-timepicker > .background {
+div.wui-timepicker > .background {
 	display: none;
 	position: fixed;
 	z-index: 100;
@@ -98,16 +99,16 @@
 	height: 100vh;
 }
 
-.wui-timepicker > .background.hidden {
+div.wui-timepicker > .background.hidden {
 	display: none;
 }
 
-.wui-timepicker > .box,
-.wui-timepicker > .box * {
+div.wui-timepicker > .box,
+div.wui-timepicker > .box * {
 	display: flex;
 }
 
-.wui-timepicker > .box {
+div.wui-timepicker > .box {
 	--box-shadow: rgb(from var(--wui-timepicker-box-shadowcolor) r g b / 20%) 0px 8px 24px;
 	--box-filter: blur(10px);
 	position: absolute;
@@ -130,25 +131,25 @@
 	padding: 5px;
 }
 
-.wui-timepicker > .box.down {
+div.wui-timepicker > .box.down {
 	bottom: auto;
 }
 
-.wui-timepicker > .box.up {
+div.wui-timepicker > .box.up {
 	bottom: 0;
 }
 
-.wui-timepicker > .box.hidden {
+div.wui-timepicker > .box.hidden {
 	display: none;
 }
 
-.wui-timepicker > .box > .lists {
+div.wui-timepicker > .box > .lists {
 	height: 220px;
 	align-items: center;
 	justify-content: center;
 }
 
-.wui-timepicker > .box > .lists > ul {
+div.wui-timepicker > .box > .lists > ul {
 	display: block;
 	max-height: 100%;
 	overflow-y: auto;
@@ -158,15 +159,15 @@
 	list-style-type: none;
 }
 
-.wui-timepicker > .box > .lists > ul::before,
-.wui-timepicker > .box > .lists > ul::after {
+div.wui-timepicker > .box > .lists > ul::before,
+div.wui-timepicker > .box > .lists > ul::after {
 	content: "";
 	display: block;
 	width: 32px;
 	height: calc(220px / 2 - 5px);
 }
 
-.wui-timepicker > .box > .lists > ul > li {
+div.wui-timepicker > .box > .lists > ul > li {
 	cursor: pointer;
 	display: grid;
 	width: 32px;
@@ -179,21 +180,21 @@
 	color: var(--wui-timepicker-box-option-textcolor-out);
 }
 
-.wui-timepicker > .box > .lists > ul > li:hover {
+div.wui-timepicker > .box > .lists > ul > li:hover {
 	background-color: var(--wui-timepicker-box-option-bgcolor-over);
 	color: var(--wui-timepicker-box-option-textcolor-over);
 }
 
-.wui-timepicker > .box > .lists > ul > li.now {
+div.wui-timepicker > .box > .lists > ul > li.now {
 	background-color: var(--wui-timepicker-box-option-bgcolor-now);
 }
 
-.wui-timepicker > .box > .lists > ul > li.selected {
+div.wui-timepicker > .box > .lists > ul > li.selected {
 	background-color: var(--wui-timepicker-box-option-bgcolor-selected);
 	color: var(--wui-timepicker-box-option-textcolor-selected);
 }
 
-.wui-timepicker > .box > .footer {
+div.wui-timepicker > .box > .footer {
 	display: flex;
 	position: absolute;
 	left: 0;
@@ -207,7 +208,7 @@
 	flex-wrap: wrap;
 }
 
-.wui-timepicker > .box > .footer > button {
+div.wui-timepicker > .box > .footer > button {
 	cursor: pointer;
 	height: 100%;
 	margin: 0;
@@ -228,25 +229,25 @@
 	color: var(--wui-timepicker-box-button-textcolor-out);
 }
 
-.wui-timepicker > .box > .footer > button:hover {
+div.wui-timepicker > .box > .footer > button:hover {
 	color: var(--wui-timepicker-box-button-textcolor-over);
 }
 
-.wui-timepicker > .box > .footer > button.accept {
+div.wui-timepicker > .box > .footer > button.accept {
 	font-weight: bold;
 }
 
 @media screen and (max-width: 767px) {
-	.wui-timepicker > input[type="text"] {
+	div.wui-timepicker > input[type="text"] {
 		font-size: 15px;
 	}
 
-	.wui-timepicker > .background {
+	div.wui-timepicker > .background {
 		display: block;
 		background-color: var(--wui-timepicker-mobile-overlay-bgcolor);
 	}
 
-	.wui-timepicker > .box {
+	div.wui-timepicker > .box {
 		--box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 		--box-transform: translate(-50%, -50%);
 		position: fixed;
@@ -260,7 +261,7 @@
 		transform: var(--box-transform);
 	}
 
-	.wui-timepicker > .box > .lists {
+	div.wui-timepicker > .box > .lists {
 		height: 260px;
 		overflow-y: auto;
 		overflow-x: hidden;
@@ -269,23 +270,23 @@
 		scrollbar-color: transparent transparent;
 	}
 
-	.wui-timepicker > .box > .lists > ul::before,
-	.wui-timepicker > .box > .lists > ul::after {
+	div.wui-timepicker > .box > .lists > ul::before,
+	div.wui-timepicker > .box > .lists > ul::after {
 		width: 32px;
 		height: calc(260px / 2 - 5px);
 	}
 
-	.wui-timepicker > .box > .lists > ul > li {
+	div.wui-timepicker > .box > .lists > ul > li {
 		width: 36px;
 		height: 36px;
 		font-size: 15px;
 	}
 
-	.wui-timepicker > .box > .footer {
+	div.wui-timepicker > .box > .footer {
 		height: 40px;
 	}
 
-	.wui-timepicker > .box > .footer > button {
+	div.wui-timepicker > .box > .footer > button {
 		font-size: 17px;
 	}
 }

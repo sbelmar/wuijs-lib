@@ -64,27 +64,39 @@ Características:
 16. Actualización versión clase WUISelectpicker a 0.2.
 	- Se agregó soporte para valores privados.
 	- Se agregó soporte para formato CSS claro/oscuro.
+	- Se agregó la propiedad de sólo lectura `text`.
 	- Se agregó el método `destroy()`.
 	- Se agregó la variable CSS `--wui-selectpicker-box-shadowcolor`.
+	- Se agregó posicionamiento relativo al elemento HTML.
+	- Se corrigió error para asegurar referencia a elementos del DOM de tipo `HTMLInputElement`.
 	- Se corrigió error en el método privado `#addHTMLOption()`.
+	- Se deprecó el método `getValue()`, reemplazado por la propiedad de sólo lectura `value`.
+	- Se deprecó el método `getText()`, reemplazado por la propiedad de sólo lectura `text`.
 17. Actualización versión clase WUIDatepicker a 0.2.
 	- Se agregó soporte para valores privados.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó el método `destroy()`.
 	- Se agregó la variable CSS `--wui-datepicker-box-shadowcolor`.
+	- Se agregó posicionamiento relativo al elemento HTML.
+	- Se corrigió error para asegurar referencia a elementos del DOM de tipo `HTMLInputElement`.
 18. Actualización versión clase WUITimepicker a 0.2.
 	- Se agregó soporte para valores privados.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó el método `destroy()`.
 	- Se agregó la variable CSS `--wui-timepicker-box-shadowcolor`.
+	- Se agregó posicionamiento relativo al elemento HTML.
+	- Se corrigió error para asegurar referencia a elementos del DOM de tipo `HTMLInputElement`.
 19. Actualización versión clase WUIColorpicker a 0.2.
 	- Se agregó soporte para valores privados.
 	- Se agregó soporte para formato CSS claro/oscuro.
 	- Se agregó el método `destroy()`.
 	- Se agregó la variable CSS `--wui-colorpicker-box-shadowcolor`.
+	- Se agregó posicionamiento relativo al elemento HTML.
+	- Se corrigió error para asegurar referencia a elementos del DOM de tipo `HTMLInputElement`.
 20. Actualización versión clase WUICheckbox a 0.2.
 	- Se agregó soporte para valores privados.
 	- Se corrigió error en el evento de arrastre al seleccionar y deseleccionar la caja de verificación usando el evento `mousedown`, habilitándo únicamente cuando el botón izquierdo permanece presionado.
+	- Se corrigió error para asegurar referencia a elementos del DOM de tipo `HTMLInputElement`.
 21. Actualización versión clase WUIButton a 0.2.
 	- Se agregó soporte para valores privados.
 	- Se agregó propiedad `onDblClick`.

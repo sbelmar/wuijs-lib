@@ -112,15 +112,15 @@
 	color: var(--wui-menubar-bar-button-textcolor-out);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.selected, .disabled) {
+.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) {
 	background-color: var(--wui-menubar-bar-button-bgcolor-over);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
+.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-bar-button-iconcolor-over);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.selected, .disabled) > .text {
+.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > .text {
 	color: var(--wui-menubar-bar-button-textcolor-over);
 }
 
@@ -187,15 +187,15 @@
 	color: var(--wui-menubar-submenu-button-textcolor-out);
 }
 
-.wui-menubar > .submenu > .main > .button:is(:hover, :focus):not(.selected, .disabled) {
+.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) {
 	background-color: var(--wui-menubar-submenu-button-bgcolor-over);
 }
 
-.wui-menubar > .submenu > .main > .button:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
+.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-submenu-button-iconcolor-over);
 }
 
-.wui-menubar > .submenu > .main > .button:is(:hover, :focus):not(.selected, .disabled) > .text {
+.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > .text {
 	color: var(--wui-menubar-submenu-button-textcolor-over);
 }
 

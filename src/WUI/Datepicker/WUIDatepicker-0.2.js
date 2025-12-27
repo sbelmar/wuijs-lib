@@ -109,10 +109,10 @@ class WUIDatepicker {
 	#cancelDate;
 	#colorScheme;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUIDatepicker.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([name, value]) => {
+			this[name] = name in properties ? properties[name] : value;
 		});
 		this.#colorScheme = null;
 	}
@@ -126,15 +126,15 @@ class WUIDatepicker {
 	}
 
 	get value() {
-		return this.#properties.value;
+		return (this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.value : this.#properties.value);
 	}
 
 	get min() {
-		return this.#properties.min;
+		return (this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.min : this.#properties.min);
 	}
 
 	get max() {
-		return this.#properties.max;
+		return (this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.max : this.#properties.max);
 	}
 
 	get monthsNames() {
@@ -198,12 +198,18 @@ class WUIDatepicker {
 	set min(value) {
 		if (typeof (value) == "string" && value.match(/^(\d{4}-\d{2}-\d{2})?$/)) {
 			this.#properties.min = value;
+			if (this.#htmlElements.inputs instanceof HTMLElement) {
+				this.#loadInputs();
+			}
 		}
 	}
 
 	set max(value) {
 		if (typeof (value) == "string" && value.match(/^(\d{4}-\d{2}-\d{2})?$/)) {
 			this.#properties.max = value;
+			if (this.#htmlElements.inputs instanceof HTMLElement) {
+				this.#loadInputs();
+			}
 		}
 	}
 
@@ -246,7 +252,7 @@ class WUIDatepicker {
 		if (typeof (value) == "boolean") {
 			this.#properties.enabled = value;
 			this.#htmlElements.input.disabled = !value;
-			if (this.#htmlElements.inputs instanceof HTMLElement) {
+			if (this.#htmlElements.inputYear instanceof HTMLInputElement && this.#htmlElements.inputMonth instanceof HTMLInputElement && this.#htmlElements.inputDay instanceof HTMLInputElement) {
 				this.#htmlElements.inputYear.disabled = !value;
 				this.#htmlElements.inputMonth.disabled = !value;
 				this.#htmlElements.inputDay.disabled = !value;
@@ -296,11 +302,13 @@ class WUIDatepicker {
 
 	#setValue(value) {
 		this.#properties.value = value;
-		this.#htmlElements.input.dispatchEvent(new Event("change"));
+		if (this.#htmlElements.input instanceof HTMLInputElement) {
+			this.#htmlElements.input.dispatchEvent(new Event("change"));
+		}
 	}
 
 	#setView(date) {
-		if (this.#htmlElements.inputYear && this.#htmlElements.inputMonth && this.#htmlElements.inputDay) {
+		if (this.#htmlElements.inputYear instanceof HTMLInputElement && this.#htmlElements.inputMonth instanceof HTMLInputElement && this.#htmlElements.inputDay instanceof HTMLInputElement) {
 			this.#htmlElements.inputYear.value = date instanceof Date ? ("000" + date.getFullYear()).slice(-4) : "";
 			this.#htmlElements.inputMonth.value = date instanceof Date ? ("0" + (date.getMonth() + 1)).slice(-2) : "";
 			this.#htmlElements.inputDay.value = date instanceof Date ? ("0" + date.getDate()).slice(-2) : "";
@@ -308,11 +316,13 @@ class WUIDatepicker {
 	}
 
 	#setStyle() {
-		const disabled = this.#htmlElements.input.disabled;
-		if (disabled) {
-			this.#htmlElement.classList.add("disabled");
-		} else {
-			this.#htmlElement.classList.remove("disabled");
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLInputElement) {
+			const disabled = this.#htmlElements.input.disabled;
+			if (disabled) {
+				this.#htmlElement.classList.add("disabled");
+			} else {
+				this.#htmlElement.classList.remove("disabled");
+			}
 		}
 	}
 
@@ -336,88 +346,90 @@ class WUIDatepicker {
 		this.#htmlElements.footer = document.createElement("div");
 		this.#htmlElements.cancelButton = document.createElement("button");
 		this.#htmlElements.acceptButton = document.createElement("button");
-		this.#htmlElement.appendChild(this.#htmlElements.opener);
-		this.#htmlElement.appendChild(this.#htmlElements.inputs);
-		this.#htmlElement.appendChild(this.#htmlElements.background);
-		this.#htmlElement.appendChild(this.#htmlElements.box);
-		this.#htmlElement.addEventListener("click", event => {
-			if (this.#properties.enabled && (event.target.classList.contains("wui-datepicker") || event.target.classList.contains("opener"))) {
-				this.toggle();
-			}
-		});
-		["min", "max", "style"].forEach(name => {
-			if (this.#htmlElements.input.hasAttribute(name)) {
-				if (name.match(/(min|max)/)) {
-					this[name] = this.#htmlElements.input[name];
-				}
-				if (this.#htmlElements.input.getAttribute(name) != null) {
-					this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode(name));
-				}
-			}
-		});
-		["year", "month", "day"].forEach(part => {
-			const name = part.charAt(0).toUpperCase() + part.slice(1);
-			const input = this.#htmlElements["input" + name];
-			input.type = "text";
-			input.name = this.#htmlElements.input.name + name;
-			input.placeholder = part == "year" ? "yyyy" : part == "month" ? "mm" : "dd";
-			input.maxLength = part == "year" ? 4 : 2;
-			input.className = part;
-			input.addEventListener("click", () => { this.toggle(); });
-			input.addEventListener("keyup", event => {
-				const value = event.target.value;
-				const part = event.target.className;
-				const min = 1;
-				const max = part == "year" ? 3000 : part == "month" ? 12 : 31;
-				event.target.value = parseInt(value) > max ? max : parseInt(value) < min ? min : value;
-				this.#loadValue();
-				if (this.isOpen()) {
-					this.#prepare();
-					this.#loadBox();
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLInputElement) {
+			this.#htmlElement.appendChild(this.#htmlElements.opener);
+			this.#htmlElement.appendChild(this.#htmlElements.inputs);
+			this.#htmlElement.appendChild(this.#htmlElements.background);
+			this.#htmlElement.appendChild(this.#htmlElements.box);
+			this.#htmlElement.addEventListener("click", event => {
+				if (this.#properties.enabled && (event.target.classList.contains("wui-datepicker") || event.target.classList.contains("opener"))) {
+					this.toggle();
 				}
 			});
-		});
-		this.#htmlElements.opener.className = "opener";
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		this.#htmlElements.inputs.className = "inputs";
-		this.#htmlElements.background.className = "background hidden";
-		this.#htmlElements.box.className = `box ${this.#properties.boxAlign} ${this.#properties.openDirection} hidden`;
-		this.#htmlElements.box.appendChild(this.#htmlElements.header);
-		this.#htmlElements.box.appendChild(this.#htmlElements.months);
-		this.#htmlElements.box.appendChild(this.#htmlElements.week);
-		this.#htmlElements.box.appendChild(this.#htmlElements.days);
-		this.#htmlElements.box.appendChild(this.#htmlElements.footer);
-		this.#htmlElements.header.className = "header";
-		this.#htmlElements.header.appendChild(this.#htmlElements.period);
-		this.#htmlElements.header.appendChild(this.#htmlElements.prev);
-		this.#htmlElements.header.appendChild(this.#htmlElements.next);
-		this.#htmlElements.period.className = "period";
-		this.#htmlElements.period.addEventListener("click", () => { this.toggleMode(); });
-		this.#htmlElements.period.appendChild(this.#htmlElements.periodText);
-		this.#htmlElements.period.appendChild(this.#htmlElements.periodIcon);
-		this.#htmlElements.periodText.className = "text";
-		this.#htmlElements.periodIcon.className = "icon";
-		this.#htmlElements.prev.className = "prev";
-		this.#htmlElements.prev.style.maskImage = this.#getSRCIcon("box-paging-prev");
-		this.#htmlElements.prev.addEventListener("click", () => { this.prev(); });
-		this.#htmlElements.next.className = "next";
-		this.#htmlElements.next.style.maskImage = this.#getSRCIcon("box-paging-next");
-		this.#htmlElements.next.addEventListener("click", () => { this.next(); });
-		this.#htmlElements.months.className = "months";
-		this.#htmlElements.week.className = "week";
-		this.#htmlElements.days.className = "days";
-		this.#htmlElements.footer.className = "footer";
-		this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
-		this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
-		this.#htmlElements.cancelButton.className = "cancel";
-		this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
-		this.#htmlElements.acceptButton.className = "accept";
-		this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
-		this.#prepare();
-		this.#loadInputs();
-		this.#darkModeListener(() => {
-			this.#setStyle();
-		});
+			["min", "max", "style"].forEach(name => {
+				if (this.#htmlElements.input.hasAttribute(name)) {
+					if (name.match(/(min|max)/)) {
+						this[name] = this.#htmlElements.input[name];
+					}
+					if (this.#htmlElements.input.getAttribute(name) != null) {
+						this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode(name));
+					}
+				}
+			});
+			["year", "month", "day"].forEach(part => {
+				const name = part.charAt(0).toUpperCase() + part.slice(1);
+				const input = this.#htmlElements["input" + name];
+				input.type = "text";
+				input.name = this.#htmlElements.input.name + name;
+				input.placeholder = part == "year" ? "yyyy" : part == "month" ? "mm" : "dd";
+				input.maxLength = part == "year" ? 4 : 2;
+				input.className = part;
+				input.addEventListener("click", () => { this.toggle(); });
+				input.addEventListener("keyup", event => {
+					const value = event.target.value;
+					const part = event.target.className;
+					const min = 1;
+					const max = part == "year" ? 3000 : part == "month" ? 12 : 31;
+					event.target.value = parseInt(value) > max ? max : parseInt(value) < min ? min : value;
+					this.#loadValue();
+					if (this.isOpen()) {
+						this.#prepare();
+						this.#loadBox();
+					}
+				});
+			});
+			this.#htmlElements.opener.className = "opener";
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			this.#htmlElements.inputs.className = "inputs";
+			this.#htmlElements.background.className = "background hidden";
+			this.#htmlElements.box.className = `box ${this.#properties.boxAlign} ${this.#properties.openDirection} hidden`;
+			this.#htmlElements.box.appendChild(this.#htmlElements.header);
+			this.#htmlElements.box.appendChild(this.#htmlElements.months);
+			this.#htmlElements.box.appendChild(this.#htmlElements.week);
+			this.#htmlElements.box.appendChild(this.#htmlElements.days);
+			this.#htmlElements.box.appendChild(this.#htmlElements.footer);
+			this.#htmlElements.header.className = "header";
+			this.#htmlElements.header.appendChild(this.#htmlElements.period);
+			this.#htmlElements.header.appendChild(this.#htmlElements.prev);
+			this.#htmlElements.header.appendChild(this.#htmlElements.next);
+			this.#htmlElements.period.className = "period";
+			this.#htmlElements.period.addEventListener("click", () => { this.toggleMode(); });
+			this.#htmlElements.period.appendChild(this.#htmlElements.periodText);
+			this.#htmlElements.period.appendChild(this.#htmlElements.periodIcon);
+			this.#htmlElements.periodText.className = "text";
+			this.#htmlElements.periodIcon.className = "icon";
+			this.#htmlElements.prev.className = "prev";
+			this.#htmlElements.prev.style.maskImage = this.#getSRCIcon("box-paging-prev");
+			this.#htmlElements.prev.addEventListener("click", () => { this.prev(); });
+			this.#htmlElements.next.className = "next";
+			this.#htmlElements.next.style.maskImage = this.#getSRCIcon("box-paging-next");
+			this.#htmlElements.next.addEventListener("click", () => { this.next(); });
+			this.#htmlElements.months.className = "months";
+			this.#htmlElements.week.className = "week";
+			this.#htmlElements.days.className = "days";
+			this.#htmlElements.footer.className = "footer";
+			this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
+			this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
+			this.#htmlElements.cancelButton.className = "cancel";
+			this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
+			this.#htmlElements.acceptButton.className = "accept";
+			this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
+			this.#prepare();
+			this.#loadInputs();
+			this.#darkModeListener(() => {
+				this.#setStyle();
+			});
+		}
 	}
 
 	#prepare() {
@@ -435,8 +447,10 @@ class WUIDatepicker {
 			const name = new Date(2023, i, 1, 0, 0, 0).toLocaleString(this.#properties.locales, { month: "long" });
 			this.#properties.monthsNames[i] = name.replace(/^\s*(\w)/, letter => letter.toUpperCase());
 		}
-		this.#htmlElements.cancelButton.textContent = typeof (this.#properties.texts) == "object" && this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
-		this.#htmlElements.acceptButton.textContent = typeof (this.#properties.texts) == "object" && this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		if (this.#htmlElements.cancelButton instanceof HTMLButtonElement && this.#htmlElements.acceptButton instanceof HTMLButtonElement) {
+			this.#htmlElements.cancelButton.textContent = typeof (this.#properties.texts) == "object" && this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
+			this.#htmlElements.acceptButton.textContent = typeof (this.#properties.texts) == "object" && this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		}
 	}
 
 	#prepareValue() {
@@ -456,32 +470,38 @@ class WUIDatepicker {
 	}
 
 	#loadValue() {
-		const value = this.#properties.value;
-		const year = this.#htmlElements.inputYear.value;
-		const month = this.#htmlElements.inputMonth.value;
-		const day = this.#htmlElements.inputDay.value;
-		this.#properties.value = year != "" && month != "" && day != "" ? ("000" + year).slice(-4) + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2) : "";
-		if (this.#properties.value != value && typeof (this.#properties.onChange) == "function") {
-			this.#properties.onChange(this.#properties.value);
+		if (this.#htmlElements.input instanceof HTMLInputElement && this.#htmlElements.inputYear instanceof HTMLInputElement && this.#htmlElements.inputMonth instanceof HTMLInputElement && this.#htmlElements.inputDay instanceof HTMLInputElement) {
+			const value = this.#properties.value;
+			const year = this.#htmlElements.inputYear.value;
+			const month = this.#htmlElements.inputMonth.value;
+			const day = this.#htmlElements.inputDay.value;
+			this.#properties.value = year != "" && month != "" && day != "" ? ("000" + year).slice(-4) + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2) : "";
+			if (this.#properties.value != value && typeof (this.#properties.onChange) == "function") {
+				this.#properties.onChange(this.#properties.value);
+			}
 		}
 	}
 
 	#loadInputs() {
-		const format =
-			this.#properties.locales.match(/(en-CA|en-ZA|ja-JP|ko-KR|zh-CN)/) ? ["year", "month", "day"] :
-				this.#properties.locales.match(/(en-US)/) ? ["month", "day", "year"] :
-					["day", "month", "year"];
-		this.#htmlElements.inputs.innerHTML = "";
-		format.forEach((part, i) => {
-			const name = part.charAt(0).toUpperCase() + part.slice(1);
-			const input = this.#htmlElements["input" + name];
-			this.#htmlElements.inputs.appendChild(input);
-			if (i < 2) {
-				const span = document.createElement("span");
-				span.textContent = "/";
-				this.#htmlElements.inputs.appendChild(span);
+		if (this.#htmlElements.inputs instanceof HTMLElement) {
+			let format = ["day", "month", "year"];
+			if (this.#properties.locales.match(/(en-CA|en-ZA|ja-JP|ko-KR|zh-CN)/)) {
+				format = ["year", "month", "day"];
+			} else if (this.#properties.locales.match(/(en-US)/)) {
+				format = ["month", "day", "year"];
 			}
-		});
+			this.#htmlElements.inputs.innerHTML = "";
+			format.forEach((part, i) => {
+				const name = part.charAt(0).toUpperCase() + part.slice(1);
+				const input = this.#htmlElements["input" + name];
+				this.#htmlElements.inputs.appendChild(input);
+				if (i < 2) {
+					const span = document.createElement("span");
+					span.textContent = "/";
+					this.#htmlElements.inputs.appendChild(span);
+				}
+			});
+		}
 	}
 
 	#loadBox() {
@@ -493,136 +513,140 @@ class WUIDatepicker {
 	}
 
 	#printMonths() {
-		const year = this.#targetDate.getFullYear();
-		const month = this.#targetDate.getMonth() + 1;
-		let y = year;
-		let m = 1;
-		this.#htmlElements.box.classList.remove("extended");
-		this.#htmlElements.periodText.textContent = this.#properties.monthsNames[month - 1] + " " + year;
-		this.#htmlElements.periodIcon.style.maskImage = this.#getSRCIcon("box-period-up");
-		this.#htmlElements.months.style.display = "grid";
-		this.#htmlElements.months.innerHTML = "";
-		this.#htmlElements.week.style.display = "none";
-		this.#htmlElements.week.innerHTML = "";
-		this.#htmlElements.days.style.display = "none";
-		this.#htmlElements.days.innerHTML = "";
-		for (let i = 0; i < 13 * 2; i++) {
-			const cell = document.createElement("div");
-			if (i % 13 == 0) {
-				const option = document.createElement("div");
-				option.innerHTML = y;
-				cell.appendChild(option);
-				y++;
-				m = 1;
-			} else {
-				const option = document.createElement("div");
-				const optionValue = this.#targetValue.replace(/^\d{4}-\d{2}-/, (y - 1) + "-" + ("0" + m).slice(-2) + "-");
-				const optionYear = y - 1;
-				const optionMonth = m;
-				if (optionYear == this.#todayYear && optionMonth == this.#todayMonth) {
-					option.classList.add("today");
-				}
-				if (optionValue == this.#properties.value) {
-					option.classList.add("selected");
-				}
-				option.dataset.value = optionValue;
-				option.dataset.year = optionYear;
-				option.dataset.month = optionMonth;
-				option.textContent = this.monthsNames[m - 1].substring(0, 3);
-				option.addEventListener("click", () => {
-					const selected = !Boolean(option.classList.contains("selected"));
-					const targetValue = optionValue;
-					const targetDate = new Date(targetValue + "T00:00:00");
-					const value = selected ? targetValue : "";
-					const date = selected ? targetDate : null;
-					this.#htmlElements.months.querySelectorAll("div").forEach(div => {
-						if (typeof (div.dataset.value) != "undefined" && div.dataset.value != targetValue) {
-							div.classList.remove("selected");
-						}
+		if (this.#htmlElements.box instanceof HTMLDivElement && this.#htmlElements.periodText instanceof HTMLDivElement && this.#htmlElements.periodIcon instanceof HTMLDivElement && this.#htmlElements.months instanceof HTMLDivElement && this.#htmlElements.week instanceof HTMLDivElement && this.#htmlElements.days instanceof HTMLDivElement) {
+			const year = this.#targetDate.getFullYear();
+			const month = this.#targetDate.getMonth() + 1;
+			let y = year;
+			let m = 1;
+			this.#htmlElements.box.classList.remove("extended");
+			this.#htmlElements.periodText.textContent = this.#properties.monthsNames[month - 1] + " " + year;
+			this.#htmlElements.periodIcon.style.maskImage = this.#getSRCIcon("box-period-up");
+			this.#htmlElements.months.style.display = "grid";
+			this.#htmlElements.months.innerHTML = "";
+			this.#htmlElements.week.style.display = "none";
+			this.#htmlElements.week.innerHTML = "";
+			this.#htmlElements.days.style.display = "none";
+			this.#htmlElements.days.innerHTML = "";
+			for (let i = 0; i < 13 * 2; i++) {
+				const cell = document.createElement("div");
+				if (i % 13 == 0) {
+					const option = document.createElement("div");
+					option.innerHTML = y;
+					cell.appendChild(option);
+					y++;
+					m = 1;
+				} else {
+					const option = document.createElement("div");
+					const optionValue = this.#targetValue.replace(/^\d{4}-\d{2}-/, (y - 1) + "-" + ("0" + m).slice(-2) + "-");
+					const optionYear = y - 1;
+					const optionMonth = m;
+					if (optionYear == this.#todayYear && optionMonth == this.#todayMonth) {
+						option.classList.add("today");
+					}
+					if (optionValue == this.#properties.value) {
+						option.classList.add("selected");
+					}
+					option.dataset.value = optionValue;
+					option.dataset.year = optionYear;
+					option.dataset.month = optionMonth;
+					option.textContent = this.monthsNames[m - 1].substring(0, 3);
+					option.addEventListener("click", () => {
+						const selected = !Boolean(option.classList.contains("selected"));
+						const targetValue = optionValue;
+						const targetDate = new Date(targetValue + "T00:00:00");
+						const value = selected ? targetValue : "";
+						const date = selected ? targetDate : null;
+						this.#htmlElements.months.querySelectorAll("div").forEach(div => {
+							if (typeof (div.dataset.value) != "undefined" && div.dataset.value != targetValue) {
+								div.classList.remove("selected");
+							}
+						});
+						option.classList.toggle("selected");
+						this.#targetValue = targetValue;
+						this.#targetDate = targetDate;
+						this.#htmlElements.period.innerHTML = this.#properties.monthsNames[option.dataset.month - 1] + " " + option.dataset.year + " <div class='icon up'></div>";
+						this.#setValue(value);
+						this.#setView(date);
 					});
-					option.classList.toggle("selected");
-					this.#targetValue = targetValue;
-					this.#targetDate = targetDate;
-					this.#htmlElements.period.innerHTML = this.#properties.monthsNames[option.dataset.month - 1] + " " + option.dataset.year + " <div class='icon up'></div>";
-					this.#setValue(value);
-					this.#setView(date);
-				});
-				cell.appendChild(option);
-				m++;
+					cell.appendChild(option);
+					m++;
+				}
+				this.#htmlElements.months.appendChild(cell);
 			}
-			this.#htmlElements.months.appendChild(cell);
 		}
 	}
 
 	#printDays() {
-		const year = this.#targetDate.getFullYear();
-		const month = this.#targetDate.getMonth() + 1;
-		const country = this.locales.split("-")[1].toUpperCase();
-		const firstwday = parseInt(WUIDatepicker.#countryFirstWeekDay[country] || 0);
-		const firstmday = new Date(year, month - 1, 1, 0, 0, 0).getDay();
-		const lasmday = month == 2 ? year & 3 || !(year % 25) && year & 15 ? 28 : 29 : 30 + (month + (month >> 3) & 1);
-		let ini = 0;
-		let rows = 5;
-		let d = 1;
-		this.#htmlElements.box.classList.remove("extended");
-		this.#htmlElements.periodText.textContent = this.#properties.monthsNames[month - 1] + " " + year;
-		this.#htmlElements.periodIcon.style.maskImage = this.#getSRCIcon("box-period-down");
-		this.#htmlElements.months.style.display = "none";
-		this.#htmlElements.months.innerHTML = "";
-		this.#htmlElements.week.style.display = "grid";
-		this.#htmlElements.week.innerHTML = "";
-		this.#htmlElements.days.style.display = "grid";
-		this.#htmlElements.days.innerHTML = "";
-		for (let i = 0; i < 7; i++) {
-			const wday = document.createElement("div");
-			let index = firstwday + i;
-			if (index > 6) {
-				index -= 7;
-			}
-			if (index == firstmday) {
-				ini = i;
-			}
-			wday.textContent = this.#properties.weekDaysNames[index].substring(0, 3);
-			this.#htmlElements.week.appendChild(wday);
-		}
-		for (let i = 0; i < 7 * rows; i++) {
-			const cell = document.createElement("div");
-			if (i >= ini && d <= lasmday) {
-				const option = document.createElement("div");
-				const optionValue = this.#targetValue.replace(/-\d{2}$/, "-" + ("0" + d).slice(-2));
-				if (optionValue == this.#todayValue) {
-					option.classList.add("today");
+		if (this.#htmlElements.box instanceof HTMLDivElement && this.#htmlElements.periodText instanceof HTMLDivElement && this.#htmlElements.periodIcon instanceof HTMLDivElement && this.#htmlElements.months instanceof HTMLDivElement && this.#htmlElements.week instanceof HTMLDivElement && this.#htmlElements.days instanceof HTMLDivElement) {
+			const year = this.#targetDate.getFullYear();
+			const month = this.#targetDate.getMonth() + 1;
+			const country = this.locales.split("-")[1].toUpperCase();
+			const firstwday = parseInt(WUIDatepicker.#countryFirstWeekDay[country] || 0);
+			const firstmday = new Date(year, month - 1, 1, 0, 0, 0).getDay();
+			const lasmday = month == 2 ? year & 3 || !(year % 25) && year & 15 ? 28 : 29 : 30 + (month + (month >> 3) & 1);
+			let ini = 0;
+			let rows = 5;
+			let d = 1;
+			this.#htmlElements.box.classList.remove("extended");
+			this.#htmlElements.periodText.textContent = this.#properties.monthsNames[month - 1] + " " + year;
+			this.#htmlElements.periodIcon.style.maskImage = this.#getSRCIcon("box-period-down");
+			this.#htmlElements.months.style.display = "none";
+			this.#htmlElements.months.innerHTML = "";
+			this.#htmlElements.week.style.display = "grid";
+			this.#htmlElements.week.innerHTML = "";
+			this.#htmlElements.days.style.display = "grid";
+			this.#htmlElements.days.innerHTML = "";
+			for (let i = 0; i < 7; i++) {
+				const wday = document.createElement("div");
+				let index = firstwday + i;
+				if (index > 6) {
+					index -= 7;
 				}
-				if (optionValue == this.#properties.value) {
-					option.classList.add("selected");
+				if (index == firstmday) {
+					ini = i;
 				}
-				option.dataset.value = optionValue;
-				option.textContent = d;
-				option.addEventListener("click", () => {
-					const selected = !Boolean(option.classList.contains("selected"));
-					const targetValue = optionValue;
-					const targetDate = new Date(targetValue + "T00:00:00");
-					const value = selected ? targetValue : "";
-					const date = selected ? targetDate : null;
-					this.#htmlElements.days.querySelectorAll("div").forEach(div => {
-						if (typeof (div.dataset.value) != "undefined" && div.dataset.value != targetValue) {
-							div.classList.remove("selected");
-						}
+				wday.textContent = this.#properties.weekDaysNames[index].substring(0, 3);
+				this.#htmlElements.week.appendChild(wday);
+			}
+			for (let i = 0; i < 7 * rows; i++) {
+				const cell = document.createElement("div");
+				if (i >= ini && d <= lasmday) {
+					const option = document.createElement("div");
+					const optionValue = this.#targetValue.replace(/-\d{2}$/, "-" + ("0" + d).slice(-2));
+					if (optionValue == this.#todayValue) {
+						option.classList.add("today");
+					}
+					if (optionValue == this.#properties.value) {
+						option.classList.add("selected");
+					}
+					option.dataset.value = optionValue;
+					option.textContent = d;
+					option.addEventListener("click", () => {
+						const selected = !Boolean(option.classList.contains("selected"));
+						const targetValue = optionValue;
+						const targetDate = new Date(targetValue + "T00:00:00");
+						const value = selected ? targetValue : "";
+						const date = selected ? targetDate : null;
+						this.#htmlElements.days.querySelectorAll("div").forEach(div => {
+							if (typeof (div.dataset.value) != "undefined" && div.dataset.value != targetValue) {
+								div.classList.remove("selected");
+							}
+						});
+						option.classList.toggle("selected");
+						this.#targetValue = targetValue;
+						this.#targetDate = targetDate;
+						this.#setValue(value);
+						this.#setView(date);
 					});
-					option.classList.toggle("selected");
-					this.#targetValue = targetValue;
-					this.#targetDate = targetDate;
-					this.#setValue(value);
-					this.#setView(date);
-				});
-				cell.appendChild(option);
-				if (i + 1 == 7 * 5 && d < lasmday) {
-					this.#htmlElements.box.classList.add("extended");
-					rows++;
+					cell.appendChild(option);
+					if (i + 1 == 7 * 5 && d < lasmday) {
+						this.#htmlElements.box.classList.add("extended");
+						rows++;
+					}
+					d++;
 				}
-				d++;
+				this.#htmlElements.days.appendChild(cell);
 			}
-			this.#htmlElements.days.appendChild(cell);
 		}
 	}
 
@@ -652,29 +676,35 @@ class WUIDatepicker {
 	}
 
 	open() {
-		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
-		this.#htmlElements.background.classList.remove("hidden");
-		this.#htmlElements.box.classList.remove("hidden");
-		this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
-		this.#prepare();
-		this.#loadBox();
-		if (typeof (this.#properties.onOpen) == "function") {
-			this.#properties.onOpen(this.#properties.value);
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
+			this.#htmlElements.background.classList.remove("hidden");
+			this.#htmlElements.box.classList.remove("hidden");
+			this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
+			this.#prepare();
+			this.#loadBox();
+			if (typeof (this.#properties.onOpen) == "function") {
+				this.#properties.onOpen(this.#properties.value);
+			}
 		}
 	}
 
 	close() {
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		this.#htmlElements.background.classList.add("hidden");
-		this.#htmlElements.box.classList.add("hidden");
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			this.#htmlElements.background.classList.add("hidden");
+			this.#htmlElements.box.classList.add("hidden");
+		}
 	}
 
 	toggle() {
-		if (this.#htmlElements.box.classList.contains("hidden")) {
-			this.open();
-		} else {
-			this.close();
+		if (this.#htmlElements.box instanceof HTMLDivElement) {
+			if (this.#htmlElements.box.classList.contains("hidden")) {
+				this.open();
+			} else {
+				this.close();
+			}
 		}
 	}
 
@@ -708,15 +738,15 @@ class WUIDatepicker {
 	}
 
 	isOpen() {
-		return !Boolean(this.#htmlElements.box.classList.contains("hidden"));
+		return Boolean(this.#htmlElements.box instanceof HTMLDivElement ? !this.#htmlElements.box.classList.contains("hidden") : false);
 	}
 
 	isEmpty() {
-		return this.#properties.value == "" || this.#htmlElements.inputYear.value == "" || this.#htmlElements.inputMonth.value == "" || this.#htmlElements.inputDay.value == "";
+		return Boolean(this.#htmlElements.inputYear instanceof HTMLInputElement && this.#htmlElements.inputMonth instanceof HTMLInputElement && this.#htmlElements.inputDay instanceof HTMLInputElement ? (this.#properties.value == "" || this.#htmlElements.inputYear.value == "" || this.#htmlElements.inputMonth.value == "" || this.#htmlElements.inputDay.value == "") : false);
 	}
 
 	isValid() {
-		return this.#properties.value.match(/^(\d{4}-\d{2}-\d{2})?$/);
+		return Boolean(this.#properties.value.match(/^(\d{4}-\d{2}-\d{2})?$/));
 	}
 
 	#darkModeListener(callback) {

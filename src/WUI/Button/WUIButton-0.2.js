@@ -19,11 +19,14 @@ class WUIButton {
 
 	#properties = {};
 	#htmlElement;
+	#htmlBuilt = false;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUIButton.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([name, value]) => {
+			if (name != "text" || !this.#htmlBuilt) {
+				this[name] = name in properties ? properties[name] : value;
+			}
 		});
 	}
 
@@ -59,11 +62,14 @@ class WUIButton {
 		if (typeof (value) == "string" && value != "") {
 			this.#properties.selector = value;
 			this.#htmlElement = document.querySelector(value);
+			if (this.#htmlElement instanceof HTMLButtonElement && this.#htmlElement.hasChildNodes()) {
+				this.#htmlBuilt = true;
+			}
 		}
 	}
 
 	set text(value) {
-		if (typeof (value) == "string" && value != "") {
+		if (typeof (value) == "string") {
 			this.#properties.text = value;
 			if (this.#htmlElement instanceof HTMLButtonElement) {
 				this.#htmlElement.innerHTML = value;
@@ -126,8 +132,8 @@ class WUIButton {
 	}
 
 	init() {
-		this.#properties.text = this.#htmlElement.innerHTML;
 		if (this.#htmlElement instanceof HTMLButtonElement) {
+			this.#properties.text = this.#htmlElement.innerHTML;
 			this.#htmlElement.addEventListener("click", () => {
 				this.#setStyle();
 				if (this.#properties.selectable && this.#properties.enabled) {

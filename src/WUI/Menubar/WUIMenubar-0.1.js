@@ -46,10 +46,10 @@ class WUIMenubar {
 	};
 	#buttons;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUIMenubar.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([name, value]) => {
+			this[name] = name in properties ? properties[name] : value;
 		});
 	}
 
@@ -128,7 +128,7 @@ class WUIMenubar {
 		return this.#htmlElement;
 	}
 
-	getButton(id) {
+	getButton(id = "") {
 		return (this.#buttons.find(options => options.id == id) || null);
 	}
 
@@ -231,7 +231,7 @@ class WUIMenubar {
 		button.append(tooltip);
 		button.append(bubble);
 		button.dataset.id = options.id;
-		button.className = "button" + (options.selected ? " selected" : "") + (options.enabled == false ? " disabled" : "");
+		button.className = "button" + (typeof (options.hoverable) == "undefined" || options.hoverable ? " hoverable" : "") + (options.selected ? " selected" : "") + (options.enabled == false ? " disabled" : "");
 		options.submenu = false;
 		if (typeof (options.buttons) == "object" && Array.isArray(options.buttons) && options.buttons.length > 0) {
 			const opener = document.createElement("div");
@@ -251,79 +251,89 @@ class WUIMenubar {
 		return button;
 	}
 
-	setPhoto(id, src = "") {
-		const photo = this.#htmlElement.querySelector(`[data-id='${id}'].button > .photo`);
-		this.getButton(id).photoImage = src;
-		if (photo instanceof HTMLElement) {
-			photo.style.backgroundImage = "url(" + src + ")";
-		}
-	}
-
-	setBubble(id, number = 0) {
-		const bubble = this.#htmlElement.querySelector(`[data-id='${id}'].button > .bubble`);
-		this.getButton(id).bubbleNumber = number;
-		if (bubble instanceof HTMLElement) {
-			bubble.textContent = number;
-			if (number > 0) {
-				bubble.classList.remove("hidden");
-			} else {
-				bubble.classList.add("hidden");
+	setPhoto(id = "", src = "") {
+		if (id != "") {
+			const photo = this.#htmlElement.querySelector(`[data-id='${id}'].button > .photo`);
+			this.getButton(id).photoImage = src;
+			if (photo instanceof HTMLElement) {
+				photo.style.backgroundImage = "url(" + src + ")";
 			}
 		}
 	}
 
-	selectButton(id, selected = true) {
-		const options = this.getButton(id);
-		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
-		const prevSelected = options.selected;
-		if (selected && typeof (options.radio) == "boolean" && !options.radio) {
-			selected = !prevSelected;
-		}
-		this.getButton(id).selected = selected;
-		if (button instanceof HTMLElement && !button.classList.contains("disabled")) {
-			if (selected) {
-				if (typeof (options.radio) == "boolean" && !options.radio) {
-					if (!prevSelected) {
-						button.classList.add("selected");
-					} else {
-						button.classList.remove("selected");
-					}
-				} else if (typeof (options.selectable) == "undefined" || options.selectable) {
-					this.#buttons.filter(opt => opt.id != id).forEach(opt => {
-						const btn = this.#htmlElement.querySelector(`[data-id='${opt.id}'].button`);
-						if (btn instanceof HTMLElement && !btn.classList.contains("disabled")) {
-							btn.classList.remove("selected");
-							this.getButton(opt.id).selected = false;
-						}
-					});
-					button.classList.add("selected");
-					this.#open(options.id);
+	setBubble(id = "", number = 0) {
+		if (id != "") {
+			const bubble = this.#htmlElement.querySelector(`[data-id='${id}'].button > .bubble`);
+			this.getButton(id).bubbleNumber = number;
+			if (bubble instanceof HTMLElement) {
+				bubble.textContent = number;
+				if (number > 0) {
+					bubble.classList.remove("hidden");
+				} else {
+					bubble.classList.add("hidden");
 				}
-			} else {
-				button.classList.remove("selected");
-			}
-			if (!options.submenu) {
-				this.close();
-			}
-			if (options.onClick && typeof (options.onClick) == "function") {
-				options.onClick();
-			} else if (this.#properties.onClick && typeof (this.#properties.onClick) == "function") {
-				this.#properties.onClick(id);
-			}
-			if (selected && (typeof (options.selectable) == "undefined" || options.selectable) && this.#properties.onSelect && typeof (this.#properties.onSelect) == "function") {
-				this.#properties.onSelect(id);
 			}
 		}
 	}
 
-	enableButton(id, enabled = true) {
-		const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
-		this.getButton(id).enabled = enabled;
-		if (button instanceof HTMLElement) {
-			if (enabled) {
-				button.classList.remove("disabled");
-			} else {
-				button.classList.add("disabled");
+	selectButton(id = "", selected = true, runCallback = true) {
+		if (id != "") {
+			const options = this.getButton(id);
+			const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
+			const prevSelected = options.selected;
+			if (selected && typeof (options.radioMode) == "boolean" && !options.radioMode) {
+				selected = !prevSelected;
+			}
+			this.getButton(id).selected = selected;
+			if (button instanceof HTMLElement && !button.classList.contains("disabled")) {
+				if (selected) {
+					if (typeof (options.radioMode) == "boolean" && !options.radioMode) {
+						if (!prevSelected) {
+							button.classList.add("selected");
+						} else {
+							button.classList.remove("selected");
+						}
+					} else if (typeof (options.selectable) == "undefined" || options.selectable) {
+						this.#buttons.filter(opt => opt.id != id).forEach(opt => {
+							const btn = this.#htmlElement.querySelector(`[data-id='${opt.id}'].button`);
+							if (btn instanceof HTMLElement && !btn.classList.contains("disabled")) {
+								btn.classList.remove("selected");
+								this.getButton(opt.id).selected = false;
+							}
+						});
+						button.classList.add("selected");
+						this.#open(options.id);
+					}
+				} else {
+					button.classList.remove("selected");
+				}
+				if (!options.submenu) {
+					this.close();
+				}
+				if (runCallback) {
+					if (options.onClick && typeof (options.onClick) == "function") {
+						options.onClick();
+					} else if (this.#properties.onClick && typeof (this.#properties.onClick) == "function") {
+						this.#properties.onClick(id);
+					}
+					if (selected && (typeof (options.selectable) == "undefined" || options.selectable) && this.#properties.onSelect && typeof (this.#properties.onSelect) == "function") {
+						this.#properties.onSelect(id);
+					}
+				}
+			}
+		}
+	}
+
+	enableButton(id = "", enabled = true) {
+		if (id != "") {
+			const button = this.#htmlElement.querySelector(`[data-id='${id}'].button`);
+			this.getButton(id).enabled = enabled;
+			if (button instanceof HTMLElement) {
+				if (enabled) {
+					button.classList.remove("disabled");
+				} else {
+					button.classList.add("disabled");
+				}
 			}
 		}
 	}

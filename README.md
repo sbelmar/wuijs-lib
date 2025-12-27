@@ -1808,10 +1808,11 @@ Object for implementing menu bars.
 | iconImage    | `string`   | `undefined`   | URL of the image associated with the menu button. |
 | iconClass    | `string`   | `undefined`   | CSS styles that define the menu button icon. This option can optionally be used with the [WUIIcon](#WUIIcon) library by using the `wui-icon` style in conjunction with a specific icon style. |
 | label        | `string`   | `""`          | Label text associated with the menu button. |
-| selected     | `boolean`  | `false`       | Defines whether the button is selected. |
+| radioMode    | `boolean`  | `true`        | Defines whether the button behaves like a radio mode button. |
 | selectable   | `boolean`  | `true`        | Defines whether the button is selectable. |
+| hoverable    | `boolean`  | `true`        | Defines whether the button reacts to the `hover` event. |
 | tooltipable  | `boolean`  | `true`        | Defines whether the button displays a tooltip when collapsed and the screen width is greater than or equal to `768px`. |
-| radio        | `boolean`  | `true`        | Defines whether the button behaves like a radio button. |
+| selected     | `boolean`  | `false`       | Defines whether the button is selected. |
 | enabled      | `boolean`  | `true`        | Defines whether the button is enabled. |
 | onClick      | `function` | `null`        | Function called when the button is clicked. If defined, this option takes precedence over the `onClick` property. |
 
@@ -1822,7 +1823,7 @@ Object for implementing menu bars.
 | getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML element containing the object. |
 | getButton    | `object`      | `getButton(id)`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br><br>Returns the menu button according to the unique button identifier passed as a argument. |
 | init         | `void`        | `init()`<br><br>Initializes the object. |
-| selectButton | `void`        | `selectButton(id[, selected])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• selected:** `boolean`, button selection state. The default value is `true`.<br><br>Select or unselect a menu button. |
+| selectButton | `void`        | `selectButton(id[, selected[, runCallback]])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• selected:** `boolean`, button selection state. The default value is `true`. <br>**• runCallback:** `boolean`, run the `onClick` and `onSelect` callbacks. The default value is `true`.<br><br>Select or unselect a menu button. |
 | enableButton | `void`        | `enableButton(id[, enabled])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• enabled:** `boolean`, button enable state. The default value is `true`.<br><br>Enables or disables a menu button. |
 | setPhoto     | `void`        | `setPhoto(id[, src])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• src:** `string`, image source. The default value is `""`.<br><br>Upload an image above a button icon. |
 | setBubble    | `void`        | `setBubble(id, number)`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• number:** `number`, number that will appear in the bubble. The value `0` hides the bubble. |

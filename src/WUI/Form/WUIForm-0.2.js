@@ -50,10 +50,10 @@ class WUIForm {
 	};
 	#colorScheme;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUIForm.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([name, value]) => {
+			this[name] = name in properties ? properties[name] : value;
 		});
 		this.#colorScheme = null;
 	}

@@ -4,7 +4,8 @@
  * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
  */
 
-.wui-intensity {
+div.wui-intensity {
+	position: relative;
 	width: 120px;
 	height: var(--wui-intensity-height);
 	overflow: hidden;
@@ -14,7 +15,7 @@
 	border: 1px solid var(--wui-intensity-bordercolor-out);
 }
 
-.wui-intensity > input[type="range"] {
+div.wui-intensity > input[type="range"] {
 	cursor: pointer;
 	position: absolute;
 	top: -2px;
@@ -28,15 +29,15 @@
 	background-color: transparent;
 }
 
-.wui-intensity > input[type="range"]::-webkit-slider-runnable-track {
+div.wui-intensity > input[type="range"]::-webkit-slider-runnable-track {
 	height: var(--wui-intensity-height);
 }
 
-.wui-intensity > input[type="range"]::-moz-range-track {
+div.wui-intensity > input[type="range"]::-moz-range-track {
 	height: var(--wui-intensity-height);
 }
 
-.wui-intensity > input[type="range"]::-webkit-slider-thumb {
+div.wui-intensity > input[type="range"]::-webkit-slider-thumb {
 	width: 0px;
 	height: var(--wui-intensity-height);
 	-webkit-appearance: none;
@@ -46,33 +47,33 @@
 	background-color: transparent;
 }
 
-.wui-intensity > input[type="range"]::-moz-range-thumb {
+div.wui-intensity > input[type="range"]::-moz-range-thumb {
 	width: 10px;
 	height: var(--wui-intensity-height);
 	box-shadow: 127px 0 0 120px var(--wui-intensity-bgcolor-none);
 	background-color: transparent;
 }
 
-[data-value="none"].wui-intensity {
+div[data-value="none"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-none);
 }
 
-[data-value="low"].wui-intensity {
+div[data-value="low"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-low);
 }
 
-[data-value="low"].wui-intensity > input[type="range"] {
+div[data-value="low"].wui-intensity > input[type="range"] {
 	right: 16px;
 }
 
-[data-value="half"].wui-intensity {
+div[data-value="half"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-half);
 }
 
-[data-value="half"].wui-intensity > input[type="range"] {
+div[data-value="half"].wui-intensity > input[type="range"] {
 	right: 6px;
 }
 
-[data-value="high"].wui-intensity {
+div[data-value="high"].wui-intensity {
 	background-color: var(--wui-intensity-bgcolor-high);
 }

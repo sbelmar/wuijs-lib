@@ -120,10 +120,10 @@ class WUISelectpicker {
 	#cancelValue;
 	#colorScheme;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUISelectpicker.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([name, value]) => {
+			this[name] = name in properties ? properties[name] : value;
 		});
 		this.#colorScheme = null;
 	}
@@ -133,7 +133,11 @@ class WUISelectpicker {
 	}
 
 	get value() {
-		return this.#properties.value;
+		return this.#getValue();
+	}
+
+	get text() {
+		return this.#getText();
 	}
 
 	get lang() {
@@ -190,7 +194,7 @@ class WUISelectpicker {
 			this.#value = value;
 			if (this.#properties.enabled) {
 				this.#setValue(value);
-				this.#setView(value);
+				this.#refreshView();
 				this.#prepare();
 			}
 		}
@@ -308,14 +312,14 @@ class WUISelectpicker {
 	}
 
 	#getSelectedOptions() {
-		return !this.#properties.multiple ? [this.#properties.value] : Array.from(this.#htmlElements.input.options).filter(opt => opt.selected);
+		return Array.from(this.#htmlElements.input.options).filter(opt => opt.selected);
 	}
 
-	getValue() {
+	#getValue() {
 		return this.#getSelectedOptions().map(opt => opt.value).join(this.#properties.separatorValue) || "";
 	}
 
-	getText() {
+	#getText() {
 		return this.#getSelectedOptions().map(opt => opt.text).join(this.#properties.separatorText) || "";
 	}
 
@@ -330,29 +334,34 @@ class WUISelectpicker {
 		if (!this.#properties.multiple) {
 			this.#properties.value = value;
 		}
-		Array.from(this.#htmlElements.input.options).forEach(opt => {
-			const selected = valores.includes(opt.value);
-			opt.selected = selected;
-			if (selected) {
-				opt.setAttribute("selected", "true");
-			} else {
-				opt.removeAttribute("selected");
-			}
-		});
-		this.#htmlElements.input.dispatchEvent(new Event("change"));
+		if (this.#htmlElements.input instanceof HTMLSelectElement) {
+			Array.from(this.#htmlElements.input.options).forEach(opt => {
+				const selected = valores.includes(opt.value);
+				opt.selected = selected;
+				if (selected) {
+					opt.setAttribute("selected", "true");
+				} else {
+					opt.removeAttribute("selected");
+				}
+			});
+			this.#htmlElements.input.dispatchEvent(new Event("change"));
+		}
 	}
 
-	#setView(value) {
-		const text = !this.#properties.multiple ? Array.from(this.#htmlElements.input.options).filter(opt => opt.value == value).map(opt => opt.text)[0] || "" : this.getText();
-		this.#htmlElements.inputText.value = text;
+	#refreshView() {
+		if (this.#htmlElements.inputText instanceof HTMLInputElement) {
+			this.#htmlElements.inputText.value = this.#getText();
+		}
 	}
 
 	#setStyle() {
-		const disabled = this.#htmlElements.input.disabled;
-		if (disabled) {
-			this.#htmlElement.classList.add("disabled");
-		} else {
-			this.#htmlElement.classList.remove("disabled");
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLSelectElement) {
+			const disabled = this.#htmlElements.input.disabled;
+			if (disabled) {
+				this.#htmlElement.classList.add("disabled");
+			} else {
+				this.#htmlElement.classList.remove("disabled");
+			}
 		}
 	}
 
@@ -417,8 +426,7 @@ class WUISelectpicker {
 				value = this.#properties.multiple ? values.join(this.#properties.separatorValue) : selected ? targetValue : "";
 				option.classList.add("focus");
 				this.#targetValue = value;
-				this.#setValue(value);
-				this.#setView(value);
+				this.value = value;
 				if (!this.#properties.multiple && !mobile) {
 					this.close();
 				}
@@ -436,93 +444,95 @@ class WUISelectpicker {
 		this.#htmlElements.footer = document.createElement("div");
 		this.#htmlElements.cancelButton = document.createElement("button");
 		this.#htmlElements.acceptButton = document.createElement("button");
-		this.#htmlElement.appendChild(this.#htmlElements.opener);
-		this.#htmlElement.appendChild(this.#htmlElements.inputText);
-		this.#htmlElement.appendChild(this.#htmlElements.background);
-		this.#htmlElement.appendChild(this.#htmlElements.box);
-		this.#htmlElement.addEventListener("click", event => {
-			if (this.#properties.enabled && (event.target.classList.contains("wui-selectpicker") || event.target.classList.contains("opener"))) {
-				this.toggle();
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLSelectElement) {
+			this.#htmlElement.appendChild(this.#htmlElements.opener);
+			this.#htmlElement.appendChild(this.#htmlElements.inputText);
+			this.#htmlElement.appendChild(this.#htmlElements.background);
+			this.#htmlElement.appendChild(this.#htmlElements.box);
+			this.#htmlElement.addEventListener("click", event => {
+				if (this.#properties.enabled && (event.target.classList.contains("wui-selectpicker") || event.target.classList.contains("opener"))) {
+					this.toggle();
+				}
+			});
+			this.#htmlElements.opener.className = "opener";
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			if (this.#htmlElements.input.getAttribute("style") != null) {
+				this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode("style"));
 			}
-		});
-		this.#htmlElements.opener.className = "opener";
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		if (this.#htmlElements.input.getAttribute("style") != null) {
-			this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode("style"));
-		}
-		this.#properties.value = this.#value || "";
-		this.#htmlElements.input.addEventListener("change", () => {
-			if (typeof (this.#properties.onChange) == "function") {
-				this.#properties.onChange(this.#properties.value);
-			}
-		});
-		Array.from(this.#htmlElements.input.options).forEach(opt => {
-			this.#addHTMLOption(opt);
-		});
-		this.#htmlElements.inputText.type = "text";
-		this.#htmlElements.inputText.name = this.#htmlElements.input.name + "Text";
-		this.#htmlElements.inputText.readOnly = !this.#properties.filterable;
-		this.#htmlElements.inputText.style.cursor = this.#properties.filterable ? "default" : "pointer";
-		this.#htmlElements.inputText.addEventListener("focus", () => {
-			if (this.#properties.enabled) {
-				setTimeout(() => {
-					WUISelectpicker.#active = this;
-				}, 10)
-			}
-		});
-		this.#htmlElements.inputText.addEventListener("blur", () => {
-			if (this.#properties.enabled) {
-				WUISelectpicker.#active = null;
-			}
-		});
-		this.#htmlElements.inputText.addEventListener("click", () => {
-			if (this.#properties.enabled) {
+			this.#properties.value = this.#value || "";
+			this.#htmlElements.input.addEventListener("change", () => {
+				if (typeof (this.#properties.onChange) == "function") {
+					this.#properties.onChange(this.#properties.value);
+				}
+			});
+			Array.from(this.#htmlElements.input.options).forEach(opt => {
+				this.#addHTMLOption(opt);
+			});
+			this.#htmlElements.inputText.type = "text";
+			this.#htmlElements.inputText.name = this.#htmlElements.input.name + "Text";
+			this.#htmlElements.inputText.readOnly = !this.#properties.filterable;
+			this.#htmlElements.inputText.style.cursor = this.#properties.filterable ? "default" : "pointer";
+			this.#htmlElements.inputText.addEventListener("focus", () => {
+				if (this.#properties.enabled) {
+					setTimeout(() => {
+						WUISelectpicker.#active = this;
+					}, 10)
+				}
+			});
+			this.#htmlElements.inputText.addEventListener("blur", () => {
+				if (this.#properties.enabled) {
+					WUISelectpicker.#active = null;
+				}
+			});
+			this.#htmlElements.inputText.addEventListener("click", () => {
+				if (this.#properties.enabled) {
+					const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
+					if (!mobile && this.#properties.filterable) {
+						if (!this.isOpen()) {
+							this.open();
+						}
+					} else {
+						this.toggle();
+					}
+				}
+			});
+			this.#htmlElements.inputText.addEventListener("keyup", (event) => {
 				const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-				if (!mobile && this.#properties.filterable) {
+				if (!mobile && this.#properties.filterable && !event.key.match(/^(ArrowUp|ArrowDown|Enter|Escape)$/)) {
+					const prepare = str => str.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ñ/g, "n").replace(/\W+/g, "");
+					const key = this.#htmlElements.inputText.value;
+					const regexp = new RegExp(prepare(key));
+					this.#htmlElements.options.querySelectorAll(".option").forEach(option => {
+						const value = option.dataset.value;
+						const text = this.#htmlElements.input.querySelector("option[value='" + value + "']").text.trim().toLowerCase();
+						if (regexp.test(prepare(text))) {
+							option.classList.remove("hidden");
+						} else {
+							option.classList.add("hidden");
+						}
+					});
 					if (!this.isOpen()) {
 						this.open();
 					}
-				} else {
-					this.toggle();
 				}
-			}
-		});
-		this.#htmlElements.inputText.addEventListener("keyup", (event) => {
-			const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-			if (!mobile && this.#properties.filterable && !event.key.match(/^(ArrowUp|ArrowDown|Enter|Escape)$/)) {
-				const prepare = str => str.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ñ/g, "n").replace(/\W+/g, "");
-				const key = this.#htmlElements.inputText.value;
-				const regexp = new RegExp(prepare(key));
-				this.#htmlElements.options.querySelectorAll(".option").forEach(option => {
-					const value = option.dataset.value;
-					const text = this.#htmlElements.input.querySelector("option[value='" + value + "']").text.trim().toLowerCase();
-					if (regexp.test(prepare(text))) {
-						option.classList.remove("hidden");
-					} else {
-						option.classList.add("hidden");
-					}
-				});
-				if (!this.isOpen()) {
-					this.open();
-				}
-			}
-		});
-		this.#htmlElements.background.className = "background hidden";
-		this.#htmlElements.box.className = "box " + this.#properties.openDirection + " hidden";
-		this.#htmlElements.box.appendChild(this.#htmlElements.options);
-		this.#htmlElements.box.appendChild(this.#htmlElements.footer);
-		this.#htmlElements.options.className = "options";
-		this.#htmlElements.footer.className = "footer";
-		this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
-		this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
-		this.#htmlElements.cancelButton.className = "cancel";
-		this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
-		this.#htmlElements.acceptButton.className = "accept";
-		this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
-		this.#prepare();
-		this.#darkModeListener(() => {
-			this.#setStyle();
-		});
+			});
+			this.#htmlElements.background.className = "background hidden";
+			this.#htmlElements.box.className = "box " + this.#properties.openDirection + " hidden";
+			this.#htmlElements.box.appendChild(this.#htmlElements.options);
+			this.#htmlElements.box.appendChild(this.#htmlElements.footer);
+			this.#htmlElements.options.className = "options";
+			this.#htmlElements.footer.className = "footer";
+			this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
+			this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
+			this.#htmlElements.cancelButton.className = "cancel";
+			this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
+			this.#htmlElements.acceptButton.className = "accept";
+			this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
+			this.#prepare();
+			this.#darkModeListener(() => {
+				this.#setStyle();
+			});
+		}
 	}
 
 	#prepare() {
@@ -530,15 +540,17 @@ class WUISelectpicker {
 		const lang = this.#properties.lang;
 		this.#targetValue = this.#properties.value || "";
 		this.#cancelValue = this.#targetValue;
-		this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
-		this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
-		this.#setView(this.#targetValue);
+		if (this.#htmlElements.cancelButton instanceof HTMLButtonElement && this.#htmlElements.acceptButton instanceof HTMLButtonElement) {
+			this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
+			this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		}
+		this.#refreshView();
 	}
 
 	#loadBox() {
 		Array.from(this.#htmlElements.input.options).forEach((opt, i) => {
 			const option = this.#htmlElements.options.querySelector(".option:nth-child(" + (i + 1) + ")");
-			if (typeof (option.dataset.value) != "undefined") {
+			if (option instanceof HTMLDivElement && typeof (option.dataset.value) != "undefined") {
 				if (opt.selected) {
 					this.#htmlElements.options.scrollTop = option.offsetTop - parseInt((this.#htmlElements.options.clientHeight - option.clientHeight) / 2);
 					option.classList.add("selected");
@@ -564,39 +576,44 @@ class WUISelectpicker {
 	}
 
 	open() {
-		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
-		this.#htmlElements.background.classList.remove("hidden");
-		this.#htmlElements.box.classList.remove("hidden");
-		this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
-		this.#prepare();
-		this.#loadBox();
-		if (typeof (this.#properties.onOpen) == "function") {
-			this.#properties.onOpen(this.getValue());
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
+			this.#htmlElements.background.classList.remove("hidden");
+			this.#htmlElements.box.classList.remove("hidden");
+			this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
+			this.#prepare();
+			this.#loadBox();
+			if (typeof (this.#properties.onOpen) == "function") {
+				this.#properties.onOpen(this.value);
+			}
+			WUISelectpicker.#active = this;
 		}
-		WUISelectpicker.#active = this;
 	}
 
 	close() {
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		this.#htmlElements.background.classList.add("hidden");
-		this.#htmlElements.box.classList.add("hidden");
-		this.#htmlElements.options.querySelectorAll(".option").forEach(option => {
-			option.classList.remove("hidden");
-		});
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			this.#htmlElements.background.classList.add("hidden");
+			this.#htmlElements.box.classList.add("hidden");
+			this.#htmlElements.options.querySelectorAll(".option").forEach(option => {
+				option.classList.remove("hidden");
+			});
+		}
 	}
 
 	toggle() {
-		if (this.#htmlElements.box.classList.contains("hidden")) {
-			this.open();
-		} else {
-			this.close();
+		if (this.#htmlElements.box instanceof HTMLDivElement) {
+			if (this.#htmlElements.box.classList.contains("hidden")) {
+				this.open();
+			} else {
+				this.close();
+			}
 		}
 	}
 
 	cancel() {
-		this.#setValue(this.#cancelValue);
-		this.#setView(this.#cancelValue);
+		this.value = this.#cancelValue;
 		this.close();
 	}
 
@@ -605,15 +622,15 @@ class WUISelectpicker {
 	}
 
 	isOpen() {
-		return !Boolean(this.#htmlElements.box.classList.contains("hidden"));
+		return Boolean(this.#htmlElements.box instanceof HTMLDivElement ? !this.#htmlElements.box.classList.contains("hidden") : false);
 	}
 
 	isEmpty() {
-		return this.#properties.value == "" || this.#htmlElements.inputText.value == "";
+		return Boolean(this.#htmlElements.inputText instanceof HTMLInputElement ? this.#properties.value == "" || this.#htmlElements.inputText.value == "" : false);
 	}
 
 	isValid() {
-		return (Array.from(this.#htmlElements.input.options).filter(opt => opt.text == this.#htmlElements.inputText.value).length > 0);
+		return Boolean(this.#htmlElements.input instanceof HTMLSelectElement ? (Array.from(this.#htmlElements.input.options).filter(opt => opt.text == this.#htmlElements.inputText.value).length > 0) : false);
 	}
 
 	#darkModeListener(callback) {

@@ -1808,10 +1808,11 @@ Objeto para implementación de barras de menú.
 | iconImage    | `string`   | `undefined`          | URL de la imagen asociada al botón de menú. |
 | iconClass    | `string`   | `undefined`          | Estilos CSS que define el ícono del botón de menú. Esta opción puede ser utilizado opcionalmente con la librería [WUIIcon](#wuiIcon) mediante el estilo `wui-icon` conjuntamente a un estilo de ícono específico. |
 | label        | `string`   | `""`                 | Texto de la etiqueta asociada al botón de menú. |
-| selected     | `boolean`  | `false`              | Define si el botón se encuentra seleccionado. |
+| radioMode    | `boolean`  | `true`               | Define si el botón se comporta como un botón en modo radio. |
 | selectable   | `boolean`  | `true`               | Define si el botón es seleccionable. |
+| hoverable    | `boolean`  | `true`               | Define si el botón reacciona al evento `hover`. |
 | tooltipable  | `boolean`  | `true`               | Define si el botón muestra un tooltip cuando está contraido y el ancho de la pantalla es mayor o igual a `768px`. |
-| radio        | `boolean`  | `true`               | Define si el botón se comporta como un botón de radio. |
+| selected     | `boolean`  | `false`              | Define si el botón se encuentra seleccionado. |
 | enabled      | `boolean`  | `true`               | Define si el botón está habilitado. |
 | onClick      | `function` | `null`               | Función que se llama cuando el botón es presionado. Si está definida, esta opción tiene prioridad sobre la propiedad `onClick`. |
 
@@ -1822,7 +1823,7 @@ Objeto para implementación de barras de menú.
 | getElement   | `HTMLElement` | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
 | getButton    | `object`      | `getButton(id)`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br><br>Retorna el botón de menú según el identificador único botón de menú pasado por parámetro. |
 | init         | `void`        | `init()`<br><br>Inicializa el objeto. |
-| selectButton | `void`        | `selectButton(id[, selected])`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• selected:** `boolean`, estado de selección del botón. El valor predeterminado `true`.<br><br>Selecciona o deselecciona un botón de menú. |
+| selectButton | `void`        | `selectButton(id[, selected[, runCallback]])`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• selected:** `boolean`, estado de selección del botón. El valor predeterminado `true`.<br>**• runCallback:** `boolean`, ejecuta las funciones `onClick` y `onSelect` del botón. El valor predeterminado `true`.<br><br>Selecciona o deselecciona un botón de menú. |
 | enableButton | `void`        | `enableButton(id[, enabled])`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• enabled:** `boolean`, estado de habilitación del botón. El valor predeterminado `true`.<br><br>Hablita o deshabilita un botón de menú. |
 | setPhoto     | `void`        | `setPhoto(id[, src])`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• src:** `string`, fuente de la imagen. El valor predeterminado `""`.<br><br>Carga una imagen por encima del ícono de un botón. |
 | setBubble    | `void`        | `setBubble(id, number)`<br><br>Parámetros:<br>**• id:** `string`, identificador único de botón.<br>**• number:** `number`, número que aparecerá en la burbuja. El valor `0` oculta la burbuja. |

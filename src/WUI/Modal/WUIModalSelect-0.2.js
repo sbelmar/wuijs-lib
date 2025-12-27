@@ -25,7 +25,7 @@ class WUIModalSelect extends WUIModal {
 	};
 	#input;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		super(properties);
 		this.#properties.value = "";
 		this.#properties.options = [];

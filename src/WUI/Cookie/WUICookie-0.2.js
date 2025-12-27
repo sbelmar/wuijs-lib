@@ -63,8 +63,8 @@ class WUICookie {
 
 	constructor(properties) {
 		const defaults = structuredClone(WUICookie.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([key, value]) => {
+			this[key] = key in properties ? properties[key] : value;
 		});
 	}
 

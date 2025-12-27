@@ -48,7 +48,138 @@ class WUIColorpicker {
 			list: "list",
 			cancel: "cancel",
 			accept: "accept",
-			colors: {}
+			colors: {
+
+				// Neutrals
+
+				black: "black",
+				darkSlateGray: "dark slate gray",
+				dimGray: "dim gray",
+				slateGray: "slate gray",
+				gray: "gray",
+				lightSlateGray: "light slate gray",
+				darkGray: "dark gray",
+				silver: "silver",
+				gainsboro: "gainsboro",
+				whiteSmoke: "white smoke",
+				aliceBlue: "alice blue",
+				ghostWhite: "ghost white",
+				white: "white",
+
+				// Reds and pinks
+
+				darkRed: "dark red",
+				red: "red",
+				fireBrick: "fire brick",
+				crimson: "crimson",
+				pink: "pink",
+				lightPink: "light pink",
+				hotPink: "hot pink",
+				deepPink: "deep pink",
+				paleVioletRed: "pale violet red",
+				mediumVioletRed: "medium violet red",
+
+				// Oranges
+
+				coral: "coral",
+				tomato: "tomato",
+				orangeRed: "orange red",
+				darkOrange: "dark orange",
+				orange: "orange",
+				bisque: "bisque",
+				blanchedAlmond: "blanched almond",
+				navajoWhite: "navajo white",
+				seashell: "seashell",
+
+				// Yellows
+
+				gold: "gold",
+				yellow: "yellow",
+				lightYellow: "light yellow",
+				lemonChiffon: "lemon chiffon",
+				lightGoldenRodYellow: "light golden rod yellow",
+				papayaWhip: "papaya whip",
+				moccasin: "moccasin",
+				peachPuff: "peach puff",
+				cornsilk: "cornsilk",
+
+				// Greens
+
+				darkGreen: "dark green",
+				green: "green",
+				forestGreen: "forest green",
+				seaGreen: "sea green",
+				mediumSeaGreen: "medium sea green",
+				limeGreen: "lime green",
+				lime: "lime",
+				springGreen: "spring green",
+				mediumSpringGreen: "medium spring green",
+				lightGreen: "light green",
+				paleGreen: "pale green",
+				honeyDew: "honeydew",
+
+				// Cyanes
+
+				darkCyan: "dark cyan",
+				teal: "teal",
+				aqua: "aqua",
+				lightCyan: "light cyan",
+				darkTurquoise: "dark turquoise",
+				turquoise: "turquoise",
+				mediumTurquoise: "medium turquoise",
+				mintCream: "mint cream",
+
+				// Blues
+
+				midnightBlue: "midnight blue",
+				navy: "navy",
+				darkBlue: "dark blue",
+				mediumBlue: "medium blue",
+				blue: "blue",
+				dodgerBlue: "dodger blue",
+				deepSkyBlue: "deep sky blue",
+				skyBlue: "sky blue",
+				lightSkyBlue: "light sky blue",
+				steelBlue: "steel blue",
+				lightSteelBlue: "light steel blue",
+				aliceBlue: "alice blue",
+
+				// Violets
+
+				indigo: "indigo",
+				purple: "purple",
+				darkMagenta: "dark magenta",
+				darkViolet: "dark violet",
+				mediumPurple: "medium purple",
+				orchid: "orchid",
+				violet: "violet",
+				plum: "plum",
+				thistle: "thistle",
+				lavender: "lavender",
+				rebeccaPurple: "rebecca purple",
+
+				// Browns
+
+				saddleBrown: "saddle brown",
+				sienna: "sienna",
+				chocolate: "chocolate",
+				darkGoldenRod: "dark golden rod",
+				peru: "peru",
+				rosyBrown: "rosy brown",
+				goldenRod: "golden rod",
+				burlyWood: "burly wood",
+				wheat: "wheat",
+				tan: "tan",
+				linen: "linen",
+
+				// Whites
+
+				floralWhite: "floral white",
+				ivory: "ivory",
+				oldLace: "old lace",
+				antiqueWhite: "antique white",
+				cornsilk: "cornsilk"
+			}
 		},
 		es: {
 			empty: "vacío",
@@ -362,10 +493,10 @@ class WUIColorpicker {
 	#cancelValue;
 	#colorScheme;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUIColorpicker.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([name, value]) => {
+			this[name] = name in properties ? properties[name] : value;
 		});
 		this.#colorScheme = null;
 	}
@@ -375,7 +506,7 @@ class WUIColorpicker {
 	}
 
 	get value() {
-		return this.#htmlElements.input.value == this.#properties.emptyValue ? "" : this.#htmlElements.input.value;
+		return (this.#htmlElements.input instanceof HTMLInputElement ? (this.#htmlElements.input.value == this.#properties.emptyValue ? "" : this.#htmlElements.input.value) : this.#properties.value);
 	}
 
 	get emptyValue() {
@@ -416,7 +547,7 @@ class WUIColorpicker {
 
 	set value(value) {
 		if (typeof (value) == "string" && (value.match(/^#([0-9A-F]{3}){1,2}$/i) || Object.values(WUIColorpicker.#colors.list).map(x => x.toLowerCase()).indexOf(value.toLowerCase()) > 0) && (typeof (this.#properties.enabled) == "undefined" || this.#properties.enabled)) {
-			this.#setValue(value.trim().toLowerCase());
+			this.#setValue(value.toLowerCase());
 			this.#prepare();
 		}
 	}
@@ -453,16 +584,16 @@ class WUIColorpicker {
 	set enabled(value) {
 		if (typeof (value) == "boolean") {
 			this.#properties.enabled = value;
-			this.#htmlElements.input.disabled = !value;
-			if (typeof (this.#htmlElements.button) != "undefined") {
+			if (this.#htmlElements.input instanceof HTMLInputElement && this.#htmlElements.button instanceof HTMLButtonElement) {
+				this.#htmlElements.input.disabled = !value;
 				this.#htmlElements.button.disabled = !value;
 				if (value) {
 					this.#htmlElements.button.removeAttribute("disabled");
 				} else {
 					this.#htmlElements.button.setAttribute("disabled", "true");
 				}
+				this.#setStyle();
 			}
-			this.#setStyle();
 		}
 	}
 
@@ -499,9 +630,13 @@ class WUIColorpicker {
 	#setValue(value) {
 		const list = WUIColorpicker.#colors.list;
 		const inverse = Object.fromEntries(Object.entries(list).map(([code, name]) => [name.toLowerCase(), code]));
-		value = value.toLowerCase();
-		this.#htmlElements.input.value = (value in inverse ? inverse[value] : (value || this.#properties.emptyValue)).trim();
-		this.#htmlElements.input.dispatchEvent(new Event("change"));
+		value = value.toLowerCase().trim();
+		value = (value in inverse ? inverse[value] : (value || this.#properties.emptyValue)).trim();
+		this.#properties.value = value;
+		if (this.#htmlElements.input instanceof HTMLInputElement) {
+			this.#htmlElements.input.value = value;
+			this.#htmlElements.input.dispatchEvent(new Event("change"));
+		}
 	}
 
 	#setView(value) {
@@ -509,28 +644,32 @@ class WUIColorpicker {
 		const empty = Boolean(value == "" || value == this.#properties.emptyValue);
 		const bgcolor = empty ? "transparent" : value;
 		const bgimage = empty ? this.#getSRCIcon("viewcolor-empty") : "url()";
-		this.#htmlElements.buttonColor.style.backgroundColor = bgcolor;
-		this.#htmlElements.buttonColor.style.maskImage = bgimage;
-		this.#htmlElements.previewColor.style.backgroundColor = bgcolor;
-		this.#htmlElements.previewColor.style.maskImage = bgimage;
-		this.#htmlElements.previewText.innerHTML = empty ? WUIColorpicker.#texts[this.#properties.lang].empty : value in list ? list[value] : value;
-		if (empty) {
-			this.#htmlElements.buttonColor.classList.add("empty");
-			this.#htmlElements.previewColor.classList.add("empty");
-			this.#htmlElements.previewText.classList.add("empty");
-		} else {
-			this.#htmlElements.buttonColor.classList.remove("empty");
-			this.#htmlElements.previewColor.classList.remove("empty");
-			this.#htmlElements.previewText.classList.remove("empty");
+		if (this.#htmlElements.buttonColor instanceof HTMLDivElement && this.#htmlElements.previewColor instanceof HTMLDivElement && this.#htmlElements.previewText instanceof HTMLDivElement) {
+			this.#htmlElements.buttonColor.style.backgroundColor = bgcolor;
+			this.#htmlElements.buttonColor.style.maskImage = bgimage;
+			this.#htmlElements.previewColor.style.backgroundColor = bgcolor;
+			this.#htmlElements.previewColor.style.maskImage = bgimage;
+			this.#htmlElements.previewText.innerHTML = empty ? WUIColorpicker.#texts[this.#properties.lang].empty : value in list ? list[value] : value;
+			if (empty) {
+				this.#htmlElements.buttonColor.classList.add("empty");
+				this.#htmlElements.previewColor.classList.add("empty");
+				this.#htmlElements.previewText.classList.add("empty");
+			} else {
+				this.#htmlElements.buttonColor.classList.remove("empty");
+				this.#htmlElements.previewColor.classList.remove("empty");
+				this.#htmlElements.previewText.classList.remove("empty");
+			}
 		}
 	}
 
 	#setStyle() {
-		const disabled = this.#htmlElements.input.disabled;
-		if (disabled) {
-			this.#htmlElement.classList.add("disabled");
-		} else {
-			this.#htmlElement.classList.remove("disabled");
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLInputElement) {
+			const disabled = this.#htmlElements.input.disabled;
+			if (disabled) {
+				this.#htmlElement.classList.add("disabled");
+			} else {
+				this.#htmlElement.classList.remove("disabled");
+			}
 		}
 	}
 
@@ -565,108 +704,114 @@ class WUIColorpicker {
 		this.#htmlElements.footer = document.createElement("div");
 		this.#htmlElements.cancelButton = document.createElement("button");
 		this.#htmlElements.acceptButton = document.createElement("button");
-		this.#htmlElement.appendChild(this.#htmlElements.opener);
-		this.#htmlElement.appendChild(this.#htmlElements.button);
-		this.#htmlElement.appendChild(this.#htmlElements.background);
-		this.#htmlElement.appendChild(this.#htmlElements.box);
-		this.#htmlElement.addEventListener("click", event => {
-			if (this.#properties.enabled && (
-				event.target.classList.contains("wui-colorpicker") ||
-				event.target.classList.contains("opener") ||
-				event.target.classList.contains("button") ||
-				(event.target.classList.contains("color") && event.target.parentNode.classList.contains("button")))) {
-				this.toggle();
-			}
-		});
-		if (this.#htmlElements.input.getAttribute("style") != null) {
-			this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode("style"));
-		}
-		this.#htmlElements.input.addEventListener("change", () => {
-			if (typeof (this.#properties.onChange) == "function") {
-				this.#properties.onChange(this.#htmlElements.input.value);
-			}
-		});
-		WUIColorpicker.#colors.grid.forEach(row => {
-			row.forEach(value => {
-				const option = document.createElement("div");
-				const selected = Boolean(this.#htmlElements.input.value.toLowerCase() == value.toLowerCase());
-				option.className = "color" + (selected ? " selected" : "");
-				option.style.backgroundColor = value;
-				option.dataset.value = value;
-				option.addEventListener("click", () => { optionOnClick(option, "grid"); });
-				this.#htmlElements.grid.appendChild(option);
+		if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLInputElement) {
+			this.#htmlElement.appendChild(this.#htmlElements.opener);
+			this.#htmlElement.appendChild(this.#htmlElements.button);
+			this.#htmlElement.appendChild(this.#htmlElements.background);
+			this.#htmlElement.appendChild(this.#htmlElements.box);
+			this.#htmlElement.addEventListener("click", event => {
+				if (this.#properties.enabled && (
+					event.target.classList.contains("wui-colorpicker") ||
+					event.target.classList.contains("opener") ||
+					event.target.classList.contains("button") ||
+					(event.target.classList.contains("color") && event.target.parentNode.classList.contains("button")))) {
+					this.toggle();
+				}
 			});
-		});
-		Object.entries(WUIColorpicker.#colors.list).forEach(([value, name]) => {
-			const option = document.createElement("div");
-			const color = document.createElement("div");
-			const text = document.createElement("div");
-			const selected = Boolean(this.#htmlElements.input.value.toLowerCase() == value.toLowerCase());
-			color.className = "color";
-			color.style.backgroundColor = value;
-			text.className = "text";
-			text.textContent = name.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
-			option.className = "option " + name + (selected ? " selected" : "");
-			option.dataset.value = value.toLowerCase();
-			option.appendChild(color);
-			option.appendChild(text);
-			option.addEventListener("click", () => { optionOnClick(option, "list"); });
-			this.#htmlElements.list.appendChild(option);
-		});
-		this.#htmlElements.opener.className = "opener";
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		this.#htmlElements.button.className = "button";
-		this.#htmlElements.button.appendChild(this.#htmlElements.buttonColor);
-		this.#htmlElements.buttonColor.className = "color";
-		this.#htmlElements.background.className = "background hidden";
-		this.#htmlElements.box.className = "box " + this.#properties.openDirection + " hidden";
-		this.#htmlElements.box.appendChild(this.#htmlElements.header);
-		this.#htmlElements.box.appendChild(this.#htmlElements.grid);
-		this.#htmlElements.box.appendChild(this.#htmlElements.list);
-		this.#htmlElements.box.appendChild(this.#htmlElements.preview);
-		this.#htmlElements.box.appendChild(this.#htmlElements.footer);
-		this.#htmlElements.header.className = "header";
-		this.#htmlElements.header.appendChild(this.#htmlElements.gridTab);
-		this.#htmlElements.header.appendChild(this.#htmlElements.listTab);
-		this.#htmlElements.gridTab.className = "tab grid selected";
-		this.#htmlElements.gridTab.addEventListener("click", () => { this.selectMode("grid"); });
-		this.#htmlElements.grid.className = "grid";
-		this.#htmlElements.listTab.className = "tab list";
-		this.#htmlElements.listTab.addEventListener("click", () => { this.selectMode("list"); });
-		this.#htmlElements.list.className = "list hidden";
-		this.#htmlElements.preview.className = "preview";
-		this.#htmlElements.preview.appendChild(this.#htmlElements.previewColor);
-		this.#htmlElements.preview.appendChild(this.#htmlElements.previewText);
-		this.#htmlElements.previewColor.className = "color";
-		this.#htmlElements.previewText.className = "text";
-		this.#htmlElements.footer.className = "footer";
-		this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
-		this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
-		this.#htmlElements.cancelButton.className = "cancel";
-		this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
-		this.#htmlElements.acceptButton.className = "accept";
-		this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
-		this.#prepare();
-		this.#darkModeListener(() => {
-			this.#setStyle();
-		});
+			if (this.#htmlElements.input.getAttribute("style") != null) {
+				this.#htmlElements.input.removeAttributeNode(this.#htmlElements.input.getAttributeNode("style"));
+			}
+			this.#htmlElements.input.addEventListener("change", () => {
+				if (typeof (this.#properties.onChange) == "function") {
+					this.#properties.onChange(this.#htmlElements.input.value);
+				}
+			});
+			WUIColorpicker.#colors.grid.forEach(row => {
+				row.forEach(value => {
+					const option = document.createElement("div");
+					const selected = Boolean(this.#htmlElements.input.value.toLowerCase() == value.toLowerCase());
+					option.className = "color" + (selected ? " selected" : "");
+					option.style.backgroundColor = value;
+					option.dataset.value = value;
+					option.addEventListener("click", () => { optionOnClick(option, "grid"); });
+					this.#htmlElements.grid.appendChild(option);
+				});
+			});
+			Object.entries(WUIColorpicker.#colors.list).forEach(([value, name]) => {
+				const option = document.createElement("div");
+				const color = document.createElement("div");
+				const text = document.createElement("div");
+				const selected = Boolean(this.#htmlElements.input.value.toLowerCase() == value.toLowerCase());
+				color.className = "color";
+				color.style.backgroundColor = value;
+				text.className = "text";
+				text.textContent = name.replace(/([a-z])([A-Z])/g, "$1 $2").toLowerCase();
+				option.className = "option " + name + (selected ? " selected" : "");
+				option.dataset.value = value.toLowerCase();
+				option.appendChild(color);
+				option.appendChild(text);
+				option.addEventListener("click", () => { optionOnClick(option, "list"); });
+				this.#htmlElements.list.appendChild(option);
+			});
+			this.#htmlElements.opener.className = "opener";
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			this.#htmlElements.button.className = "button";
+			this.#htmlElements.button.appendChild(this.#htmlElements.buttonColor);
+			this.#htmlElements.buttonColor.className = "color";
+			this.#htmlElements.background.className = "background hidden";
+			this.#htmlElements.box.className = "box " + this.#properties.openDirection + " hidden";
+			this.#htmlElements.box.appendChild(this.#htmlElements.header);
+			this.#htmlElements.box.appendChild(this.#htmlElements.grid);
+			this.#htmlElements.box.appendChild(this.#htmlElements.list);
+			this.#htmlElements.box.appendChild(this.#htmlElements.preview);
+			this.#htmlElements.box.appendChild(this.#htmlElements.footer);
+			this.#htmlElements.header.className = "header";
+			this.#htmlElements.header.appendChild(this.#htmlElements.gridTab);
+			this.#htmlElements.header.appendChild(this.#htmlElements.listTab);
+			this.#htmlElements.gridTab.className = "tab grid selected";
+			this.#htmlElements.gridTab.addEventListener("click", () => { this.selectMode("grid"); });
+			this.#htmlElements.grid.className = "grid";
+			this.#htmlElements.listTab.className = "tab list";
+			this.#htmlElements.listTab.addEventListener("click", () => { this.selectMode("list"); });
+			this.#htmlElements.list.className = "list hidden";
+			this.#htmlElements.preview.className = "preview";
+			this.#htmlElements.preview.appendChild(this.#htmlElements.previewColor);
+			this.#htmlElements.preview.appendChild(this.#htmlElements.previewText);
+			this.#htmlElements.previewColor.className = "color";
+			this.#htmlElements.previewText.className = "text";
+			this.#htmlElements.footer.className = "footer";
+			this.#htmlElements.footer.appendChild(this.#htmlElements.cancelButton);
+			this.#htmlElements.footer.appendChild(this.#htmlElements.acceptButton);
+			this.#htmlElements.cancelButton.className = "cancel";
+			this.#htmlElements.cancelButton.addEventListener("click", () => { this.cancel(); });
+			this.#htmlElements.acceptButton.className = "accept";
+			this.#htmlElements.acceptButton.addEventListener("click", () => { this.accept(); });
+			this.#prepare();
+			this.#darkModeListener(() => {
+				this.#setStyle();
+			});
+		}
 	}
 
 	#prepare() {
 		const texts = WUIColorpicker.#texts;
 		const lang = this.#properties.lang;
-		this.#targetValue = this.#htmlElements.input.value || "";
+		this.#targetValue = this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.value : "";
 		this.#cancelValue = this.#targetValue;
-		this.#htmlElements.gridTab.textContent = this.#properties.texts.grid != "" ? this.#properties.texts.grid : lang in texts ? texts[lang].grid : "";
-		this.#htmlElements.listTab.textContent = this.#properties.texts.list != "" ? this.#properties.texts.list : lang in texts ? texts[lang].list : "";
-		if (lang.match(/(es)/)) {
+		if (this.#htmlElements.gridTab instanceof HTMLDivElement && this.#htmlElements.listTab instanceof HTMLDivElement) {
+			this.#htmlElements.gridTab.textContent = this.#properties.texts.grid != "" ? this.#properties.texts.grid : lang in texts ? texts[lang].grid : "";
+			this.#htmlElements.listTab.textContent = this.#properties.texts.list != "" ? this.#properties.texts.list : lang in texts ? texts[lang].list : "";
+		}
+		if (lang.match(/(en|es)/)) {
 			Object.values(WUIColorpicker.#colors.list).forEach(name => {
 				const text = this.#htmlElements.list.querySelector(".option." + name + " > .text");
 				text.textContent = texts[lang].colors[name];
 			});
 		}
-		this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
-		this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		if (this.#htmlElements.cancelButton instanceof HTMLButtonElement && this.#htmlElements.acceptButton instanceof HTMLButtonElement) {
+			this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
+			this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		}
 		this.#setView(this.#targetValue);
 	}
 
@@ -688,29 +833,35 @@ class WUIColorpicker {
 	}
 
 	open() {
-		const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
-		this.#htmlElements.background.classList.remove("hidden");
-		this.#htmlElements.box.className = "box " + this.#properties.openDirection;
-		this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
-		this.#prepare();
-		this.#loadBox();
-		if (typeof (this.#properties.onOpen) == "function") {
-			this.#properties.onOpen(this.#htmlElements.input.value);
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			const mobile = Boolean(window.matchMedia("(max-width: 767px)").matches);
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-close");
+			this.#htmlElements.background.classList.remove("hidden");
+			this.#htmlElements.box.className = "box " + this.#properties.openDirection;
+			this.#htmlElements.box.style.marginBottom = !mobile && this.#properties.openDirection == "up" ? this.#htmlElement.clientHeight + "px" : "auto";
+			this.#prepare();
+			this.#loadBox();
+			if (typeof (this.#properties.onOpen) == "function") {
+				this.#properties.onOpen(this.#htmlElements.input instanceof HTMLInputElement ? this.#htmlElements.input.value : "");
+			}
 		}
 	}
 
 	close() {
-		this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
-		this.#htmlElements.background.classList.add("hidden");
-		this.#htmlElements.box.classList.add("hidden");
+		if (this.#htmlElements.opener instanceof HTMLDivElement && this.#htmlElements.background instanceof HTMLDivElement && this.#htmlElements.box instanceof HTMLDivElement) {
+			this.#htmlElements.opener.style.maskImage = this.#getSRCIcon("opener-open");
+			this.#htmlElements.background.classList.add("hidden");
+			this.#htmlElements.box.classList.add("hidden");
+		}
 	}
 
 	toggle() {
-		if (this.#htmlElements.box.classList.contains("hidden")) {
-			this.open();
-		} else {
-			this.close();
+		if (this.#htmlElements.box instanceof HTMLDivElement) {
+			if (this.#htmlElements.box.classList.contains("hidden")) {
+				this.open();
+			} else {
+				this.close();
+			}
 		}
 	}
 
@@ -718,15 +869,17 @@ class WUIColorpicker {
 		["grid", "list"].forEach(name => {
 			const tab = this.#htmlElements[name + "Tab"];
 			const content = this.#htmlElements[name];
-			if (name == mode) {
-				tab.classList.add("selected");
-				content.classList.remove("hidden");
-			} else {
-				tab.classList.remove("selected");
-				content.classList.add("hidden");
+			if (tab instanceof HTMLDivElement && content instanceof HTMLDivElement) {
+				if (name == mode) {
+					tab.classList.add("selected");
+					content.classList.remove("hidden");
+				} else {
+					tab.classList.remove("selected");
+					content.classList.add("hidden");
+				}
 			}
 		});
-		if (mode == "list") {
+		if (mode == "list" && this.#htmlElements.list instanceof HTMLDivElement) {
 			const list = WUIColorpicker.#colors.list;
 			const value = this.#htmlElements.input.value || "";
 			if (value in list) {
@@ -749,15 +902,15 @@ class WUIColorpicker {
 	}
 
 	isOpen() {
-		return !Boolean(this.#htmlElements.box.classList.contains("hidden"));
+		return Boolean(this.#htmlElements.box instanceof HTMLDivElement ? !this.#htmlElements.box.classList.contains("hidden") : false);
 	}
 
 	isEmpty() {
-		return this.#htmlElements.input.value == "";
+		return Boolean(this.#htmlElements.input instanceof HTMLInputElement && this.#htmlElements.input.value == "");
 	}
 
 	isValid() {
-		return this.#htmlElements.input.value.match(/^#([0-9A-F]{3}){1,2}$/i);
+		return Boolean(this.#htmlElements.input instanceof HTMLInputElement && this.#htmlElements.input.value.match(/^#([0-9A-F]{3}){1,2}$/i));
 	}
 
 	#darkModeListener(callback) {
@@ -780,7 +933,7 @@ class WUIColorpicker {
 
 	destroy() {
 		this.close();
-		if (this.#htmlElement instanceof HTMLElement) {
+		if (this.#htmlElement instanceof HTMLDivElement) {
 			Object.entries(this.#htmlElements).forEach(([key, element]) => {
 				if (element) {
 					element.remove();

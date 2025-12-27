@@ -64,27 +64,39 @@ Features:
 16. WUISelectpicker version class update to 0.2.
 	- Added support for private values.
 	- Added support for light/dark CSS formatting.
+	- Added `text` get property.
 	- Added `destroy()` method.
 	- Added `--wui-selectpicker-box-shadowcolor` CSS var.
+	- Added relative positioning to the HTML element.
+	- Fixed bug to ensure HTML element references of type `HTMLInputElement`.
 	- Fixed bug in private method `#addHTMLOption()`.
-16. WUIDatepicker version class update to 0.2.
+	- Deprecated `getValue()` method, replaced by the read-only property `value`.
+	- Deprecated `getText()` method, replaced by the read-only property `text`.
+17. WUIDatepicker version class update to 0.2.
 	- Added support for private values.
 	- Added support for light/dark CSS formatting.
 	- Added `destroy()` method.
 	- Added `--wui-datepicker-box-shadowcolor` CSS var.
-17. WUITimepicker version class update to 0.2.
+	- Added relative positioning to the HTML element.
+	- Fixed bug to ensure HTML element references of type `HTMLInputElement`.
+18. WUITimepicker version class update to 0.2.
 	- Added support for private values.
 	- Added support for light/dark CSS formatting.
 	- Added `destroy()` method.
 	- Added `--wui-timepicker-box-shadowcolor` CSS var.
-18. WUIColorpicker version class update to 0.2.
+	- Added relative positioning to the HTML element.
+	- Fixed bug to ensure HTML element references of type `HTMLInputElement`.
+19. WUIColorpicker version class update to 0.2.
 	- Added support for private values.
 	- Added support for light/dark CSS formatting.
 	- Added `destroy()` method.
 	- Added `--wui-colorpicker-box-shadowcolor` CSS var.
+	- Added relative positioning to the HTML element.
+	- Fixed bug to ensure HTML element references of type `HTMLInputElement`.
 20. WUICheckbox version class update to 0.2.
 	- Added support for private values.
 	- Fixed bug in drag event when selecting and deselecting the checkbox using the `mousedown` event, enabling it only when the left button remains pressed.
+	- Fixed bug to ensure HTML element references of type `HTMLInputElement`.
 21. WUIButton version class update to 0.2.
 	- Added support for private values.
 	- Added `onDblClick` property.

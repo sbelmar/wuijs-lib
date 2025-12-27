@@ -48,10 +48,10 @@ class WUITable {
 	#draggingTarget;
 	#colorScheme;
 
-	constructor(properties) {
+	constructor(properties = {}) {
 		const defaults = structuredClone(WUITable.#defaults);
-		Object.entries(defaults).forEach(([key, defValue]) => {
-			this[key] = key in properties ? properties[key] : defValue;
+		Object.entries(defaults).forEach(([key, value]) => {
+			this[key] = key in properties ? properties[key] : value;
 		});
 		this.#properties.page = 0;
 		this.#sortingIndex = null;

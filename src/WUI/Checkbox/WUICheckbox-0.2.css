@@ -4,17 +4,17 @@
  * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
  */
 
-.wui-checkbox,
-.wui-checkbox::before,
-.wui-checkbox::after {
+div.wui-checkbox,
+div.wui-checkbox::before,
+div.wui-checkbox::after {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
 
-.wui-checkbox,
-.wui-checkbox::before {
+div.wui-checkbox,
+div.wui-checkbox::before {
 	--radius: calc(var(--wui-checkbox-button-size) / 2);
 	width: calc(1.7 * var(--wui-checkbox-button-size)) !important;
 	height: var(--wui-checkbox-button-size);
@@ -23,7 +23,7 @@
 	border-radius: var(--radius);
 }
 
-.wui-checkbox {
+div.wui-checkbox {
 	--off-transition: border-color .2s ease-out;
 	display: flex;
 	cursor: pointer;
@@ -41,24 +41,24 @@
 	transition: var(--off-transition);
 }
 
-.wui-checkbox:not(.disabled) {
+div.wui-checkbox:not(.disabled) {
 	border-color: var(--wui-checkbox-bordercolor-out);
 	background-color: var(--wui-checkbox-bgcolor-out);
 }
 
-.wui-checkbox:not(.disabled):hover,
-.wui-checkbox:not(.disabled):focus-within {
+div.wui-checkbox:not(.disabled):hover,
+div.wui-checkbox:not(.disabled):focus-within {
 	border-color: var(--wui-checkbox-bordercolor-over);
 	background-color: var(--wui-checkbox-bgcolor-over);
 }
 
-.wui-checkbox::before {
+div.wui-checkbox::before {
 	content: "";
 	position: absolute;
 	left: calc(calc(-0.7 * var(--wui-checkbox-button-size)) - 1px);
 }
 
-.wui-checkbox::after {
+div.wui-checkbox::after {
 	--button-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 	--button-transition: left .2s ease-out;
 	content: "";
@@ -80,57 +80,57 @@
 	transition: var(--button-transition);
 }
 
-.wui-checkbox:not(.disabled)::before {
+div.wui-checkbox:not(.disabled)::before {
 	background-color: var(--wui-checkbox-bgcolor-checked);
 }
 
-.wui-checkbox:not(.disabled)::after {
+div.wui-checkbox:not(.disabled)::after {
 	border-color: var(--wui-checkbox-button-bordercolor-out);
 	background-color: var(--wui-checkbox-button-bgcolor-out);
 }
 
-.wui-checkbox:not(.disabled)::after:hover,
-.wui-checkbox:not(.disabled)::after:focus-within {
+div.wui-checkbox:not(.disabled)::after:hover,
+div.wui-checkbox:not(.disabled)::after:focus-within {
 	border-color: var(--wui-checkbox-button-bordercolor-over);
 	background-color: var(--wui-checkbox-button-bgcolor-over);
 }
 
-.wui-checkbox > input[type="checkbox"] {
+div.wui-checkbox > input[type="checkbox"] {
 	-khtml-opacity: 0;
 	-moz-opacity: 0;
 	opacity: 0;
 }
 
-.wui-checkbox.checked::before {
+div.wui-checkbox.checked::before {
 	left: 0;
 }
 
-.wui-checkbox.checked::after {
+div.wui-checkbox.checked::after {
 	left: calc(calc(0.7 * var(--wui-checkbox-button-size)) - 1px);
 }
 
-.wui-checkbox:not(.disabled).checked {
+div.wui-checkbox:not(.disabled).checked {
 	border-color: var(--wui-checkbox-bordercolor-checked);
 }
 
-.wui-checkbox:not(.disabled).checked::after {
+div.wui-checkbox:not(.disabled).checked::after {
 	border-color: var(--wui-checkbox-button-bordercolor-checked);
 	background-color: var(--wui-checkbox-button-bgcolor-checked);
 }
 
-.wui-checkbox.disabled {
+div.wui-checkbox.disabled {
 	border-color: var(--wui-checkbox-bordercolor-disabled);
 	background-color: var(--wui-checkbox-bgcolor-disabled);
 }
 
-.wui-checkbox.disabled::before {
+div.wui-checkbox.disabled::before {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
 	background-color: var(--wui-checkbox-bgcolor-disabled);
 }
 
-.wui-checkbox.disabled::after {
+div.wui-checkbox.disabled::after {
 	border-color: var(--wui-checkbox-button-bordercolor-disabled);
 	background-color: var(--wui-checkbox-button-bgcolor-disabled);
 }
