@@ -62,7 +62,6 @@ class WUITimepicker {
 	#nowHours;
 	#nowMinutes;
 	#targetValue;
-	#targetDate;
 	#targetTime;
 	#cancelValue;
 	#cancelTime;
@@ -229,8 +228,9 @@ class WUITimepicker {
 		}
 	}
 
-	#setView(time) {
+	#refreshView() {
 		if (this.#htmlElements.inputHours instanceof HTMLInputElement && this.#htmlElements.inputMinutes instanceof HTMLInputElement) {
+			const time = this.#targetTime;
 			this.#htmlElements.inputHours.value = time instanceof Date ? ("0" + time.getHours()).slice(-2) : "";
 			this.#htmlElements.inputMinutes.value = time instanceof Date ? ("0" + time.getMinutes()).slice(-2) : "";
 		}
@@ -325,9 +325,9 @@ class WUITimepicker {
 						});
 						option.classList.toggle("selected");
 						this.#targetValue = value;
-						this.#targetDate = time;
+						this.#targetTime = time;
 						this.#setValue(value);
-						this.#setView(time);
+						this.#refreshView();
 					});
 					list.appendChild(option);
 				}
@@ -356,6 +356,7 @@ class WUITimepicker {
 		}
 	}
 
+
 	#prepare() {
 		const texts = WUITimepicker.#texts;
 		const lang = this.#properties.lang;
@@ -375,7 +376,7 @@ class WUITimepicker {
 			this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
 			this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
 		}
-		this.#setView(this.#targetTime);
+		this.#refreshView();
 	}
 
 	#loadBox() {
@@ -450,8 +451,9 @@ class WUITimepicker {
 	}
 
 	cancel() {
+		this.#targetTime = this.#cancelTime;
 		this.#setValue(this.#cancelValue);
-		this.#setView(this.#cancelTime);
+		this.#refreshView();
 		this.close();
 	}
 
@@ -507,7 +509,6 @@ class WUITimepicker {
 		this.#nowHours = undefined;
 		this.#nowMinutes = undefined;
 		this.#targetValue = undefined;
-		this.#targetDate = undefined;
 		this.#targetTime = undefined;
 		this.#cancelValue = undefined;
 		this.#cancelTime = undefined;

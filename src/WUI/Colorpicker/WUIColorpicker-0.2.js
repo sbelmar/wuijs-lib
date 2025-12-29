@@ -639,12 +639,13 @@ class WUIColorpicker {
 		}
 	}
 
-	#setView(value) {
-		const list = WUIColorpicker.#colors.list;
-		const empty = Boolean(value == "" || value == this.#properties.emptyValue);
-		const bgcolor = empty ? "transparent" : value;
-		const bgimage = empty ? this.#getSRCIcon("viewcolor-empty") : "url()";
+	#refreshView() {
 		if (this.#htmlElements.buttonColor instanceof HTMLDivElement && this.#htmlElements.previewColor instanceof HTMLDivElement && this.#htmlElements.previewText instanceof HTMLDivElement) {
+			const value = this.#targetValue;
+			const list = WUIColorpicker.#colors.list;
+			const empty = Boolean(value == "" || value == this.#properties.emptyValue);
+			const bgcolor = empty ? "transparent" : value;
+			const bgimage = empty ? this.#getSRCIcon("viewcolor-empty") : "url()";
 			this.#htmlElements.buttonColor.style.backgroundColor = bgcolor;
 			this.#htmlElements.buttonColor.style.maskImage = bgimage;
 			this.#htmlElements.previewColor.style.backgroundColor = bgcolor;
@@ -686,7 +687,7 @@ class WUIColorpicker {
 			option.classList.toggle("selected");
 			this.#targetValue = value;
 			this.#setValue(value);
-			this.#setView(value);
+			this.#refreshView();
 		}
 		this.#htmlElements.opener = document.createElement("div");
 		this.#htmlElements.button = document.createElement("button");
@@ -802,17 +803,17 @@ class WUIColorpicker {
 			this.#htmlElements.gridTab.textContent = this.#properties.texts.grid != "" ? this.#properties.texts.grid : lang in texts ? texts[lang].grid : "";
 			this.#htmlElements.listTab.textContent = this.#properties.texts.list != "" ? this.#properties.texts.list : lang in texts ? texts[lang].list : "";
 		}
+		if (this.#htmlElements.cancelButton instanceof HTMLButtonElement && this.#htmlElements.acceptButton instanceof HTMLButtonElement) {
+			this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
+			this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
+		}
 		if (lang.match(/(en|es)/)) {
 			Object.values(WUIColorpicker.#colors.list).forEach(name => {
 				const text = this.#htmlElements.list.querySelector(".option." + name + " > .text");
 				text.textContent = texts[lang].colors[name];
 			});
 		}
-		if (this.#htmlElements.cancelButton instanceof HTMLButtonElement && this.#htmlElements.acceptButton instanceof HTMLButtonElement) {
-			this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
-			this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
-		}
-		this.#setView(this.#targetValue);
+		this.#refreshView();
 	}
 
 	#loadBox() {
@@ -892,8 +893,9 @@ class WUIColorpicker {
 	}
 
 	cancel() {
+		this.#targetValue = this.#cancelValue;
 		this.#setValue(this.#cancelValue);
-		this.#setView(this.#cancelValue);
+		this.#refreshView();
 		this.close();
 	}
 

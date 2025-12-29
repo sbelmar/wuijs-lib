@@ -191,7 +191,9 @@ class WUIDatepicker {
 	set value(value) {
 		if (typeof (value) == "string" && value.match(/^(\d{4}-\d{2}-\d{2})?$/) && (typeof (this.#properties.enabled) == "undefined" || this.#properties.enabled)) {
 			this.#setValue(value);
-			this.#prepareValue();
+			this.#targetValue = value;
+			this.#targetDate = new Date(value + "T00:00:00");
+			this.#refreshView();
 		}
 	}
 
@@ -308,8 +310,9 @@ class WUIDatepicker {
 		}
 	}
 
-	#setView(date) {
+	#refreshView() {
 		if (this.#htmlElements.inputYear instanceof HTMLInputElement && this.#htmlElements.inputMonth instanceof HTMLInputElement && this.#htmlElements.inputDay instanceof HTMLInputElement) {
+			const date = this.#targetDate;
 			this.#htmlElements.inputYear.value = date instanceof Date ? ("000" + date.getFullYear()).slice(-4) : "";
 			this.#htmlElements.inputMonth.value = date instanceof Date ? ("0" + (date.getMonth() + 1)).slice(-2) : "";
 			this.#htmlElements.inputDay.value = date instanceof Date ? ("0" + date.getDate()).slice(-2) : "";
@@ -433,10 +436,22 @@ class WUIDatepicker {
 		}
 	}
 
+
 	#prepare() {
 		const texts = WUIDatepicker.#texts;
 		const lang = this.#properties.locales.split("-")[0].toLowerCase();
-		this.#prepareValue();
+		const today = (() => {
+			const date = new Date();
+			const offset = date.getTimezoneOffset();
+			return new Date(date.getTime() - offset * 60 * 1000).toISOString().split("T")[0];
+		})();
+		this.#todayValue = today;
+		this.#todayYear = today.replace(/-\d{2}-\d{2}/, "");
+		this.#todayMonth = today.replace(/\d{4}-0?(\d+)-\d{2}/, "$1");
+		this.#targetValue = this.#properties.value || today;
+		this.#targetDate = new Date(this.#targetValue + "T00:00:00");
+		this.#cancelValue = this.#targetValue;
+		this.#cancelDate = new Date(this.#targetValue + "T00:00:00");
 		this.#mode = "days";
 		this.#properties.weekDaysNames = [];
 		this.#properties.monthsNames = [];
@@ -452,22 +467,7 @@ class WUIDatepicker {
 			this.#htmlElements.cancelButton.textContent = typeof (this.#properties.texts) == "object" && this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
 			this.#htmlElements.acceptButton.textContent = typeof (this.#properties.texts) == "object" && this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
 		}
-	}
-
-	#prepareValue() {
-		const today = (() => {
-			const date = new Date();
-			const offset = date.getTimezoneOffset();
-			return new Date(date.getTime() - offset * 60 * 1000).toISOString().split("T")[0];
-		})();
-		this.#todayValue = today;
-		this.#todayYear = today.replace(/-\d{2}-\d{2}/, "");
-		this.#todayMonth = today.replace(/\d{4}-0?(\d+)-\d{2}/, "$1");
-		this.#targetValue = this.#properties.value || today;
-		this.#targetDate = new Date(this.#targetValue + "T00:00:00");
-		this.#cancelValue = this.#targetValue;
-		this.#cancelDate = new Date(this.#targetValue + "T00:00:00");
-		this.#setView(this.#targetDate);
+		this.#refreshView();
 	}
 
 	#loadValue() {
@@ -564,10 +564,10 @@ class WUIDatepicker {
 						});
 						option.classList.toggle("selected");
 						this.#targetValue = targetValue;
-						this.#targetDate = targetDate;
+						this.#targetDate = date;
 						this.#htmlElements.period.innerHTML = this.#properties.monthsNames[option.dataset.month - 1] + " " + option.dataset.year + " <div class='icon up'></div>";
 						this.#setValue(value);
-						this.#setView(date);
+						this.#refreshView();
 					});
 					cell.appendChild(option);
 					m++;
@@ -635,9 +635,9 @@ class WUIDatepicker {
 						});
 						option.classList.toggle("selected");
 						this.#targetValue = targetValue;
-						this.#targetDate = targetDate;
+						this.#targetDate = date;
 						this.#setValue(value);
-						this.#setView(date);
+						this.#refreshView();
 					});
 					cell.appendChild(option);
 					if (i + 1 == 7 * 5 && d < lasmday) {
@@ -729,8 +729,9 @@ class WUIDatepicker {
 	}
 
 	cancel() {
+		this.#targetDate = this.#cancelDate;
 		this.#setValue(this.#cancelValue);
-		this.#setView(this.#cancelDate);
+		this.#refreshView();
 		this.close();
 	}
 
