@@ -46,7 +46,7 @@ Autor: `Sergio E. Belmar V. <sbelmar@wuijs.dev>`
 	*   WUICheckbox
 	*   WUIIntensity
 	*   [WUIButton](#WUIButton)
-*   [Ejemplos](#examples)
+*   [Ejemplos](#examples) (CodePen)
 
 <a name="overview"></a>
 
