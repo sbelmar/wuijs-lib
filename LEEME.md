@@ -3,13 +3,13 @@
 
 # wuijs-lib
 
-<div align="center">
+<div style="text-align: center;">
 	<img src="https://github.com/sbelmar/wuijs-lib/blob/main/imgs/logo/wuijs-color.svg" width="128" height="128">
 </div>
 
 Versión librería: `0.2.0` ([Registro de Cambio](./REGISTRODECAMBIO.md))
 
-Versión documentación: `0.2.0.20251210.2`
+Versión documentación: `0.2.0.20251231.0`
 
 Licencia: `Licencia Apache 2.0`
 

@@ -476,7 +476,7 @@ class WUIDatepicker {
 			const year = this.#htmlElements.inputYear.value;
 			const month = this.#htmlElements.inputMonth.value;
 			const day = this.#htmlElements.inputDay.value;
-			this.#properties.value = year != "" && month != "" && day != "" ? ("000" + year).slice(-4) + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2) : "";
+			this.#setValue(year != "" && month != "" && day != "" ? ("000" + year).slice(-4) + "-" + ("0" + month).slice(-2) + "-" + ("0" + day).slice(-2) : "");
 			if (this.#properties.value != value && typeof (this.#properties.onChange) == "function") {
 				this.#properties.onChange(this.#properties.value);
 			}
