@@ -3,7 +3,7 @@
 
 # wuijs-lib
 
-<div style="text-align: center;">
+<div align="center">
 	<img src="https://github.com/sbelmar/wuijs-lib/blob/main/imgs/logo/wuijs-color.svg" width="128" height="128">
 </div>
 
