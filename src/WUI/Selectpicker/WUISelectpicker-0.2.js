@@ -389,7 +389,7 @@ class WUISelectpicker {
 			icon.className = "icon " + (customIcon ? opt.icon : "check");
 			icon.style.maskImage = !customIcon ? this.#getSRCIcon("box-option-check", selected ? "focus" : "out") : "url()";
 			text.className = "text " + (opt.value == "" ? "empty" : this._selecteableText ? "selecteable" : "");
-			text.innerHTML = opt.value == "" ? (this.texts.empty != "" ? this.texts.empty : lang in WUISelectpicker.#texts ? WUISelectpicker.#texts[lang].empty : "") : opt.text;
+			text.innerHTML = opt.value == "" ? (this.texts.empty != "" ? this.texts.empty : this.lang in WUISelectpicker.#texts ? WUISelectpicker.#texts[this.lang].empty : "") : opt.text;
 			(opt.classList || []).forEach(key => {
 				text.classList.add(key);
 			});
