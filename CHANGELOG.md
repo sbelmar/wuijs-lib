@@ -69,6 +69,7 @@ Features:
 	- Added `destroy()` method.
 	- Added `--wui-selectpicker-box-shadowcolor` CSS var.
 	- Added relative positioning to the HTML element.
+	- Fixed bug to load the `value` property when instantiating the object.
 	- Fixed bug to ensure HTML element references of type `HTMLInputElement`.
 	- Fixed bug in private method `#addHTMLOption()`.
 	- Deprecated `getValue()` method, replaced by the read-only property `value`.

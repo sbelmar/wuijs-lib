@@ -125,6 +125,9 @@ class WUISelectpicker {
 		Object.entries(defaults).forEach(([name, value]) => {
 			this[name] = name in properties ? properties[name] : value;
 		});
+		this.#value = null;
+		this.#targetValue = null;
+		this.#cancelValue = null;
 		this.#colorScheme = null;
 	}
 
@@ -529,6 +532,9 @@ class WUISelectpicker {
 			this.#darkModeListener(() => {
 				this.#setStyle();
 			});
+			if (this.#value != null) {
+				this.value = this.#value
+			}
 		}
 	}
 

@@ -9,7 +9,7 @@
 
 Library version: `0.2.0` ([Change Log](./CHANGELOG.md))
 
-Document version: `0.2.0.20260101.0`
+Document version: `0.2.0.20260102.0`
 
 License: `Apache License 2.0`
 
@@ -2914,6 +2914,7 @@ HTML Code:
 ```html
 <div class="wui-selectpicker my-selectpicker">
 	<select name="mySelect">
+		<option value=""></option>
 		<option value="1">Option 1</option>
 		<option value="2">Option 2</option>
 		<option value="3">Option 3</option>
@@ -2930,7 +2931,7 @@ JS Code:
 const output = document.body.querySelector(".my-output");
 const select = new WUISelectpicker({
 	selector: ".wui-selectpicker.my-selectpicker",
-	value: "",
+	value: "2",
 	//lang: "en",
 	//texts: {},
 	//openDirection: "down",

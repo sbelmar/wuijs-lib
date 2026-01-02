@@ -69,6 +69,7 @@ Características:
 	- Se agregó el método `destroy()`.
 	- Se agregó la variable CSS `--wui-selectpicker-box-shadowcolor`.
 	- Se agregó posicionamiento relativo al elemento HTML.
+	- Se corrigió error al cargar la propiedad `value` al instanciar el objeto.
 	- Se corrigió error para asegurar referencia a elementos del DOM de tipo `HTMLInputElement`.
 	- Se corrigió error en el método privado `#addHTMLOption()`.
 	- Se deprecó el método `getValue()`, reemplazado por la propiedad de sólo lectura `value`.
