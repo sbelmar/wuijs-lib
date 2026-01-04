@@ -571,9 +571,6 @@ class WUIDatepicker {
 						this.#htmlElements.period.innerHTML = this.#properties.monthsNames[option.dataset.month - 1] + " " + option.dataset.year + " <div class='icon up'></div>";
 						this.#setValue(value);
 						this.#refreshView();
-						if (typeof (this.#properties.onChange) == "function") {
-							this.#properties.onChange(value);
-						}
 					});
 					cell.appendChild(option);
 					m++;
@@ -644,9 +641,6 @@ class WUIDatepicker {
 						this.#targetDate = date;
 						this.#setValue(value);
 						this.#refreshView();
-						if (typeof (this.#properties.onChange) == "function") {
-							this.#properties.onChange(value);
-						}
 					});
 					cell.appendChild(option);
 					if (i + 1 == 7 * 5 && d < lasmday) {
@@ -745,6 +739,9 @@ class WUIDatepicker {
 	}
 
 	accept() {
+		if (typeof (this.#properties.onChange) == "function") {
+			this.#properties.onChange(this.value);
+		}
 		this.close();
 	}
 
