@@ -2822,12 +2822,17 @@ Component for the implementation of multiple or exclusive selection list data in
 
 | Variable                                            | Description |
 | --------------------------------------------------- | ----------- |
+| `--wui-selectpicker-borderradius`                   |
+| `--wui-selectpicker-borderwidth`                    |
+| `--wui-selectpicker-bordercolor`                    |
+| `--wui-selectpicker-bgcolor`                        |
 | `--wui-selectpicker-opener-iconsize`                |
 | `--wui-selectpicker-opener-iconcolor-out`           |
 | `--wui-selectpicker-opener-iconcolor-over`          |
 | `--wui-selectpicker-opener-iconcolor-disabled`      |
 | `--wui-selectpicker-opener-openicon-src`            |
 | `--wui-selectpicker-opener-closeicon-src`           |
+| `--wui-selectpicker-input-paddingleft`              |
 | `--wui-selectpicker-input-textcolor-out`            |
 | `--wui-selectpicker-input-textcolor-over`           |
 | `--wui-selectpicker-input-textcolor-disabled`       |
@@ -2864,12 +2869,17 @@ CSS Settings:
 
 ```css
 :root {
+	--wui-selectpicker-borderradius: 10px;
+	--wui-selectpicker-borderwidth: 0px;
+	--wui-selectpicker-bordercolor: transparent;
+	--wui-selectpicker-bgcolor: #f6f6fa;
 	--wui-selectpicker-opener-iconsize: 30px;
 	--wui-selectpicker-opener-iconcolor-out: #000;
 	--wui-selectpicker-opener-iconcolor-over: #1e90ff;
 	--wui-selectpicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-selectpicker-opener-openicon-src: none;
 	--wui-selectpicker-opener-closeicon-src: none;
+	--wui-selectpicker-input-paddingleft: 10px;
 	--wui-selectpicker-input-textcolor-out: #2d3a47;
 	--wui-selectpicker-input-textcolor-over: #1f2937;
 	--wui-selectpicker-input-textcolor-disabled: #d5dce3;
@@ -2911,11 +2921,6 @@ body {
 
 .my-selectpicker {
 	max-width: 200px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	background-color: #f6f6fa;
-	padding-left: 10px;
 }
 
 .my-output {
@@ -3047,12 +3052,20 @@ Component for the implementation of date type data inputs based on HTML element 
 
 | Variable                                         | Description |
 | ------------------------------------------------ | ----------- |
+| `--wui-datepicker-borderradius`                  |
+| `--wui-datepicker-borderwidth`                   |
+| `--wui-datepicker-bordercolor`                   |
+| `--wui-datepicker-bgcolor`                       |
 | `--wui-datepicker-opener-iconsize`               | 
 | `--wui-datepicker-opener-iconcolor-out`          | 
 | `--wui-datepicker-opener-iconcolor-over`         | 
 | `--wui-datepicker-opener-iconcolor-disabled`     | 
 | `--wui-datepicker-opener-openicon-src`           | 
 | `--wui-datepicker-opener-closeicon-src`          | 
+| `--wui-datepicker-input-paddingleft`             |
+| `--wui-datepicker-input-textcolor-out`           |
+| `--wui-datepicker-input-textcolor-over`          |
+| `--wui-datepicker-input-textcolor-disabled`      |
 | `--wui-datepicker-box-shadowcolor`               | 
 | `--wui-datepicker-box-borderradius`              | 
 | `--wui-datepicker-box-bordercolor`               | 
@@ -3092,12 +3105,20 @@ CSS settings:
 
 ```css
 :root {
+	--wui-datepicker-borderradius: 10px;
+	--wui-datepicker-borderwidth: 0px;
+	--wui-datepicker-bordercolor: transparent;
+	--wui-datepicker-bgcolor: #f6f6fa;
 	--wui-datepicker-opener-iconsize: 30px;
 	--wui-datepicker-opener-iconcolor-out: #000;
 	--wui-datepicker-opener-iconcolor-over: #1e90ff;
 	--wui-datepicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-datepicker-opener-openicon-src: none;
 	--wui-datepicker-opener-closeicon-src: none;
+	--wui-datepicker-input-paddingleft: 10px;
+	--wui-datepicker-input-textcolor-out: #2d3a47;
+	--wui-datepicker-input-textcolor-over: #1f2937;
+	--wui-datepicker-input-textcolor-disabled: #d5dce3;
 	--wui-datepicker-box-shadowcolor: #959da5;
 	--wui-datepicker-box-borderradius: 15px;
 	--wui-datepicker-box-bordercolor: #f0f0f3;
@@ -3142,11 +3163,6 @@ body {
 
 .my-datepicker {
 	max-width: 200px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	background-color: #f6f6fa;
-	padding-left: 10px;
 }
 
 .my-output {
@@ -3268,12 +3284,20 @@ Component for the implementation of time type data inputs based on HTML element 
 
 | Variable                                         | Description |
 | ------------------------------------------------ | ----------- |
+| `--wui-timepicker-borderradius`                  |
+| `--wui-timepicker-borderwidth`                   |
+| `--wui-timepicker-bordercolor`                   |
+| `--wui-timepicker-bgcolor`                       |
 | `--wui-timepicker-opener-iconsize`               |
 | `--wui-timepicker-opener-iconcolor-out`          |
 | `--wui-timepicker-opener-iconcolor-over`         |
 | `--wui-timepicker-opener-iconcolor-disabled`     |
 | `--wui-timepicker-opener-openicon-src`           |
 | `--wui-timepicker-opener-closeicon-src`          |
+| `--wui-timepicker-input-paddingleft`             |
+| `--wui-timepicker-input-textcolor-out`           |
+| `--wui-timepicker-input-textcolor-over`          |
+| `--wui-timepicker-input-textcolor-disabled`      |
 | `--wui-timepicker-box-shadowcolor`               |
 | `--wui-timepicker-box-borderradius`              |
 | `--wui-timepicker-box-bordercolor`               |
@@ -3296,23 +3320,31 @@ CSS settings:
 
 ```css
 :root {
+	--wui-timepicker-borderradius: 10px;
+	--wui-timepicker-borderwidth: 0px;
+	--wui-timepicker-bordercolor: transparent;
+	--wui-timepicker-bgcolor: #f6f6fa;
 	--wui-timepicker-opener-iconsize: 30px;
 	--wui-timepicker-opener-iconcolor-out: #000;
 	--wui-timepicker-opener-iconcolor-over: #1e90ff;
 	--wui-timepicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-timepicker-opener-openicon-src: none;
 	--wui-timepicker-opener-closeicon-src: none;
+	--wui-timepicker-input-paddingleft: 10px;
+	--wui-timepicker-input-textcolor-out: #2d3a47;
+	--wui-timepicker-input-textcolor-over: #1f2937;
+	--wui-timepicker-input-textcolor-disabled: #d5dce3;
 	--wui-timepicker-box-shadowcolor: #959da5;
 	--wui-timepicker-box-borderradius: 15px;
 	--wui-timepicker-box-bordercolor: #f0f0f3;
 	--wui-timepicker-box-bgcolor: rgb(from #fdfdfe r g b / 100%);
 	--wui-timepicker-box-scroll-bgcolor-out: rgb(from #353a40 r g b / 20%);
 	--wui-timepicker-box-scroll-bgcolor-over: rgb(from #353a40 r g b / 40%);
-	--wui-timepicker-box-option-textcolor-out: #000;
-	--wui-timepicker-box-option-bgcolor-over: rgb(from #1e90ff r g b / 20%);
-	--wui-timepicker-box-option-textcolor-over: #1e90ff;
 	--wui-timepicker-box-option-bgcolor-now: #f0f0f3;
+	--wui-timepicker-box-option-bgcolor-over: rgb(from #1e90ff r g b / 20%);
 	--wui-timepicker-box-option-bgcolor-selected: #1e90ff;
+	--wui-timepicker-box-option-textcolor-out: #000;
+	--wui-timepicker-box-option-textcolor-over: #1e90ff;
 	--wui-timepicker-box-option-textcolor-selected: #fff;
 	--wui-timepicker-box-button-textcolor-out: #1e90ff;
 	--wui-timepicker-box-button-textcolor-over: #1e90ff;
@@ -3329,11 +3361,6 @@ body {
 
 .my-timepicker {
 	max-width: 100px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	background-color: #f6f6fa;
-	padding-left: 10px;
 }
 
 .my-output {

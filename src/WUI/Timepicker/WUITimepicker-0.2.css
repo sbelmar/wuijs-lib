@@ -17,7 +17,11 @@ div.wui-timepicker {
 	width: 100%;
 	height: 30px;
 	margin: 0;
-	border: 0;
+	-webkit-border-radius: var(--wui-timepicker-borderradius);
+	-moz-border-radius: var(--wui-timepicker-borderradius);
+	border-radius: var(--wui-timepicker-borderradius);
+	border: var(--wui-timepicker-borderwidth) solid var(--wui-timepicker-bordercolor);
+	background-color: var(--wui-timepicker-bgcolor);
 	padding-right: var(--wui-timepicker-opener-iconsize);
 }
 
@@ -68,10 +72,19 @@ div.wui-timepicker > .inputs > input[type="text"] {
 	outline: none;
 	border: 0;
 	background-color: transparent;
-	padding: 0;
+	padding: 0 0 0 var(--wui-timepicker-input-paddingleft);
 	text-align: center;
 	font-family: inherit;
 	font-size: 14px;
+	color: var(--wui-timepicker-input-textcolor-out);
+}
+
+div.wui-timepicker > .inputs > input[type="text"]:is(:hover, :focus, :focus-within) {
+	color: var(--wui-timepicker-input-textcolor-over);
+}
+
+div.wui-timepicker > .inputs > input[type="text"]:disabled {
+	color: var(--wui-timepicker-input-textcolor-disabled) !important;
 }
 
 div.wui-timepicker > .inputs > input[type="text"]:last-child {

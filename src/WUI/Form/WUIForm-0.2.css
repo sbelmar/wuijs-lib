@@ -1134,6 +1134,30 @@
 /* wui-datepicker */
 /* wui-timepicker */
 
+.wui-form:is(.line, .border) fieldset > .field > .wui-selectpicker {
+	--wui-selectpicker-borderradius: 0px;
+	--wui-selectpicker-borderwidth: 0px;
+	--wui-selectpicker-bordercolor: transparent;
+	--wui-selectpicker-bgcolor: transparent;
+	--wui-selectpicker-input-paddingleft: 10px;
+}
+
+.wui-form:is(.line, .border) fieldset > .field > .wui-datepicker {
+	--wui-datepicker-borderradius: 0px;
+	--wui-datepicker-borderwidth: 0px;
+	--wui-datepicker-bordercolor: transparent;
+	--wui-datepicker-bgcolor: transparent;
+	--wui-datepicker-input-paddingleft: 10px;
+}
+
+.wui-form:is(.line, .border) fieldset > .field > .wui-timepicker {
+	--wui-timepicker-borderradius: 0px;
+	--wui-timepicker-borderwidth: 0px;
+	--wui-timepicker-bordercolor: transparent;
+	--wui-timepicker-bgcolor: transparent;
+	--wui-timepicker-input-paddingleft: 10px;
+}
+
 .wui-form:is(.line, .border) fieldset > .field > :is(.wui-selectpicker, .wui-datepicker, .wui-timepicker) {
 	left: 0;
 	padding-left: 10px;

@@ -17,7 +17,11 @@ div.wui-datepicker {
 	width: 100%;
 	height: 30px;
 	margin: 0;
-	border: 0;
+	-webkit-border-radius: var(--wui-datepicker-borderradius);
+	-moz-border-radius: var(--wui-datepicker-borderradius);
+	border-radius: var(--wui-datepicker-borderradius);
+	border: var(--wui-datepicker-borderwidth) solid var(--wui-datepicker-bordercolor);
+	background-color: var(--wui-datepicker-bgcolor);
 	padding-right: var(--wui-datepicker-opener-iconsize);
 }
 
@@ -68,7 +72,7 @@ div.wui-datepicker > .inputs > input[type="text"] {
 	outline: none;
 	border: 0;
 	background-color: transparent;
-	padding: 0;
+	padding: 0 0 0 var(--wui-timepicker-input-paddingleft);
 	text-align: center;
 	font-family: inherit;
 	font-size: 14px;
