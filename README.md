@@ -2915,7 +2915,7 @@ body {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #f6f6fa;
-	padding-left: 7px;
+	padding-left: 10px;
 }
 
 .my-output {
@@ -3146,7 +3146,7 @@ body {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #f6f6fa;
-	padding-left: 7px;
+	padding-left: 10px;
 }
 
 .my-output {
@@ -3333,7 +3333,7 @@ body {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	background-color: #f6f6fa;
-	padding-left: 7px;
+	padding-left: 10px;
 }
 
 .my-output {
