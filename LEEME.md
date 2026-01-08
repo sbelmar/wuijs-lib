@@ -390,12 +390,17 @@ Código CSS archivo `WUI.css`:
 
 	/* wui-selectpicker */
 
+	--wui-selectpicker-borderradius: 10px;
+	--wui-selectpicker-borderwidth: 0px;
+	--wui-selectpicker-bordercolor: transparent;
+	--wui-selectpicker-bgcolor: #f6f6fa;
 	--wui-selectpicker-opener-iconsize: 30px;
 	--wui-selectpicker-opener-iconcolor-out: #000;
 	--wui-selectpicker-opener-iconcolor-over: #1e90ff;
 	--wui-selectpicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-selectpicker-opener-openicon-src: none;
 	--wui-selectpicker-opener-closeicon-src: none;
+	--wui-selectpicker-input-paddingleft: 10px;
 	--wui-selectpicker-input-textcolor-out: #2d3a47;
 	--wui-selectpicker-input-textcolor-over: #1f2937;
 	--wui-selectpicker-input-textcolor-disabled: #d5dce3;
@@ -428,12 +433,20 @@ Código CSS archivo `WUI.css`:
 
 	/* wui-datepicker */
 
+	--wui-datepicker-borderradius: 10px;
+	--wui-datepicker-borderwidth: 0px;
+	--wui-datepicker-bordercolor: transparent;
+	--wui-datepicker-bgcolor: #f6f6fa;
 	--wui-datepicker-opener-iconsize: 30px;
 	--wui-datepicker-opener-iconcolor-out: #000;
 	--wui-datepicker-opener-iconcolor-over: #1e90ff;
 	--wui-datepicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-datepicker-opener-openicon-src: none;
 	--wui-datepicker-opener-closeicon-src: none;
+	--wui-datepicker-input-paddingleft: 10px;
+	--wui-datepicker-input-textcolor-out: #2d3a47;
+	--wui-datepicker-input-textcolor-over: #1f2937;
+	--wui-datepicker-input-textcolor-disabled: #d5dce3;
 	--wui-datepicker-box-shadowcolor: #959da5;
 	--wui-datepicker-box-borderradius: 15px;
 	--wui-datepicker-box-bordercolor: #f0f0f3;
@@ -469,12 +482,20 @@ Código CSS archivo `WUI.css`:
 
 	/* wui-timepicker */
 
+	--wui-timepicker-borderradius: 10px;
+	--wui-timepicker-borderwidth: 0px;
+	--wui-timepicker-bordercolor: transparent;
+	--wui-timepicker-bgcolor: #f6f6fa;
 	--wui-timepicker-opener-iconsize: 30px;
 	--wui-timepicker-opener-iconcolor-out: #000;
 	--wui-timepicker-opener-iconcolor-over: #1e90ff;
 	--wui-timepicker-opener-iconcolor-disabled: #d5dce3;
 	--wui-timepicker-opener-openicon-src: none;
 	--wui-timepicker-opener-closeicon-src: none;
+	--wui-timepicker-input-paddingleft: 10px;
+	--wui-timepicker-input-textcolor-out: #2d3a47;
+	--wui-timepicker-input-textcolor-over: #1f2937;
+	--wui-timepicker-input-textcolor-disabled: #d5dce3;
 	--wui-timepicker-box-shadowcolor: #959da5;
 	--wui-timepicker-box-borderradius: 15px;
 	--wui-timepicker-box-bordercolor: #f0f0f3;
@@ -584,7 +605,7 @@ Código CSS archivo `WUI.css`:
 	--wui-button-submit-bordercolor-out: rgb(from #1e90ff r g b / 20%);
 	--wui-button-submit-bordercolor-over: #1e90ff;
 	--wui-button-submit-bordercolor-selected: #1e90ff;
-	--wui-button-submit-bordercolor-disabled: var(--wui-button-default-bordercolor-disabled);
+	--wui-button-submit-bordercolor-disabled: #d5dce3;
 	--wui-button-submit-bgcolor-out: #1e90ff;
 	--wui-button-submit-bgcolor-over: #1e90ff;
 	--wui-button-submit-bgcolor-mobile: rgb(from #959da5 r g b / 20%);
@@ -599,7 +620,7 @@ Código CSS archivo `WUI.css`:
 	--wui-button-warning-bordercolor-out: rgb(from #f44343 r g b / 25%);
 	--wui-button-warning-bordercolor-over: #f44343;
 	--wui-button-warning-bordercolor-selected: #f44343;
-	--wui-button-warning-bordercolor-disabled: var(--wui-button-default-bordercolor-disabled);
+	--wui-button-warning-bordercolor-disabled: #d5dce3;
 	--wui-button-warning-bgcolor-out: #f44343;
 	--wui-button-warning-bgcolor-over: #f44343;
 	--wui-button-warning-bgcolor-selected: #f44343;
