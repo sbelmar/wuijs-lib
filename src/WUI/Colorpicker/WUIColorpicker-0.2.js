@@ -791,6 +791,9 @@ class WUIColorpicker {
 			this.#darkModeListener(() => {
 				this.#setStyle();
 			});
+			if (this.#properties.value != "") {
+				this.value = this.#properties.value;
+			}
 		}
 	}
 

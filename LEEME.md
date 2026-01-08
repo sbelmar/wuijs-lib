@@ -3592,7 +3592,7 @@ body {
 .my-output {
 	position: absolute;
 	top: 4px;
-	left: 50px;
+	left: 280px;
 	margin: 10px;
 	font-family: monospace;
 }
