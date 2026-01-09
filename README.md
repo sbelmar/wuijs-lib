@@ -3619,9 +3619,7 @@ body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
 
-.my-colorpicker {
-	max-width: 90px;
-}
+.my-colorpicker {}
 
 .my-output {
 	position: absolute;

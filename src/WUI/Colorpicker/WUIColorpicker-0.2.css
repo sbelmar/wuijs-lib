@@ -14,7 +14,7 @@ div.wui-colorpicker * {
 
 div.wui-colorpicker {
 	position: relative;
-	width: auto;
+	width: calc(1.9 * var(--wui-colorpicker-viewbutton-size));
 	height: 30px;
 	margin: 0;
 	border: 0;
