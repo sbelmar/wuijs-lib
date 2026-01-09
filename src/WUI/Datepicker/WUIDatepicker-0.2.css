@@ -148,6 +148,11 @@ div.wui-datepicker > .box.left {
 	left: 0;
 }
 
+div.wui-datepicker > .box.center {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
 div.wui-datepicker > .box.right {
 	right: 0;
 }

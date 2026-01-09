@@ -9,7 +9,7 @@
 
 Versión librería: `0.2.0` ([Registro de Cambio](./REGISTRODECAMBIO.md))
 
-Versión documentación: `0.2.0.20260104.0`
+Versión documentación: `0.2.0.20260109.0`
 
 Licencia: `Licencia Apache 2.0`
 
@@ -3072,7 +3072,7 @@ Componente para la implementación de entradas de datos de tipo fecha basada en 
 | weekDaysNames | `array`    | `[]`                 | (get/set)<br><br>Nombres personalizados para los días de la semana. Si se define, sobrescribe los nombres generados por `locales`. |
 | texts         | `object`   | `{}`                 | (get/set)<br><br>Textos personalizados para los botones y mensajes del componente. |
 | openDirection | `string`   | `"down"`             | (get/set)<br><br>Dirección de apertura del calendario.<br><br>Valores:<br>• `"up"`, hacia arriba.<br>• `"down"`, hacia abajo. |
-| boxAlign      | `string`   | `"center"`           | (get/set)<br><br>Alineación horizontal del calendario respecto a la entrada de datos.<br><br>Valores:<br>• `"left"`, izquierda.<br>• `"center"`, centro.<br>• `"right"`, derecha. |
+| boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Alineación horizontal del calendario respecto a la entrada de datos.<br><br>Valores:<br>• `"left"`, izquierda.<br>• `"center"`, centro.<br>• `"right"`, derecha. |
 | enabled       | `boolean`  | `true`               | (get/set)<br><br>Define si la entrada de datos está habilitada. |
 | onOpen        | `function` | `null`               | (get/set)<br><br>Función que se llama cuando se abre el calendario. La función recibe por parámetro el valor actual seleccionado. |
 | onChange      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
@@ -3256,7 +3256,7 @@ const datepicker = new WUIDatepicker({
 	//weekDaysNames: [],
 	//texts: {},
 	//openDirection: "down",
-	//boxAlign: "center",
+	//boxAlign: "left",
 	//enabled: true,
 	onOpen: (value) => {
 		output.textContent = `Abre selector: ${value}`;

@@ -17,7 +17,7 @@ class WUIDatepicker {
 		weekDaysNames: [],
 		texts: {},
 		openDirection: "down",
-		boxAlign: "center",
+		boxAlign: "left",
 		enabled: true,
 		onOpen: null,
 		onChange: null
