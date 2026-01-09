@@ -127,7 +127,6 @@ div.wui-timepicker > .box {
 	--box-filter: blur(10px);
 	position: absolute;
 	z-index: 101;
-	left: 0;
 	width: 250px;
 	height: 260px;
 	-webkit-box-shadow: var(--box-shadow);

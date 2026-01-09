@@ -149,7 +149,6 @@ div.wui-colorpicker > .box {
 	--box-filter: blur(10px);
 	position: absolute;
 	z-index: 101;
-	right: 0;
 	width: 250px;
 	height: 320px;
 	-webkit-box-shadow: var(--box-shadow);
