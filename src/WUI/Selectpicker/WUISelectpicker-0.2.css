@@ -128,6 +128,28 @@ div.wui-selectpicker > .box {
 	padding: 0;
 }
 
+div.wui-selectpicker > .box {
+	scrollbar-color: var(--wui-selectpicker-box-scroll-bgcolor-out) transparent;
+}
+
+div.wui-selectpicker > .box::-webkit-scrollbar {
+	width: 4px;
+	background-color: transparent;
+}
+
+div.wui-selectpicker > .box::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background-color: var(--wui-selectpicker-box-scroll-bgcolor-out);
+}
+
+div.wui-selectpicker > .box::-webkit-scrollbar-thumb:is(:hover, :active) {
+	background-color: var(--wui-selectpicker-box-scroll-bgcolor-over);
+}
+
+div.wui-selectpicker > .box::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
 div.wui-selectpicker > .box.down {
 	bottom: auto;
 }

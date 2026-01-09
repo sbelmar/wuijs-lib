@@ -408,6 +408,8 @@ Código CSS archivo `WUI.css`:
 	--wui-selectpicker-box-borderradius: 15px;
 	--wui-selectpicker-box-bordercolor: #f0f0f3;
 	--wui-selectpicker-box-bgcolor: #fdfdfe;
+	--wui-selectpicker-box-scroll-bgcolor-out: rgb(from #353a40 r g b / 20%);
+	--wui-selectpicker-box-scroll-bgcolor-over: rgb(from #353a40 r g b / 40%);
 	--wui-selectpicker-box-option-borderradius: 10px;
 	--wui-selectpicker-box-option-bordercolor-out: #f0f0f3;
 	--wui-selectpicker-box-option-bordercolor-over: #f0f0f3;
@@ -535,6 +537,8 @@ Código CSS archivo `WUI.css`:
 	--wui-colorpicker-box-borderradius: 15px;
 	--wui-colorpicker-box-bordercolor: #f0f0f3;
 	--wui-colorpicker-box-bgcolor: rgb(from #fff r g b / 80%);
+	--wui-colorpicker-box-scroll-bgcolor-out: rgb(from #353a40 r g b / 20%);
+	--wui-colorpicker-box-scroll-bgcolor-over: rgb(from #353a40 r g b / 40%);
 	--wui-colorpicker-box-tab-textcolor-out: #2d3a47;
 	--wui-colorpicker-box-tab-textcolor-selected: #1e90ff;
 	--wui-colorpicker-box-option-bordercolor-out: #f0f0f3;
@@ -2862,6 +2866,8 @@ Componente para la implementación de entradas de datos de tipo lista de selecci
 | `--wui-selectpicker-box-borderradius`               |
 | `--wui-selectpicker-box-bordercolor`                |
 | `--wui-selectpicker-box-bgcolor`                    |
+| `--wui-selectpicker-box-scroll-bgcolor-out`         |
+| `--wui-selectpicker-box-scroll-bgcolor-over`        |
 | `--wui-selectpicker-box-option-borderradius`        |
 | `--wui-selectpicker-box-option-bordercolor-out`     |
 | `--wui-selectpicker-box-option-bordercolor-over`    |
@@ -2909,6 +2915,8 @@ Configuración CSS:
 	--wui-selectpicker-box-borderradius: 15px;
 	--wui-selectpicker-box-bordercolor: #f0f0f3;
 	--wui-selectpicker-box-bgcolor: #fdfdfe;
+	--wui-selectpicker-box-scroll-bgcolor-out: rgb(from #353a40 r g b / 20%);
+	--wui-selectpicker-box-scroll-bgcolor-over: rgb(from #353a40 r g b / 40%);
 	--wui-selectpicker-box-option-borderradius: 10px;
 	--wui-selectpicker-box-option-bordercolor-out: #f0f0f3;
 	--wui-selectpicker-box-option-bordercolor-over: #f0f0f3;
@@ -3518,6 +3526,8 @@ Componente para la implementación de entradas de datos de tipo selector de colo
 | `--wui-colorpicker-box-borderradius`                |
 | `--wui-colorpicker-box-bordercolor`                 |
 | `--wui-colorpicker-box-bgcolor`                     |
+| `--wui-colorpicker-box-scroll-bgcolor-out`          |
+| `--wui-colorpicker-box-scroll-bgcolor-over`         |
 | `--wui-colorpicker-box-tab-textcolor-out`           |
 | `--wui-colorpicker-box-tab-textcolor-selected`      |
 | `--wui-colorpicker-box-option-bgcolor-out`          |
@@ -3560,6 +3570,8 @@ Código CSS:
 	--wui-colorpicker-box-borderradius: 15px;
 	--wui-colorpicker-box-bordercolor: #f0f0f3;
 	--wui-colorpicker-box-bgcolor: rgb(from #fff r g b / 80%);
+	--wui-colorpicker-box-scroll-bgcolor-out: rgb(from #353a40 r g b / 20%);
+	--wui-colorpicker-box-scroll-bgcolor-over: rgb(from #353a40 r g b / 40%);
 	--wui-colorpicker-box-tab-textcolor-out: #2d3a47;
 	--wui-colorpicker-box-tab-textcolor-selected: #1e90ff;
 	--wui-colorpicker-box-option-bordercolor-out: #f0f0f3;

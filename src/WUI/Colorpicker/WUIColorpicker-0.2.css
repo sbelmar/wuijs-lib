@@ -239,6 +239,28 @@ div.wui-colorpicker > .box > .list {
 	flex-direction: column;
 }
 
+div.wui-colorpicker > .box > .list {
+	scrollbar-color: var(--wui-colorpicker-box-scroll-bgcolor-out) transparent;
+}
+
+div.wui-colorpicker > .box > .list::-webkit-scrollbar {
+	width: 4px;
+	background-color: transparent;
+}
+
+div.wui-colorpicker > .box > .list::-webkit-scrollbar-thumb {
+	border-radius: 2px;
+	background-color: var(--wui-colorpicker-box-scroll-bgcolor-out);
+}
+
+div.wui-colorpicker > .box > .list::-webkit-scrollbar-thumb:is(:hover, :active) {
+	background-color: var(--wui-colorpicker-box-scroll-bgcolor-over);
+}
+
+div.wui-colorpicker > .box > .list::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
 div.wui-colorpicker > .box > .list.hidden {
 	display: none;
 }

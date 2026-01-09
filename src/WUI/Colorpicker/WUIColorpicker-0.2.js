@@ -645,7 +645,7 @@ class WUIColorpicker {
 			const list = WUIColorpicker.#colors.list;
 			const empty = Boolean(value == "" || value == this.#properties.emptyValue);
 			const bgcolor = empty ? "transparent" : value;
-			const bgimage = empty ? this.#getSRCIcon("viewcolor-empty") : "url()";
+			const bgimage = empty ? this.#getSRCIcon("viewcolor-empty") : "none";
 			this.#htmlElements.buttonColor.style.backgroundColor = bgcolor;
 			this.#htmlElements.buttonColor.style.maskImage = bgimage;
 			this.#htmlElements.previewColor.style.backgroundColor = bgcolor;
@@ -810,7 +810,7 @@ class WUIColorpicker {
 			this.#htmlElements.cancelButton.textContent = this.#properties.texts.cancel != "" ? this.#properties.texts.cancel : lang in texts ? texts[lang].cancel : "";
 			this.#htmlElements.acceptButton.textContent = this.#properties.texts.accept != "" ? this.#properties.texts.accept : lang in texts ? texts[lang].accept : "";
 		}
-		if (lang.match(/(en|es)/)) {
+		if (this.#htmlElements.list instanceof HTMLDivElement && lang.match(/(en|es)/)) {
 			Object.values(WUIColorpicker.#colors.list).forEach(name => {
 				const text = this.#htmlElements.list.querySelector(`.option.${name} > .text`);
 				text.textContent = texts[lang].colors[name];
