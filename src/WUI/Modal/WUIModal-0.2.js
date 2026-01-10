@@ -553,14 +553,27 @@ class WUIModal {
 	}
 
 	destroy() {
-		if (this.#htmlElement) {
-			this.#htmlElements.forEach(element => {
+		this.close();
+		if (this.#htmlElement instanceof HTMLElement) {
+			Object.entries(this.#htmlElements).forEach(([key, element]) => {
 				if (element) {
 					element.remove();
 				}
+				this.#htmlElements[key] = null;
 			});
+			this.#htmlElement.innerHTML = "";
 			this.#htmlElement.remove();
 		}
+		Object.keys(this.#properties).forEach(name => {
+			delete this.#properties[name];
+		});
+		this.#bodyStyle = undefined;
+		this.#drag = undefined;
+		this.#dragIinitY = undefined;
+		this.#dragDirection = undefined;
+		this.#boxWidth = undefined;
+		this.#boxHeight = undefined;
+		this.#boxTop = undefined;
 	}
 }
 

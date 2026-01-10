@@ -4,7 +4,7 @@
 # wuijs-lib
 
 <div align="center">
-	<img src="https://github.com/sbelmar/wuijs-lib/blob/main/imgs/logo/wuijs-color.svg" width="128" height="128">
+	<img src="https://github.com/wuijsproject/wuijs-lib/blob/main/imgs/logo/wuijs-color.svg" width="128" height="128">
 </div>
 
 Library version: `0.2.0` ([Change Log](./CHANGELOG.md))
@@ -731,7 +731,7 @@ Cookie manager.
 
 | Type | File |
 | ---- | ---- |
-| JS   | [src/WUI/Cookie/WUICookie-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Cookie/WUICookie-0.2.js) |
+| JS   | [src/WUI/Cookie/WUICookie-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Cookie/WUICookie-0.2.js) |
 
 #### Constructor
 
@@ -794,7 +794,7 @@ HTML header manager.
 
 | Type | File |
 | ---- | ---- |
-| JS   | [src/WUI/Head/WUIHead-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Head/WUIHead-0.2.js) |
+| JS   | [src/WUI/Head/WUIHead-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Head/WUIHead-0.2.js) |
 
 #### Constructor
 
@@ -855,7 +855,7 @@ HTML body manager. Allows the import of CSS/JS/HTML content and facilitates impl
 
 | Type | File |
 | ---- | ---- |
-| JS   | [src/WUI/Body/WUIBody-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Body/WUIBody-0.2.js) |
+| JS   | [src/WUI/Body/WUIBody-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Body/WUIBody-0.2.js) |
 
 #### Constructor
 
@@ -954,7 +954,7 @@ Language manager for web interfaces. Allows you to load language files in JS or 
 
 | Type | File |
 | ---- | ---- |
-| JS   | [src/WUI/Language/WUILanguage-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Language/WUILanguage-0.2.js) |
+| JS   | [src/WUI/Language/WUILanguage-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Language/WUILanguage-0.2.js) |
 
 #### Constructor
 
@@ -1085,7 +1085,7 @@ Tool for animating HTML elements using the "onscroll" event of the HTML page bod
 
 | Type | File |
 | ---- | ---- |
-| JS   | [src/WUI/Scrolly/WUIScrolly-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Scrolly/WUIScrolly-0.2.js) |
+| JS   | [src/WUI/Scrolly/WUIScrolly-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Scrolly/WUIScrolly-0.2.js) |
 
 #### Constructor
 
@@ -1373,7 +1373,7 @@ Set of pre-designed icons loaded via CSS, for use in interfaces.
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Icon/WUIIcon-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Icon/WUIIcon-0.1.css) |
+| CSS  | [src/WUI/Icon/WUIIcon-0.1.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Icon/WUIIcon-0.1.css) |
 
 #### Signals Icon Table
 
@@ -1663,7 +1663,7 @@ It is a static class that does not have a constructor or properties.
 
 | Type | File |
 | ---- | ---- |
-| JS   | [src/WUI/Fade/WUIFade-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Fade/WUIFade-0.1.js) |
+| JS   | [src/WUI/Fade/WUIFade-0.1.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Fade/WUIFade-0.1.js) |
 
 #### Methods
 
@@ -1767,8 +1767,8 @@ Component for the implementation of loading animations.
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Loader/WUILoader-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.css) |
-| JS   | [src/WUI/Loader/WUILoader-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.js) |
+| CSS  | [src/WUI/Loader/WUILoader-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.css) |
+| JS   | [src/WUI/Loader/WUILoader-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.js) |
 
 #### Constructor
 
@@ -1811,8 +1811,8 @@ Component for the implementation of menu bars.
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Menubar/WUIMenubar-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.css) |
-| JS   | [src/WUI/Menubar/WUIMenubar-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.js) |
+| CSS  | [src/WUI/Menubar/WUIMenubar-0.1.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.css) |
+| JS   | [src/WUI/Menubar/WUIMenubar-0.1.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.js) |
 
 #### Constructor
 
@@ -2105,8 +2105,8 @@ Component for the implementation of data lists and buttons for each row optional
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/List/WUIList-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.css) |
-| JS   | [src/WUI/List/WUIList-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.js) |
+| CSS  | [src/WUI/List/WUIList-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.css) |
+| JS   | [src/WUI/List/WUIList-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.js) |
 
 #### Constructor
 
@@ -2177,7 +2177,7 @@ Component for the implementation of data lists and buttons for each row optional
 | next         | `void`        | `next()`<br><br>Displays the next page view if one exists. |
 | isPrevEnable | `boolean`     | `isPrevEnable()`<br><br>Returns whether a previous page exists. |
 | isNextEnable | `boolean`     | `isNextEnable()`<br><br>Returns whether a next page exists. |
-| destroy      | `destroy`     | `destroy()`<br><br>Destroyer. |
+| destroy      | `void`        | `destroy()`<br><br>Destroyer. |
 
 #### CSS Variables
 
@@ -2434,8 +2434,8 @@ Component for the implementation of data tables. Unlike the `WUIList` object, th
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Table/WUITable-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.css) |
-| JS   | [src/WUI/Table/WUITable-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.js) |
+| CSS  | [src/WUI/Table/WUITable-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.css) |
+| JS   | [src/WUI/Table/WUITable-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.js) |
 
 #### Constructor
 
@@ -2511,7 +2511,7 @@ Component for the implementation of data tables. Unlike the `WUIList` object, th
 | next         | `void`        | `next()`<br><br>Displays the next page view if one exists. |
 | isPrevEnable | `boolean`     | `isPrevEnable()`<br><br>Returns whether a previous page exists. |
 | isNextEnable | `boolean`     | `isNextEnable()`<br><br>Returns whether a next page exists. |
-| destroy      | `destroy`     | `destroy()`<br><br>Destroyer. |
+| destroy      | `void`        | `destroy()`<br><br>Destroyer. |
 
 #### CSS Variables
 
@@ -2787,8 +2787,8 @@ Component for the implementation of multiple or exclusive selection list data in
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Selectpicker/WUISelectpicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.css) |
-| JS   | [src/WUI/Selectpicker/WUISelectpicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.js) |
+| CSS  | [src/WUI/Selectpicker/WUISelectpicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.css) |
+| JS   | [src/WUI/Selectpicker/WUISelectpicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.js) |
 
 #### Constructor
 
@@ -2798,21 +2798,21 @@ Component for the implementation of multiple or exclusive selection list data in
 
 #### Properties
 
-| Property       | Type       | Default value | Description |
-| -------------- | ---------- | ------------- | ----------- |
-| selector       | `string`   | `undefined`   | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
-| value          | `string`   | `""`          | (get/set)<br><br>Value of the initial options selection. |
-| text           | `string`   | `""`          | (get)<br><br>Text of the initial options selection. |
-| lang           | `string`   | `"en"`        | (get/set)<br><br>Component language.<br><br>Values:<br>• `"de"`, German.<br>• `"en"`, English.<br>• `"es"`, Spanish. |
-| texts          | `object`   | `{}`          | (get/set)<br><br>Custom texts for component buttons and messages. |
-| openDirection  | `string`   | `"down"`      | (get/set)<br><br>Opening direction of the selector.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
-| multiple       | `boolean`  | `false`       | (get/set)<br><br>Defines if the selector allows multiple selection. |
-| separatorValue | `string`   | `","`         | (get/set)<br><br>Character separator of values ​​in case of multiple selection. |
-| separatorText  | `string`   | `", "`        | (get/set)<br><br>Character separator of texts in case of multiple selection. |
-| filterable     | `boolean`  | `true`        | (get/set)<br><br>Defines if the selector allows filtering options by text input. |
-| enabled        | `boolean`  | `true`        | (get/set)<br><br>Defines whether the data input is enabled. |
-| onOpen         | `function` | `null`        | (get/set)<br><br>Function called when the selector is opened. The function receives the current selected value as a parameter. |
-| onChange       | `function` | `null`        | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
+| Property       | Type       | Default value         | Description |
+| -------------- | ---------- | --------------------- | ----------- |
+| selector       | `string`   | `".wui-selectpicker"` | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
+| value          | `string`   | `""`                  | (get/set)<br><br>Value of the initial options selection. |
+| text           | `string`   | `""`                  | (get)<br><br>Text of the initial options selection. |
+| lang           | `string`   | `"en"`                | (get/set)<br><br>Component language.<br><br>Values:<br>• `"de"`, German.<br>• `"en"`, English.<br>• `"es"`, Spanish. |
+| texts          | `object`   | `{}`                  | (get/set)<br><br>Custom texts for component buttons and messages. |
+| openDirection  | `string`   | `"down"`              | (get/set)<br><br>Opening direction of the selector.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
+| multiple       | `boolean`  | `false`               | (get/set)<br><br>Defines if the selector allows multiple selection. |
+| separatorValue | `string`   | `","`                 | (get/set)<br><br>Character separator of values ​​in case of multiple selection. |
+| separatorText  | `string`   | `", "`                | (get/set)<br><br>Character separator of texts in case of multiple selection. |
+| filterable     | `boolean`  | `true`                | (get/set)<br><br>Defines if the selector allows filtering options by text input. |
+| enabled        | `boolean`  | `true`                | (get/set)<br><br>Defines whether the data input is enabled. |
+| onOpen         | `function` | `null`                | (get/set)<br><br>Function called when the selector is opened. The function receives the current selected value as a parameter. |
+| onChange       | `function` | `null`                | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
 
 #### Menu Options
 
@@ -2825,25 +2825,25 @@ Component for the implementation of multiple or exclusive selection list data in
 
 #### Methods
 
-| Method          | Return type   | Description |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Returns the HTML element containing the object. |
-| getBox          | `HTMLElement` | `getBox()`<br><br>Returns the HTML element of the dropdown box. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Returns the HTML element associated with the base data input `<select>`. |
-| init            | `void`        | `init()`<br><br>Initializes the object. |
-| addOption       | `void`        | `addOption(option)`<br><br>Arguments:<br>**• option:** `object`.<br><br>Add an option to the list, as defined by **Menu Options**. |
-| loadOptions     | `void`        | `loadOptions(options)`<br><br>Arguments:<br>**• options:** `array`.<br><br>Loads an array of options, clearing previously existing ones. |
-| clearOptions    | `void`        | `clearOptions()`<br><br>Removes all options from the list. |
-| open            | `void`        | `open()`<br><br>Opens the selector. |
-| close           | `void`        | `close()`<br><br>Closes the selector. |
-| toggle          | `void`        | `toggle()`<br><br>Toggles the open state of the selector. |
-| cancel          | `void`        | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the selector. |
-| accept          | `void`        | `accept()`<br><br>Accepts the current selection and closes the selector. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Returns whether the selector is open. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Returns whether the selector has no options selected. |
-| isValid         | `boolean`     | `isValid()`<br><br>Returns if the entered value corresponds to a valid option. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destroyer. |
+| Method          | Return type          | Description |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Returns the HTML element containing the object. |
+| getBox          | `HTMLElement`        | `getBox()`<br><br>Returns the HTML element of the dropdown box. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Returns the HTML element associated with the base data input `<select>`. |
+| init            | `void`               | `init()`<br><br>Initializes the object. |
+| addOption       | `void`               | `addOption(option)`<br><br>Arguments:<br>**• option:** `object`.<br><br>Add an option to the list, as defined by **Menu Options**. |
+| loadOptions     | `void`               | `loadOptions(options)`<br><br>Arguments:<br>**• options:** `array`.<br><br>Loads an array of options, clearing previously existing ones. |
+| clearOptions    | `void`               | `clearOptions()`<br><br>Removes all options from the list. |
+| open            | `void`               | `open()`<br><br>Opens the selector. |
+| close           | `void`               | `close()`<br><br>Closes the selector. |
+| toggle          | `void`               | `toggle()`<br><br>Toggles the open state of the selector. |
+| cancel          | `void`               | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the selector. |
+| accept          | `void`               | `accept()`<br><br>Accepts the current selection and closes the selector. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Returns whether the selector is open. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Returns whether the selector has no options selected. |
+| isValid         | `boolean`            | `isValid()`<br><br>Returns if the entered value corresponds to a valid option. |
+| destroy         | `void`               | `destroy()`<br><br>Destroyer. |
 
 #### CSS Variables
 
@@ -3049,8 +3049,8 @@ Component for the implementation of date type data inputs based on HTML element 
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Datepicker/WUIDatepicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.css) |
-| JS   | [src/WUI/Datepicker/WUIDatepicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.js) |
+| CSS  | [src/WUI/Datepicker/WUIDatepicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.css) |
+| JS   | [src/WUI/Datepicker/WUIDatepicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.js) |
 
 #### Constructor
 
@@ -3060,42 +3060,42 @@ Component for the implementation of date type data inputs based on HTML element 
 
 #### Properties
 
-| Property      | Type       | Default value | Description |
-| ------------- | ---------- | ------------- | ----------- |
-| selector      | `string`   | `undefined`   | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
-| locales       | `string`   | `"en-US"`     | (get/set)<br><br>Locale code in `<ISO 639-1>-<ISO 3166-1 alpha-2>` format. For example: `es-CL`, `en-US`, `fr-FR`, etc. |
-| value         | `string`   | `""`          | (get/set)<br><br>Selected date in `yyyy-mm-dd` format. |
-| min           | `string`   | `""`          | (get/set)<br><br>Minimum allowed date in `yyyy-mm-dd` format. |
-| max           | `string`   | `""`          | (get/set)<br><br>Maximum allowed date in `yyyy-mm-dd` format. |
-| monthsNames   | `array`    | `[]`          | (get/set)<br><br>Custom names for months. If defined, overwrites names generated by `locales`. |
-| weekDaysNames | `array`    | `[]`          | (get/set)<br><br>Custom names for days of the week. If defined, overwrites names generated by `locales`. |
-| texts         | `object`   | `{}`          | (get/set)<br><br>Custom texts for the component buttons and messages. |
-| openDirection | `string`   | `"down"`      | (get/set)<br><br>Opening direction of the calendar.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
-| boxAlign      | `string`   | `"left"`      | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
-| enabled       | `boolean`  | `true`        | (get/set)<br><br>Defines whether the input is enabled. |
-| onOpen        | `function` | `null`        | (get/set)<br><br>Function called when the calendar is opened. The function receives the current selected value as a parameter. |
-| onChange      | `function` | `null`        | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
+| Property      | Type       | Default value        | Description |
+| ------------- | ---------- | -------------------- | ----------- |
+| selector      | `string`   | `".wui-datepicker"`  | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
+| locales       | `string`   | `"en-US"`            | (get/set)<br><br>Locale code in `<ISO 639-1>-<ISO 3166-1 alpha-2>` format. For example: `es-CL`, `en-US`, `fr-FR`, etc. |
+| value         | `string`   | `""`                 | (get/set)<br><br>Selected date in `yyyy-mm-dd` format. |
+| min           | `string`   | `""`                 | (get/set)<br><br>Minimum allowed date in `yyyy-mm-dd` format. |
+| max           | `string`   | `""`                 | (get/set)<br><br>Maximum allowed date in `yyyy-mm-dd` format. |
+| monthsNames   | `array`    | `[]`                 | (get/set)<br><br>Custom names for months. If defined, overwrites names generated by `locales`. |
+| weekDaysNames | `array`    | `[]`                 | (get/set)<br><br>Custom names for days of the week. If defined, overwrites names generated by `locales`. |
+| texts         | `object`   | `{}`                 | (get/set)<br><br>Custom texts for the component buttons and messages. |
+| openDirection | `string`   | `"down"`             | (get/set)<br><br>Opening direction of the calendar.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
+| boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
+| enabled       | `boolean`  | `true`               | (get/set)<br><br>Defines whether the input is enabled. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Function called when the calendar is opened. The function receives the current selected value as a parameter. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
 
 #### Methods
 
-| Method          | Return type   | Description |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Returns the HTML container element of the object. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Returns the HTML element associated with the base data input `<input type="date">`. |
-| init            | `void`        | `init()`<br><br>Initializes the object. |
-| open            | `void`        | `open()`<br><br>Opens the calendar. |
-| close           | `void`        | `close()`<br><br>Closes the calendar. |
-| toggle          | `void`        | `toggle()`<br><br>Toggles the opening state of the calendar. |
-| toggleMode      | `void`        | `toggleMode()`<br><br>Toggles the view between days and months. |
-| prev            | `void`        | `prev()`<br><br>Shows the previous period (month or year depending on the view). |
-| next            | `void`        | `next()`<br><br>Shows the next period (month or year depending on the view). |
-| cancel          | `void`        | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the calendar. |
-| accept          | `void`        | `accept()`<br><br>Accepts the current selection and closes the calendar. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Returns whether the calendar is open. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Returns whether the calendar has no date selected. |
-| isValid         | `boolean`     | `isValid()`<br><br>Returns whether the entered value corresponds to a valid date. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destroyer. |
+| Method          | Return type          | Description |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Returns the HTML container element of the object. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Returns the HTML element associated with the base data input `<input type="date">`. |
+| init            | `void`               | `init()`<br><br>Initializes the object. |
+| open            | `void`               | `open()`<br><br>Opens the calendar. |
+| close           | `void`               | `close()`<br><br>Closes the calendar. |
+| toggle          | `void`               | `toggle()`<br><br>Toggles the opening state of the calendar. |
+| toggleMode      | `void`               | `toggleMode()`<br><br>Toggles the view between days and months. |
+| prev            | `void`               | `prev()`<br><br>Shows the previous period (month or year depending on the view). |
+| next            | `void`               | `next()`<br><br>Shows the next period (month or year depending on the view). |
+| cancel          | `void`               | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the calendar. |
+| accept          | `void`               | `accept()`<br><br>Accepts the current selection and closes the calendar. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Returns whether the calendar is open. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Returns whether the calendar has no date selected. |
+| isValid         | `boolean`            | `isValid()`<br><br>Returns whether the entered value corresponds to a valid date. |
+| destroy         | `void`               | `destroy()`<br><br>Destroyer. |
 
 #### CSS Variables
 
@@ -3287,8 +3287,8 @@ Component for the implementation of time type data inputs based on HTML element 
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Timepicker/WUITimepicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.css) |
-| JS   | [src/WUI/Timepicker/WUITimepicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.js) |
+| CSS  | [src/WUI/Timepicker/WUITimepicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.css) |
+| JS   | [src/WUI/Timepicker/WUITimepicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.js) |
 
 #### Constructor
 
@@ -3298,37 +3298,37 @@ Component for the implementation of time type data inputs based on HTML element 
 
 #### Properties
 
-| Property      | Type       | Default value | Description |
-| ------------- | ---------- | ------------- | ----------- |
-| selector      | `string`   | `undefined`   | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
-| value         | `string`   | `""`          | (get/set)<br><br>Selected time in `hh:mm` format (24 hours). |
-| min           | `string`   | `"00:00"`     | (get/set)<br><br>Minimum allowed time in `hh:mm` format. |
-| max           | `string`   | `"23:59"`     | (get/set)<br><br>Maximum allowed time in `hh:mm` format. |
-| lang          | `string`   | `"en"`        | (get/set)<br><br>Component language.<br><br>Values:<br>• `"de"`, German.<br>• `"en"`, English.<br>• `"es"`, Spanish. |
-| texts         | `object`   | `{}`          | (get/set)<br><br>Custom texts for the component buttons and messages. |
-| openDirection | `string`   | `"down"`      | (get/set)<br><br>Opening direction of the time picker.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
-| boxAlign      | `string`   | `"left"`      | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
-| enabled       | `boolean`  | `true`        | (get/set)<br><br>Defines whether the input is enabled. |
-| onOpen        | `function` | `null`        | (get/set)<br><br>Function called when the time picker is opened. The function receives the current selected value as a parameter. |
-| onChange      | `function` | `null`        | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
+| Property      | Type       | Default value        | Description |
+| ------------- | ---------- | -------------------- | ----------- |
+| selector      | `string`   | `".wui-timepicker"`  | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
+| value         | `string`   | `""`                 | (get/set)<br><br>Selected time in `hh:mm` format (24 hours). |
+| min           | `string`   | `"00:00"`            | (get/set)<br><br>Minimum allowed time in `hh:mm` format. |
+| max           | `string`   | `"23:59"`            | (get/set)<br><br>Maximum allowed time in `hh:mm` format. |
+| lang          | `string`   | `"en"`               | (get/set)<br><br>Component language.<br><br>Values:<br>• `"de"`, German.<br>• `"en"`, English.<br>• `"es"`, Spanish. |
+| texts         | `object`   | `{}`                 | (get/set)<br><br>Custom texts for the component buttons and messages. |
+| openDirection | `string`   | `"down"`             | (get/set)<br><br>Opening direction of the time picker.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
+| boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
+| enabled       | `boolean`  | `true`               | (get/set)<br><br>Defines whether the input is enabled. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Function called when the time picker is opened. The function receives the current selected value as a parameter. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
 
 #### Methods
 
-| Method          | Return type   | Description |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Returns the HTML container element of the object. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="time">`. |
-| init            | `void`        | `init()`<br><br>Initializes the object. |
-| open            | `void`        | `open()`<br><br>Opens the time picker. |
-| close           | `void`        | `close()`<br><br>Closes the time picker. |
-| toggle          | `void`        | `toggle()`<br><br>Toggles the opening state of the time picker. |
-| cancel          | `void`        | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the time picker. |
-| accept          | `void`        | `accept()`<br><br>Accepts the current selection and closes the time picker. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Returns whether the time picker is open. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Returns whether the time picker has no time selected. |
-| isValid         | `boolean`     | `isValid()`<br><br>Returns whether the entered value corresponds to a valid time. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destroyer. |
+| Method          | Return type          | Description |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Returns the HTML container element of the object. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="time">`. |
+| init            | `void`               | `init()`<br><br>Initializes the object. |
+| open            | `void`               | `open()`<br><br>Opens the time picker. |
+| close           | `void`               | `close()`<br><br>Closes the time picker. |
+| toggle          | `void`               | `toggle()`<br><br>Toggles the opening state of the time picker. |
+| cancel          | `void`               | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the time picker. |
+| accept          | `void`               | `accept()`<br><br>Accepts the current selection and closes the time picker. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Returns whether the time picker is open. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Returns whether the time picker has no time selected. |
+| isValid         | `boolean`            | `isValid()`<br><br>Returns whether the entered value corresponds to a valid time. |
+| destroy         | `void`               | `destroy()`<br><br>Destroyer. |
 
 #### CSS Variables
 
@@ -3484,8 +3484,8 @@ Component for the implementation of color picker type data inputs based on HTML 
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Colorpicker/WUIColorpicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.css) |
-| JS   | [src/WUI/Colorpicker/WUIColorpicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.js) |
+| CSS  | [src/WUI/Colorpicker/WUIColorpicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.css) |
+| JS   | [src/WUI/Colorpicker/WUIColorpicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.js) |
 
 #### Constructor
 
@@ -3495,37 +3495,37 @@ Component for the implementation of color picker type data inputs based on HTML 
 
 #### Properties
 
-| Property      | Type       | Default value | Description |
-| ------------- | ---------- | ------------- | ----------- |
-| selector      | `string`   | `undefined`   | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
-| value         | `string`   | `""`          | (get/set)<br><br>Selected color in hexadecimal format or CSS color name. Returns the value in hexadecimal. |
-| emptyValue    | `string`   | `"#000001"`   | (get/set)<br><br>Hexadecimal value representing an empty or unselected color. |
-| lang          | `string`   | `"en"`        | (get/set)<br><br>Component language.<br><br>Values:<br>• `"de"`, German.<br>• `"en"`, English.<br>• `"es"`, Spanish. |
-| texts         | `object`   | `{}`          | (get/set)<br><br>Custom texts for the component buttons and messages. |
-| openDirection | `string`   | `"down"`      | (get/set)<br><br>Opening direction of the color picker.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
-| boxAlign      | `string`   | `"left"`      | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
-| enabled       | `boolean`  | `true`        | (get/set)<br><br>Defines whether the data input is enabled. |
-| onOpen        | `function` | `null`        | (get/set)<br><br>Function to execute when the color picker is opened. Receives the current value as an argument. |
-| onChange      | `function` | `null`        | (get/set)<br><br>Function to execute when the selected value changes. Receives the new value as an argument. |
+| Property      | Type       | Default value        | Description |
+| ------------- | ---------- | -------------------- | ----------- |
+| selector      | `string`   | `".wui-colorpicker"` | (get/set)<br><br>CSS selector that defines the HTML container element of the object. If more than one element matches the selector, only the first match will be included. |
+| value         | `string`   | `""`                 | (get/set)<br><br>Selected color in hexadecimal format or CSS color name. Returns the value in hexadecimal. |
+| emptyValue    | `string`   | `"#000001"`          | (get/set)<br><br>Hexadecimal value representing an empty or unselected color. |
+| lang          | `string`   | `"en"`               | (get/set)<br><br>Component language.<br><br>Values:<br>• `"de"`, German.<br>• `"en"`, English.<br>• `"es"`, Spanish. |
+| texts         | `object`   | `{}`                 | (get/set)<br><br>Custom texts for the component buttons and messages. |
+| openDirection | `string`   | `"down"`             | (get/set)<br><br>Opening direction of the color picker.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
+| boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
+| enabled       | `boolean`  | `true`               | (get/set)<br><br>Defines whether the data input is enabled. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Function to execute when the color picker is opened. Receives the current value as an argument. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Function to execute when the selected value changes. Receives the new value as an argument. |
 
 #### Methods
 
-| Method          | Return type   | Description |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Returns the HTML container element of the object. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Returns the HTML element associated with the base data input `<input type="color">`. |
-| init            | `void`        | `init()`<br><br>Initializes the object. |
-| open            | `void`        | `open()`<br><br>Opens the color picker. |
-| close           | `void`        | `close()`<br><br>Closes the color picker. |
-| toggle          | `void`        | `toggle()`<br><br>Toggles the opening state of the color picker. |
-| selectMode      | `void`        | `selectMode(mode)`<br><br>Arguments:<br>**• mode:** `string`.<br><br>Selects the display mode (`"grid"` or `"list"`). |
-| cancel          | `void`        | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the color picker. |
-| accept          | `void`        | `accept()`<br><br>Accepts the current selection and closes the color picker. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Returns whether the color picker is open. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Returns whether the color picker has no color selected. |
-| isValid         | `boolean`     | `isValid()`<br><br>Returns whether the entered value corresponds to a valid color. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destroyer. |
+| Method          | Return type          | Description |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Returns the HTML container element of the object. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Returns the HTML element associated with the base data input `<input type="color">`. |
+| init            | `void`               | `init()`<br><br>Initializes the object. |
+| open            | `void`               | `open()`<br><br>Opens the color picker. |
+| close           | `void`               | `close()`<br><br>Closes the color picker. |
+| toggle          | `void`               | `toggle()`<br><br>Toggles the opening state of the color picker. |
+| selectMode      | `void`               | `selectMode(mode)`<br><br>Arguments:<br>**• mode:** `string`.<br><br>Selects the display mode (`"grid"` or `"list"`). |
+| cancel          | `void`               | `cancel()`<br><br>Cancels the current selection and reverts to the previous value, closing the color picker. |
+| accept          | `void`               | `accept()`<br><br>Accepts the current selection and closes the color picker. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Returns whether the color picker is open. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Returns whether the color picker has no color selected. |
+| isValid         | `boolean`            | `isValid()`<br><br>Returns whether the entered value corresponds to a valid color. |
+| destroy         | `void`               | `destroy()`<br><br>Destroyer. |
 
 #### CSS Variables
 
@@ -3680,6 +3680,160 @@ colorpicker.init();
 > You can check out this working example on CodePen at the link: [https://codepen.io/wuijsproject/pen/bNeeobP](https://codepen.io/wuijsproject/pen/bNeeobP).
 
 <a name="WUICheckbox"></a>
+
+### WUICheckbox
+
+Version: `0.2`
+
+Component for the implementation of checkbox type data inputs based on HTML element `<input type="checkbox">`.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [src/WUI/Checkbox/WUICheckbox-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Checkbox/WUICheckbox-0.2.css) |
+| JS   | [src/WUI/Checkbox/WUICheckbox-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Checkbox/WUICheckbox-0.2.js) |
+
+#### Constructor
+
+| Type        | Description |
+| ----------- | ----------- |
+| WUICheckbox | `WUICheckbox([properties])`<br><br>Arguments:<br>**• properties:** `object` *optional* |
+
+#### Properties
+
+| Property | Type       | Default value     | Description |
+| -------- | ---------- | ----------------- | ----------- |
+| selector | `string`   | `".wui-checkbox"` | (get/set)<br><br>CSS selector defining the `HTMLDivElement` HTML element wrapping the `checkbox` type `HTMLInputElement` element that will be converted into the object. If more than one element matches the selector, only the first match will be included. |
+| value    | `string`   | `"1"`             | (get/set)<br><br>Value that the checkbox will take when it is checked. |
+| checked  | `boolean`  | `false`           | (get/set)<br><br>Defines if the checkbox is checked. |
+| enabled  | `boolean`  | `true`            | (get/set)<br><br>Defines if the checkbox is enabled. |
+| onChange | `function` | `null`            | (get/set)<br><br>Function called when the checkbox state changes. The function receives as a parameter the boolean state `checked` and the value of the check box. |
+
+#### Methods
+
+| Method          | Return type          | Description |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLDivElement`     | `getElement()`<br><br>Returns the HTML container element of the object. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Returns the HTML element associated with the base data input `<input type="checkbox">`. |
+| init            | `void`               | `init()`<br><br>Initializes the object. |
+| toggle          | `void`               | `toggle()`<br><br>Toggles the checked/unchecked state of the checkbox. |
+| destroy         | `void`               | `destroy()`<br><br>Destroyer. |
+
+#### CSS Variables
+
+| Variable                                      | Description |
+| --------------------------------------------- | ----------- |
+| `--wui-checkbox-button-size`                  |             |
+| `--wui-checkbox-bordercolor-out`              |             |
+| `--wui-checkbox-bordercolor-over`             |             |
+| `--wui-checkbox-bordercolor-checked`          |             |
+| `--wui-checkbox-bordercolor-invalid`          |             |
+| `--wui-checkbox-bordercolor-disabled`         |             |
+| `--wui-checkbox-bgcolor-out`                  |             |
+| `--wui-checkbox-bgcolor-over`                 |             |
+| `--wui-checkbox-bgcolor-checked`              |             |
+| `--wui-checkbox-bgcolor-disabled`             |             |
+| `--wui-checkbox-button-bordercolor-out`       |             |
+| `--wui-checkbox-button-bordercolor-over`      |             |
+| `--wui-checkbox-button-bordercolor-checked`   |             |
+| `--wui-checkbox-button-bordercolor-disabled`  |             |
+| `--wui-checkbox-button-bgcolor-out`           |             |
+| `--wui-checkbox-button-bgcolor-over`          |             |
+| `--wui-checkbox-button-bgcolor-checked`       |             |
+| `--wui-checkbox-button-bgcolor-disabled`      |             |
+
+#### Implementation
+
+CSS settings:
+
+```css
+:root {
+
+	/* wui-checkbox */
+
+	--wui-checkbox-button-size: 30px;
+	--wui-checkbox-bordercolor-out: rgb(from #1e90ff r g b / 20%);
+	--wui-checkbox-bordercolor-over: #1e90ff;
+	--wui-checkbox-bordercolor-checked: #1e90ff;
+	--wui-checkbox-bordercolor-invalid: #f44343;
+	--wui-checkbox-bordercolor-disabled: #d5dce3;
+	--wui-checkbox-bgcolor-out: rgb(from #1e90ff r g b / 4%);
+	--wui-checkbox-bgcolor-over: rgb(from #1e90ff r g b / 4%);
+	--wui-checkbox-bgcolor-checked: #1e90ff;
+	--wui-checkbox-bgcolor-disabled: rgb(from #d5dce3 r g b / 20%);
+	--wui-checkbox-button-bordercolor-out: rgb(from #1e90ff r g b / 20%);
+	--wui-checkbox-button-bordercolor-over: #1e90ff;
+	--wui-checkbox-button-bordercolor-checked: #1e90ff;
+	--wui-checkbox-button-bordercolor-disabled: #d5dce3;
+	--wui-checkbox-button-bgcolor-out: #f6f6fa;
+	--wui-checkbox-button-bgcolor-over: rgb(from #1e90ff r g b / 4%);
+	--wui-checkbox-button-bgcolor-checked: #f6f6fa;
+	--wui-checkbox-button-bgcolor-disabled: #d5dce3;
+}
+```
+
+CSS code:
+
+```css
+body {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+.my-checkbox {}
+
+.my-output {
+	position: absolute;
+	top: 4px;
+	left: 210px;
+	margin: 10px;
+	font-family: monospace;
+}
+```
+
+HTML head:
+
+```html
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Checkbox/WUICheckbox-0.2.css">
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Checkbox/WUICheckbox-0.2.js"></script>
+```
+
+HTML code:
+
+```html
+<div class="wui-checkbox my-checkbox">
+	<input type="checkbox" name="myCheckbox" value="1">
+</div>
+
+<div class="my-output"></div>
+```
+
+JS code:
+
+```js
+// Create object
+const output = document.body.querySelector(".my-output");
+const checkbox = new WUICheckbox({
+	selector: ".wui-checkbox.my-checkbox",
+	value: "1",
+	//checked: false,
+	//enabled: true,
+	onChange: (event, value) => {
+		output.textContent = `Change checked: ${value}`;
+	}
+});
+
+// Initialize object
+checkbox.init();
+```
+
+> [!IMPORTANT]
+> If the selector defines an element that is not of type `HTMLDivElement`, the object will not be initialized.
+
+> [!TIP]
+> You can check out this working example on CodePen at the link: [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa).
+
 <a name="WUIIntensity"></a>
 <a name="WUIButton"></a>
 
@@ -3693,8 +3847,8 @@ Component for the implementation of.
 
 | Type | File |
 | ---- | ---- |
-| CSS  | [src/WUI/Button/WUIButton-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.css) |
-| JS   | [src/WUI/Button/WUIButton-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.js) |
+| CSS  | [src/WUI/Button/WUIButton-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.css) |
+| JS   | [src/WUI/Button/WUIButton-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.js) |
 
 #### Constructor
 
@@ -3947,4 +4101,5 @@ The examples listed in this section are detailed in the "Implementation" section
 | [WUIDatepicker](#WUIDatepicker)     | [https://codepen.io/wuijsproject/pen/QwEyyZN](https://codepen.io/wuijsproject/pen/QwEyyZN) |
 | [WUITimepicker](#WUITimepicker)     | [https://codepen.io/wuijsproject/pen/azZdGrY](https://codepen.io/wuijsproject/pen/azZdGrY) |
 | [WUIColorpicker](#WUIColorpicker)   | [https://codepen.io/wuijsproject/pen/bNeeobP](https://codepen.io/wuijsproject/pen/bNeeobP) |
+| [WUICheckbox](#WUICheckbox)         | [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa) |
 | [WUIButton](#WUIButton)             | [https://codepen.io/wuijsproject/pen/xbOwNzN](https://codepen.io/wuijsproject/pen/xbOwNzN) |

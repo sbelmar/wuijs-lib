@@ -8,7 +8,7 @@ class WUIDatepicker {
 
 	static version = "0.2";
 	static #defaults = {
-		selector: "",
+		selector: ".wui-datepicker",
 		locales: "en-US",
 		value: "",
 		min: "",
@@ -785,6 +785,7 @@ class WUIDatepicker {
 				this.#htmlElements[key] = null;
 			});
 			this.#htmlElement.innerHTML = "";
+			this.#htmlElement.remove();
 		}
 		Object.keys(this.#properties).forEach(name => {
 			delete this.#properties[name];

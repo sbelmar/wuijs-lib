@@ -960,6 +960,7 @@ class WUIColorpicker {
 				this.#htmlElements[key] = null;
 			});
 			this.#htmlElement.innerHTML = "";
+			this.#htmlElement.remove();
 		}
 		Object.keys(this.#properties).forEach(name => {
 			delete this.#properties[name];

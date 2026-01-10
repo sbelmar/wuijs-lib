@@ -4,7 +4,7 @@
 # wuijs-lib
 
 <div align="center">
-	<img src="https://github.com/sbelmar/wuijs-lib/blob/main/imgs/logo/wuijs-color.svg" width="128" height="128">
+	<img src="https://github.com/wuijsproject/wuijs-lib/blob/main/imgs/logo/wuijs-color.svg" width="128" height="128">
 </div>
 
 Versión librería: `0.2.0` ([Registro de Cambio](./REGISTRODECAMBIO.md))
@@ -731,7 +731,7 @@ Administrador de cookies.
 
 | Tipo | Archivo |
 | ---- | ------- |
-| JS   | [src/WUI/Cookie/WUICookie-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Cookie/WUICookie-0.2.js) |
+| JS   | [src/WUI/Cookie/WUICookie-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Cookie/WUICookie-0.2.js) |
 
 #### Constructor
 
@@ -794,7 +794,7 @@ Administrador de cabecera HTML.
 
 | Tipo | Archivo |
 | ---- | ------- |
-| JS   | [src/WUI/Head/WUIHead-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Head/WUIHead-0.2.js) |
+| JS   | [src/WUI/Head/WUIHead-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Head/WUIHead-0.2.js) |
 
 #### Constructor
 
@@ -855,7 +855,7 @@ Administrador de cuerpo HTML. Permite la importación de contenido CSS/JS/HTML y
 
 | Tipo | Archivo |
 | ---- | ------- |
-| JS   | [src/WUI/Body/WUIBody-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Body/WUIBody-0.2.js) |
+| JS   | [src/WUI/Body/WUIBody-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Body/WUIBody-0.2.js) |
 
 #### Constructor
 
@@ -954,7 +954,7 @@ Administrador de idioma para interfaces web. Permite cargar archivos de idioma e
 
 | Tipo | Archivo |
 | ---- | ------- |
-| JS   | [src/WUI/Language/WUILanguage-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Language/WUILanguage-0.2.js) |
+| JS   | [src/WUI/Language/WUILanguage-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Language/WUILanguage-0.2.js) |
 
 #### Constructor
 
@@ -1085,7 +1085,7 @@ Herramienta para animación de elementos HTML mediante el evento "onscroll" del 
 
 | Tipo | Archivo |
 | ---- | ------- |
-| JS   | [src/WUI/Scrolly/WUIScrolly-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Scrolly/WUIScrolly-0.2.js) |
+| JS   | [src/WUI/Scrolly/WUIScrolly-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Scrolly/WUIScrolly-0.2.js) |
 
 #### Constructor
 
@@ -1373,7 +1373,7 @@ Conjunto de íconos prediseñados y carga mediante CSS, para uso en interfaces.
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Icon/WUIIcon-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Icon/WUIIcon-0.1.css) |
+| CSS  | [src/WUI/Icon/WUIIcon-0.1.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Icon/WUIIcon-0.1.css) |
 
 #### Tabla de Íconos de Señale
 
@@ -1663,7 +1663,7 @@ Es una clase estática que no posee un constructor ni propiedades.
 
 | Tipo | Archivo |
 | ---- | ------- |
-| JS   | [src/WUI/Fade/WUIFade-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Fade/WUIFade-0.1.js) |
+| JS   | [src/WUI/Fade/WUIFade-0.1.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Fade/WUIFade-0.1.js) |
 
 #### Métodos
 
@@ -1767,8 +1767,8 @@ Componente para la implementación de animaciones de carga
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Loader/WUILoader-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.css) |
-| JS   | [src/WUI/Loader/WUILoader-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.js) |
+| CSS  | [src/WUI/Loader/WUILoader-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.css) |
+| JS   | [src/WUI/Loader/WUILoader-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Loader/WUILoader-0.2.js) |
 
 #### Constructor
 
@@ -1811,8 +1811,8 @@ Componente para la implementación de barras de menú.
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Menubar/WUIMenubar-0.1.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.css) |
-| JS   | [src/WUI/Menubar/WUIMenubar-0.1.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.js) |
+| CSS  | [src/WUI/Menubar/WUIMenubar-0.1.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.css) |
+| JS   | [src/WUI/Menubar/WUIMenubar-0.1.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Menubar/WUIMenubar-0.1.js) |
 
 #### Constructor
 
@@ -2105,8 +2105,8 @@ Componente para la implementación de listas de datos y botoneras para cada fila
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/List/WUIList-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.css) |
-| JS   | [src/WUI/List/WUIList-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.js) |
+| CSS  | [src/WUI/List/WUIList-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.css) |
+| JS   | [src/WUI/List/WUIList-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/List/WUIList-0.2.js) |
 
 #### Constructor
 
@@ -2177,7 +2177,7 @@ Componente para la implementación de listas de datos y botoneras para cada fila
 | next         | `void`        | `next()`<br><br>Despliega la vista de la página siguiente si es que esta existe. |
 | isPrevEnable | `boolean`     | `isPrevEnable()`<br><br>Retorna si existe una página previa. |
 | isNextEnable | `boolean`     | `isNextEnable()`<br><br>Retorna si existe una página siguiente. |
-| destroy      | `destroy`     | `destroy()`<br><br>Destructor. |
+| destroy      | `void`        | `destroy()`<br><br>Destructor. |
 
 #### Variables CSS
 
@@ -2434,8 +2434,8 @@ Componente para la implementación de tablas de datos. A diferencia del objeto `
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Table/WUITable-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.css) |
-| JS   | [src/WUI/Table/WUITable-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.js) |
+| CSS  | [src/WUI/Table/WUITable-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.css) |
+| JS   | [src/WUI/Table/WUITable-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Table/WUITable-0.2.js) |
 
 #### Constructor
 
@@ -2511,7 +2511,7 @@ Componente para la implementación de tablas de datos. A diferencia del objeto `
 | next         | `void`        | `next()`<br><br>Despliega la vista de la página siguiente si es que esta existe. |
 | isPrevEnable | `boolean`     | `isPrevEnable()`<br><br>Retorna si existe una página previa. |
 | isNextEnable | `boolean`     | `isNextEnable()`<br><br>Retorna si existe una página siguiente. |
-| destroy      | `destroy`     | `destroy()`<br><br>Destructor. |
+| destroy      | `void`        | `destroy()`<br><br>Destructor. |
 
 #### Variables CSS
 
@@ -2788,8 +2788,8 @@ Componente para la implementación de entradas de datos de tipo lista de selecci
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Selectpicker/WUISelectpicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.css) |
-| JS   | [src/WUI/Selectpicker/WUISelectpicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.js) |
+| CSS  | [src/WUI/Selectpicker/WUISelectpicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.css) |
+| JS   | [src/WUI/Selectpicker/WUISelectpicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Selectpicker/WUISelectpicker-0.2.js) |
 
 #### Constructor
 
@@ -2799,21 +2799,21 @@ Componente para la implementación de entradas de datos de tipo lista de selecci
 
 #### Propiedades
 
-| Propiedad      | Tipo       | Valor predeterminado | Descripción |
-| -------------- | ---------- | -------------------- | ----------- |
-| selector       | `string`   | `undefined`          | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
-| value          | `string`   | `""`                 | (get/set)<br><br>Valor de la selección de opciones inicial. |
-| text           | `string`   | `""`                 | (get)<br><br>Texto de la selección de opciones inicial. |
-| lang           | `string`   | `"en"`               | (get/set)<br><br>Idioma del componente.<br><br>Valores:<br>• `"de"`, Alemán.<br>• `"en"`, Inglés.<br>• `"es"`, Español. |
-| texts          | `object`   | `{}`                 | (get/set)<br><br>Textos personalizados para los botones y mensajes del componente. |
-| openDirection  | `string`   | `"down"`             | (get/set)<br><br>Dirección de apertura del selector.<br><br>Valores:<br>• `"up"`, hacia arriba.<br>• `"down"`, hacia abajo. |
-| multiple       | `boolean`  | `false`              | (get/set)<br><br>Define si el selector permite selección múltiple. |
-| separatorValue | `string`   | `","`                | (get/set)<br><br>Caracter separador de valores en caso de selección múltiple. |
-| separatorText  | `string`   | `", "`               | (get/set)<br><br>Caracter separador de textos en caso de selección múltiple. |
-| filterable     | `boolean`  | `true`               | (get/set)<br><br>Define si el selector permite filtrar opciones mediante entrada de texto. |
-| enabled        | `boolean`  | `true`               | (get/set)<br><br>Define si la entrada de datos está habilitada. |
-| onOpen         | `function` | `null`               | (get/set)<br><br>Función que se llama cuando se abre el selector. La función recibe por parámetro el valor actual seleccionado. |
-| onChange       | `function` | `null`               | (get/set)<br><br>Función que se llama cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
+| Propiedad      | Tipo       | Valor predeterminado  | Descripción |
+| -------------- | ---------- | --------------------- | ----------- |
+| selector       | `string`   | `".wui-selectpicker"` | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| value          | `string`   | `""`                  | (get/set)<br><br>Valor de la selección de opciones inicial. |
+| text           | `string`   | `""`                  | (get)<br><br>Texto de la selección de opciones inicial. |
+| lang           | `string`   | `"en"`                | (get/set)<br><br>Idioma del componente.<br><br>Valores:<br>• `"de"`, Alemán.<br>• `"en"`, Inglés.<br>• `"es"`, Español. |
+| texts          | `object`   | `{}`                  | (get/set)<br><br>Textos personalizados para los botones y mensajes del componente. |
+| openDirection  | `string`   | `"down"`              | (get/set)<br><br>Dirección de apertura del selector.<br><br>Valores:<br>• `"up"`, hacia arriba.<br>• `"down"`, hacia abajo. |
+| multiple       | `boolean`  | `false`               | (get/set)<br><br>Define si el selector permite selección múltiple. |
+| separatorValue | `string`   | `","`                 | (get/set)<br><br>Caracter separador de valores en caso de selección múltiple. |
+| separatorText  | `string`   | `", "`                | (get/set)<br><br>Caracter separador de textos en caso de selección múltiple. |
+| filterable     | `boolean`  | `true`                | (get/set)<br><br>Define si el selector permite filtrar opciones mediante entrada de texto. |
+| enabled        | `boolean`  | `true`                | (get/set)<br><br>Define si la entrada de datos está habilitada. |
+| onOpen         | `function` | `null`                | (get/set)<br><br>Función que se llama cuando se abre el selector. La función recibe por parámetro el valor actual seleccionado. |
+| onChange       | `function` | `null`                | (get/set)<br><br>Función que se llama cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
 
 #### Opciones de Menú
 
@@ -2826,25 +2826,25 @@ Componente para la implementación de entradas de datos de tipo lista de selecci
 
 #### Métodos
 
-| Método          | Tipo retorno  | Descripción |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
-| getBox          | `HTMLElement` | `getBox()`<br><br>Retorna el elemento HTML de la caja desplegable. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<select>`. |
-| init            | `void`        | `init()`<br><br>Inicializa el objeto. |
-| addOption       | `void`        | `addOption(option)`<br><br>Parámetros:<br>**• option:** `object`.<br><br>Agrega una opción a la lista, según la definición de **Opciones de Menú**. |
-| loadOptions     | `void`        | `loadOptions(options)`<br><br>Parámetros:<br>**• options:** `array`.<br><br>Carga un arreglo de opciones, limpiando las existentes previamente. |
-| clearOptions    | `void`        | `clearOptions()`<br><br>Elimina todas las opciones de la lista. |
-| open            | `void`        | `open()`<br><br>Abre la lista de opciones. |
-| close           | `void`        | `close()`<br><br>Cierra la lista de opciones. |
-| toggle          | `void`        | `toggle()`<br><br>Alterna el estado de apertura de la lista de opciones. |
-| cancel          | `void`        | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando la lista. |
-| accept          | `void`        | `accept()`<br><br>Acepta la selección actual y cierra la lista. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Retorna si la lista de opciones está abierta. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Retorna si el selector no tiene ninguna opción seleccionada. |
-| isValid         | `boolean`     | `isValid()`<br><br>Retorna si el valor ingresado en el campo de texto corresponde a una opción válida. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destructor. |
+| Método          | Tipo retorno         | Descripción |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
+| getBox          | `HTMLElement`        | `getBox()`<br><br>Retorna el elemento HTML de la caja desplegable. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<select>`. |
+| init            | `void`               | `init()`<br><br>Inicializa el objeto. |
+| addOption       | `void`               | `addOption(option)`<br><br>Parámetros:<br>**• option:** `object`.<br><br>Agrega una opción a la lista, según la definición de **Opciones de Menú**. |
+| loadOptions     | `void`               | `loadOptions(options)`<br><br>Parámetros:<br>**• options:** `array`.<br><br>Carga un arreglo de opciones, limpiando las existentes previamente. |
+| clearOptions    | `void`               | `clearOptions()`<br><br>Elimina todas las opciones de la lista. |
+| open            | `void`               | `open()`<br><br>Abre la lista de opciones. |
+| close           | `void`               | `close()`<br><br>Cierra la lista de opciones. |
+| toggle          | `void`               | `toggle()`<br><br>Alterna el estado de apertura de la lista de opciones. |
+| cancel          | `void`               | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando la lista. |
+| accept          | `void`               | `accept()`<br><br>Acepta la selección actual y cierra la lista. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Retorna si la lista de opciones está abierta. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Retorna si el selector no tiene ninguna opción seleccionada. |
+| isValid         | `boolean`            | `isValid()`<br><br>Retorna si el valor ingresado en el campo de texto corresponde a una opción válida. |
+| destroy         | `void`               | `destroy()`<br><br>Destructor. |
 
 #### Variables CSS
 
@@ -3050,8 +3050,8 @@ Componente para la implementación de entradas de datos de tipo fecha basada en 
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Datepicker/WUIDatepicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.css) |
-| JS   | [src/WUI/Datepicker/WUIDatepicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.js) |
+| CSS  | [src/WUI/Datepicker/WUIDatepicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.css) |
+| JS   | [src/WUI/Datepicker/WUIDatepicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Datepicker/WUIDatepicker-0.2.js) |
 
 #### Constructor
 
@@ -3063,7 +3063,7 @@ Componente para la implementación de entradas de datos de tipo fecha basada en 
 
 | Propiedad     | Tipo       | Valor predeterminado | Descripción |
 | ------------- | ---------- | -------------------- | ----------- |
-| selector      | `string`   | `undefined`          | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| selector      | `string`   | `".wui-datepicker"`  | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
 | locales       | `string`   | `"en-US"`            | (get/set)<br><br>Código de configuración regional en formato `<ISO 639-1>-<ISO 3166-1 alpha-2>`. Por ejemplo: `es-CL`, `en-US`, `fr-FR`, etc. |
 | value         | `string`   | `""`                 | (get/set)<br><br>Fecha seleccionada en formato `yyyy-mm-dd`. |
 | min           | `string`   | `""`                 | (get/set)<br><br>Fecha mínima permitida en formato `yyyy-mm-dd`. |
@@ -3079,24 +3079,24 @@ Componente para la implementación de entradas de datos de tipo fecha basada en 
 
 #### Métodos
 
-| Método          | Tipo retorno  | Descripción |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="date">`. |
-| init            | `void`        | `init()`<br><br>Inicializa el objeto. |
-| open         	  | `void`        | `open()`<br><br>Abre el calendario. |
-| close           | `void`        | `close()`<br><br>Cierra el calendario. |
-| toggle          | `void`        | `toggle()`<br><br>Alterna el estado de apertura del calendario. |
-| toggleMode      | `void`        | `toggleMode()`<br><br>Alterna la vista entre días y meses. |
-| prev            | `void`        | `prev()`<br><br>Muestra el periodo anterior (mes o año según la vista). |
-| next            | `void`        | `next()`<br><br>Muestra el periodo siguiente (mes o año según la vista). |
-| cancel          | `void`        | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando el calendario. |
-| accept          | `void`        | `accept()`<br><br>Acepta la selección actual y cierra el calendario. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Retorna si el calendario está abierto. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Retorna si el selector no tiene ninguna fecha seleccionada. |
-| isValid         | `boolean`     | `isValid()`<br><br>Retorna si el valor ingresado corresponde a una fecha válida. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destructor. |
+| Método          | Tipo retorno         | Descripción |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="date">`. |
+| init            | `void`               | `init()`<br><br>Inicializa el objeto. |
+| open         	  | `void`               | `open()`<br><br>Abre el calendario. |
+| close           | `void`               | `close()`<br><br>Cierra el calendario. |
+| toggle          | `void`               | `toggle()`<br><br>Alterna el estado de apertura del calendario. |
+| toggleMode      | `void`               | `toggleMode()`<br><br>Alterna la vista entre días y meses. |
+| prev            | `void`               | `prev()`<br><br>Muestra el periodo anterior (mes o año según la vista). |
+| next            | `void`               | `next()`<br><br>Muestra el periodo siguiente (mes o año según la vista). |
+| cancel          | `void`               | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando el calendario. |
+| accept          | `void`               | `accept()`<br><br>Acepta la selección actual y cierra el calendario. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Retorna si el calendario está abierto. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Retorna si el selector no tiene ninguna fecha seleccionada. |
+| isValid         | `boolean`            | `isValid()`<br><br>Retorna si el valor ingresado corresponde a una fecha válida. |
+| destroy         | `void`               | `destroy()`<br><br>Destructor. |
 
 #### Variables CSS
 
@@ -3288,8 +3288,8 @@ Componente para la implementación de entradas de datos de tipo hora basada en e
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Timepicker/WUITimepicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.css) |
-| JS   | [src/WUI/Timepicker/WUITimepicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.js) |
+| CSS  | [src/WUI/Timepicker/WUITimepicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.css) |
+| JS   | [src/WUI/Timepicker/WUITimepicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Timepicker/WUITimepicker-0.2.js) |
 
 #### Constructor
 
@@ -3301,7 +3301,7 @@ Componente para la implementación de entradas de datos de tipo hora basada en e
 
 | Propiedad     | Tipo       | Valor predeterminado | Descripción |
 | ------------- | ---------- | -------------------- | ----------- |
-| selector      | `string`   | `undefined`          | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| selector      | `string`   | `".wui-timepicker"`  | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
 | value         | `string`   | `""`                 | (get/set)<br><br>Hora seleccionada en formato `hh:mm` (24 horas). |
 | min           | `string`   | `"00:00"`            | (get/set)<br><br>Hora mínima permitida en formato `hh:mm`. |
 | max           | `string`   | `"23:59"`            | (get/set)<br><br>Hora máxima permitida en formato `hh:mm`. |
@@ -3315,21 +3315,21 @@ Componente para la implementación de entradas de datos de tipo hora basada en e
 
 #### Métodos
 
-| Método          | Tipo retorno  | Descripción |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="time">`. |
-| init            | `void`        | `init()`<br><br>Inicializa el objeto. |
-| open            | `void`        | `open()`<br><br>Abre el selector. |
-| close           | `void`        | `close()`<br><br>Cierra el selector. |
-| toggle          | `void`        | `toggle()`<br><br>Alterna el estado de apertura del selector. |
-| cancel          | `void`        | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando el selector. |
-| accept          | `void`        | `accept()`<br><br>Acepta la selección actual y cierra el selector. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Retorna si el selector está abierto. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Retorna si el selector no tiene ninguna hora seleccionada. |
-| isValid         | `boolean`     | `isValid()`<br><br>Retorna si el valor ingresado corresponde a una hora válida. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destructor. |
+| Método          | Tipo retorno         | Descripción |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="time">`. |
+| init            | `void`               | `init()`<br><br>Inicializa el objeto. |
+| open            | `void`               | `open()`<br><br>Abre el selector. |
+| close           | `void`               | `close()`<br><br>Cierra el selector. |
+| toggle          | `void`               | `toggle()`<br><br>Alterna el estado de apertura del selector. |
+| cancel          | `void`               | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando el selector. |
+| accept          | `void`               | `accept()`<br><br>Acepta la selección actual y cierra el selector. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Retorna si el selector está abierto. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Retorna si el selector no tiene ninguna hora seleccionada. |
+| isValid         | `boolean`            | `isValid()`<br><br>Retorna si el valor ingresado corresponde a una hora válida. |
+| destroy         | `void`               | `destroy()`<br><br>Destructor. |
 
 #### Variables CSS
 
@@ -3485,8 +3485,8 @@ Componente para la implementación de entradas de datos de tipo selector de colo
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Colorpicker/WUIColorpicker-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.css) |
-| JS   | [src/WUI/Colorpicker/WUIColorpicker-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.js) |
+| CSS  | [src/WUI/Colorpicker/WUIColorpicker-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.css) |
+| JS   | [src/WUI/Colorpicker/WUIColorpicker-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Colorpicker/WUIColorpicker-0.2.js) |
 
 #### Constructor
 
@@ -3498,7 +3498,7 @@ Componente para la implementación de entradas de datos de tipo selector de colo
 
 | Propiedad     | Tipo       | Valor predeterminado | Descripción |
 | ------------- | ---------- | -------------------- | ----------- |
-| selector      | `string`   | `undefined`          | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| selector      | `string`   | `".wui-colorpicker"` | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
 | value         | `string`   | `""`                 | (get/set)<br><br>Color seleccionado en formato hexadecimal o nombre de color CSS. Retorna el valor en hexadecimal. |
 | emptyValue    | `string`   | `"#000001"`          | (get/set)<br><br>Valor hexadecimal que representa un color vacío o no seleccionado. |
 | lang          | `string`   | `"en"`               | (get/set)<br><br>Idioma del componente.<br><br>Valores:<br>• `"de"`, Alemán.<br>• `"en"`, Inglés.<br>• `"es"`, Español. |
@@ -3511,22 +3511,22 @@ Componente para la implementación de entradas de datos de tipo selector de colo
 
 #### Métodos
 
-| Método          | Tipo retorno  | Descripción |
-| --------------- | ------------- | ----------- |
-| getElement      | `HTMLElement` | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
-| getViewElements | `array`       | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
-| getInput        | `HTMLElement` | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="color">`. |
-| init            | `void`        | `init()`<br><br>Inicializa el objeto. |
-| open            | `void`        | `open()`<br><br>Abre el selector de color. |
-| close           | `void`        | `close()`<br><br>Cierra el selector de color. |
-| toggle          | `void`        | `toggle()`<br><br>Alterna el estado de apertura del selector de color. |
-| selectMode      | `void`        | `selectMode(mode)`<br><br>Parámetros:<br>**• mode:** `string`.<br><br>Selecciona el modo de visualización (`"grid"` o `"list"`). |
-| cancel          | `void`        | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando el selector. |
-| accept          | `void`        | `accept()`<br><br>Acepta la selección actual y cierra el selector. |
-| isOpen          | `boolean`     | `isOpen()`<br><br>Retorna si el selector está abierto. |
-| isEmpty         | `boolean`     | `isEmpty()`<br><br>Retorna si el selector no tiene ningún color seleccionado. |
-| isValid         | `boolean`     | `isValid()`<br><br>Retorna si el valor corresponde a un color válido. |
-| destroy         | `destroy`     | `destroy()`<br><br>Destructor. |
+| Método          | Tipo retorno         | Descripción |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="color">`. |
+| init            | `void`               | `init()`<br><br>Inicializa el objeto. |
+| open            | `void`               | `open()`<br><br>Abre el selector de color. |
+| close           | `void`               | `close()`<br><br>Cierra el selector de color. |
+| toggle          | `void`               | `toggle()`<br><br>Alterna el estado de apertura del selector de color. |
+| selectMode      | `void`               | `selectMode(mode)`<br><br>Parámetros:<br>**• mode:** `string`.<br><br>Selecciona el modo de visualización (`"grid"` o `"list"`). |
+| cancel          | `void`               | `cancel()`<br><br>Cancela la selección actual y revierte al valor anterior, cerrando el selector. |
+| accept          | `void`               | `accept()`<br><br>Acepta la selección actual y cierra el selector. |
+| isOpen          | `boolean`            | `isOpen()`<br><br>Retorna si el selector está abierto. |
+| isEmpty         | `boolean`            | `isEmpty()`<br><br>Retorna si el selector no tiene ningún color seleccionado. |
+| isValid         | `boolean`            | `isValid()`<br><br>Retorna si el valor corresponde a un color válido. |
+| destroy         | `void`               | `destroy()`<br><br>Destructor. |
 
 #### Variables CSS
 
@@ -3681,6 +3681,160 @@ colorpicker.init();
 > Puede revisar este ejemplo funcional en CodePen en el enlace: [https://codepen.io/wuijsproject/pen/bNeeobP](https://codepen.io/wuijsproject/pen/bNeeobP).
 
 <a name="WUICheckbox"></a>
+
+### WUICheckbox
+
+Versión: `0.2`
+
+Componente para la implementación de entradas de datos de tipo casilla de verificación basada en el elemento HTML `<input type="checkbox">`.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [src/WUI/Checkbox/WUICheckbox-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Checkbox/WUICheckbox-0.2.css) |
+| JS   | [src/WUI/Checkbox/WUICheckbox-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Checkbox/WUICheckbox-0.2.js) |
+
+#### Constructor
+
+| Tipo        | Descripción |
+| ----------- | ----------- |
+| WUICheckbox | `WUICheckbox([properties])`<br><br>Parámetros:<br>**• properties:** `object` *opcional* |
+
+#### Propiedades
+
+| Propiedad | Tipo       | Valor predeterminado | Descripción |
+| --------- | ---------- | -------------------- | ----------- |
+| selector  | `string`   | `".wui-checkbox"`    | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| value     | `string`   | `"1"`                | (get/set)<br><br>Valor que tomará la casilla de verificación cuando esté marcado. |
+| checked   | `boolean`  | `false`              | (get/set)<br><br>Define si la casilla de verificación está marcada. |
+| enabled   | `boolean`  | `true`               | (get/set)<br><br>Define si la casilla de verificación está habilitada. |
+| onChange  | `function` | `null`               | (get/set)<br><br>Función que se llama cuando el estado de la casilla de verificación cambia. La función recibe como parámetros el estado booleano `checked` y el valor de la casilla de verificación. |
+
+#### Métodos
+
+| Método          | Tipo retorno         | Descripción |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLDivElement`     | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
+| getInput        | `HTMLInputElement`   | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="checkbox">`. |
+| init            | `void`               | `init()`<br><br>Inicializa el objeto. |
+| toggle          | `void`               | `toggle()`<br><br>Alterna el estado marcado/desmarcado de la casilla de verificación. |
+| destroy         | `void`               | `destroy()`<br><br>Destructor. |
+
+#### Variables CSS
+
+| Variable                                      | Descripción |
+| --------------------------------------------- | ----------- |
+| `--wui-checkbox-button-size`                  |             |
+| `--wui-checkbox-bordercolor-out`              |             |
+| `--wui-checkbox-bordercolor-over`             |             |
+| `--wui-checkbox-bordercolor-checked`          |             |
+| `--wui-checkbox-bordercolor-invalid`          |             |
+| `--wui-checkbox-bordercolor-disabled`         |             |
+| `--wui-checkbox-bgcolor-out`                  |             |
+| `--wui-checkbox-bgcolor-over`                 |             |
+| `--wui-checkbox-bgcolor-checked`              |             |
+| `--wui-checkbox-bgcolor-disabled`             |             |
+| `--wui-checkbox-button-bordercolor-out`       |             |
+| `--wui-checkbox-button-bordercolor-over`      |             |
+| `--wui-checkbox-button-bordercolor-checked`   |             |
+| `--wui-checkbox-button-bordercolor-disabled`  |             |
+| `--wui-checkbox-button-bgcolor-out`           |             |
+| `--wui-checkbox-button-bgcolor-over`          |             |
+| `--wui-checkbox-button-bgcolor-checked`       |             |
+| `--wui-checkbox-button-bgcolor-disabled`      |             |
+
+#### Implementación
+
+Configuración CSS:
+
+```css
+:root {
+
+	/* wui-checkbox */
+
+	--wui-checkbox-button-size: 30px;
+	--wui-checkbox-bordercolor-out: rgb(from #1e90ff r g b / 20%);
+	--wui-checkbox-bordercolor-over: #1e90ff;
+	--wui-checkbox-bordercolor-checked: #1e90ff;
+	--wui-checkbox-bordercolor-invalid: #f44343;
+	--wui-checkbox-bordercolor-disabled: #d5dce3;
+	--wui-checkbox-bgcolor-out: rgb(from #1e90ff r g b / 4%);
+	--wui-checkbox-bgcolor-over: rgb(from #1e90ff r g b / 4%);
+	--wui-checkbox-bgcolor-checked: #1e90ff;
+	--wui-checkbox-bgcolor-disabled: rgb(from #d5dce3 r g b / 20%);
+	--wui-checkbox-button-bordercolor-out: rgb(from #1e90ff r g b / 20%);
+	--wui-checkbox-button-bordercolor-over: #1e90ff;
+	--wui-checkbox-button-bordercolor-checked: #1e90ff;
+	--wui-checkbox-button-bordercolor-disabled: #d5dce3;
+	--wui-checkbox-button-bgcolor-out: #f6f6fa;
+	--wui-checkbox-button-bgcolor-over: rgb(from #1e90ff r g b / 4%);
+	--wui-checkbox-button-bgcolor-checked: #f6f6fa;
+	--wui-checkbox-button-bgcolor-disabled: #d5dce3;
+}
+```
+
+Código CSS:
+
+```css
+body {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+.my-checkbox {}
+
+.my-output {
+	position: absolute;
+	top: 4px;
+	left: 210px;
+	margin: 10px;
+	font-family: monospace;
+}
+```
+
+Cabecera HTML:
+
+```html
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Checkbox/WUICheckbox-0.2.css">
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Checkbox/WUICheckbox-0.2.js"></script>
+```
+
+Código HTML:
+
+```html
+<div class="wui-checkbox my-checkbox">
+	<input type="checkbox" name="myCheckbox" value="1">
+</div>
+
+<div class="my-output"></div>
+```
+
+Código JS:
+
+```js
+// Crear objeto
+const output = document.body.querySelector(".my-output");
+const checkbox = new WUICheckbox({
+	selector: ".wui-checkbox.my-checkbox",
+	value: "1",
+	//checked: false,
+	//enabled: true,
+	onChange: (event, value) => {
+		output.textContent = `Cambia marcado: ${value}`;
+	}
+});
+
+// Inicializar objeto
+checkbox.init();
+```
+
+> [!IMPORTANT]
+> Si el selector define un elemento que no es de tipo `HTMLDivElement`, el objeto no se inicializará.
+
+> [!TIP]
+> Puede revisar este ejemplo funcional en CodePen en el enlace: [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa).
+
 <a name="WUIIntensity"></a>
 <a name="WUIButton"></a>
 
@@ -3694,8 +3848,8 @@ Componente para la implementación de botones.
 
 | Tipo | Archivo |
 | ---- | ------- |
-| CSS  | [src/WUI/Button/WUIButton-0.2.css](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.css) |
-| JS   | [src/WUI/Button/WUIButton-0.2.js](https://github.com/sbelmar/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.js) |
+| CSS  | [src/WUI/Button/WUIButton-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.css) |
+| JS   | [src/WUI/Button/WUIButton-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Button/WUIButton-0.2.js) |
 
 #### Constructor
 
@@ -3948,4 +4102,5 @@ Los ejemplos listados en esta sección, son detallados en la sección "Implement
 | [WUIDatepicker](#WUIDatepicker)     | [https://codepen.io/wuijsproject/pen/QwEyyZN](https://codepen.io/wuijsproject/pen/QwEyyZN) |
 | [WUITimepicker](#WUITimepicker)     | [https://codepen.io/wuijsproject/pen/azZdGrY](https://codepen.io/wuijsproject/pen/azZdGrY) |
 | [WUIColorpicker](#WUIColorpicker)   | [https://codepen.io/wuijsproject/pen/bNeeobP](https://codepen.io/wuijsproject/pen/bNeeobP) |
+| [WUICheckbox](#WUICheckbox)         | [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa) |
 | [WUIButton](#WUIButton)             | [https://codepen.io/wuijsproject/pen/xbOwNzN](https://codepen.io/wuijsproject/pen/xbOwNzN) |

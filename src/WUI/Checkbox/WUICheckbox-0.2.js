@@ -8,7 +8,7 @@ class WUICheckbox {
 
 	static version = "0.2";
 	static #defaults = {
-		selector: "",
+		selector: ".wui-checkbox",
 		value: "1",
 		checked: false,
 		enabled: true,
@@ -188,7 +188,7 @@ class WUICheckbox {
 			this.#htmlElements.input.addEventListener("change", event => {
 				this.#setStyle();
 				if (typeof (this.#properties.onChange) == "function") {
-					this.#properties.onChange(event, event.target.checked);
+					this.#properties.onChange(this.value, this.checked);
 				}
 			});
 			this.#setStyle();
@@ -199,6 +199,17 @@ class WUICheckbox {
 		if (this.#htmlElements.input instanceof HTMLInputElement) {
 			this.checked = !this.#htmlElements.input.checked;
 		}
+	}
+
+	destroy() {
+		this.#htmlElement.innerHTML = "";
+		this.#htmlElement.remove();
+		Object.keys(this.#properties).forEach(name => {
+			delete this.#properties[name];
+		});
+		this.#drag = undefined;
+		this.#dragInitX = undefined;
+		this.#dragDirection = undefined;
 	}
 }
 
