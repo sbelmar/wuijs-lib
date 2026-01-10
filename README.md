@@ -3817,10 +3817,10 @@ const output = document.body.querySelector(".my-output");
 const checkbox = new WUICheckbox({
 	selector: ".wui-checkbox.my-checkbox",
 	value: "1",
-	//checked: false,
+	checked: true,
 	//enabled: true,
-	onChange: (event, value) => {
-		output.textContent = `Change checked: ${value}`;
+	onChange: (value, checked) => {
+		output.textContent = `Change checked: ${checked}`;
 	}
 });
 
