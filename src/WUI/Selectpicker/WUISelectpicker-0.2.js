@@ -377,6 +377,9 @@ class WUISelectpicker {
 			this.#htmlElement.appendChild(this.#htmlElements.inputText);
 			this.#htmlElement.appendChild(this.#htmlElements.background);
 			this.#htmlElement.appendChild(this.#htmlElements.box);
+			if (!this.#properties.enabled) {
+				this.#htmlElement.classList.add("disabled");
+			}
 			this.#htmlElement.addEventListener("click", event => {
 				if (this.#properties.enabled && (event.target.classList.contains("wui-selectpicker") || event.target.classList.contains("opener"))) {
 					this.toggle();
