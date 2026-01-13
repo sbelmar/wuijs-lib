@@ -65,13 +65,14 @@ class WUIIntensity {
 			}
 			this.#properties.value = value;
 			if (this.#htmlElement instanceof HTMLDivElement && this.#htmlElements.input instanceof HTMLInputElement) {
+				let intensity = "";
 				switch (value) {
-					case 0: this.#htmlElement.dataset.value = "none"; break;
-					case 1: this.#htmlElement.dataset.value = "low"; break;
-					case 2: this.#htmlElement.dataset.value = "half"; break;
-					case 3: this.#htmlElement.dataset.value = "high"; break;
-					default: this.#htmlElement.dataset.value = ""; break;
+					case 0: intensity = "none"; break;
+					case 1: intensity = "low"; break;
+					case 2: intensity = "half"; break;
+					case 3: intensity = "high"; break;
 				}
+				this.#htmlElement.dataset.value = intensity;
 				this.#htmlElements.input.value = value;
 			}
 		}
@@ -178,7 +179,6 @@ class WUIIntensity {
 					case 1: intensity = "low"; break;
 					case 2: intensity = "half"; break;
 					case 3: intensity = "high"; break;
-					default: intensity = ""; break;
 				}
 				this.#htmlElement.dataset.value = intensity;
 				if (typeof (this.#properties.onChange) == "function") {
