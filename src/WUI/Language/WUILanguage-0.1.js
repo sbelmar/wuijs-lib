@@ -1,7 +1,7 @@
 /*
  * WUILanguage - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 const languages = {};
@@ -19,9 +19,9 @@ class WUILanguage {
 	};
 	static #log = [];
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUILanguage.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUILanguage.#defaults ? WUILanguage.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUILanguage.#defaults ? WUILanguage.#defaults[prop] : null;
 		});
 	}
 
@@ -54,44 +54,44 @@ class WUILanguage {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._selector = value;
 			this._elements = document.querySelectorAll(value);
 		}
 	}
 
 	set directory(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._directory = value;
 		}
 	}
 
 	set set(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._set = value;
 		}
 	}
 
 	set lang(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._lang = value;
 		}
 	}
 
 	set dataKey(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._dataKey = value;
 		}
 	}
 
 	set dataOutput(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._dataOutput = value;
 		}
 	}
 
 	set onLoad(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onLoad = value;
 		}
 	}
@@ -108,7 +108,7 @@ class WUILanguage {
 							languages[lang][key1] = {};
 						}
 						Object.keys(temp[set][key1]).forEach(key2 => {
-							if (typeof(temp[set][key1][key2]) == "string") {
+							if (typeof (temp[set][key1][key2]) == "string") {
 								languages[lang][key1][key2] = temp[set][key1][key2];
 							} else {
 								if (!(key2 in languages[lang][key1])) {
@@ -124,8 +124,8 @@ class WUILanguage {
 					const dataKey = element.dataset[this._dataKey];
 					const dataOutput = element.dataset[this._dataOutput];
 					if (dataKey != "") {
-						const text = eval("languages."+lang+"."+dataKey);
-						if (typeof(dataOutput) != "undefined") {
+						const text = eval("languages." + lang + "." + dataKey);
+						if (typeof (dataOutput) != "undefined") {
 							element.dataset[this._dataOutput] = text;
 						} else if (tagName.match(/^(meta)$/i)) {
 							element.setAttribute("content", text);
@@ -136,22 +136,22 @@ class WUILanguage {
 						}
 					}
 				});
-				if (typeof(this._onLoad) == "function") {
+				if (typeof (this._onLoad) == "function") {
 					this._onLoad(lang);
 				}
 			}
 		}
 		let total = 0;
 		sets.forEach(set => {
-			const key = set+"-"+lang;
+			const key = set + "-" + lang;
 			if (WUILanguage.#log.indexOf(key) == -1) {
 				const script = document.createElement("script");
 				const token = new Date().getTime();
-				const src = this._directory+set+"-"+lang+".js?_="+token;
+				const src = this._directory + set + "-" + lang + ".js?_=" + token;
 				script.setAttribute("type", "text/javascript");
 				script.setAttribute("charset", "UTF-8");
 				script.setAttribute("src", src);
-				script.onload = () => {onLoad(set);};
+				script.onload = () => { onLoad(set); };
 				document.getElementsByTagName("head")[0].appendChild(script);
 				WUILanguage.#log.push(key)
 			} else {

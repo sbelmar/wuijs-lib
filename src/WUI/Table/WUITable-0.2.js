@@ -1,7 +1,7 @@
 /*
  * WUITable - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUITable {
@@ -641,6 +641,7 @@ class WUITable {
 				this.#htmlElements[key] = null;
 			});
 			this.#htmlElement.innerHTML = "";
+			this.#htmlElement.remove();
 		}
 		Object.keys(this.#properties).forEach(name => {
 			delete this.#properties[name];
@@ -652,3 +653,25 @@ class WUITable {
 		this.#colorScheme = undefined;
 	}
 }
+
+/*
+HTML output:
+<div class="wui-table">
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				[...]
+			</tr>
+			[...]
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				[...]
+			</tr>
+			[...]
+		</tbody>
+	</table>
+</div>
+*/

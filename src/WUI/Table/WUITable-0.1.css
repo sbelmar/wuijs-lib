@@ -1,7 +1,7 @@
 /*
  * WUITable - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 .wui-table,
@@ -11,6 +11,7 @@
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
+
 .wui-table {
 	--table-shadow: rgba(48, 77, 99, .04) 0px 4px 12px;
 	display: flex;
@@ -23,12 +24,14 @@
 	border-radius: var(--wui-table-borderradius);
 	background-color: var(--wui-table-row-bgcolor-out);
 	/*padding-bottom: var(--wui-table-borderradius);*/
-	justify-content: flex-start;	
+	justify-content: flex-start;
 }
+
 .wui-table > table {
 	width: auto;
 	border-collapse: collapse;
 }
+
 .wui-table > table > :is(thead, tbody) > tr > :is(th, td) {
 	cursor: pointer;
 	position: relative;
@@ -37,9 +40,10 @@
 	border-bottom-style: solid;
 	padding: 5px;
 	vertical-align: center;
-	white-space: nowrap;   
+	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+
 .wui-table > table > thead > tr > th {
 	border-color: var(--wui-table-column-bordercolor-out);
 	background-color: var(--wui-table-column-bgcolor-out);
@@ -48,24 +52,29 @@
 	-moz-user-select: none;
 	user-select: none;
 }
+
 .wui-table > table > thead > tr > th:not(.disabled):is(:hover, :focus, :focus-within) {
 	border-color: var(--wui-table-column-bordercolor-over);
 	background-color: var(--wui-table-column-bgcolor-over);
 	color: var(--wui-table-column-textcolor-over);
 }
+
 .wui-table > table > thead > tr > th.selected:not(.disabled) {
 	border-color: var(--wui-table-column-bordercolor-selected);
 	background-color: var(--wui-table-column-bgcolor-selected);
 	color: var(--wui-table-column-textcolor-selected);
 }
+
 .wui-table > table > thead > tr > th.disabled {
 	border-color: var(--wui-table-column-bordercolor-disabled);
 	background-color: var(--wui-table-column-bgcolor-disabled);
 	color: var(--wui-table-column-textcolor-disabled);
 }
+
 .wui-table > table > thead > tr > th.sortable {
 	padding-right: 24px;
 }
+
 .wui-table > table > thead > tr > th.sortable > .sorter {
 	position: absolute;
 	top: 50%;
@@ -84,6 +93,7 @@
 	background-color: var(--wui-table-column-sort-asccolor-out);
 	transform: translateY(-50%);
 }
+
 .wui-table > table > thead > tr > th.resizable > .resizer {
 	cursor: col-resize;
 	position: absolute;
@@ -94,88 +104,107 @@
 	height: 100%;
 	border-right: 1px solid var(--wui-table-column-resize-bordercolor-out);
 }
+
 .wui-table > table > thead > tr > th.resizable > .resizer:hover {
 	border-right: 1px solid var(--wui-table-column-resize-bordercolor-over);
 }
+
 .wui-table > table > thead > tr > th.draggable.drag {
 	opacity: 0.5;
 }
+
 .wui-table > table > thead > tr > th.draggable.over {
 	outline: 2px dashed var(--wui-table-column-drag-bordercolor-over);
 }
+
 .wui-table > table > thead > tr > th.draggable.drop {
 	background-color: var(--wui-table-column-drag-bgcolor-drop);
 }
+
 .wui-table > table > tbody {
 	overflow-y: auto;
 }
+
 .wui-table > table > tbody > tr > td {
 	border-color: var(--wui-table-row-bordercolor-out);
 	background-color: var(--wui-table-row-bgcolor-out);
 	color: var(--wui-table-row-textcolor-out);
 }
+
 .wui-table > table > tbody > tr:last-child > td:first-child {
 	-webkit-border-bottom-left-radius: var(--wui-table-borderradius);
 	-moz-border-radius-bottomleft: var(--wui-table-borderradius);
 	border-bottom-left-radius: var(--wui-table-borderradius);
 }
+
 .wui-table > table > tbody > tr:last-child > td:last-child {
 	-webkit-border-bottom-right-radius: var(--wui-table-borderradius);
 	-moz-border-radius-bottomright: var(--wui-table-borderradius);
 	border-bottom-right-radius: var(--wui-table-borderradius);
 }
+
 .wui-table > table > tbody > tr:is(:hover, :focus, :focus-within) > td {
 	border-color: var(--wui-table-row-bordercolor-over);
 	background-color: var(--wui-table-row-bgcolor-over);
 	color: var(--wui-table-row-textcolor-over);
 }
+
 .wui-table > table.align-left > :is(thead, tbody) > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody).align-left > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-left {
 	text-align: left;
 }
+
 .wui-table > table.align-center > :is(thead, tbody) > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody).align-center > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-center {
 	text-align: center;
 }
+
 .wui-table > table.align-right > :is(thead, tbody) > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody).align-right > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-right {
 	text-align: right;
 }
+
 .wui-table > table.valign-top > :is(thead, tbody) > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody).valign-top > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-top {
 	vertical-align: top;
 }
+
 .wui-table > table.valign-middle > :is(thead, tbody) > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody).valign-middle > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-middle {
 	vertical-align: bottom;
 	vertical-align: middle;
 }
+
 .wui-table > table.valign-bottom > :is(thead, tbody) > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody).valign-bottom > tr > :is(th, td),
 .wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-bottom {
 	vertical-align: bottom;
 }
+
 .wui-table > table > tbody > tr.selected > td:not(.disabled) {
 	border-color: var(--wui-table-row-bordercolor-selected);
 	background-color: var(--wui-table-row-bgcolor-selected);
 	color: var(--wui-table-row-textcolor-selected);
 }
+
 .wui-table > table > tbody > tr.disabled > td,
 .wui-table > table > tbody > tr > td.disabled {
 	border-color: var(--wui-table-row-bordercolor-disabled);
 	background-color: var(--wui-table-row-bgcolor-disabled);
 	color: var(--wui-table-row-textcolor-disabled);
 }
+
 @media screen and (max-width: 767px) {
 	.wui-table {
 		font-size: 14px;
 	}
 }
+
 @media screen and (min-width: 768px) {
 	.wui-table {
 		font-size: 12px;

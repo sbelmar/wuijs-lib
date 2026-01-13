@@ -9,11 +9,11 @@
 
 Versión librería: `0.2.0` ([Registro de Cambio](./REGISTRODECAMBIO.md))
 
-Versión documentación: `0.2.0.20260109.0`
+Versión documentación: `0.2.0.20260112.0`
 
 Licencia: `Licencia Apache 2.0`
 
-Autor: `Sergio E. Belmar V. <sbelmar@wuijs.dev>`
+Autor: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 
 ## Índice
 
@@ -44,7 +44,7 @@ Autor: `Sergio E. Belmar V. <sbelmar@wuijs.dev>`
 	*   [WUITimepicker](#WUITimepicker)
 	*   [WUIColorpicker](#WUIColorpicker)
 	*   [WUICheckbox](#WUICheckbox)
-	*   WUIIntensity
+	*   [WUIIntensity](#WUIIntensity)
 	*   [WUIButton](#WUIButton)
 *   [Ejemplos](#examples) (CodePen)
 
@@ -81,7 +81,7 @@ WUI, acrónimo del inglés *Web User Interface JavaScript library*, es una bibli
 | [WUITimepicker](#WUITimepicker)     | `0.2`   | Componente para la implementación de entradas de datos de tipo hora basada en el elemento HTML `<input type="time">`. |
 | [WUIColorpicker](#WUIColorpicker)   | `0.2`   | Componente para la implementación de entradas de datos de tipo selector de color basada en el elemento HTML `<input type="color">`. |
 | [WUICheckbox](#WUICheckbox)         | `0.2`   | Componente para la implementación de entradas de datos de tipo casilla de verificación basada en el elemento HTML `<input type="checkbox">`. |
-| WUIIntensity                        | `0.1`   | Componente para la implementación de entradas de datos de tipo selector de intensidad de 4 niveles: nada, bajo, medio y alto basada en el elemento HTML `<input type="range">`. |
+| [WUIIntensity](#WUIIntensity)       | `0.1`   | Componente para la implementación de entradas de datos de tipo selector de intensidad de 4 niveles: nada, bajo, medio y alto basada en el elemento HTML `<input type="range">`. |
 | [WUIButton](#WUIButton)             | `0.2`   | Componente para la implementación de botones basada en el elemento HTML `<button>`. |
 
 <a name="install"></a>
@@ -3836,6 +3836,133 @@ checkbox.init();
 > Puede revisar este ejemplo funcional en CodePen en el enlace: [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa).
 
 <a name="WUIIntensity"></a>
+
+### WUIIntensity
+
+Versión: `0.1`
+
+Componente para la implementación de entradas de datos de tipo selector de intensidad de 4 niveles: nada, bajo, medio y alto basada en el elemento HTML `<input type="range">`.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| CSS  | [src/WUI/Intensity/WUIIntensity-0.1.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Intensity/WUIIntensity-0.1.css) |
+| JS   | [src/WUI/Intensity/WUIIntensity-0.1.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Intensity/WUIIntensity-0.1.js) |
+
+#### Constructor
+
+| Tipo         | Descripción |
+| ------------ | ----------- |
+| WUIIntensity | `WUIIntensity([properties])`<br><br>Parámetros:<br>**• properties:** `object` *opcional* |
+
+#### Propiedades
+
+| Propiedad | Tipo       | Valor predeterminado | Descripción |
+| --------- | ---------- | -------------------- | ----------- |
+| selector  | `string`   | `".wui-intensity"`   | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| value     | `number`   | `0`                  | (get/set)<br><br>Valor de la intensidad (0: nada, 1: bajo, 2: medio, 3: alto). Acepta también las cadenas `"none"`, `"low"`, `"half"`, `"high"`. |
+| enabled   | `boolean`  | `true`               | (get/set)<br><br>Define si el selector está habilitado. |
+| onChange  | `function` | `null`               | (get/set)<br><br>Función que se llama cuando el valor cambia. La función recibe como parámetros el valor entero (0-3) y la cadena asociada. |
+
+#### Métodos
+
+| Método          | Tipo retorno         | Descripción |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLDivElement`     | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
+| getInput        | `HTMLInputElement`   | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="range">`. |
+| init            | `void`               | `init()`<br><br>Inicializa el objeto. |
+| destroy         | `void`               | `destroy()`<br><br>Destructor. |
+
+#### Variables CSS
+
+| Variable                          | Descripción |
+| --------------------------------- | ----------- |
+| `--wui-intensity-height`          |             |
+| `--wui-intensity-borderradius`    |             |
+| `--wui-intensity-bordercolor-out` |             |
+| `--wui-intensity-bgcolor-none`    |             |
+| `--wui-intensity-bgcolor-low`     |             |
+| `--wui-intensity-bgcolor-half`    |             |
+| `--wui-intensity-bgcolor-high`    |             |
+
+#### Implementación
+
+Configuración CSS:
+
+```css
+:root {
+	--wui-intensity-height: 30px;
+	--wui-intensity-borderradius: 15px;
+	--wui-intensity-bordercolor-out: rgb(from #1e90ff r g b / 20%);
+	--wui-intensity-bordercolor-disabled: #d5dce3;
+	--wui-intensity-bgcolor-none: #f6f6fa;
+	--wui-intensity-bgcolor-low: mediumaquamarine;
+	--wui-intensity-bgcolor-half: darkorange;
+	--wui-intensity-bgcolor-high: orangered;
+}
+```
+
+Código CSS:
+
+```css
+body {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+.my-intensity {}
+
+.my-output {
+	position: absolute;
+	top: 4px;
+	left: 210px;
+	margin: 10px;
+	font-family: monospace;
+}
+```
+
+Cabecera HTML:
+
+```html
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Intensity/WUIIntensity-0.1.css">
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Intensity/WUIIntensity-0.1.js"></script>
+```
+
+Código HTML:
+
+```html
+<div class="wui-intensity my-intensity">
+	<input type="range" name="myIntensity" value="0" min="0" max="3" step="1">
+</div>
+
+<div class="my-output"></div>
+```
+
+Código JS:
+
+```js
+// Crear objeto
+const output = document.body.querySelector(".my-output");
+const intensity = new WUIIntensity({
+	selector: ".wui-intensity.my-intensity",
+	value: 1,
+	//enabled: true,
+	onChange: (event, value) => {
+		output.textContent = `Cambio - valor: ${value}`;
+	}
+});
+
+// Inicializar objeto
+intensity.init();
+```
+
+> [!IMPORTANT]
+> Si el selector define un elemento que no es de tipo `HTMLDivElement`, el objeto no se inicializará.
+
+> [!TIP]
+> Puede revisar este ejemplo funcional en CodePen en el enlace: [https://codepen.io/wuijsproject/pen/GgqNpxJ](https://codepen.io/wuijsproject/pen/GgqNpxJ).
+
 <a name="WUIButton"></a>
 
 ### WUIButton
@@ -4103,4 +4230,5 @@ Los ejemplos listados en esta sección, son detallados en la sección "Implement
 | [WUITimepicker](#WUITimepicker)     | [https://codepen.io/wuijsproject/pen/azZdGrY](https://codepen.io/wuijsproject/pen/azZdGrY) |
 | [WUIColorpicker](#WUIColorpicker)   | [https://codepen.io/wuijsproject/pen/bNeeobP](https://codepen.io/wuijsproject/pen/bNeeobP) |
 | [WUICheckbox](#WUICheckbox)         | [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa) |
+| [WUIIntensity](#WUIIntensity)       | [https://codepen.io/wuijsproject/pen/GgqNpxJ](https://codepen.io/wuijsproject/pen/GgqNpxJ) |
 | [WUIButton](#WUIButton)             | [https://codepen.io/wuijsproject/pen/xbOwNzN](https://codepen.io/wuijsproject/pen/xbOwNzN) |

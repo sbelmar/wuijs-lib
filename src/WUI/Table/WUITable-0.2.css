@@ -1,18 +1,18 @@
 /*
  * WUITable - v0.2
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
-.wui-table,
-.wui-table * {
+div.wui-table,
+div.wui-table * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
 
-.wui-table {
+div.wui-table {
 	--table-shadow: rgb(from var(--wui-table-shadowcolor) r g b / 40%) 0px 4px 12px;
 	display: flex;
 	overflow-x: auto;
@@ -27,7 +27,7 @@
 	justify-content: flex-start;
 }
 
-.wui-table::before {
+div.wui-table::before {
 	content: "&ensp;";
 	position: absolute;
 	z-index: 1;
@@ -45,13 +45,13 @@
 	padding: 5px 0;
 }
 
-.wui-table > table {
+div.wui-table > table {
 	z-index: 2;
 	width: auto;
 	border-collapse: collapse;
 }
 
-.wui-table > table > :is(thead, tbody) > tr > :is(th, td) {
+div.wui-table > table > :is(thead, tbody) > tr > :is(th, td) {
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
@@ -63,7 +63,7 @@
 	text-overflow: ellipsis;
 }
 
-.wui-table > table > thead > tr > th {
+div.wui-table > table > thead > tr > th {
 	border-color: var(--wui-table-column-bordercolor-out);
 	background-color: var(--wui-table-column-bgcolor-out);
 	color: var(--wui-table-column-textcolor-out);
@@ -72,29 +72,29 @@
 	user-select: none;
 }
 
-.wui-table > table > thead > tr > th:not(.disabled):is(:hover, :focus, :focus-within) {
+div.wui-table > table > thead > tr > th:not(.disabled):is(:hover, :focus, :focus-within) {
 	border-color: var(--wui-table-column-bordercolor-over);
 	background-color: var(--wui-table-column-bgcolor-over);
 	color: var(--wui-table-column-textcolor-over);
 }
 
-.wui-table > table > thead > tr > th.selected {
+div.wui-table > table > thead > tr > th.selected {
 	border-color: var(--wui-table-column-bordercolor-selected);
 	background-color: var(--wui-table-column-bgcolor-selected);
 	color: var(--wui-table-column-textcolor-selected);
 }
 
-.wui-table > table > thead > tr > th.disabled {
+div.wui-table > table > thead > tr > th.disabled {
 	border-color: var(--wui-table-column-bordercolor-disabled);
 	background-color: var(--wui-table-column-bgcolor-disabled);
 	color: var(--wui-table-column-textcolor-disabled);
 }
 
-.wui-table > table > thead > tr > th.sortable {
+div.wui-table > table > thead > tr > th.sortable {
 	padding-right: 24px;
 }
 
-.wui-table > table > thead > tr > th.sortable > .sorter {
+div.wui-table > table > thead > tr > th.sortable > .sorter {
 	position: absolute;
 	top: 50%;
 	right: 4px;
@@ -115,15 +115,15 @@
 	transform: translateY(-50%);
 }
 
-.wui-table > table > thead > tr > th.sortable > .sorter:hover {
+div.wui-table > table > thead > tr > th.sortable > .sorter:hover {
 	background-color: var(--wui-table-column-sorter-iconcolor-over);
 }
 
-.wui-table > table > thead > tr > th.sortable.disabled > .sorter {
+div.wui-table > table > thead > tr > th.sortable.disabled > .sorter {
 	background-color: var(--wui-table-column-sorter-iconcolor-disabled) !important;
 }
 
-.wui-table > table > thead > tr > th.resizable > .resizer {
+div.wui-table > table > thead > tr > th.resizable > .resizer {
 	cursor: col-resize;
 	position: absolute;
 	z-index: 1;
@@ -134,117 +134,117 @@
 	border-right: 1px solid var(--wui-table-column-resizer-bordercolor-out);
 }
 
-.wui-table > table > thead > tr > th.resizable > .resizer:hover {
+div.wui-table > table > thead > tr > th.resizable > .resizer:hover {
 	border-right: 1px solid var(--wui-table-column-resizer-bordercolor-over);
 }
 
-.wui-table > table > thead > tr > th.draggable.drag {
+div.wui-table > table > thead > tr > th.draggable.drag {
 	-khtml-opacity: .5;
 	-moz-opacity: .5;
 	opacity: .5;
 }
 
-.wui-table > table > thead > tr > th.draggable.over {
+div.wui-table > table > thead > tr > th.draggable.over {
 	outline: 2px dashed var(--wui-table-column-dragger-bordercolor-over);
 }
 
-.wui-table > table > thead > tr > th.draggable.drop {
+div.wui-table > table > thead > tr > th.draggable.drop {
 	background-color: var(--wui-table-column-dragger-bgcolor-drop);
 }
 
-.wui-table > table > tbody {
+div.wui-table > table > tbody {
 	overflow-y: auto;
 }
 
-.wui-table > table > tbody > tr > td,
-.wui-table > table > tbody > tr > td * {
+div.wui-table > table > tbody > tr > td,
+div.wui-table > table > tbody > tr > td * {
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	user-select: none;
 }
 
-.wui-table > table > tbody > tr > td {
+div.wui-table > table > tbody > tr > td {
 	border-color: var(--wui-table-row-bordercolor-out);
 	background-color: var(--wui-table-row-bgcolor-out);
 	color: var(--wui-table-row-textcolor-out);
 }
 
-.wui-table > table > tbody > tr:last-child > td:first-child {
+div.wui-table > table > tbody > tr:last-child > td:first-child {
 	-webkit-border-bottom-left-radius: var(--wui-table-borderradius);
 	-moz-border-radius-bottomleft: var(--wui-table-borderradius);
 	border-bottom-left-radius: var(--wui-table-borderradius);
 }
 
-.wui-table > table > tbody > tr:last-child > td:last-child {
+div.wui-table > table > tbody > tr:last-child > td:last-child {
 	-webkit-border-bottom-right-radius: var(--wui-table-borderradius);
 	-moz-border-radius-bottomright: var(--wui-table-borderradius);
 	border-bottom-right-radius: var(--wui-table-borderradius);
 }
 
-.wui-table > table > tbody > tr:is(:hover, :focus, :focus-within) > td {
+div.wui-table > table > tbody > tr:is(:hover, :focus, :focus-within) > td {
 	border-color: var(--wui-table-row-bordercolor-over);
 	background-color: var(--wui-table-row-bgcolor-over);
 	color: var(--wui-table-row-textcolor-over);
 }
 
-.wui-table > table.align-left > :is(thead, tbody) > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody).align-left > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-left {
+div.wui-table > table.align-left > :is(thead, tbody) > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody).align-left > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-left {
 	text-align: left;
 }
 
-.wui-table > table.align-center > :is(thead, tbody) > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody).align-center > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-center {
+div.wui-table > table.align-center > :is(thead, tbody) > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody).align-center > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-center {
 	text-align: center;
 }
 
-.wui-table > table.align-right > :is(thead, tbody) > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody).align-right > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-right {
+div.wui-table > table.align-right > :is(thead, tbody) > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody).align-right > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody) > tr > :is(th, td).align-right {
 	text-align: right;
 }
 
-.wui-table > table.valign-top > :is(thead, tbody) > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody).valign-top > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-top {
+div.wui-table > table.valign-top > :is(thead, tbody) > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody).valign-top > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-top {
 	vertical-align: top;
 }
 
-.wui-table > table.valign-middle > :is(thead, tbody) > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody).valign-middle > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-middle {
+div.wui-table > table.valign-middle > :is(thead, tbody) > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody).valign-middle > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-middle {
 	vertical-align: bottom;
 	vertical-align: middle;
 }
 
-.wui-table > table.valign-bottom > :is(thead, tbody) > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody).valign-bottom > tr > :is(th, td),
-.wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-bottom {
+div.wui-table > table.valign-bottom > :is(thead, tbody) > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody).valign-bottom > tr > :is(th, td),
+div.wui-table > table > :is(thead, tbody) > tr > :is(th, td).valign-bottom {
 	vertical-align: bottom;
 }
 
-.wui-table > table > tbody > tr.selected > td {
+div.wui-table > table > tbody > tr.selected > td {
 	border-color: var(--wui-table-row-bordercolor-selected);
 	background-color: var(--wui-table-row-bgcolor-selected);
 	color: var(--wui-table-row-textcolor-selected);
 }
 
-.wui-table > table > tbody > tr.disabled > td,
-.wui-table > table > tbody > tr > td.disabled {
+div.wui-table > table > tbody > tr.disabled > td,
+div.wui-table > table > tbody > tr > td.disabled {
 	border-color: var(--wui-table-row-bordercolor-disabled);
 	background-color: var(--wui-table-row-bgcolor-disabled);
 	color: var(--wui-table-row-textcolor-disabled);
 }
 
 @media screen and (max-width: 767px) {
-	.wui-table {
+	div.wui-table {
 		font-size: 14px;
 	}
 }
 
 @media screen and (min-width: 768px) {
-	.wui-table {
+	div.wui-table {
 		font-size: 12px;
 	}
 }

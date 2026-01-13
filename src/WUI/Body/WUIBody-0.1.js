@@ -1,7 +1,7 @@
 /*
  * WUIBody - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIBody {
@@ -31,9 +31,9 @@ class WUIBody {
 		document.body.removeChild(link);
 	}
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUIBody.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIBody.#defaults ? WUIBody.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIBody.#defaults ? WUIBody.#defaults[prop] : null;
 		});
 	}
 
@@ -58,31 +58,31 @@ class WUIBody {
 	}
 
 	set environment(value) {
-		if (typeof(value) == "string" && value.match(/^(native\.android|native\.ios|web)?$/i)) {
+		if (typeof (value) == "string" && value.match(/^(native\.android|native\.ios|web)?$/i)) {
 			this._environment = value.toLowerCase();
 		}
 	}
 
 	set importDirectory(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._importDirectory = value;
 		}
 	}
 
 	set importMode(value) {
-		if (typeof(value) == "string" && value.match(/^(fetch|xhr)?$/i)) {
+		if (typeof (value) == "string" && value.match(/^(fetch|xhr)?$/i)) {
 			this._importMode = value;
 		}
 	}
 
 	set onCompleted(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onCompleted = value;
 		}
 	}
 
 	set debug(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._debug = value;
 		}
 	}
@@ -97,11 +97,11 @@ class WUIBody {
 			try {
 				xhr.open("HEAD", url, false);
 				xhr.send();
-			} catch(e) {}
+			} catch (e) { }
 			return xhr.status != 404;
 		}
 		const checkStatus = () => {
-			if (2 * WUIBody.#partCount == WUIBody.#htmlCount + WUIBody.#jsCount && typeof(this._onCompleted) == "function") {
+			if (2 * WUIBody.#partCount == WUIBody.#htmlCount + WUIBody.#jsCount && typeof (this._onCompleted) == "function") {
 				this._onCompleted();
 			}
 		}
@@ -139,7 +139,7 @@ class WUIBody {
 				}
 			}
 			WUIBody.#jsCount++;
-			if (typeof(done) == "function") {
+			if (typeof (done) == "function") {
 				done();
 			}
 			checkStatus();
@@ -147,7 +147,7 @@ class WUIBody {
 		const xhrRequest = (url, onload) => {
 			const xhr = new XMLHttpRequest();
 			xhr.overrideMimeType("text/plain");
-			xhr.onload = function() {
+			xhr.onload = function () {
 				if (xhr.status == 200 || xhr.status == 0) {
 					onload(xhr.responseText);
 				}
@@ -203,13 +203,13 @@ class WUIBody {
 		const inputsSelector = "input[type=text], input[type=password], input[type=file], input[type=email], input[type=number], input[type=tel], textarea";
 		if (this.environment == "native.android") {
 			document.body.querySelectorAll("a[target=_new], a[target=_blank]").forEach(a => {
-				a.setAttribute("href", "javascript:WUIBody.openURL('"+a.getAttribute("href")+"', '"+(a.getAttribute("download") || "")+"');");
+				a.setAttribute("href", "javascript:WUIBody.openURL('" + a.getAttribute("href") + "', '" + (a.getAttribute("download") || "") + "');");
 				a.removeAttribute("target");
 			});
 			document.body.querySelectorAll(inputsSelector).forEach(input => {
 				input.addEventListener("keyup", event => {
 					const maxlength = input.getAttribute("maxlength");
-					if (typeof(maxlength) != "undefined" && input.value.length > parseInt(maxlength)) {
+					if (typeof (maxlength) != "undefined" && input.value.length > parseInt(maxlength)) {
 						input.value = input.value.substring(0, parseInt(maxlength));
 					}
 				});
@@ -218,13 +218,13 @@ class WUIBody {
 			document.body.querySelectorAll(inputsSelector).forEach(input => {
 				input.addEventListener("keypress", event => {
 					const maxlength = input.getAttribute("maxlength");
-					if (typeof(maxlength) != "undefined" && input.value.length >= parseInt(maxlength)) {
+					if (typeof (maxlength) != "undefined" && input.value.length >= parseInt(maxlength)) {
 						return false;
 					}
 				});
 			});
 		}
-		document.body.querySelectorAll(inputsSelector+", select").forEach(input => {
+		document.body.querySelectorAll(inputsSelector + ", select").forEach(input => {
 			input.addEventListener("blur", () => {
 				document.activeElement.blur();
 			});

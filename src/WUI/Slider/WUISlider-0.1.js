@@ -1,7 +1,7 @@
 /*
  * WUISlider - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUISlider {
@@ -12,9 +12,9 @@ class WUISlider {
 		onChange: null
 	};
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUISlider.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUISlider.#defaults ? WUISlider.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUISlider.#defaults ? WUISlider.#defaults[prop] : null;
 		});
 	}
 
@@ -27,7 +27,7 @@ class WUISlider {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
 			this._body = this._element.querySelector(".body");
@@ -36,7 +36,7 @@ class WUISlider {
 	}
 
 	set onChange(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onChange = value;
 		}
 	}
@@ -74,7 +74,7 @@ class WUISlider {
 					lock: false
 				};
 			});
-			for (let i=0; i<this._data.length; i++) {
+			for (let i = 0; i < this._data.length; i++) {
 				if (i == 0) {
 					this._index = i;
 					this._data[i].slide.style.left = "0px";
@@ -104,10 +104,10 @@ class WUISlider {
 				});
 				["touchend", "mouseup"].forEach(type => {
 					document.addEventListener(type, () => {
-						if (typeof(this._data[i]) == "object" && this._data[i].drag) {
+						if (typeof (this._data[i]) == "object" && this._data[i].drag) {
 							this._data[i].initX = null;
 							this._data[i].drag = false;
-							if (direction == "next" && i < this._data.length -1) {
+							if (direction == "next" && i < this._data.length - 1) {
 								this.next();
 							} else if (direction == "prev" && i > 0) {
 								this.prev();
@@ -133,21 +133,21 @@ class WUISlider {
 					clearInterval(interval);
 					step = 1;
 				}
-				this._data[index -1].slide.style.left = (100*(step -1))+"%";
-				this._data[index].slide.style.left = (100*step)+"%";
+				this._data[index - 1].slide.style.left = (100 * (step - 1)) + "%";
+				this._data[index].slide.style.left = (100 * step) + "%";
 				if (step == 1) {
-					this._index = index -1;
+					this._index = index - 1;
 					if (this._dots != null) {
 						this._data[index].dot.classList.remove("selected");
-						this._data[index -1].dot.classList.add("selected");
+						this._data[index - 1].dot.classList.add("selected");
 					}
-					if (typeof(this._onChange) == "function") {
+					if (typeof (this._onChange) == "function") {
 						this._onChange(this._index);
 					}
 					this._data[index].lock = false;
 				}
 				step += .1;
-			}, delay/10);
+			}, delay / 10);
 		}
 	}
 
@@ -155,39 +155,39 @@ class WUISlider {
 		const delay = 200;
 		let index = this._index;
 		let step = 0;
-		if (index < this._data.length -1 && !this._data[index].lock) {
+		if (index < this._data.length - 1 && !this._data[index].lock) {
 			this._data[index].lock = true;
 			const interval = setInterval(() => {
 				if (step >= 1) {
 					clearInterval(interval);
 					step = 1;
 				}
-				this._data[index].slide.style.left = (100*(-step))+"%";
-				this._data[index +1].slide.style.left = (100*(1 -step))+"%";
+				this._data[index].slide.style.left = (100 * (-step)) + "%";
+				this._data[index + 1].slide.style.left = (100 * (1 - step)) + "%";
 				if (step == 1) {
-					this._index = index +1;
+					this._index = index + 1;
 					if (this._dots != null) {
 						this._data[index].dot.classList.remove("selected");
-						this._data[index +1].dot.classList.add("selected");
+						this._data[index + 1].dot.classList.add("selected");
 					}
-					if (typeof(this._onChange) == "function") {
+					if (typeof (this._onChange) == "function") {
 						this._onChange(this._index);
 					}
 					this._data[index].lock = false;
 				}
 				step += .1;
-			}, delay/10);
+			}, delay / 10);
 		}
 	}
 
 	go(index) {
 		if (index < this._data.length && index != this._index) {
 			if (index < this._index) {
-				for (let i=this._index; i>index; i--) {
+				for (let i = this._index; i > index; i--) {
 					this._data[i].slide.style.left = "100%";
 				}
 			} else if (index > this._index) {
-				for (let i=this._index; i<index; i++) {
+				for (let i = this._index; i < index; i++) {
 					this._data[i].slide.style.left = "-100%";
 				}
 			}

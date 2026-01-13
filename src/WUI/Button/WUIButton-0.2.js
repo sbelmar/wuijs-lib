@@ -1,7 +1,7 @@
 /*
  * WUIButton - v0.2
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIButton {
@@ -178,3 +178,8 @@ class WUIButton {
 		return false;
 	}
 }
+
+/*
+HTML output:
+<button class="wui-button"></button>
+*/

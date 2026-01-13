@@ -9,11 +9,11 @@
 
 Library version: `0.2.0` ([Change Log](./CHANGELOG.md))
 
-Document version: `0.2.0.20260109.0`
+Document version: `0.2.0.20260112.0`
 
 License: `Apache License 2.0`
 
-Author: `Sergio E. Belmar V. <sbelmar@wuijs.dev>`
+Author: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 
 ## Index
 
@@ -44,7 +44,7 @@ Author: `Sergio E. Belmar V. <sbelmar@wuijs.dev>`
 	*   [WUITimepicker](#WUITimepicker)
 	*   [WUIColorpicker](#WUIColorpicker)
 	*   [WUICheckbox](#WUICheckbox)
-	*   WUIIntensity
+	*   [WUIIntensity](#WUIIntensity)
 	*   [WUIButton](#WUIButton)
 *   [Examples](#examples) (CodePen)
 
@@ -81,7 +81,7 @@ WUI, an acronym for *Web User Interface JavaScript library*, is an open source J
 | [WUITimepicker](#WUITimepicker)     | `0.2`   | Component for the implementation of time type data inputs based on HTML element `<input type="time">`. |
 | [WUIColorpicker](#WUIColorpicker)   | `0.2`   | Component for the implementation of color picker type data inputs based on HTML element `<input type="color">`. |
 | [WUICheckbox](#WUICheckbox)         | `0.2`   | Component for the implementation of checkbox type data inputs based on HTML element `<input type="checkbox">`. |
-| WUIIntensity                        | `0.1`   | Component for the implementation of 4-level intensity selector type data inputs: none, low, half, and high based on HTML element `<input type="range">`. |
+| [WUIIntensity](#WUIIntensity)       | `0.1`   | Component for the implementation of 4-level intensity selector type data inputs: none, low, half, and high based on HTML element `<input type="range">`. |
 | [WUIButton](#WUIButton)             | `0.2`   | Component for the implementation of based on HTML element `<button>`. |
 
 <a name="install"></a>
@@ -1852,7 +1852,7 @@ Component for the implementation of menu bars.
 
 | Method       | Return type   | Description |
 | ------------ | ------------- | ----------- |
-| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML element containing the object. |
+| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML container element of the object. |
 | getButton    | `object`      | `getButton(id)`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br><br>Returns the menu button according to the unique button identifier passed as a argument. |
 | init         | `void`        | `init()`<br><br>Initializes the object. |
 | selectButton | `void`        | `selectButton(id[, selected[, runCallback]])`<br><br>Arguments:<br>**• id:** `string`, unique button identifier.<br>**• selected:** `boolean`, button selection state. The default value is `true`. <br>**• runCallback:** `boolean`, run the `onClick` and `onSelect` callbacks. The default value is `true`.<br><br>Select or unselect a menu button. |
@@ -2163,7 +2163,7 @@ Component for the implementation of data lists and buttons for each row optional
 
 | Method       | Return type   | Description |
 | ------------ | ------------- | ----------- |
-| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML element containing the object. |
+| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML container element of the object. |
 | init         | `void`        | `init()`<br><br>Initializes the object. |
 | addColumn    | `void`        | `addColumn(options)`<br><br>Adds a new column settings to the object's column list, as defined in **Column Options**. |
 | addRow       | `void`        | `addRow(options)`<br><br>Adds a new row settings to the object's rows list, as defined by **Row Options**. |
@@ -2497,7 +2497,7 @@ Component for the implementation of data tables. Unlike the `WUIList` object, th
 
 | Method       | Return type   | Description |
 | ------------ | ------------- | ----------- |
-| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML element containing the object. |
+| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML container element of the object. |
 | init         | `void`        | `init()`<br><br>Initializes the object. |
 | addColumn    | `void`        | `addColumn(options)`<br><br>Adds a new column settings to the object's column list, as defined in **Column Options**. |
 | addRow       | `void`        | `addRow(options)`<br><br>Adds a new row settings to the object's rows list, as defined by **Row Options**. |
@@ -2827,7 +2827,7 @@ Component for the implementation of multiple or exclusive selection list data in
 
 | Method          | Return type          | Description |
 | --------------- | -------------------- | ----------- |
-| getElement      | `HTMLElement`        | `getElement()`<br><br>Returns the HTML element containing the object. |
+| getElement      | `HTMLElement`        | `getElement()`<br><br>Returns the HTML container element of the object. |
 | getBox          | `HTMLElement`        | `getBox()`<br><br>Returns the HTML element of the dropdown box. |
 | getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
 | getInput        | `HTMLElement`        | `getInput()`<br><br>Returns the HTML element associated with the base data input `<select>`. |
@@ -3317,8 +3317,8 @@ Component for the implementation of time type data inputs based on HTML element 
 | Method          | Return type          | Description |
 | --------------- | -------------------- | ----------- |
 | getElement      | `HTMLElement`        | `getElement()`<br><br>Returns the HTML container element of the object. |
-| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Retorna un arreglo de los elementos HTML que son parte de la visualización del valor. |
-| getInput        | `HTMLElement`        | `getInput()`<br><br>Retorna el elemento HTML asociado a la entrada de datos base `<input type="time">`. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
+| getInput        | `HTMLElement`        | `getInput()`<br><br>Returns the HTML element associated with the base data input `<input type="time">`. |
 | init            | `void`               | `init()`<br><br>Initializes the object. |
 | open            | `void`               | `open()`<br><br>Opens the time picker. |
 | close           | `void`               | `close()`<br><br>Closes the time picker. |
@@ -3835,6 +3835,133 @@ checkbox.init();
 > You can check out this working example on CodePen at the link: [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa).
 
 <a name="WUIIntensity"></a>
+
+### WUIIntensity
+
+Version: `0.1`
+
+Component for the implementation of 4-level intensity selector type data inputs: none, low, half, and high based on HTML element `<input type="range">`.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| CSS  | [src/WUI/Intensity/WUIIntensity-0.1.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Intensity/WUIIntensity-0.1.css) |
+| JS   | [src/WUI/Intensity/WUIIntensity-0.1.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Intensity/WUIIntensity-0.1.js) |
+
+#### Constructor
+
+| Type         | Description |
+| ------------ | ----------- |
+| WUIIntensity | `WUIIntensity([properties])`<br><br>Arguments:<br>**• properties:** `object` *optional* |
+
+#### Properties
+
+| Property | Type       | Default value      | Description |
+| -------- | ---------- | ------------------ | ----------- |
+| selector | `string`   | `".wui-intensity"` | (get/set)<br><br>CSS selector defining the `HTMLDivElement` HTML element wrapping the `range` type `HTMLInputElement` element that will be converted into the object. If more than one element matches the selector, only the first match will be included. |
+| value    | `number`   | `0`                | (get/set)<br><br>Intensity value (0: none, 1: low, 2: half, 3: high). Also accepts strings `"none"`, `"low"`, `"half"`, `"high"`. |
+| enabled  | `boolean`  | `true`             | (get/set)<br><br>Defines if the selector is enabled. |
+| onChange | `function` | `null`             | (get/set)<br><br>Function called when the value changes. The function receives the integer value (0-3) and the associated string as parameters. |
+
+#### Methods
+
+| Method          | Return type          | Description |
+| --------------- | -------------------- | ----------- |
+| getElement      | `HTMLDivElement`     | `getElement()`<br><br>Returns the HTML container element of the object. |
+| getViewElements | `Array<HTMLElement>` | `getViewElements()`<br><br>Returns an array of the HTML elements that are part of the value display. |
+| getInput        | `HTMLInputElement`   | `getInput()`<br><br>Returns the HTML element associated with the base data input `<input type="range">`. |
+| init            | `void`               | `init()`<br><br>Initializes the object. |
+| destroy         | `void`               | `destroy()`<br><br>Destroyer. |
+
+#### CSS Variables
+
+| Variable                          | Description |
+| --------------------------------- | ----------- |
+| `--wui-intensity-height`          |             |
+| `--wui-intensity-borderradius`    |             |
+| `--wui-intensity-bordercolor-out` |             |
+| `--wui-intensity-bgcolor-none`    |             |
+| `--wui-intensity-bgcolor-low`     |             |
+| `--wui-intensity-bgcolor-half`    |             |
+| `--wui-intensity-bgcolor-high`    |             |
+
+#### Implementation
+
+CSS settings:
+
+```css
+:root {
+	--wui-intensity-height: 30px;
+	--wui-intensity-borderradius: 15px;
+	--wui-intensity-bordercolor-out: rgb(from #1e90ff r g b / 20%);
+	--wui-intensity-bordercolor-disabled: #d5dce3;
+	--wui-intensity-bgcolor-none: #f6f6fa;
+	--wui-intensity-bgcolor-low: mediumaquamarine;
+	--wui-intensity-bgcolor-half: darkorange;
+	--wui-intensity-bgcolor-high: orangered;
+}
+```
+
+CSS code:
+
+```css
+body {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+.my-intensity {}
+
+.my-output {
+	position: absolute;
+	top: 4px;
+	left: 210px;
+	margin: 10px;
+	font-family: monospace;
+}
+```
+
+HTML head:
+
+```html
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Intensity/WUIIntensity-0.1.css">
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Intensity/WUIIntensity-0.1.js"></script>
+```
+
+HTML code:
+
+```html
+<div class="wui-intensity my-intensity">
+	<input type="range" name="myIntensity" value="0" min="0" max="3" step="1">
+</div>
+
+<div class="my-output"></div>
+```
+
+JS code:
+
+```js
+// Create object
+const output = document.body.querySelector(".my-output");
+const intensity = new WUIIntensity({
+	selector: ".wui-intensity.my-intensity",
+	value: 1,
+	//enabled: true,
+	onChange: (event, value) => {
+		output.textContent = `Change - value: ${value}`;
+	}
+});
+
+// Initialize object
+intensity.init();
+```
+
+> [!IMPORTANT]
+> If the selector defines an element that is not of type `HTMLDivElement`, the object will not be initialized.
+
+> [!TIP]
+> You can check out this working example on CodePen at the link: [https://codepen.io/wuijsproject/pen/GgqNpxJ](https://codepen.io/wuijsproject/pen/GgqNpxJ).
+
 <a name="WUIButton"></a>
 
 ### WUIButton
@@ -3872,7 +3999,7 @@ Component for the implementation of.
 
 | Method       | Return type   | Description |
 | ------------ | ------------- | ----------- |
-| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML element containing the object. |
+| getElement   | `HTMLElement` | `getElement()`<br><br>Returns the HTML container element of the object. |
 | init         | `void`        | `init()`<br><br>Initializes the object. |
 | focus        | `void`        | `focus()`<br><br>Focus on the button. |
 | select       | `select`      | `select()`<br><br>Select the button. |
@@ -4102,4 +4229,5 @@ The examples listed in this section are detailed in the "Implementation" section
 | [WUITimepicker](#WUITimepicker)     | [https://codepen.io/wuijsproject/pen/azZdGrY](https://codepen.io/wuijsproject/pen/azZdGrY) |
 | [WUIColorpicker](#WUIColorpicker)   | [https://codepen.io/wuijsproject/pen/bNeeobP](https://codepen.io/wuijsproject/pen/bNeeobP) |
 | [WUICheckbox](#WUICheckbox)         | [https://codepen.io/wuijsproject/pen/qENNwPa](https://codepen.io/wuijsproject/pen/qENNwPa) |
+| [WUIIntensity](#WUIIntensity)       | [https://codepen.io/wuijsproject/pen/GgqNpxJ](https://codepen.io/wuijsproject/pen/GgqNpxJ) |
 | [WUIButton](#WUIButton)             | [https://codepen.io/wuijsproject/pen/xbOwNzN](https://codepen.io/wuijsproject/pen/xbOwNzN) |

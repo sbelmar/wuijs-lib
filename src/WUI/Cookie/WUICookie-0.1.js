@@ -1,7 +1,7 @@
 /*
  * WUICookie - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUICookie {
@@ -10,7 +10,7 @@ class WUICookie {
 	static #defaults = {
 		domain: location.hostname,
 		path: "",
-		minutes: 365*24*60,
+		minutes: 365 * 24 * 60,
 		overssl: false
 	};
 
@@ -31,45 +31,45 @@ class WUICookie {
 	}
 
 	set domain(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._domain = value;
 		}
 	}
 
 	set path(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._path = value;
 		}
 	}
 
 	set minutes(value) {
-		if (typeof(value) == "number" && value.toString().match(/^\d+$/)) {
+		if (typeof (value) == "number" && value.toString().match(/^\d+$/)) {
 			this._minutes = value;
 		}
 	}
 
 	set overssl(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._overssl = value;
 		}
 	}
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUICookie.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUICookie.#defaults ? WUICookie.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUICookie.#defaults ? WUICookie.#defaults[prop] : null;
 		});
 	}
 
 	set(name, value, options = {}) {
-		const domain = typeof(options.domain) == "string" ? options.domain : this.domain;
-		const path = typeof(options.path) == "string" ? options.path : this.path;
-		const minutes = typeof(options.minutes) == "number" ? options.minutes : this.minutes;
-		const overssl = typeof(options.overssl) == "boolean" ? options.overssl : this.overssl;
-		const cookie = encodeURIComponent(name)+"="+encodeURIComponent(value)
-			+(domain != "" ? "; domain="+domain : "")
-			+(path != "" && path != "./" ? "; path="+path : "")
-			+"; max-age="+(60*minutes)
-			+(overssl ? " secure" : "")
+		const domain = typeof (options.domain) == "string" ? options.domain : this.domain;
+		const path = typeof (options.path) == "string" ? options.path : this.path;
+		const minutes = typeof (options.minutes) == "number" ? options.minutes : this.minutes;
+		const overssl = typeof (options.overssl) == "boolean" ? options.overssl : this.overssl;
+		const cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value)
+			+ (domain != "" ? "; domain=" + domain : "")
+			+ (path != "" && path != "./" ? "; path=" + path : "")
+			+ "; max-age=" + (60 * minutes)
+			+ (overssl ? " secure" : "")
 		if (navigator.cookieEnabled) {
 			try {
 				document.cookie = cookie;
@@ -80,7 +80,7 @@ class WUICookie {
 	}
 
 	get(name) {
-		const cname = name+"=";
+		const cname = name + "=";
 		let cookies = [];
 		if (navigator.cookieEnabled) {
 			try {
@@ -101,6 +101,6 @@ class WUICookie {
 	}
 
 	remove(name) {
-		this.set(name, "", {minutes: 0});
+		this.set(name, "", { minutes: 0 });
 	}
 };

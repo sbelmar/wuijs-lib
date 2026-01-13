@@ -1,7 +1,7 @@
 /*
  * WUIDatepicker - v0.2
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIDatepicker {
@@ -805,7 +805,7 @@ class WUIDatepicker {
 WUIDatepicker._initClass();
 
 /*
-Generated HTML code:
+HTML output:
 <div class="wui-datepicker">
 	<input type="date" value="(name)" value="">
 	<div class="opener"></div>
@@ -825,9 +825,18 @@ Generated HTML code:
 			<div class="prev"></div>
 			<div class="next"></div>
 		</div>
-		<div class="years"></div>
-		<div class="week"></div>
-		<div class="days"></div>
+		<div class="months">
+			<div></div>
+			[...]
+		</div>
+		<div class="week">
+			<div></div>
+			[...]
+		</div>
+		<div class="days">
+			<div></div>
+			[...]
+		</div>
 		<div class="footer">
 			<button class="cancel"></button>
 			<button class="accept"></button>

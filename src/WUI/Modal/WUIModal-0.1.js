@@ -1,7 +1,7 @@
 /*
  * WUIModal - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIModal {
@@ -58,7 +58,7 @@ class WUIModal {
 		});
 	}
 
-	constructor (properties) {
+	constructor(properties) {
 		this.setProperties(properties);
 		WUIModal.#instances.push(this);
 	}
@@ -100,64 +100,64 @@ class WUIModal {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
-			this._box = document.querySelector(value+" > .box");
-			this._header = document.querySelector(value+" > .box > .header");
-			this._back = this._header ? document.querySelector(value+" > .box > .header > .back") : null;
-			this._topbar = this._header ? document.querySelector(value+" > .box > .header > .topbar") : null;
-			this._title = this._header ? document.querySelector(value+" > .box > .header > .title") : null;
-			this._close = this._header ? document.querySelector(value+" > .box > .header > .close") : null;
-			this._body = document.querySelector(value+" > .box > .body");
-			this._footer = document.querySelector(value+" > .box > .footer");
+			this._box = document.querySelector(value + " > .box");
+			this._header = document.querySelector(value + " > .box > .header");
+			this._back = this._header ? document.querySelector(value + " > .box > .header > .back") : null;
+			this._topbar = this._header ? document.querySelector(value + " > .box > .header > .topbar") : null;
+			this._title = this._header ? document.querySelector(value + " > .box > .header > .title") : null;
+			this._close = this._header ? document.querySelector(value + " > .box > .header > .close") : null;
+			this._body = document.querySelector(value + " > .box > .body");
+			this._footer = document.querySelector(value + " > .box > .footer");
 		}
 	}
-	
+
 	set openDelay(value) {
-		if (typeof(value) == "number") {
+		if (typeof (value) == "number") {
 			this._openDelay = value;
 		}
 	}
 
 	set onStartOpen(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onStartOpen = value;
 		}
 	}
 
 	set onOpen(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onOpen = value;
 		}
 	}
 
 	set onMaximize(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onMaximize = value;
 		}
 	}
 
 	set onScrolling(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onScrolling = value;
 		}
 	}
 
 	set onStartClose(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onStartClose = value;
 		}
 	}
 
 	set onClose(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onClose = value;
 		}
 	}
 
 	set onBack(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onBack = value;
 		}
 	}
@@ -210,7 +210,7 @@ class WUIModal {
 
 	setProperties(properties) {
 		Object.keys(WUIModal.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIModal.#defaults ? WUIModal.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIModal.#defaults ? WUIModal.#defaults[prop] : null;
 		});
 	}
 
@@ -285,7 +285,7 @@ class WUIModal {
 		}
 		if (this._back != null) {
 			this._back.addEventListener("click", () => {
-				if (typeof(this._onBack) == "function") {
+				if (typeof (this._onBack) == "function") {
 					this._onBack();
 				}
 			});
@@ -305,10 +305,10 @@ class WUIModal {
 							top = 0;
 						}
 						this._box.dataset.scrollBody = top;
-						if (typeof(this._onScrolling) == "function") {
+						if (typeof (this._onScrolling) == "function") {
 							this._onScrolling(top);
 						}
-					}), {passive: true});
+					}), { passive: true });
 				});
 			}
 		}
@@ -336,7 +336,7 @@ class WUIModal {
 			}
 		});
 		this._element.style.display = "flex";
-		this._element.style.zIndex = 103 +pages;
+		this._element.style.zIndex = 103 + pages;
 		this._element.style.visibility = "hidden";
 		this._element.style.opacity = 0;
 		this._element.style.visibility = "visible";
@@ -354,15 +354,15 @@ class WUIModal {
 			});
 			document.body.style.overflowY = "hidden";
 			document.body.style.overflowX = "hidden";
-			document.body.style.paddingRight = scrollbarWidth+"px";
-			document.body.style.paddingBottom = scrollbarHeight+"px";
+			document.body.style.paddingRight = scrollbarWidth + "px";
+			document.body.style.paddingBottom = scrollbarHeight + "px";
 			if (page) {
-				this._box.style.top = mobile ? "100%" : slide ? slideMargin+"px" : "auto";
+				this._box.style.top = mobile ? "100%" : slide ? slideMargin + "px" : "auto";
 				this._box.style.left = mobile ? "0px" : "auto";
 				this._box.style.right = mobile ? "0px" : "auto";
-				this._box.style.bottom = mobile ? "0px" : slide ? slideMargin+"px" : "auto";
-				this._box.style.width = mobile ? "auto" : "var(--wui-modal-"+(small ? "small" : "")+"page-box-width)";
-				this._box.style.height = mobile || slide ? "auto" :  "var(--wui-modal-"+(small ? "small" : "")+"page-box-height)";
+				this._box.style.bottom = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
+				this._box.style.width = mobile ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-width)";
+				this._box.style.height = mobile || slide ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-height)";
 				this._boxWidth = this._box.clientWidth;
 				this._boxHeight = this._box.clientHeight;
 			}
@@ -371,12 +371,12 @@ class WUIModal {
 				document.body.style.backgroundColor = boxStyle.backgroundColor;
 			}
 		}
-		if (typeof(this._onStartOpen) == "function") {
+		if (typeof (this._onStartOpen) == "function") {
 			this._onStartOpen();
 		}
 		const interval = setInterval(() => {
-			const t = step/100;
-			let ease = t > 0.5 ? 4 * Math.pow((t -1), 3) +1 : 4 * Math.pow(t, 3);
+			const t = step / 100;
+			let ease = t > 0.5 ? 4 * Math.pow((t - 1), 3) + 1 : 4 * Math.pow(t, 3);
 			if (ease >= 1) {
 				clearInterval(interval);
 				ease = 1;
@@ -384,12 +384,12 @@ class WUIModal {
 			this._element.style.opacity = ease == 1 ? null : ease;
 			if (this._box != null && page) {
 				if (!mobile && slide) {
-					this._box.style.right = (this._boxWidth * (ease -1) + slideMargin)+"px";
+					this._box.style.right = (this._boxWidth * (ease - 1) + slideMargin) + "px";
 				} else if (mobile) {
 					if (small) {
-						this._box.style.top = (bodyHeight - this._boxHeight * ease)+"px";
+						this._box.style.top = (bodyHeight - this._boxHeight * ease) + "px";
 					} else {
-						this._box.style.top = (bodyHeight - (bodyHeight -44) * ease)+"px";
+						this._box.style.top = (bodyHeight - (bodyHeight - 44) * ease) + "px";
 					}
 				}
 			}
@@ -398,23 +398,23 @@ class WUIModal {
 				const underSlide = Boolean(under._element.classList.contains("slide"));
 				const underMaximized = Boolean(under._element.classList.contains("maximized"));
 				if (bgcolor.length == 4) {
-					const opacity = Math.round((1 -ease) * parseFloat(bgcolor[3]) * 100) / 100;
-					under._element.style.backgroundColor = "rgba("+bgcolor[0]+", "+bgcolor[1]+", "+bgcolor[2]+", "+opacity+")";
+					const opacity = Math.round((1 - ease) * parseFloat(bgcolor[3]) * 100) / 100;
+					under._element.style.backgroundColor = "rgba(" + bgcolor[0] + ", " + bgcolor[1] + ", " + bgcolor[2] + ", " + opacity + ")";
 				}
 				if (under._box != null && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
 					} else if (mobile && !underMaximized) {
-						under._box.style.top = (bodyHeight - (bodyHeight -44) - 44 * ease)+"px";
-						under._box.style.scale = (1 - ease/10);
+						under._box.style.top = (bodyHeight - (bodyHeight - 44) - 44 * ease) + "px";
+						under._box.style.scale = (1 - ease / 10);
 					}
 				}
 			}
-			if (ease == 1 && typeof(onOpen) == "function") {
+			if (ease == 1 && typeof (onOpen) == "function") {
 				onOpen();
 			}
 			step++;
-		}, delay/100);
+		}, delay / 100);
 	}
 
 	resposive() {
@@ -426,12 +426,12 @@ class WUIModal {
 		const slideMargin = parseInt(getComputedStyle(this._element).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
 		if (this._box != null && page) {
 			this._element.classList.remove("maximized");
-			this._box.style.top = mobile ? "44px" : slide ? slideMargin+"px" : small ? (bodyHeight - this._boxHeight)+"px" : "auto";
+			this._box.style.top = mobile ? "44px" : slide ? slideMargin + "px" : small ? (bodyHeight - this._boxHeight) + "px" : "auto";
 			this._box.style.left = mobile ? "0px" : "auto";
-			this._box.style.right = mobile ? "0px" : slide ? slideMargin+"px" : "auto";
-			this._box.style.bottom = mobile ? "0px" : slide ? slideMargin+"px" : "auto";
-			this._box.style.width = mobile ? "auto" : "var(--wui-modal-"+(small ? "small" : "")+"page-box-width)";
-			this._box.style.height = mobile || slide ? "auto" :  "var(--wui-modal-"+(small ? "small" : "")+"page-box-height)";
+			this._box.style.right = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
+			this._box.style.bottom = mobile ? "0px" : slide ? slideMargin + "px" : "auto";
+			this._box.style.width = mobile ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-width)";
+			this._box.style.height = mobile || slide ? "auto" : "var(--wui-modal-" + (small ? "small" : "") + "page-box-height)";
 		}
 	}
 
@@ -444,8 +444,8 @@ class WUIModal {
 		this._element.classList.add("maximized");
 		this._boxTop = this._box != null ? this._box.offsetTop : 0;
 		const interval = setInterval(() => {
-			const t = step/10;
-			let ease = t > 0.5 ? 4 * Math.pow((t -1), 3) +1 : 4 * Math.pow(t, 3);
+			const t = step / 10;
+			let ease = t > 0.5 ? 4 * Math.pow((t - 1), 3) + 1 : 4 * Math.pow(t, 3);
 			if (ease <= 0) {
 				clearInterval(interval);
 				ease = 0;
@@ -454,14 +454,14 @@ class WUIModal {
 				if (!mobile && slide) {
 					// ...
 				} else if (mobile && !maximized) {
-					this._box.style.top = (this._boxTop * ease)+"px";
+					this._box.style.top = (this._boxTop * ease) + "px";
 				}
 			}
-			if (ease == 0 && typeof(onMaximize) == "function") {
+			if (ease == 0 && typeof (onMaximize) == "function") {
 				onMaximize();
 			}
 			step--;
-		}, delay/100);
+		}, delay / 100);
 	}
 
 	close(onClose = this._onClose, delay = this._openDelay) {
@@ -473,7 +473,7 @@ class WUIModal {
 		const slideMargin = parseInt(getComputedStyle(this._element).getPropertyValue("--wui-modal-slidepage-box-margin").replace(/\D+/g, "") || 0);
 		let under = null;
 		let step = delay > 0 ? 100 : 0;
-		if (typeof(this._onStartClose) == "function") {
+		if (typeof (this._onStartClose) == "function") {
 			this._onStartClose();
 		}
 		WUIModal.#instances.forEach(modal => {
@@ -498,8 +498,8 @@ class WUIModal {
 			this._boxHeight = this._box.clientHeight;
 		}
 		const interval = setInterval(() => {
-			const t = step/100;
-			let ease = t > 0.5 ? 4 * Math.pow((t -1), 3) +1 : 4 * Math.pow(t, 3);
+			const t = step / 100;
+			let ease = t > 0.5 ? 4 * Math.pow((t - 1), 3) + 1 : 4 * Math.pow(t, 3);
 			if (ease <= 0) {
 				clearInterval(interval);
 				ease = 0;
@@ -511,9 +511,9 @@ class WUIModal {
 			this._element.style.opacity = ease;
 			if (this._box != null && page) {
 				if (!mobile && slide) {
-					this._box.style.right = (this._boxWidth * (ease -1) + slideMargin)+"px";
+					this._box.style.right = (this._boxWidth * (ease - 1) + slideMargin) + "px";
 				} else if (mobile) {
-					this._box.style.top = (bodyHeight - this._boxHeight * ease)+"px";
+					this._box.style.top = (bodyHeight - this._boxHeight * ease) + "px";
 				}
 			}
 			if (under != null) {
@@ -521,23 +521,23 @@ class WUIModal {
 				const underSlide = Boolean(under._element.classList.contains("slide"));
 				const underMaximized = Boolean(under._element.classList.contains("maximized"));
 				if (bgcolor.length == 4) {
-					const opacity = Math.round((1 -ease) * parseFloat(bgcolor[3]) * 100) / 100;
-					under._element.style.backgroundColor = "rgba("+bgcolor[0]+", "+bgcolor[1]+", "+bgcolor[2]+", "+opacity+")";
+					const opacity = Math.round((1 - ease) * parseFloat(bgcolor[3]) * 100) / 100;
+					under._element.style.backgroundColor = "rgba(" + bgcolor[0] + ", " + bgcolor[1] + ", " + bgcolor[2] + ", " + opacity + ")";
 				}
 				if (under._box != null && underPage && page) {
 					if (!mobile && underSlide) {
 						// ...
 					} else if (mobile && !underMaximized) {
-						under._box.style.top = (bodyHeight - (bodyHeight -44) - 44 * ease)+"px";
-						under._box.style.scale = (1 - ease/10);
+						under._box.style.top = (bodyHeight - (bodyHeight - 44) - 44 * ease) + "px";
+						under._box.style.scale = (1 - ease / 10);
 					}
 				}
 			}
-			if (ease == 0 && typeof(onClose) == "function") {
+			if (ease == 0 && typeof (onClose) == "function") {
 				onClose();
 			}
 			step--;
-		}, delay/100);
+		}, delay / 100);
 	}
 
 	isOpen() {

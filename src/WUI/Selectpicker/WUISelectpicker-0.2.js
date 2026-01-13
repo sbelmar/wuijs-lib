@@ -1,7 +1,7 @@
 /*
  * WUISelectpicker - v0.2
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUISelectpicker {
@@ -673,11 +673,11 @@ class WUISelectpicker {
 WUISelectpicker._initClass();
 
 /*
-Generated HTML code:
+HTML output:
 <div class="wui-selector">
 	<select name="(name)">
 		<option value="value1">value 1</option>
-		...
+		[...]
 	</select>
 	<div class="opener"></div>
 	<input type="text" value="(name)Text" value="">
@@ -685,7 +685,7 @@ Generated HTML code:
 	<div class="box">
 		<div class="options">
 			<div class="option" data-value="value1">value 1</div>
-			...
+			[...]
 		</div>
 		<div class="footer">
 			<button class="cancel"></button>

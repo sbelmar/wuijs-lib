@@ -1,7 +1,7 @@
 /*
  * WUIPaging - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIPaging {
@@ -17,11 +17,11 @@ class WUIPaging {
 		onScrolling: null
 	};
 
-	constructor (properties) {
+	constructor(properties) {
 		this._target = null;
 		this._history = [];
 		Object.keys(WUIPaging.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIPaging.#defaults ? WUIPaging.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIPaging.#defaults ? WUIPaging.#defaults[prop] : null;
 		});
 	}
 
@@ -58,44 +58,44 @@ class WUIPaging {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
 		}
 	}
 
 	set index(value) {
-		if (typeof(value) == "number") {
+		if (typeof (value) == "number") {
 			this._index = value;
 		}
 	}
 
 	set dataTarget(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._dataTarget = value;
 		}
 	}
 
 	set onSelect(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onSelect = value;
 		}
 	}
 
 	set onChange(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onChange = value;
 		}
 	}
 
 	set onBack(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onBack = value;
 		}
 	}
 
 	set onScrolling(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onScrolling = value;
 		}
 	}
@@ -109,9 +109,9 @@ class WUIPaging {
 
 	#target2index(target) {
 		let index = 0;
-		if (typeof(target) == "number" && target > 0) {
+		if (typeof (target) == "number" && target > 0) {
 			index = target;
-		} else if (typeof(target) == "string" && target != "") {
+		} else if (typeof (target) == "string" && target != "") {
 			Array.from(this.getPages()).every((page, i) => {
 				if (page.dataset[this._dataTarget] == target) {
 					index = i;
@@ -125,7 +125,7 @@ class WUIPaging {
 
 	#index2target(index) {
 		let target = "";
-		if (typeof(index) == "number" && index > -1) {
+		if (typeof (index) == "number" && index > -1) {
 			Array.from(this.getPages()).every((page, i) => {
 				if (i == this.index) {
 					target = page.dataset[this._dataTarget];
@@ -133,7 +133,7 @@ class WUIPaging {
 				}
 				return false;
 			});
-		} else if (typeof(index) == "string" && index != "") {
+		} else if (typeof (index) == "string" && index != "") {
 			target = index;
 		}
 		return target;
@@ -190,10 +190,10 @@ class WUIPaging {
 							const top = page.scrollTop;
 							const scroll = top >= 0 ? top : 0;
 							page.dataset.scrollPage = scroll;
-							if (typeof(this._onScrolling) == "function") {
+							if (typeof (this._onScrolling) == "function") {
 								this._onScrolling(scroll);
 							}
-						}), {passive: true});
+						}), { passive: true });
 					});
 				}
 			});
@@ -220,7 +220,7 @@ class WUIPaging {
 				index: this._index,
 				target: this._target
 			});
-			if (typeof(this._onSelect) == "function") {
+			if (typeof (this._onSelect) == "function") {
 				this._onSelect(index, target, this._index, this._target);
 			}
 			this._index = index;
@@ -240,7 +240,7 @@ class WUIPaging {
 						}
 					}
 				});
-				if (typeof(onChange) == "function") {
+				if (typeof (onChange) == "function") {
 					onChange(index, target);
 				}
 			}, delay);
@@ -253,14 +253,14 @@ class WUIPaging {
 			history.forEach(item => {
 				let index = 0;
 				let target = "";
-				if (typeof(item) == "number") {
+				if (typeof (item) == "number") {
 					index = item;
 					target = this.#index2target(item);
-				} else if (typeof(item) == "string") {
+				} else if (typeof (item) == "string") {
 					index = this.#target2index(item);
 					target = item;
 				}
-				this._history.push({index, target});
+				this._history.push({ index, target });
 			});
 		}
 	}
@@ -272,7 +272,7 @@ class WUIPaging {
 			this.select(back.target);
 			this._history.pop();
 			setTimeout(() => {
-				if (typeof(onBack) == "function") {
+				if (typeof (onBack) == "function") {
 					onBack(back.index, back.target);
 				}
 			}, delay);

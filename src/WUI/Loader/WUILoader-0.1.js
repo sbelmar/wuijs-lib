@@ -1,7 +1,7 @@
 /*
  * WUILoader - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUILoader {
@@ -16,9 +16,9 @@ class WUILoader {
 	};
 	static #styles = ["ring", "dualring", "spinner", "roller", "ellipsis", "grid"];
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUILoader.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUILoader.#defaults ? WUILoader.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUILoader.#defaults ? WUILoader.#defaults[prop] : null;
 		});
 	}
 
@@ -43,33 +43,33 @@ class WUILoader {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._elements = document.querySelectorAll(value);
 		}
 	}
 
 	set style(value) {
-		if (typeof(value) == "string" && WUILoader.#styles.indexOf(value.toLowerCase()) != -1) {
+		if (typeof (value) == "string" && WUILoader.#styles.indexOf(value.toLowerCase()) != -1) {
 			this._style = value.toLowerCase();
 		}
 	}
 
 	set size(value) {
-		if (typeof(value) == "number") {
+		if (typeof (value) == "number") {
 			this._size = value;
-			this._scale = value/80;
+			this._scale = value / 80;
 		}
 	}
 
 	set dataStyle(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._dataStyle = value;
 		}
 	}
 
 	set dataSize(value) {
-		if (typeof(value) == "string") {
+		if (typeof (value) == "string") {
 			this._dataSize = value;
 		}
 	}
@@ -91,28 +91,28 @@ class WUILoader {
 					type = name.toLowerCase();
 				}
 			});
-			if (typeof(dataStyle) != "undefined") {
+			if (typeof (dataStyle) != "undefined") {
 				type = dataStyle;
 			}
-			if (typeof(dataSize) != "undefined") {
+			if (typeof (dataSize) != "undefined") {
 				size = parseFloat(dataSize);
-				scale = size/80;
+				scale = size / 80;
 			}
 			childs =
 				type == "ring" ? 4 :
-				type == "dualring" ? 0 :
-				type == "spinner" ? 12 :
-				type == "roller" ? 8 :
-				type == "ellipsis" ? 4 :
-				type == "grid" ? 9 :
-				0;
+					type == "dualring" ? 0 :
+						type == "spinner" ? 12 :
+							type == "roller" ? 8 :
+								type == "ellipsis" ? 4 :
+									type == "grid" ? 9 :
+										0;
 			if (!element.classList.contains(type)) {
 				element.classList.add(type);
 			}
 			if (scale != 1) {
-				element.style.transform = "scale("+scale+")";
+				element.style.transform = "scale(" + scale + ")";
 			}
-			for (let i=0; i<childs; i++) {
+			for (let i = 0; i < childs; i++) {
 				const child = document.createElement("div");
 				element.appendChild(child);
 			}

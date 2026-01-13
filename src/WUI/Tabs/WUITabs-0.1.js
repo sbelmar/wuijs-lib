@@ -1,7 +1,7 @@
 /*
  * WUITabs - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUITabs {
@@ -12,9 +12,9 @@ class WUITabs {
 		index: 0
 	};
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUITabs.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUITabs.#defaults ? WUITabs.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUITabs.#defaults ? WUITabs.#defaults[prop] : null;
 		});
 	}
 
@@ -27,17 +27,17 @@ class WUITabs {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
-			this._bar = document.querySelector(value+"> .bar");
-			this._body = document.querySelector(value+" > .body");
-			this._border = document.querySelector(value+" > .body > .border");
+			this._bar = document.querySelector(value + "> .bar");
+			this._body = document.querySelector(value + " > .body");
+			this._border = document.querySelector(value + " > .body > .border");
 		}
 	}
 
 	set index(value) {
-		if (typeof(value) == "number") {
+		if (typeof (value) == "number") {
 			this._index = value;
 		}
 	}
@@ -89,7 +89,7 @@ class WUITabs {
 				page.classList.remove("selected");
 			}
 		});
-	} 
+	}
 }
 
 /*

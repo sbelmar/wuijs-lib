@@ -1,7 +1,7 @@
 /*
  * WUIColorpicker - v0.2
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIColorpicker {
@@ -972,7 +972,7 @@ class WUIColorpicker {
 }
 
 /*
-Generated HTML code:
+HTML output:
 <div class="wui-colorpicker">
 	<input type="color" value="(name)" value="">
 	<div class="opener"></div>
@@ -987,14 +987,14 @@ Generated HTML code:
 		</div>
 		<div class="grid">
 			<div class="color" data-value="value1"></div>
-			...
+			[...]
 		</div>
 		<div class="list">
 			<div class="option" data-value="value1">
 				<div class="color"></div>
 				<div class="text"></div>
 			</div>
-			...
+			[...]
 		</div>
 		<div class="preview">
 			<div class="color"></div>

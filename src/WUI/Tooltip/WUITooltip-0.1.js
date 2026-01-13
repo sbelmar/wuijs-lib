@@ -1,7 +1,7 @@
 /*
  * WUITooltip - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUITooltip {
@@ -18,9 +18,9 @@ class WUITooltip {
 		".wui-tooltip-bottom"
 	].join(",");
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUITooltip.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUITooltip.#defaults ? WUITooltip.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUITooltip.#defaults ? WUITooltip.#defaults[prop] : null;
 		});
 	}
 
@@ -29,7 +29,7 @@ class WUITooltip {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._elements = document.querySelectorAll(value);
 		}

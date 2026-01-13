@@ -1,18 +1,18 @@
 /*
  * WUIMenubar - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
-.wui-menubar,
-.wui-menubar * {
+div.wui-menubar,
+div.wui-menubar * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
 
-.wui-menubar {
+div.wui-menubar {
 	position: absolute;
 	padding: 0;
 	-webkit-transition: var(--transition);
@@ -20,7 +20,7 @@
 	transition: var(--transition);
 }
 
-.wui-menubar > .bar {
+div.wui-menubar > .bar {
 	--bar-shadow: rgb(from var(--wui-menubar-shadowcolor) r g b / 40%) 0px 4px 12px;
 	--bar-gradient: to bottom, var(--wui-menubar-bar-bgcolor-top), var(--wui-menubar-bar-bgcolor-bottom);
 	display: flex;
@@ -44,7 +44,7 @@
 	justify-content: center;
 }
 
-.wui-menubar > .bar > .header {
+div.wui-menubar > .bar > .header {
 	display: flex;
 	position: absolute;
 	top: 0;
@@ -52,7 +52,7 @@
 	height: 20px;
 }
 
-.wui-menubar > .bar > .header > .expander {
+div.wui-menubar > .bar > .header > .expander {
 	cursor: pointer;
 	display: flex;
 	align-items: center;
@@ -64,7 +64,7 @@
 	background-color: var(--wui-menubar-expander-bgcolor-out);
 }
 
-.wui-menubar > .bar > .header > .expander > .icon {
+div.wui-menubar > .bar > .header > .expander > .icon {
 	width: var(--wui-menubar-expander-iconsize);
 	height: var(--wui-menubar-expander-iconsize);
 	-webkit-mask-image: url();
@@ -79,72 +79,72 @@
 	background-color: var(--wui-menubar-expander-iconcolor-out);
 }
 
-.wui-menubar > .bar > .header > .expander:hover {
+div.wui-menubar > .bar > .header > .expander:hover {
 	background-color: var(--wui-menubar-expander-bgcolor-over);
 }
 
-.wui-menubar > .bar > .header > .expander:hover > .icon {
+div.wui-menubar > .bar > .header > .expander:hover > .icon {
 	background-color: var(--wui-menubar-expander-iconcolor-over);
 }
 
-.wui-menubar > .bar > .top {
+div.wui-menubar > .bar > .top {
 	top: 28px;
 }
 
-.wui-menubar > .bar > .bottom {
+div.wui-menubar > .bar > .bottom {
 	bottom: 12px;
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button {
 	background-color: var(--wui-menubar-bar-button-bgcolor-out);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > :is(img, .icon, .photo) {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > :is(img, .icon, .photo) {
 	width: var(--wui-menubar-bar-button-iconsize);
 	height: var(--wui-menubar-bar-button-iconsize);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > .icon {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > .icon {
 	background-color: var(--wui-menubar-bar-button-iconcolor-out);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > .text {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > .text {
 	color: var(--wui-menubar-bar-button-textcolor-out);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) {
 	background-color: var(--wui-menubar-bar-button-bgcolor-over);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-bar-button-iconcolor-over);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > .text {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > .text {
 	color: var(--wui-menubar-bar-button-textcolor-over);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected {
 	background-color: var(--wui-menubar-bar-button-bgcolor-selected);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected > :is(.icon, .opener) {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-bar-button-iconcolor-selected);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected > .text {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected > .text {
 	color: var(--wui-menubar-bar-button-textcolor-selected);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled {
 	background-color: var(--wui-menubar-bar-button-bgcolor-disabled);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled > :is(.icon, .opener) {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-bar-button-iconcolor-disabled);
 }
 
-.wui-menubar > .submenu {
+div.wui-menubar > .submenu {
 	display: flex;
 	position: absolute;
 	z-index: 1;
@@ -163,70 +163,70 @@
 	transition: var(--submenu-transition);
 }
 
-.wui-menubar > .submenu.opened {
+div.wui-menubar > .submenu.opened {
 	--bar-shadow: rgb(from var(--wui-menubar-shadowcolor) r g b / 40%) 0px 4px 12px;
 	-webkit-box-shadow: var(--bar-shadow);
 	-moz-box-shadow: var(--bar-shadow);
 	box-shadow: var(--bar-shadow);
 }
 
-.wui-menubar > .submenu > .main > .button {
+div.wui-menubar > .submenu > .main > .button {
 	background-color: var(--wui-menubar-submenu-button-bgcolor-out);
 }
 
-.wui-menubar > .submenu > .main > .button > :is(img, .icon, .photo) {
+div.wui-menubar > .submenu > .main > .button > :is(img, .icon, .photo) {
 	width: var(--wui-menubar-submenu-button-iconsize);
 	height: var(--wui-menubar-submenu-button-iconsize);
 }
 
-.wui-menubar > .submenu > .main > .button > .icon {
+div.wui-menubar > .submenu > .main > .button > .icon {
 	background-color: var(--wui-menubar-submenu-button-iconcolor-out);
 }
 
-.wui-menubar > .submenu > .main > .button > .text {
+div.wui-menubar > .submenu > .main > .button > .text {
 	color: var(--wui-menubar-submenu-button-textcolor-out);
 }
 
-.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) {
+div.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) {
 	background-color: var(--wui-menubar-submenu-button-bgcolor-over);
 }
 
-.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
+div.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-submenu-button-iconcolor-over);
 }
 
-.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > .text {
+div.wui-menubar > .submenu > .main > .button.hoverable:is(:hover, :focus):not(.selected, .disabled) > .text {
 	color: var(--wui-menubar-submenu-button-textcolor-over);
 }
 
-.wui-menubar > .submenu > .main > .button.selected {
+div.wui-menubar > .submenu > .main > .button.selected {
 	background-color: var(--wui-menubar-submenu-button-bgcolor-selected);
 }
 
-.wui-menubar > .submenu > .main > .button.selected > :is(.icon, .opener) {
+div.wui-menubar > .submenu > .main > .button.selected > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-submenu-button-iconcolor-selected);
 }
 
-.wui-menubar > .submenu > .main > .button.selected > .text {
+div.wui-menubar > .submenu > .main > .button.selected > .text {
 	color: var(--wui-menubar-submenu-button-textcolor-selected);
 }
 
-.wui-menubar > .submenu > .main > .button.disabled {
+div.wui-menubar > .submenu > .main > .button.disabled {
 	background-color: var(--wui-menubar-submenu-button-bgcolor-disabled);
 }
 
-.wui-menubar > .submenu > .main > .button.disabled > :is(.icon, .opener) {
+div.wui-menubar > .submenu > .main > .button.disabled > :is(.icon, .opener) {
 	background-color: var(--wui-menubar-submenu-button-iconcolor-disabled);
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) {
 	position: absolute;
 	display: flex;
 	justify-content: center;
 	gap: 8px;
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button {
 	display: flex;
 	position: relative;
 	width: 36px;
@@ -238,7 +238,7 @@
 	justify-content: center;
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
 	display: block;
 	position: absolute;
 	left: 6px;
@@ -250,19 +250,19 @@
 	background-size: contain;
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text {
 	display: none;
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text,
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text > * {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text,
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text > * {
 	cursor: pointer;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .tooltip {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .tooltip {
 	display: none;
 	position: absolute;
 	top: 8px;
@@ -280,7 +280,7 @@
 	color: var(--wui-menubar-tooltip-textcolor);
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .bubble {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .bubble {
 	position: absolute;
 	top: -4px;
 	right: -4px;
@@ -297,7 +297,7 @@
 	color: var(--wui-menubar-bubble-textcolor);
 }
 
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .opener {
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .opener {
 	display: none;
 	position: absolute;
 	right: 4px;
@@ -315,13 +315,13 @@
 	background-color: var(--wui-menubar-bar-button-iconcolor-out);
 }
 
-.wui-menubar > :is(.bar, .submenu) > .hidden,
-.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > :is(.tooltip, .bubble).hidden {
+div.wui-menubar > :is(.bar, .submenu) > .hidden,
+div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > :is(.tooltip, .bubble).hidden {
 	display: none !important;
 }
 
 @media screen and (max-width: 767px) {
-	.wui-menubar {
+	div.wui-menubar {
 		--transition: height 0.3s ease-in-out;
 		top: auto;
 		left: var(--wui-menubar-margin);
@@ -334,17 +334,17 @@
 		transition: var(--transition);
 	}
 
-	.wui-menubar > .bar {
+	div.wui-menubar > .bar {
 		padding: 0 10px;
 		flex-direction: row;
 		justify-content: center;
 	}
 
-	.wui-menubar > .bar > :is(.header, .top, .bottom) {
+	div.wui-menubar > .bar > :is(.header, .top, .bottom) {
 		display: none;
 	}
 
-	.wui-menubar > .submenu {
+	div.wui-menubar > .submenu {
 		--submenu-transition: bottom 0.3s ease-in-out, height 0.3s ease-in-out;
 		top: auto;
 		bottom: calc(50px - 2 * var(--wui-menubar-borderradius));
@@ -352,31 +352,31 @@
 		height: 0px;
 	}
 
-	.wui-menubar > .submenu.opened {
+	div.wui-menubar > .submenu.opened {
 		height: calc(50px + 2 * var(--wui-menubar-borderradius));
 		padding-top: 8px;
 		align-items: flex-start;
 	}
 
-	.wui-menubar > :is(.bar, .submenu) > .main {
+	div.wui-menubar > :is(.bar, .submenu) > .main {
 		width: 90%;
 		flex-direction: row;
 		justify-content: space-between;
 	}
 
-	.wui-menubar > :is(.bar, .submenu) > .main > .button {
+	div.wui-menubar > :is(.bar, .submenu) > .main > .button {
 		-webkit-border-radius: 50%;
 		-moz-border-radius: 50%;
 		border-radius: 50%;
 	}
 
-	.wui-menubar > :is(.bar, .submenu) > .main > .tooltip {
+	div.wui-menubar > :is(.bar, .submenu) > .main > .tooltip {
 		display: none !important;
 	}
 }
 
 @media screen and (min-width: 768px) {
-	.wui-menubar {
+	div.wui-menubar {
 		--transition: width 0.3s ease-in-out;
 		top: var(--wui-menubar-margin);
 		left: var(--wui-menubar-margin);
@@ -386,7 +386,7 @@
 		height: auto;
 	}
 
-	.wui-menubar > .submenu {
+	div.wui-menubar > .submenu {
 		--submenu-transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
 		left: calc(60px - 2 * var(--wui-menubar-borderradius) + 2px);
 		width: 0px;
@@ -394,28 +394,28 @@
 		overflow: hidden;
 	}
 
-	.wui-menubar > .submenu.opened {
+	div.wui-menubar > .submenu.opened {
 		width: calc(60px + 2 * var(--wui-menubar-borderradius) + 2px);
 		overflow: visible;
 	}
 
-	.wui-menubar > .submenu > .main {
+	div.wui-menubar > .submenu > .main {
 		top: 10px;
 		right: 0px;
 		bottom: 10px;
 	}
 
-	.wui-menubar > :is(.bar, .submenu) {
+	div.wui-menubar > :is(.bar, .submenu) {
 		padding: 10px 0;
 		flex-direction: column;
 	}
 
-	.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) {
+	div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) {
 		padding: 0 12px;
 		flex-direction: column;
 	}
 
-	.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button {
+	div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button {
 		--button-transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;
 		width: 36px;
 		-webkit-transition: var(--button-transition);
@@ -423,14 +423,14 @@
 		transition: var(--button-transition);
 	}
 
-	.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
+	div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
 		--photo-transition: left 0.3s ease-in-out;
 		-webkit-transition: var(--photo-transition);
 		-moz-transition: var(--photo-transition);
 		transition: var(--photo-transition);
 	}
 
-	.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text {
+	div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text {
 		--text-transition: width 0.3s ease-in-out, padding-left 0.3s ease-in-out, opacity 0.3s ease-in-out;
 		display: block;
 		width: 0px;
@@ -445,32 +445,32 @@
 		transition: var(--text-transition);
 	}
 
-	.wui-menubar:not(.expanded) > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.disabled) > .tooltip {
+	div.wui-menubar:not(.expanded) > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button:is(:hover, :focus):not(.disabled) > .tooltip {
 		display: block;
 		font-size: 12px;
 	}
 
-	.wui-menubar.expanded {
+	div.wui-menubar.expanded {
 		width: 200px;
 	}
 
-	.wui-menubar.expanded > .submenu {
+	div.wui-menubar.expanded > .submenu {
 		left: calc(200px - 2 * var(--wui-menubar-borderradius));
 	}
 
-	.wui-menubar.expanded > .submenu.opened {
+	div.wui-menubar.expanded > .submenu.opened {
 		width: calc(200px + 2 * var(--wui-menubar-borderradius));
 	}
 
-	.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button {
+	div.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button {
 		width: 180px;
 	}
 
-	.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
+	div.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .photo {
 		left: 8px;
 	}
 
-	.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text {
+	div.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text {
 		width: 140px;
 		padding-left: 12px;
 		-khtml-opacity: 1;
@@ -478,28 +478,28 @@
 		opacity: 1;
 	}
 
-	.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text > * {
+	div.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .text > * {
 		width: 130px;
 	}
 
-	.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .opener {
+	div.wui-menubar.expanded > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > .opener {
 		display: block;
 	}
 }
 
 /* wui-icon */
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > .wui-icon {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button > .wui-icon {
 	--wui-icon-bgcolor-out: var(--wui-menubar-bar-button-iconcolor-out);
 	--wui-icon-bgcolor-over: var(--wui-menubar-bar-button-iconcolor-over);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected > .wui-icon {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.selected > .wui-icon {
 	--wui-icon-bgcolor-out: var(--wui-menubar-bar-button-iconcolor-selected);
 	--wui-icon-bgcolor-over: var(--wui-menubar-bar-button-iconcolor-selected);
 }
 
-.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled > .wui-icon {
+div.wui-menubar > .bar > :is(.top, .main, .bottom) > .button.disabled > .wui-icon {
 	--wui-icon-bgcolor-out: var(--wui-menubar-bar-button-iconcolor-disabled);
 	--wui-icon-bgcolor-over: var(--wui-menubar-bar-button-iconcolor-disabled);
 }

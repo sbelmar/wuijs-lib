@@ -1,7 +1,7 @@
 /*
  * WUIList - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIList {
@@ -16,9 +16,9 @@ class WUIList {
 		onClick: null
 	};
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUIList.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIList.#defaults ? WUIList.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIList.#defaults ? WUIList.#defaults[prop] : null;
 		});
 	}
 
@@ -47,7 +47,7 @@ class WUIList {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
 		}
@@ -72,13 +72,13 @@ class WUIList {
 	}
 
 	set buttonsStyle(value) {
-		if (typeof(value) == "string" && value.match(/^(round|stretch)$/i)) {
+		if (typeof (value) == "string" && value.match(/^(round|stretch)$/i)) {
 			this._buttonsStyle = value.toLowerCase();
 		}
 	}
 
 	set onClick(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onClick = value;
 		}
 	}
@@ -109,7 +109,7 @@ class WUIList {
 	enabledRow(index, enabled = true) {
 		this._rows[index].enabled = enabled;
 		if (this._element.innerHTML != "") {
-			const row = this._element.querySelector(".row:nth-of-type("+(index+1)+")");
+			const row = this._element.querySelector(".row:nth-of-type(" + (index + 1) + ")");
 			if (!enabled) {
 				row.classList.add("disabled");
 			} else {
@@ -131,15 +131,15 @@ class WUIList {
 				if (id != null) {
 					row.dataset.id = id;
 				}
-				row.className = "row"+(this._buttons.length > 0 ? " slider" : "")+(!enabled ? " disabled" : "");
+				row.className = "row" + (this._buttons.length > 0 ? " slider" : "") + (!enabled ? " disabled" : "");
 				row.append(strip);
 				strip.className = "strip";
 				this._columns.forEach((colOptions, j) => {
 					const cell = document.createElement("div");
 					cell.className = "cell";
 					cell.classList.add(colOptions.align || "left");
-					if (typeof(colOptions.width) == "number") {
-						cell.style.width = colOptions.width+"px";
+					if (typeof (colOptions.width) == "number") {
+						cell.style.width = colOptions.width + "px";
 					} else {
 						cell.style.flex = "1";
 					}
@@ -149,12 +149,12 @@ class WUIList {
 				});
 				strip.addEventListener("click", event => {
 					if (this._buttons.length == 0 || this._strips[i].direction == null) {
-						if (!row.classList.contains("disabled") && typeof(this._onClick) == "function") {
+						if (!row.classList.contains("disabled") && typeof (this._onClick) == "function") {
 							this._onClick(i, id, event, rowOptions);
 						}
 						this._strips.forEach((str, s) => {
 							if (str.open) {
-								this._element.querySelector(".row:nth-of-type("+(s+1)+") > .strip").style.marginRight = "0px";
+								this._element.querySelector(".row:nth-of-type(" + (s + 1) + ") > .strip").style.marginRight = "0px";
 								this._strips[s].open = false;
 							}
 						});
@@ -172,10 +172,10 @@ class WUIList {
 					this._buttons.forEach(btnOptions => {
 						const button = document.createElement("div");
 						const icon = document.createElement("div");
-						const iconClass = typeof(btnOptions.iconClass) == "string" ? btnOptions.iconClass : typeof(btnOptions.iconClass) == "function" ? btnOptions.iconClass(i, id) : "";
-						const bgcolor = typeof(btnOptions.bgcolor) == "string" ? btnOptions.bgcolor : typeof(btnOptions.bgcolor) == "function" ? btnOptions.bgcolor(i, id) : "";
-						const enabled = (typeof(btnOptions.enabled) == "boolean" && btnOptions.enabled) || (typeof(btnOptions.enabled) == "function" && btnOptions.enabled(i, id)) ? true : false;
-						button.className = "button "+this._buttonsStyle;
+						const iconClass = typeof (btnOptions.iconClass) == "string" ? btnOptions.iconClass : typeof (btnOptions.iconClass) == "function" ? btnOptions.iconClass(i, id) : "";
+						const bgcolor = typeof (btnOptions.bgcolor) == "string" ? btnOptions.bgcolor : typeof (btnOptions.bgcolor) == "function" ? btnOptions.bgcolor(i, id) : "";
+						const enabled = (typeof (btnOptions.enabled) == "boolean" && btnOptions.enabled) || (typeof (btnOptions.enabled) == "function" && btnOptions.enabled(i, id)) ? true : false;
+						button.className = "button " + this._buttonsStyle;
 						icon.className = "icon";
 						if (!enabled) {
 							button.classList.add("disabled");
@@ -188,8 +188,8 @@ class WUIList {
 							});
 						}
 						button.addEventListener("click", event => {
-							const strip = this._element.querySelector(".row:nth-of-type("+(i+1)+") > .strip");
-							if (enabled && typeof(btnOptions.onClick) == "function") {
+							const strip = this._element.querySelector(".row:nth-of-type(" + (i + 1) + ") > .strip");
+							if (enabled && typeof (btnOptions.onClick) == "function") {
 								btnOptions.onClick(i, id, event);
 							}
 							if (strip != null) {
@@ -217,7 +217,7 @@ class WUIList {
 									if (direction == "left") {
 										this._strips.forEach((_, s) => {
 											if (this._strips[s].open && s != i) {
-												this._element.querySelector(".row:nth-of-type("+(s+1)+") > .strip").style.marginRight = "0px";
+												this._element.querySelector(".row:nth-of-type(" + (s + 1) + ") > .strip").style.marginRight = "0px";
 												this._strips[s].open = false;
 											}
 										});
@@ -233,7 +233,7 @@ class WUIList {
 									this._strips[i].initX = null;
 									if (this._strips[i].direction != null) {
 										if (this._strips[i].direction == "left") {
-											strip.style.marginRight = buttons.clientWidth+"px";
+											strip.style.marginRight = buttons.clientWidth + "px";
 											this._strips[i].open = true;
 										} else if (this._strips[i].direction == "right") {
 											strip.style.marginRight = "0px";
@@ -250,11 +250,11 @@ class WUIList {
 					row.append(buttons);
 				}
 				this._element.append(row);
-				if ("inner" in rowOptions && typeof(rowOptions.inner) == "string" && rowOptions.inner.trim() != "") {
+				if ("inner" in rowOptions && typeof (rowOptions.inner) == "string" && rowOptions.inner.trim() != "") {
 					const inner = document.createElement("div");
 					const opened = Boolean("opened" in rowOptions && rowOptions.opened);
 					inner.dataset.index = i;
-					inner.className = "inner-row"+(!opened ? " hidden" : "");
+					inner.className = "inner-row" + (!opened ? " hidden" : "");
 					inner.innerHTML = rowOptions.inner;
 					this._element.append(inner);
 				}

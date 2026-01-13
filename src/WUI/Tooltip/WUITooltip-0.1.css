@@ -1,12 +1,13 @@
 /*
  * WUITooltip - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 .wui-tooltip-target {
 	position: relative;
 }
+
 .wui-tooltip,
 .wui-tooltip-top,
 .wui-tooltip-left,
@@ -46,6 +47,7 @@
 	-moz-transition: -moz-opacity var(--tooltip-transition);
 	transition: opacity var(--tooltip-transition);
 }
+
 .wui-tooltip::before,
 .wui-tooltip::after,
 .wui-tooltip-top::after,
@@ -66,60 +68,70 @@
 	-moz-transform: var(--tooltip-transform);
 	transform: var(--tooltip-transform);
 }
+
 .wui-tooltip.top::before,
 .wui-tooltip.left::after,
 .wui-tooltip.right::after,
 .wui-tooltip.bottom::before {
 	display: none;
 }
+
 .wui-tooltip.top,
 .wui-tooltip-top {
 	--tooltip-transform: translate(-50%, -100%);
 	top: -50%;
 	left: 50%;
 }
+
 .wui-tooltip.top::after,
 .wui-tooltip-top::after {
 	--tooltip-transform: translate(-50%, 50%) rotate(-45deg);
 	top: 9px;
 	left: 50%;
 }
+
 .wui-tooltip.left,
 .wui-tooltip-left {
 	--tooltip-transform: translate(-100%, -50%);
 	top: 50%;
 	right: 50%;
 }
+
 .wui-tooltip.left::before,
 .wui-tooltip-left::before {
 	--tooltip-transform: translate(50%, -50%) rotate(-45deg);
-    top: 50%;
-    left: 9px;
+	top: 50%;
+	left: 9px;
 }
+
 .wui-tooltip.right,
 .wui-tooltip-right {
 	--tooltip-transform: translate(100%, -50%);
 	top: 50%;
 	right: -50%;
 }
+
 .wui-tooltip.right::before,
 .wui-tooltip-right::before {
 	--tooltip-transform: translate(50%, -50%) rotate(-45deg);
-    top: 50%;
-    left: -9px;
+	top: 50%;
+	left: -9px;
 }
+
 .wui-tooltip.bottom,
 .wui-tooltip-bottom {
 	--tooltip-transform: translate(-50%, 100%);
 	top: 50%;
 	left: 50%;
 }
+
 .wui-tooltip.bottom::after,
 .wui-tooltip-bottom::after {
 	--tooltip-transform: translate(-50%, 50%) rotate(-45deg);
 	top: -9px;
 	left: 50%;
 }
+
 .wui-tooltip.nowrap,
 .wui-tooltip-top.nowrap,
 .wui-tooltip-left.nowrap,
@@ -127,6 +139,7 @@
 .wui-tooltip-bottom.nowrap {
 	white-space: nowrap;
 }
+
 .wui-tooltip.opened,
 .wui-tooltip-top.opened,
 .wui-tooltip-left.opened,
@@ -141,6 +154,7 @@
 	-moz-transition-delay: var(--wui-tooltip-open-delay);
 	transition-delay: var(--wui-tooltip-open-delay);
 }
+
 .wui-tooltip.locked,
 .wui-tooltip-top.locked,
 .wui-tooltip-left.locked,
@@ -148,7 +162,9 @@
 .wui-tooltip-bottom.locked {
 	display: none;
 }
+
 @media screen and (max-width: 767px) {
+
 	.wui-tooltip,
 	.wui-tooltip-top,
 	.wui-tooltip-left,

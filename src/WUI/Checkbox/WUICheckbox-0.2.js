@@ -1,7 +1,7 @@
 /*
  * WUICheckbox - v0.2
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUICheckbox {
@@ -202,8 +202,16 @@ class WUICheckbox {
 	}
 
 	destroy() {
-		this.#htmlElement.innerHTML = "";
-		this.#htmlElement.remove();
+		if (this.#htmlElement instanceof HTMLDivElement) {
+			Object.entries(this.#htmlElements).forEach(([key, element]) => {
+				if (element) {
+					element.remove();
+				}
+				this.#htmlElements[key] = null;
+			});
+			this.#htmlElement.innerHTML = "";
+			this.#htmlElement.remove();
+		}
 		Object.keys(this.#properties).forEach(name => {
 			delete this.#properties[name];
 		});
@@ -214,15 +222,8 @@ class WUICheckbox {
 }
 
 /*
-Generated HTML code:
+HTML output:
 <div class="wui-checkbox">
 	<input type="checkbox" value="1">
-</div>
-DOM form field  struture:
-<div class="field checkbox">
-	<label for="wuiCheckbox"></label>
-	<div class="wui-checkbox">
-		<input type="checkbox" name="wuiCheckbox" value="1">
-	</div>
 </div>
 */

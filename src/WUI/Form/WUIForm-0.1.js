@@ -1,7 +1,7 @@
 /*
  * WUIForm - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIForm {
@@ -15,22 +15,22 @@ class WUIForm {
 	};
 	static #icons = {
 		"date-open": ""
-			+"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
-			+"<path d='M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0z'/>"
-			+"</svg>",
+			+ "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
+			+ "<path d='M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0z'/>"
+			+ "</svg>",
 		"time-open": ""
-			+"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
-			+"<path d='M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0z'/>"
-			+"</svg>",
+			+ "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
+			+ "<path d='M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0z'/>"
+			+ "</svg>",
 		"select-open": ""
-			+"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
-			+"<path d='M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0z'/>"
-			+"</svg>"
+			+ "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'>"
+			+ "<path d='M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0z'/>"
+			+ "</svg>"
 	};
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUIForm.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIForm.#defaults ? WUIForm.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIForm.#defaults ? WUIForm.#defaults[prop] : null;
 		});
 	}
 
@@ -51,30 +51,30 @@ class WUIForm {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
-			this._header = document.querySelector(value+" > .header");
-			this._body = document.querySelector(value+" > .body");
-			this._footer = document.querySelector(value+" > .footer");
+			this._header = document.querySelector(value + " > .header");
+			this._body = document.querySelector(value + " > .body");
+			this._footer = document.querySelector(value + " > .footer");
 			this._form = this._element.localName == "form" ? this._element : this._element.querySelector("form");
 		}
 	}
 
 	set submit(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._submit = value;
 		}
 	}
 
 	set onScrolling(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onScrolling = value;
 		}
 	}
 
 	set onSubmit(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onSubmit = value;
 		}
 	}
@@ -104,7 +104,7 @@ class WUIForm {
 	}
 
 	getNode(name, type) {
-		let node = this._element.querySelector("data."+name) || this._form[name] || null;
+		let node = this._element.querySelector("data." + name) || this._form[name] || null;
 		if (type.match(/^(input|data)$/)) {
 			return node;
 		} else if (node instanceof HTMLElement) {
@@ -113,14 +113,14 @@ class WUIForm {
 			while (node != this._element.parentNode && loop <= 100) {
 				if (type.match(/^(label)$/) && node.querySelector(type)) {
 					node.querySelectorAll(type).forEach(nodeType => {
-						if (nodeReturn == null && (node.querySelector("[name="+name+"]") || node.querySelector("data."+name))) {
+						if (nodeReturn == null && (node.querySelector("[name=" + name + "]") || node.querySelector("data." + name))) {
 							nodeReturn = nodeType;
 						}
 					});
 					return nodeReturn;
-				} else if (type.match(/^(field)$/) && node.querySelector("."+type)) {
-					node.querySelectorAll("."+type).forEach(nodeType => {
-						if (nodeReturn == null && (nodeType.querySelector("[name="+name+"]") || nodeType.querySelector("data."+name))) {
+				} else if (type.match(/^(field)$/) && node.querySelector("." + type)) {
+					node.querySelectorAll("." + type).forEach(nodeType => {
+						if (nodeReturn == null && (nodeType.querySelector("[name=" + name + "]") || nodeType.querySelector("data." + name))) {
 							nodeReturn = nodeType;
 						}
 					});
@@ -153,23 +153,23 @@ class WUIForm {
 	}
 
 	getData(name) {
-		return this._element.querySelector("data."+name);
+		return this._element.querySelector("data." + name);
 	}
 
 	getText(name) {
-		return this._element.querySelector(".text."+name);
+		return this._element.querySelector(".text." + name);
 	}
 
 	#getSRCIcon(input, name, event) {
-		const rgb2Hex = (rgba) => "#"+rgba.map((x, i) => {return ("0"+parseInt(i == 3 ? 255*x : x).toString(16)).slice(-2);}).join("");
+		const rgb2Hex = (rgba) => "#" + rgba.map((x, i) => { return ("0" + parseInt(i == 3 ? 255 * x : x).toString(16)).slice(-2); }).join("");
 		const prepareColor = (color) => {
 			return color.replace(/\s+/g, "").match(/\d+\,\d+\,\d+/) ? rgb2Hex(color.replace(/\s+/g, "").replace(/^rgba?\((\d+\,\d+\,\d+)(\,[\d.]+)?\)$/, "$1$2").split(",")) : color;
 		}
 		const element = input || this._form || this._element || document.documentElement;
-		const baseColor = getComputedStyle(element).getPropertyValue("--wui-form-"+name+"color-"+event);
+		const baseColor = getComputedStyle(element).getPropertyValue("--wui-form-" + name + "color-" + event);
 		const hexColor = prepareColor(baseColor).replace(/#/g, "%23").trim();
-		const src = getComputedStyle(element).getPropertyValue("--wui-form-"+name+"icon-src").replace(/currentColor/g, hexColor);
-		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml,"+WUIForm.#icons[name].replace(/currentColor/g, hexColor)+"\")";
+		const src = getComputedStyle(element).getPropertyValue("--wui-form-" + name + "icon-src").replace(/currentColor/g, hexColor);
+		return src != "" && !src.match(/^(none|url\(\))$/) ? src : "url(\"data:image/svg+xml," + WUIForm.#icons[name].replace(/currentColor/g, hexColor) + "\")";
 	}
 
 	setType = (name, type) => {
@@ -262,7 +262,7 @@ class WUIForm {
 			if (!this._submit) {
 				event.preventDefault();
 			}
-			if (typeof(this._onSubmit) == "function") {
+			if (typeof (this._onSubmit) == "function") {
 				this._onSubmit();
 			}
 		});
@@ -276,10 +276,10 @@ class WUIForm {
 							top = 0;
 						}
 						this._element.dataset.scrollBody = top;
-						if (typeof(this._onScrolling) == "function") {
+						if (typeof (this._onScrolling) == "function") {
 							this._onScrolling(top);
 						}
-					}), {passive: true});
+					}), { passive: true });
 				});
 			}
 		}
@@ -297,7 +297,7 @@ class WUIForm {
 			const type = input.getAttribute("type") || "";
 			const label = input.parentNode.querySelector("label") || input.parentNode.parentNode.querySelector("label") || this.getLabel(input.name);
 			if (type.match(/^(date|time)$/i) || tag.match(/^(select)$/i)) {
-				const icon = (type || tag)+"-open";
+				const icon = (type || tag) + "-open";
 				input.style.backgroundImage = this.#getSRCIcon(input, icon, input.disabled ? "disabled" : "out");
 				["mouseover", "mouseout", "focus", "blur"].forEach(type => {
 					const event = input.disabled ? "disabled" : type == "blur" ? "out" : type.replace(/mouse/, "");
@@ -378,7 +378,7 @@ class WUIForm {
 
 	autosize(name) {
 		this._form[name].style.height = "auto";
-		this._form[name].style.height = this._form[name].scrollHeight+"px";
+		this._form[name].style.height = this._form[name].scrollHeight + "px";
 	}
 }
 

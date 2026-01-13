@@ -1,14 +1,14 @@
 /*
  * WUIIntensity - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIIntensity {
 
 	static version = "0.1";
 	static #defaults = {
-		selector: "",
+		selector: ".wui-intensity",
 		value: 0,
 		enabled: true,
 		onChange: null
@@ -172,32 +172,46 @@ class WUIIntensity {
 			});
 			this.#htmlElements.input.addEventListener("input", event => {
 				const value = parseInt(event.target.value);
+				let intensity = "";
 				switch (value) {
-					case 0: this.#htmlElement.dataset.value = "none"; break;
-					case 1: this.#htmlElement.dataset.value = "low"; break;
-					case 2: this.#htmlElement.dataset.value = "half"; break;
-					case 3: this.#htmlElement.dataset.value = "high"; break;
-					default: this.#htmlElement.dataset.value = ""; break;
+					case 0: intensity = "none"; break;
+					case 1: intensity = "low"; break;
+					case 2: intensity = "half"; break;
+					case 3: intensity = "high"; break;
+					default: intensity = ""; break;
 				}
+				this.#htmlElement.dataset.value = intensity;
 				if (typeof (this.#properties.onChange) == "function") {
-					this.#properties.onChange(event, value);
+					this.#properties.onChange(value, intensity);
 				}
 			});
 			this.#setStyle();
 		}
 	}
+
+	destroy() {
+		if (this.#htmlElement instanceof HTMLDivElement) {
+			Object.entries(this.#htmlElements).forEach(([key, element]) => {
+				if (element) {
+					element.remove();
+				}
+				this.#htmlElements[key] = null;
+			});
+			this.#htmlElement.innerHTML = "";
+			this.#htmlElement.remove();
+		}
+		Object.keys(this.#properties).forEach(name => {
+			delete this.#properties[name];
+		});
+		this.#drag = undefined;
+		this.#dragInitX = undefined;
+		this.#dragDiffX = undefined;
+	}
 }
 
 /*
-Generated HTML code:
+HTML output:
 <div class="wui-intensity">
 	<input type="range" value="0" min="0" max="3" step="1">
-</div>
-DOM form field  struture:
-<div class="field intensity">
-	<label></label>
-	<div class="wui-intensity">
-		<input type="range" value="0" min="0" max="3" step="1">
-	</div>
 </div>
 */

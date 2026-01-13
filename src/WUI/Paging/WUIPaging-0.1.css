@@ -1,7 +1,7 @@
 /*
  * WUIPaging - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 .wui-paging,
@@ -10,15 +10,18 @@
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
 .wui-paging {
 	position: relative;
 	overflow: hidden;
 }
+
 .wui-paging,
 .wui-paging > .page {
 	width: 100%;
 	height: 100%;
 }
+
 .wui-paging > .page {
 	--page-transition: var(--wui-paging-page-transition-time) ease-out;
 	display: flex;
@@ -35,43 +38,54 @@
 	-moz-transition: -moz-opacity var(--page-transition), left var(--page-transition);
 	transition: opacity var(--page-transition), left var(--page-transition);
 }
+
 .wui-paging > .page.scroll {
 	overflow-y: auto !important;
 }
+
 .wui-paging > .page.selected {
 	visibility: visible;
 	left: 0;
 }
+
 .wui-paging > .page.left {
 	left: -100%;
 }
+
 .wui-paging > .page.right {
 	left: 100%;
 }
+
 .wui-paging.opacity,
 .wui-paging.opacity > .page {
 	overflow: visible;
 }
+
 .wui-paging.opacity > .page.left,
 .wui-paging.opacity > .page.right {
 	-khtml-opacity: 0;
 	-moz-opacity: 0;
 	opacity: 0;
 }
+
 .wui-paging > .page.scroll {
 	scrollbar-color: var(--wui-paging-page-scroll-bgcolor-out) transparent;
 }
+
 .wui-paging > .page.scroll::-webkit-scrollbar {
 	width: 4px;
 	background-color: transparent;
 }
+
 .wui-paging > .page.scroll::-webkit-scrollbar-thumb {
 	border-radius: 2px;
 	background-color: var(--wui-paging-page-scroll-bgcolor-out);
 }
+
 .wui-paging > .page.scroll::-webkit-scrollbar-thumb:is(:hover, :active) {
 	background-color: var(--wui-paging-page-scroll-bgcolor-over);
 }
+
 .wui-paging > .page.scroll::-webkit-scrollbar-track {
 	background-color: transparent;
 }

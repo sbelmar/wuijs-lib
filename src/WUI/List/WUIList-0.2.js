@@ -1,7 +1,7 @@
 /*
  * WUIList - v0.2
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIList {
@@ -355,6 +355,7 @@ class WUIList {
 	destroy() {
 		if (this.#htmlElement instanceof HTMLElement) {
 			this.#htmlElement.innerHTML = "";
+			this.#htmlElement.remove();
 		}
 		Object.keys(this.#properties).forEach(name => {
 			delete this.#properties[name];
@@ -364,32 +365,22 @@ class WUIList {
 }
 
 /*
-HTML code:
-<div class="wui-list"></div>
-
-JS code:
-const list = new WUIList({
-	selector: ".wui-list",
-	columns: []
-});
-list.init();
-
-Generated HTML code:
+HTML output:
 <div class="wui-list">
 	<div class="row">
 		<div class="strip">
 			<div class="cell"></div>
-			...
+			[...]
 		</div>
 		<div class="buttons">
 			<div class="button edit"></div>
 			<div class="button delete"></div>
-			...
+			[...]
 		</div>
 	</div>
 	<div class="inner-row hidden">
-		...
+		[...]
 	</div>
-	...
+	[...]
 </div>
 */

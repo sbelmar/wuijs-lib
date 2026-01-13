@@ -1,7 +1,7 @@
 /*
  * WUITabs - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 .wui-tabs,
@@ -11,35 +11,43 @@
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
+
 .wui-tabs {
 	height: 100%;
 }
+
 .wui-tabs > .bar {
 	display: flex;
 	position: absolute;
 }
+
 .wui-tabs > .bar > .tab {
 	cursor: pointer;
 	background-color: var(--wui-tabs-tab-bgcolor-out);
 	color: var(--wui-tabs-tab-textcolor-out);
 }
+
 .wui-tabs > .bar > .tab > .icon {
 	width: 24px;
 	height: 24px;
 	background-color: var(--wui-tabs-tab-iconcolor-out);
 }
+
 .wui-tabs > .bar > .tab > .text {
 	font-size: 15px;
 }
+
 .wui-tabs > .bar > .tab:hover,
 .wui-tabs > .bar > .tab.selected {
 	background-color: var(--wui-tabs-tab-bgcolor-over);
 	color: var(--wui-tabs-tab-textcolor-over);
 }
+
 .wui-tabs > .bar > .tab:hover > .icon,
 .wui-tabs > .bar > .tab.selected > .icon {
 	background-color: var(--wui-tabs-tab-iconcolor-over);
 }
+
 .wui-tabs > .body,
 .wui-tabs > .body > .page {
 	display: flex;
@@ -49,6 +57,7 @@
 	right: 0;
 	bottom: 0;
 }
+
 .wui-tabs > .body > .border {
 	--border-shadow: none;
 	--border-transition: .8s;
@@ -70,19 +79,23 @@
 	-moz-transition: -moz-opacity var(--border-transition);
 	transition: opacity var(--border-transition);
 }
+
 .wui-tabs > .body > .border.scroll {
 	-khtml-opacity: 1;
 	-moz-opacity: 1;
 	opacity: 1;
 }
+
 .wui-tabs > .body > .page {
 	display: none;
 	overflow: auto;
 	z-index: 1;
 }
+
 .wui-tabs > .body > .page.selected {
 	display: flex;
 }
+
 .wui-tabs.bottombar > .bar {
 	left: 0;
 	right: 0;
@@ -90,6 +103,7 @@
 	height: 40px;
 	flex-wrap: wrap;
 }
+
 .wui-tabs.bottombar > .bar > .tab {
 	display: flex;
 	flex-grow: 1;
@@ -97,9 +111,11 @@
 	align-items: center;
 	justify-content: center;
 }
+
 .wui-tabs.bottombar > .bar > .tab .icon {
 	margin-right: 10px;
 }
+
 .wui-tabs.bottombar > .body {
 	bottom: 40px;
 }
@@ -107,13 +123,16 @@
 /* wui-tabs mobile */
 
 @media screen and (max-width: 767px) {
+
 	.wui-tabs.mobile > .bar > .tab,
 	.wui-tabs.mobile > .bar > .tab:is(:hover, .selected) {
 		background-color: transparent;
 	}
+
 	.wui-tabs.mobile > .bar > .tab:is(:hover, .selected) > .icon {
 		background-color: var(--wui-tabs-tab-iconcolor-mobile);
 	}
+
 	.wui-tabs.mobile > .bar > .tab > .text {
 		display: none;
 	}

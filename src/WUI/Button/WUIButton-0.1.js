@@ -1,7 +1,7 @@
 /*
  * WUIButton - v0.1
- * Author: Sergio E. Belmar (sbelmar@wuijs.dev)
- * Copyright (c) Sergio E. Belmar (sbelmar@wuijs.dev)
+ * Author: Sergio E. Belmar (wuijs.project@gmail.com)
+ * Copyright (c) Sergio E. Belmar (wuijs.project@gmail.com)
  */
 
 class WUIButton {
@@ -16,9 +16,9 @@ class WUIButton {
 		onClick: null
 	};
 
-	constructor (properties) {
+	constructor(properties) {
 		Object.keys(WUIButton.#defaults).forEach(prop => {
-			this[prop] = typeof(properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIButton.#defaults ? WUIButton.#defaults[prop] : null;
+			this[prop] = typeof (properties) != "undefined" && prop in properties ? properties[prop] : prop in WUIButton.#defaults ? WUIButton.#defaults[prop] : null;
 		});
 	}
 
@@ -47,33 +47,33 @@ class WUIButton {
 	}
 
 	set selector(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._selector = value;
 			this._element = document.querySelector(value);
 		}
 	}
 
 	set text(value) {
-		if (typeof(value) == "string" && value != "") {
+		if (typeof (value) == "string" && value != "") {
 			this._text = value;
 			this._element.innerHTML = value;
 		}
 	}
 
 	set selectable(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._selectable = value;
 		}
 	}
 
 	set locked(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._locked = value;
 		}
 	}
 
 	set enabled(value) {
-		if (typeof(value) == "boolean") {
+		if (typeof (value) == "boolean") {
 			this._enabled = value;
 			this._element.disabled = !value;
 			if (value) {
@@ -86,7 +86,7 @@ class WUIButton {
 	}
 
 	set onClick(value) {
-		if (typeof(value) == "function") {
+		if (typeof (value) == "function") {
 			this._onClick = value;
 		}
 	}
@@ -110,7 +110,7 @@ class WUIButton {
 			if (this._selectable && this._enabled) {
 				this._element.classList.toggle("selected");
 			}
-			if (!this._locked && this._enabled && typeof(this._onClick) == "function") {
+			if (!this._locked && this._enabled && typeof (this._onClick) == "function") {
 				this._onClick(event);
 			}
 		});
