@@ -31,7 +31,7 @@ div.wui-table::before {
 	content: "&ensp;";
 	position: absolute;
 	z-index: 1;
-	width: var(--wui-table-width);
+	width: 100%;
 	-webkit-border-top-left-radius: var(--wui-table-borderradius);
 	-moz-border-radius-topleft: var(--wui-table-borderradius);
 	border-top-left-radius: var(--wui-table-borderradius);
