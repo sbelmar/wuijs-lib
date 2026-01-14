@@ -2849,10 +2849,6 @@ Herramienta para manejo y validación de formatos de datos de tipo `string`, `nu
 CSS Code:
 
 ```css
-body {
-	font-family: Arial, Helvetica, Verdana, sans-serif;
-}
-
 .my-output {
 	position: relative;
 	margin: 10px;

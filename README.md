@@ -2848,10 +2848,6 @@ Tool for managing and validating `string`, `number` and `Date` data formats.
 CSS Code:
 
 ```css
-body {
-	font-family: Arial, Helvetica, Verdana, sans-serif;
-}
-
 .my-output {
 	position: relative;
 	margin: 10px;
