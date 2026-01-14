@@ -96,7 +96,7 @@ String.prototype.wuiDefaults = {
 }
 
 String.prototype.wuiConstants = {
-	tlds: "" // http://data.iana.org/TLD/tlds-alpha-by-domain.txt, 2022073000
+	tlds: ("" // http://data.iana.org/TLD/tlds-alpha-by-domain.txt, 2022073000
 		+ "AAA AARP ABARTH ABB ABBOTT ABBVIE ABC ABLE ABOGADO ABUDHABI AC ACADEMY ACCENTURE ACCOUNTANT ACCOUNTANTS ACO ACTOR AD ADAC ADS ADULT AE AEG AERO AETNA AF AFL AFRICA AG AGAKHAN AGENCY AI AIG AIRBUS AIRFORCE AIRTEL AKDN AL ALFAROMEO ALIBABA ALIPAY ALLFINANZ ALLSTATE ALLY ALSACE ALSTOM AM AMAZON AMERICANEXPRESS AMERICANFAMILY AMEX AMFAM AMICA AMSTERDAM ANALYTICS ANDROID ANQUAN ANZ AO AOL APARTMENTS APP APPLE AQ AQUARELLE AR ARAB ARAMCO ARCHI ARMY ARPA ART ARTE AS ASDA ASIA ASSOCIATES AT ATHLETA ATTORNEY AU AUCTION AUDI AUDIBLE AUDIO AUSPOST AUTHOR AUTO AUTOS AVIANCA AW AWS AX AXA AZ AZURE"
 		+ " BA BABY BAIDU BANAMEX BANANAREPUBLIC BAND BANK BAR BARCELONA BARCLAYCARD BARCLAYS BAREFOOT BARGAINS BASEBALL BASKETBALL BAUHAUS BAYERN BB BBC BBT BBVA BCG BCN BD BE BEATS BEAUTY BEER BENTLEY BERLIN BEST BESTBUY BET BF BG BH BHARTI BI BIBLE BID BIKE BING BINGO BIO BIZ BJ BLACK BLACKFRIDAY BLOCKBUSTER BLOG BLOOMBERG BLUE BM BMS BMW BN BNPPARIBAS BO BOATS BOEHRINGER BOFA BOM BOND BOO BOOK BOOKING BOSCH BOSTIK BOSTON BOT BOUTIQUE BOX BR BRADESCO BRIDGESTONE BROADWAY BROKER BROTHER BRUSSELS BS BT BUGATTI BUILD BUILDERS BUSINESS BUY BUZZ BV BW BY BZ BZH"
 		+ " CA CAB CAFE CAL CALL CALVINKLEIN CAM CAMERA CAMP CANCERRESEARCH CANON CAPETOWN CAPITAL CAPITALONE CAR CARAVAN CARDS CARE CAREER CAREERS CARS CASA CASE CASH CASINO CAT CATERING CATHOLIC CBA CBN CBRE CBS CC CD CENTER CEO CERN CF CFA CFD CG CH CHANEL CHANNEL CHARITY CHASE CHAT CHEAP CHINTAI CHRISTMAS CHROME CHURCH CI CIPRIANI CIRCLE CISCO CITADEL CITI CITIC CITY CITYEATS CK CL CLAIMS CLEANING CLICK CLINIC CLINIQUE CLOTHING CLOUD CLUB CLUBMED CM CN CO COACH CODES COFFEE COLLEGE COLOGNE COM COMCAST COMMBANK COMMUNITY COMPANY COMPARE COMPUTER COMSEC CONDOS CONSTRUCTION CONSULTING CONTACT CONTRACTORS COOKING COOKINGCHANNEL COOL COOP CORSICA COUNTRY COUPON COUPONS COURSES CPA CR CREDIT CREDITCARD CREDITUNION CRICKET CROWN CRS CRUISE CRUISES CU CUISINELLA CV CW CX CY CYMRU CYOU CZ"
@@ -123,7 +123,7 @@ String.prototype.wuiConstants = {
 		+ " XBOX XEROX XFINITY XIHUAN XIN XXX XYZ"
 		+ " YACHTS YAHOO YAMAXUN YANDEX YE YODOBASHI YOGA YOKOHAMA YOU YOUTUBE YT YUN"
 		+ " ZA ZAPPOS ZARA ZERO ZIP ZM ZONE ZUERICH ZW"
-		+ "".toLowerCase().split(/\s+/)
+	).toLowerCase().split(/\s+/)
 }
 
 String.prototype.wuiValidateDate = function (format = "default") {
@@ -194,51 +194,39 @@ String.prototype.wuiValidatePhone = function (length = this.wuiDefaults.phoneLen
 }
 
 String.prototype.wuiValidatePhoneList = function (length = this.wuiDefaults.phoneLength, separator = this.wuiDefaults.phoneListSeparator) {
+	if (this == null || this == "") valid = false;
+	const list = this.split(separator);
 	let valid = true;
-	if (this == null || this == "") {
-		valid = false;
-	} else {
-		const list = this.split(separator);
-		for (let i in list) {
-			if (!list[i].toString().trim().wuiValidatePhone(length)) {
-				valid = false;
-			}
+	for (let i in list) {
+		if (!list[i].toString().trim().wuiValidatePhone(length)) {
+			valid = false;
 		}
 	}
 	return valid;
 }
 
 String.prototype.wuiValidateURL = function () {
-	if (this == null || this == "") {
-		return false;
-	} else {
-		const tld = (this.toLowerCase().match(/\b(https?:\/\/)?\w[\w\-\.]*\w\.([a-z]{2,18})(:\d+)*[\/\w\-\.\?\=\&]*\b/) || [])[2] || "";
-		const regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-		return regexp.test(this) && tld != "" && this.wuiConstants.tlds.indexOf(tld) > -1 ? true : false;
-	}
+	if (this == null || this == "") return false;
+	const tld = (this.toLowerCase().match(/\b(https?:\/\/)?\w[\w\-\.]*\w\.([a-z]{2,18})(:\d+)*[\/\w\-\.\?\=\&]*\b/) || [])[2] || "";
+	const regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+	return regexp.test(this) && tld != "" && this.wuiConstants.tlds.indexOf(tld) > -1 ? true : false;
 }
 
 String.prototype.wuiValidateURLList = function (separator = this.wuiDefaults.urlListSeparator) {
+	if (this == null || this == "") valid = false;
+	const list = this.split(separator);
 	let valid = true;
-	if (this == null || this == "") {
-		valid = false;
-	} else {
-		const list = this.split(separator);
-		for (let i in list) {
-			if (!list[i].toString().trim().colibraValidURL()) {
-				valid = false;
-			}
+	for (let i in list) {
+		if (!list[i].toString().trim().colibraValidURL()) {
+			valid = false;
 		}
 	}
 	return valid;
 }
 
 String.prototype.wuiValidateIPv4 = function () {
-	if (this == null || this == "") {
-		return false;
-	} else {
-		return /\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/.test(this) ? true : false;
-	}
+	if (this == null || this == "") return false;
+	return /\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/.test(this) ? true : false;
 }
 
 String.prototype.wuiValidateModule11 = function (tenCode = "10") {
@@ -335,9 +323,9 @@ Number.prototype.wuiToModule23 = function (map) {
 }
 
 Date.prototype.wuiConstants = {
-	locales: "" // https://www.techonthenet.com/js/language_tags.php 20241007
+	locales: ("" // https://www.techonthenet.com/js/language_tags.php 20241007
 		+ "ar-SA bn-BD bn-IN cs-CZ da-DK de-AT de-CH de-DE el-GR en-AU en-CA en-GB en-IE en-IN en-NZ en-US en-ZA es-AR es-CL es-CO es-ES es-MX es-US fi-FI fr-BE fr-CA fr-CH fr-FR he-IL hi-IN hu-HU id-ID it-CH it-IT ja-JP ko-KR nl-BE nl-NL no-NO pl-PL pt-BR pt-PT ro-RO ru-RU sk-SK sv-SE ta-IN ta-LK th-TH tr-TR zh-CN zh-HK zh-TW"
-		+ "".toLowerCase().split(/\s+/)
+	).toLowerCase().split(/\s+/)
 }
 
 Date.prototype.wuiDefaults = {
