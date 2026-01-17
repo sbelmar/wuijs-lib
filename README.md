@@ -2338,12 +2338,12 @@ const list = new WUIList({
 	columns: [{
 		width: 10
 	},{
-		width: 40,
+		width: 60,
 		align: "center"
 	}, {
 		align: "left"
 	},{
-		width: 40,
+		width: 60,
 		align: "center"
 	}],
 	//rows: [],
@@ -2403,18 +2403,18 @@ list.init();
 
 // Load dataset
 list.rows = [{
-	id: "row1", data: ["", "A1", "B1", "C1"]}, {
-	id: "row2", data: ["", "A2", "B2", "C2"], enabled: false}, {
-	id: "row3", data: ["", "A3", "B3", "C3"]}, {
-	id: "row4", data: ["", "A4", "B4", "C4"]}, {
-	id: "row5", data: ["", "A5", "B5", "C5"]}, {
-	id: "row6", data: ["", "A6", "B6", "C6"]}, {
-	id: "row7", data: ["", "A7", "B7", "C7"]}, {
-	id: "row8", data: ["", "A8", "B8", "C8"]}, {
-	id: "row9", data: ["", "A9", "B9", "C9"]}, {
-	id: "row10", data: ["", "A10", "B10", "C10"]}, {
-	id: "row11", data: ["", "A11", "B11", "C11"]}, {
-	id: "row12", data: ["", "A12", "B12", "C12"]
+	id: "row1", data: ["", "A 1", "B 1", "C 1"]}, {
+	id: "row2", data: ["", "A 2", "B 2", "C 2"], enabled: false}, {
+	id: "row3", data: ["", "A 3", "B 3", "C 3"]}, {
+	id: "row4", data: ["", "A 4", "B 4", "C 4"]}, {
+	id: "row5", data: ["", "A 5", "B 5", "C 5"]}, {
+	id: "row6", data: ["", "A 6", "B 6", "C 6"]}, {
+	id: "row7", data: ["", "A 7", "B 7", "C 7"]}, {
+	id: "row8", data: ["", "A 8", "B 8", "C 8"]}, {
+	id: "row9", data: ["", "A 9", "B 9", "C 9"]}, {
+	id: "row10", data: ["", "A 10", "B 10", "C 10"]}, {
+	id: "row11", data: ["", "A 11", "B 11", "C 11"]}, {
+	id: "row12", data: ["", "A 12", "B 12", "C 12"]
 }];
 list.print();
 ```
@@ -2754,18 +2754,18 @@ table.init();
 
 // Load dataset
 table.rows = [{
-	id: "row1", data: ["A1", "B1", "C1", "D1"]}, {
-	id: "row2", data: ["A2", "B2", "C2", "D2"], enabled: false}, {
-	id: "row3", data: ["A3", "B3", "C3", "D3"]}, {
-	id: "row4", data: ["A4", "B4", "C4", "D4"]}, {
-	id: "row5", data: ["A5", "B5", "C5", "D5"]}, {
-	id: "row6", data: ["A6", "B6", "C6", "D6"]}, {
-	id: "row7", data: ["A7", "B7", "C7", "D7"]}, {
-	id: "row8", data: ["A8", "B8", "C8", "D8"]}, {
-	id: "row9", data: ["A9", "B9", "C9", "D9"]}, {
-	id: "row10", data: ["A10", "B10", "C10", "D10"]}, {
-	id: "row11", data: ["A11", "B11", "C11", "D11"]}, {
-	id: "row12", data: ["A12", "B12", "C12", "D12"]
+	id: "row1", data: ["A 1", "B 1", "C 1", "D 1"]}, {
+	id: "row2", data: ["A 2", "B 2", "C 2", "D 2"], enabled: false}, {
+	id: "row3", data: ["A 3", "B 3", "C 3", "D 3"]}, {
+	id: "row4", data: ["A 4", "B 4", "C 4", "D 4"]}, {
+	id: "row5", data: ["A 5", "B 5", "C 5", "D 5"]}, {
+	id: "row6", data: ["A 6", "B 6", "C 6", "D 6"]}, {
+	id: "row7", data: ["A 7", "B 7", "C 7", "D 7"]}, {
+	id: "row8", data: ["A 8", "B 8", "C 8", "D 8"]}, {
+	id: "row9", data: ["A 9", "B 9", "C 9", "D 9"]}, {
+	id: "row10", data: ["A 10", "B 10", "C10", "D 10"]}, {
+	id: "row11", data: ["A 11", "B 11", "C11", "D 11"]}, {
+	id: "row12", data: ["A 12", "B 12", "C12", "D 12"]
 }];
 table.print();
 ```
@@ -2792,29 +2792,59 @@ Tool for managing and validating `string`, `number` and `Date` data formats.
 
 | Method                | Return type  | Description |
 | --------------------- | ------------ | ----------- |
-| validateDate          | `boolean`    | `validateDate(value, format)`<br><br>Validates a date string.<br><br>Arguments:<br>**• value:** `string` Value to validate.<br>**• format:** `string` Expected date format (default `"yyyy-mm-dd"` defined in `String.prototype.wuiDefaults.dateFormat`). |
-| validateEmail         | `boolean`    | `validateEmail(value)`<br><br>Validates an email address. |
-| validateEmailList     | `boolean`    | `validateEmailList(value[, separator])`<br><br>Validates a list of email addresses. |
-| validatePhone         | `boolean`    | `validatePhone(value[, length])`<br><br>Validates a phone number. |
-| validatePhoneList     | `boolean`    | `validatePhoneList(value[, length, separator])`<br><br>Validates a list of phone numbers. |
-| validateURL           | `boolean`    | `validateURL(value)`<br><br>Validates a URL. |
-| validateURLList       | `boolean`    | `validateURLList(value[, separator])`<br><br>Validates a list of URLs. |
-| validateIPv4          | `boolean`    | `validateIPv4(value)`<br><br>Validates an IPv4 address. |
-| validateModule11      | `boolean`    | `validateModule11(value[, tenCode])`<br><br>Validates the module 11 check digit.<br><br>Arguments:<br>**• value:** `string` Value to validate (including check digit).<br>**• tenCode:** `string` *optional* Character to represent 10/K. Defaults to `"10"`. |
-| validateModule23      | `boolean`    | `validateModule23(value, map)`<br><br>Validates the module 23 check digit.<br><br>Arguments:<br>**• value:** `string` Value to validate.<br>**• map:** `string` Mapping character string. |
-| validateNID           | `boolean`    | `validateNID(value, countryCode)`<br><br>Validates a national identity document.<br><br>Arguments:<br>**• value:** `string` Value to validate.<br>**• countryCode:** `string` Country code (`"CL"`, `"PY"`, `"ES"`). |
-| numberToString        | `string`     | `numberToString(value)`<br><br>Formats a number to string using `wuiDefaults`. |
-| numberToSizeString    | `string`     | `numberToSizeString(value)`<br><br>Formats a number to file size (B, KB, MB, TB). |
-| numberToModule11      | `string`     | `numberToModule11(value[, tenCode])`<br><br>Calculates the module 11 check digit. |
-| numberToModule23      | `string`     | `numberToModule23(value, map)`<br><br>Calculates the module 23 check digit. |
-| loadDate              | `Date`       | `loadDate(value, format)`<br><br>Loads a date from a string or numeric values. |
+| numberToString        | `string`     | `numberToString(number)`<br><br>Formats a number to string using `Number.prototype.wuiDefaults`.<br><br>Arguments:<br>**• number:** `number`, numeric to format. |
+| numberToSizeString    | `string`     | `numberToSizeString(number)`<br><br>Formats a number to file size (B, KB, MB, TB).<br><br>Arguments:<br>**• number:** `number`, numeric to format. |
+| numberToModule11      | `string`     | `numberToModule11(number, codeTen)`<br><br>Calculates the module 11 check digit.<br><br>Arguments:<br>**• number:** `string`, value to validate (including check digit).<br>**• codeTen:** `string`, character to replace the check digit if it is 10. |
+| numberToModule23      | `string`     | `numberToModule23(number, map)`<br><br>Calculates the module 23 check digit.<br><br>Arguments:<br>**• number:** `string`, value to validate.<br>**• map:** `string`, mapping string. |
+| validateDate          | `boolean`    | `validateDate(date, format)`<br><br>Validates a date string.<br><br>Arguments:<br>**• date:** `string`, date to validate.<br>**• format:** `string`, expected date format (default `"yyyy-mm-dd"` defined in `String.prototype.wuiDefaults.dateFormat`). |
+| validateEmail         | `boolean`    | `validateEmail(email)`<br><br>Validates an email address.<br><br>Arguments:<br>**• email:** `string`, email address. |
+| validateEmailList     | `boolean`    | `validateEmailList(list[, separator])`<br><br>Validates a list of email addresses.<br><br>Arguments:<br>**• list:** `string`, list of email addresses.<br>**• separator:** `string` *opcional*, list separator character(s). |
+| validatePhone         | `boolean`    | `validatePhone(phone[, length])`<br><br>Validates a phone number.<br><br>Arguments:<br>**• phone:** `string`, phone number.<br>**• length:** `number` *opcional*, length of the telephone number. |
+| validatePhoneList     | `boolean`    | `validatePhoneList(list[, length[, separator]])`<br><br>Validates a list of phone numbers.<br><br>Arguments:<br>**• list:** `string`, list of number phones.<br>**• length:** `number` *opcional*, length of the telephone number.<br>**• separator:** `string` *opcional*, list separator character(s). |
+| validateURL           | `boolean`    | `validateURL(url)`<br><br>Validates a URL address.<br><br>Arguments:<br><br>Parameters:<br>**• url:** `string`, URL address. |
+| validateURLList       | `boolean`    | `validateURLList(list[, separator])`<br><br>Validates a list of URLs.<br><br>Arguments:<br>**• list:** `string`, list of URL addresses.<br>**• separator:** `string` *opcional*, list separator character(s). |
+| validateIPv4          | `boolean`    | `validateIPv4(ipv4)`<br><br>Validates an IPv4 address.<br><br>Arguments:<br><br>Parameters:<br>**• ipv4:** `string`, IPv4 address. |
+| validateModule11      | `boolean`    | `validateModule11(number, codeTen)`<br><br>Validates the module 11 check digit.<br><br>Arguments:<br>**• number:** `string`, value to validate (including check digit).<br>**• codeTen:** `string`, character to replace the check digit if it is 10. |
+| validateModule23      | `boolean`    | `validateModule23(number, map)`<br><br>Validates the module 23 check digit.<br><br>Arguments:<br>**• number:** `string`, value to validate.<br>**• map:** `string`, mapping character string. |
+| validateNID           | `boolean`    | `validateNID(nid, countryCode)`<br><br>Validates a national identity document.<br><br>Arguments:<br>**• nid:** `string`, value to validate.<br>**• countryCode:** `string`, country code (`"CL"`, `"PY"`, `"ES"`). |
+| loadDate              | `Date`       | `loadDate(date, format)`<br><br>Loads a date from a string or numeric values.<br><br>Arguments:<br>**• date:** `string`, date to format.<br>**• format:** `string`, output format. |
 
-#### Prototype Extensions
+#### Number Prototype Extensions `Number.prototype`
 
-**String** `String.prototype`
+##### Defaults `Number.prototype.wuiDefaults`
 
-| Method        | Return type  | Description |
-| ------------- | ------------ | ----------- |
+| Property           | Type             | Default value | Description |
+| ------------------ | ---------------- | ------------- | ----------- |
+| numberPrefix       | `string`         | `""`          | Return string prefix used by the `WUIFormat.numberToString()` and `Number.prototype.wuiToString()` methods. |
+| numberSufix        | `string`         | `""`          | Return string suffix used by the `WUIFormat.numberToString()` and `Number.prototype.wuiToString()` methods. |
+| thousandsSeparator | `string`         | `","`         | Thousands separator of the return string used by the `WUIFormat.numberToString()` and `Number.prototype.wuiToString()` methods. |
+| decimalLength      | `number\|string` | `"auto"`      | Length of the decimal portion of the return string used by the `WUIFormat.numberToString()` and `Number.prototype.wuiToString()` methods. |
+| decimalSeparator   | `string`         | `"."`         | Decimal separator of the return string used by the `WUIFormat.numberToString()` and `Number.prototype.wuiToString()` methods. |
+
+##### Methods
+
+| Method          | Return type  | Description |
+| --------------- | ------------ | ----------- |
+| wuiToString     | `string`     | `wuiToString([options])`<br><br>Converts to formatted string, as defined in **Valores predeterminados** `<Number.prototype.wuiDefaults>`. |
+| wuiToSizeString | `string`     | `wuiToSizeString()`<br><br>Converts to file size string (B, KB, MB, TB). |
+| wuiToModule11   | `string`     | `wuiToModule11(codeTen)`<br><br>Calculates module 11 check digit. |
+| wuiToModule23   | `string`     | `wuiToModule23(map)`<br><br>Calculates module 23 check digit. |
+
+#### String Prototype Extensions `String.prototype`
+
+##### Defaults `String.prototype.wuiDefaults`
+
+| Property           | Type     | Default value | Description |
+| ------------------ | -------- | ------------- | ----------- |
+| emailListSeparator | `string` | `","`         | Separator consisting of one or more characters used for the validation of mailing address lists. |
+| phoneLength        | `number` | `9`           | Length required for validation of a telephone number. |
+| phoneListSeparator | `string` | `","`         | Separator consisting of one or more characters used for the validation of telephone number lists. |
+| urlListSeparator   | `string` | `","`         | Separator consisting of one or more characters used for the validation of URL address lists. |
+
+##### Methods
+
+| Method               | Return type  | Description |
+| -------------------- | ------------ | ----------- |
 | wuiValidateDate      | `boolean`    | `wuiValidateDate([format])`<br><br>Validates if the string is a valid date. |
 | wuiValidateEmail     | `boolean`    | `wuiValidateEmail()`<br><br>Validates if the string is a valid email. |
 | wuiValidateEmailList | `boolean`    | `wuiValidateEmailList([separator])`<br><br>Validates list of emails. |
@@ -2823,20 +2853,15 @@ Tool for managing and validating `string`, `number` and `Date` data formats.
 | wuiValidateURL       | `boolean`    | `wuiValidateURL()`<br><br>Validates URL. |
 | wuiValidateURLList   | `boolean`    | `wuiValidateURLList([separator])`<br><br>Validates list of URLs. |
 | wuiValidateIPv4      | `boolean`    | `wuiValidateIPv4()`<br><br>Validates IPv4. |
-| wuiValidateModule11  | `boolean`    | `wuiValidateModule11([tenCode])`<br><br>Validates module 11. |
+| wuiValidateModule11  | `boolean`    | `wuiValidateModule11(codeTen)`<br><br>Validates module 11. |
 | wuiValidateModule23  | `boolean`    | `wuiValidateModule23(map)`<br><br>Validates module 23. |
 | wuiValidateNID       | `boolean`    | `wuiValidateNID(countryCode)`<br><br>Validates national identity document. |
 
-**Number** `Number.prototype`
+#### Date Prototype Extensions `Date.prototype`
 
-| Method            | Return type  | Description |
-| ----------------- | ------------ | ----------- |
-| wuiToString       | `string`     | `wuiToString([options])`<br><br>Converts to formatted string. |
-| wuiToSizeString   | `string`     | `wuiToSizeString()`<br><br>Converts to size string. |
-| wuiToModule11     | `string`     | `wuiToModule11([tenCode])`<br><br>Calculates module 11 check digit. |
-| wuiToModule23     | `string`     | `wuiToModule23(map)`<br><br>Calculates module 23 check digit. |
+##### Defaults `Date.prototype.wuiDefaults`
 
-**Date** `Date.prototype`
+##### Methods
 
 | Method         | Return type  | Description |
 | -------------- | ------------ | ----------- |
@@ -2864,31 +2889,38 @@ HTML head:
 HTML code:
 
 ```html
-<div class="my-output email"></div>
 <div class="my-output number"></div>
+<div class="my-output email"></div>
 <div class="my-output date"></div>
 ```
 
 JS code:
 
 ```js
+// Number formatting
+//Number.prototype.wuiDefaults.numberPrefix = "";
+//Number.prototype.wuiDefaults.numberSufix = "";
+//Number.prototype.wuiDefaults.thousandsSeparator = ",";
+Number.prototype.wuiDefaults.decimalLength = 2;
+//Number.prototype.wuiDefaults.decimalSeparator = ".";
+
+const number = 1234.567;
+const numberOutput = document.body.querySelector(".my-output.number");
+const numberFormatting = number.wuiToString({ numberPrefix: "$ " });
+numberOutput.textContent = `number: ${number} - formatting: ${numberFormatting}`;
+
 // Email validation
 const email = "test@example.com";
 const emailOutput = document.body.querySelector(".my-output.email");
 const emailValidation = email.wuiValidateEmail();
 emailOutput.textContent = `email: ${email} - validation: ${emailValidation}`;
 
-// Number formatting
-const number = 1234.567;
-const numberOutput = document.body.querySelector(".my-output.number");
-const numberFormatting = number.wuiToString({ decimalLength: 2, numberPrefix: "$" });
-numberOutput.textContent = `number: ${number} - formatting: ${numberFormatting}`;
-
 // Dates formatting
-const dateFormat = "yyyy-mm-dd";
-const date = new Date().wuiLoad("2023-12-31", dateFormat);
+const dateLoadFormat = "yyyy-mm-dd";
+const date = new Date().wuiLoad("2023-12-31", dateLoadFormat);
 const dateOutput = document.body.querySelector(".my-output.date");
-const dateFormatting = date.wuiToString("dd/mm/yyyy");
+const dateFormat = "dd/mm/yyyy";
+const dateFormatting = date.wuiToString(dateFormat);
 dateOutput.textContent = `date: ${date} - format: ${dateFormat} - formatting: ${dateFormatting}`;
 ```
 

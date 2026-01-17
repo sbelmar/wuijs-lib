@@ -23,6 +23,22 @@ class WUIFormat {
 		Date.prototype.wuiLoadNames();
 	}
 
+	static numberToString(value) {
+		return typeof (value) == "number" ? value.wuiToString() : "error";
+	}
+
+	static numberToSizeString(value) {
+		return typeof (value) == "number" ? value.wuiToSizeString() : "error";
+	}
+
+	static numberToModule11(value, codeTen) {
+		return typeof (value) == "number" && codeTen != null ? value.wuiToModule11(codeTen) : "error";
+	}
+
+	static numberToModule23(value, map) {
+		return typeof (value) == "number" ? value.wuiToModule23(map) : "error";
+	}
+
 	static validateDate(value, format) {
 		return typeof (value) == "string" ? value.wuiValidateDate(format) : false;
 	}
@@ -55,8 +71,8 @@ class WUIFormat {
 		return typeof (value) == "string" ? value.wuiValidateIPv4() : false;
 	}
 
-	static validateModule11(value, tenCode = "10") {
-		return typeof (value) == "string" ? value.wuiValidateModule11(tenCode) : false;
+	static validateModule11(value, codeTen) {
+		return typeof (value) == "string" && codeTen != null ? value.wuiValidateModule11(codeTen) : false;
 	}
 
 	static validateModule23(value, map) {
@@ -67,25 +83,63 @@ class WUIFormat {
 		return typeof (value) == "string" ? value.wuiValidateNID(countryCode) : false;
 	}
 
-	static numberToString(value) {
-		return typeof (value) == "number" ? value.wuiToString() : "error";
-	}
-
-	static numberToSizeString(value) {
-		return typeof (value) == "number" ? value.wuiToSizeString() : "error";
-	}
-
-	static numberToModule11(value, tenCode = "10") {
-		return typeof (value) == "number" ? value.wuiToModule11(tenCode) : "error";
-	}
-
-	static numberToModule23(value, map) {
-		return typeof (value) == "number" ? value.wuiToModule23(map) : "error";
-	}
-
 	static loadDate(value, format) {
 		return Date.prototype.wuiLoad(value, format);
 	}
+}
+
+Number.prototype.wuiDefaults = {
+	numberPrefix: "",
+	numberSufix: "",
+	thousandsSeparator: ",",
+	decimalLength: "auto",
+	decimalSeparator: "."
+}
+
+Number.prototype.wuiToString = function (options = {}) {
+	Object.keys(this.wuiDefaults).forEach(key => {
+		options[key] = typeof (options) != "undefined" && key in options ? options[key] : this.wuiDefaults[key];
+	});
+	let
+		number = parseFloat(this),
+		decLen = options.decimalLength;
+	const
+		prefix = options.numberPrefix,
+		symbol = number < 0 ? "-" : "",
+		thoSep = options.thousandsSeparator,
+		decSep = options.decimalSeparator,
+		sufix = options.numberSufix;
+	let i, j;
+	if (decLen.toString().match(/auto/i)) {
+		decLen = number.toString().match(/\./) ? number.toString().replace(/^-*\d+\./, "").length : 0;
+	}
+	i = parseInt(number = Math.abs(+number || 0).toFixed(decLen)) + "";
+	j = (j = i.length) > 3 ? j % 3 : 0;
+	return prefix + symbol + (j ? i.toString().substr(0, j) + thoSep : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thoSep) + (decLen ? decSep + Math.abs(number - i).toFixed(decLen).slice(2) : "") + sufix;
+}
+
+Number.prototype.wuiToSizeString = function () {
+	const size = this;
+	const div = size < 1024 ? 1 : size < Math.pow(1024, 2) ? 1024 : size < Math.pow(1024, 3) ? Math.pow(1024, 2) : Math.pow(1024, 3);
+	const uni = size < 1024 ? "B" : size < Math.pow(1024, 2) ? "KB" : size < Math.pow(1024, 3) ? "MB" : "TB";
+	return parseInt(size / div).wuiToString() + " " + uni;
+};
+
+Number.prototype.wuiToModule11 = function (codeTen) {
+	const str = this.toString();
+	let sum = 0, factor = 2;
+	for (let i = str.length - 1; i >= 0; i--) {
+		sum += Number(str.charAt(i)) * factor;
+		factor = factor == 7 ? 2 : factor + 1;
+	}
+	const remainder = 11 - (sum % 11);
+	if (remainder == 10 && codeTen != null) return codeTen.toUpperCase();
+	if (remainder == 11) return "0";
+	return remainder.toString();
+}
+
+Number.prototype.wuiToModule23 = function (map) {
+	return map.charAt(this % 23);
 }
 
 String.prototype.wuiDefaults = {
@@ -229,14 +283,14 @@ String.prototype.wuiValidateIPv4 = function () {
 	return /\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/.test(this) ? true : false;
 }
 
-String.prototype.wuiValidateModule11 = function (tenCode = "10") {
-	if (!this || this.trim() == "") return false;
+String.prototype.wuiValidateModule11 = function (codeTen) {
+	if (!this || this.trim() == "" || !codeTen) return false;
 	const value = this.trim().replace(/[\.-]/g, "");
 	if (value.length < 2) return false;
 	const number = value.slice(0, -1);
 	const control = value.slice(-1).toUpperCase();
 	if (!/^\d+$/.test(number)) return false;
-	return BigInt(number).wuiToModule11(tenCode) == control;
+	return BigInt(number).wuiToModule11(codeTen) == control;
 }
 
 String.prototype.wuiValidateModule23 = function (map) {
@@ -266,60 +320,6 @@ String.prototype.wuiValidateNID = function (countryCode) {
 		default:
 			return false;
 	}
-}
-
-Number.prototype.wuiDefaults = {
-	numberPrefix: "",
-	numberSufix: "",
-	decimalLength: "auto",
-	decimalSeparator: ",",
-	thousandsSeparator: ".",
-}
-
-Number.prototype.wuiToString = function (options = {}) {
-	Object.keys(this.wuiDefaults).forEach(key => {
-		options[key] = typeof (options) != "undefined" && key in options ? options[key] : this.wuiDefaults[key];
-	});
-	let
-		number = parseFloat(this),
-		decLen = options.decimalLength;
-	const
-		prefix = options.numberPrefix,
-		symbol = number < 0 ? "-" : "",
-		decSep = options.decimalSeparator,
-		thoSep = options.thousandsSeparator,
-		sufix = options.numberSufix;
-	let i, j;
-	if (decLen.toString().match(/auto/i)) {
-		decLen = number.toString().match(/\./) ? number.toString().replace(/^-*\d+\./, "").length : 0;
-	}
-	i = parseInt(number = Math.abs(+number || 0).toFixed(decLen)) + "";
-	j = (j = i.length) > 3 ? j % 3 : 0;
-	return prefix + symbol + (j ? i.toString().substr(0, j) + thoSep : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thoSep) + (decLen ? decSep + Math.abs(number - i).toFixed(decLen).slice(2) : "") + sufix;
-}
-
-Number.prototype.wuiToSizeString = function () {
-	const size = this;
-	const div = size < 1024 ? 1 : size < Math.pow(1024, 2) ? 1024 : size < Math.pow(1024, 3) ? Math.pow(1024, 2) : Math.pow(1024, 3);
-	const uni = size < 1024 ? "B" : size < Math.pow(1024, 2) ? "KB" : size < Math.pow(1024, 3) ? "MB" : "TB";
-	return parseInt(size / div).wuiToString() + " " + uni;
-};
-
-Number.prototype.wuiToModule11 = function (tenCode = "10") {
-	const str = this.toString();
-	let sum = 0, factor = 2;
-	for (let i = str.length - 1; i >= 0; i--) {
-		sum += Number(str.charAt(i)) * factor;
-		factor = factor == 7 ? 2 : factor + 1;
-	}
-	const remainder = 11 - (sum % 11);
-	if (remainder == 10) return tenCode.toUpperCase();
-	if (remainder == 11) return "0";
-	return remainder.toString();
-}
-
-Number.prototype.wuiToModule23 = function (map) {
-	return map.charAt(this % 23);
 }
 
 Date.prototype.wuiConstants = {
