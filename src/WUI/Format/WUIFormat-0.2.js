@@ -331,15 +331,15 @@ Date.prototype.wuiDefaults = {
 	monthsNames: []
 }
 
-Date.prototype.wuiLoadNames = function () {
-	if (this.wuiConstants.locales.indexOf(this.wuiDefaults.locales.toLowerCase()) > -1) {
+Date.prototype.wuiLoadNames = function (locales = this.wuiDefaults.locales) {
+	if (this.wuiConstants.locales.indexOf(locales.toLowerCase()) > -1) {
 		let i;
 		for (i = 0; i < 7; i++) {
-			const name = new Date(2023, 0, i + 1).toLocaleString(this.wuiDefaults.locales, { weekday: "long" }); // 2023-01-01: sunday
+			const name = new Date(2023, 0, i + 1).toLocaleString(locales, { weekday: "long" }); // 2023-01-01: sunday
 			this.wuiDefaults.weekDaysNames[i] = name.replace(/^\s*(\w)/, letter => letter.toUpperCase());
 		}
 		for (i = 0; i < 12; i++) {
-			const name = new Date(2023, i, 1).toLocaleString(this.wuiDefaults.locales, { month: "long" });
+			const name = new Date(2023, i, 1).toLocaleString(locales, { month: "long" });
 			this.wuiDefaults.monthsNames[i] = name.replace(/^\s*(\w)/, letter => letter.toUpperCase());
 		}
 	}
@@ -417,9 +417,16 @@ Date.prototype.wuiToString = function (format = "default", options = {}) {
 		case "rfc1123":
 		case "rfc2616": return this.toUTCString();
 	}
-	Object.keys(this.wuiDefaults).forEach(key => {
-		options[key] = typeof (options) != "undefined" && key in options ? options[key] : this.wuiDefaults[key];
+	const defaults = structuredClone(this.wuiDefaults);
+	Object.entries(defaults).forEach(([name, value]) => {
+		if (!(name in options)) {
+			options[name] = value;
+		}
 	});
+	if (format.match(/(rfc1123|rfc2616)/)) {
+		this.wuiLoadNames("en-US");
+		options.utc = true;
+	}
 	const utc = options.utc || false;
 	const year = utc ? this.getUTCFullYear() : this.getFullYear(),
 		month = utc ? this.getUTCMonth() + 1 : this.getMonth() + 1,
@@ -476,12 +483,12 @@ Date.prototype.wuiToString = function (format = "default", options = {}) {
 		case "standard": string = "yyyy-mm-dd hh:MM:ss"; break;
 		case "numeric": string = "yyyy mm dd hh MM ss"; break;
 		case "longtime": string = "yyyy-mm-dd T hh:MM:ss"; break;
-		case "atom":
-		/*case "rfc3339": string = "yyyy-mm-dd T hh:MM:ss.zzz Z"; break;
+		/*case "atom":
+		case "rfc3339": string = "yyyy-mm-dd T hh:MM:ss.o Z"; break;
 		case "cookie":
-		case "rfc1123": string = "DDD, dd-mmm-yyyy hh:MM:ss GMT"; break;
+		case "rfc1123":
 		case "rfc2616": string = "DDD, dd mmm yyyy hh:MM:ss GMT"; break;*/
-		case "rfc3501": string = "d-mmm-yyyy hh:MM:ss offset"; break;
+		case "rfc3501": string = "dd-mmm-yyyy hh:MM:ss tz"; break;
 		default: string = format; break;
 	}
 	for (let key in patterns) {

@@ -2908,10 +2908,9 @@ Tool for managing and validating `string`, `number` and `Date` data formats.
 | `"standard"`                                  | `"yyyy-mm-dd hh:MM:ss"` |
 | `"numeric"`                                   | `"yyyymmddhhMMss"` |
 | `"longtime"`                                  | `"yyyy-mm-ddThh:MM:ss"` |
-| `"rfc3339\|atom"`                             | `"yyyy-mm-ddThh:MM:ss.zzzZ"` |
-| `"rfc1123\|cookie"`                           | `"DDD, dd-mmm-yyyy hh:MM:ss GMT"` |
-| `"rfc2616"`                                   | `"DDD, dd mmm yyyy hh:MM:ss GMT"` |
-| `"rfc3501"`                                   | `"d-mmm-yyyy hh:MM:ss offset"` |
+| `"rfc3339\|atom"`                             | `"yyyy-mm-ddThh:MM:ss.oZ"` |
+| `"rfc1123\|rfc2616\|cookie"`                  | `"DDD, dd-mmm-yyyy hh:MM:ss GMT"` |
+| `"rfc3501"`                                   | `"dd-mmm-yyyy hh:MM:ss tz"` |
 
 ##### Methods
 
