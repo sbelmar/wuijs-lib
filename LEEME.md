@@ -2896,8 +2896,8 @@ Herramienta para manejo y validación de formatos de datos de tipo `string`, `nu
 | zzz   | Milisegundo en formato de 3 digitos. |
 | z     | Milisegundo en formato de número entero. |
 | o     | Desplazamiento de zona horaria en formato de número entero. |
-| TZ    | Desplazamiento de zona horaria en formato "±hhMM". |
-| GMT   | Desplazamiento de zona horaria en formato "GMT±hhMM". |
+| tz    | Desplazamiento de zona horaria en formato "±hhMM". |
+| gmt   | Desplazamiento de zona horaria en formato "GMT±hhMM". |
 
 ##### Formatos predefinidos
 

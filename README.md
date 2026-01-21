@@ -2895,8 +2895,8 @@ Tool for managing and validating `string`, `number` and `Date` data formats.
 | zzz    | Milisecond in 3 digits format. |
 | z      | Milisecond in integer number format. |
 | o      | Time zone offset in integer number format. |
-| TZ     | Time zone offset in "±hhMM" format. |
-| GMT    | Time zone offset in "GMT±hhMM" format. |
+| tz     | Time zone offset in "±hhMM" format. |
+| gmt    | Time zone offset in "GMT±hhMM" format. |
 
 ##### Predefined formats
 

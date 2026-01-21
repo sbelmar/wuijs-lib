@@ -459,8 +459,8 @@ Date.prototype.wuiToString = function (format = "default", options = {}) {
 		"zzz": ("0" + milliseconds).slice(-3),
 		"z": milliseconds,
 		"o": offset,
-		"TZ": timezone,
-		"GMT": "GMT" + timezone
+		"tz": timezone,
+		"gmt": "GMT" + timezone
 	};
 	let string = "";
 	switch (format.toLowerCase()) {
