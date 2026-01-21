@@ -9,7 +9,7 @@
 
 Versión librería: `0.2.0` ([Registro de Cambio](./REGISTRODECAMBIO.md))
 
-Versión documentación: `0.2.0.20260120.0`
+Versión documentación: `0.2.0.20260121.0`
 
 Licencia: `Licencia Apache 2.0`
 
