@@ -1826,7 +1826,7 @@ Component for the implementation of menu bars.
 | ------------- | ---------- | ---------------- | ----------- |
 | selector      | `string`   | `".wui-menubar"` | (get/set)<br><br>CSS selector that defines the HTML element that will be converted into the object. If more than one element matches the selector, only the first match will be included. |
 | expansive     | `boolean`  | `true`           | (get/set)<br><br>Define whether the menu expands.. The function of expansion is not visible in mobile mode (when the screen width is less than `768px`). |
-| autoClose     | `boolean`  | `true`           | (get/set)<br><br>Defines whether the submenu closes automatically when a button within it is clicked. |
+| autoClose     | `boolean`  | `true`           | (get/set)<br><br>Defines whether the submenu closes automatically when a button within it is clicked. If the property is `false`, a button to close the submenu manually will be loaded at the top. |
 | topButtons    | `array`    | `[]`             | (get/set)<br><br>List of menu top buttons, as defined by **Button Options**. These buttons are not visible in mobile mode (when the screen width is less than `768px`). |
 | mainButtons   | `array`    | `[]`             | (get/set)<br><br>List of menu main buttons, as defined by **Button Options**. |
 | bottomButtons | `array`    | `[]`             | (get/set)<br><br>List of menu bottom buttons, as defined by **Button Options**. These buttons are not visible in mobile mode (when the screen width is less than `768px`). |
