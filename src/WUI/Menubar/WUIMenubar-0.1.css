@@ -190,9 +190,18 @@ div.wui-menubar > :is(.bar, .submenu) > .header > :is(.expander, .close) {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	-webkit-border-radius: var(--wui-menubar-borderradius);
-	-moz-border-radius: var(--wui-menubar-borderradius);
-	border-radius: var(--wui-menubar-borderradius);
+	-webkit-border-top-left-radius: var(--wui-menubar-borderradius);
+	-webkit-border-top-right-radius: var(--wui-menubar-borderradius);
+	-webkit-border-bottom-left-radius: var(--wui-menubar-borderradius);
+	-webkit-border-bottom-right-radius: var(--wui-menubar-borderradius);
+	-moz-border-radius-topleft: var(--wui-menubar-borderradius);
+	-moz-border-radius-topright: var(--wui-menubar-borderradius);
+	-moz-border-radius-bottomleft: var(--wui-menubar-borderradius);
+	-moz-border-radius-bottomright: var(--wui-menubar-borderradius);
+	border-top-left-radius: var(--wui-menubar-borderradius);
+	border-top-right-radius: var(--wui-menubar-borderradius);
+	border-bottom-left-radius: var(--wui-menubar-borderradius);
+	border-bottom-right-radius: var(--wui-menubar-borderradius);
 	background-color: var(--wui-menubar-expander-bgcolor-out);
 }
 
@@ -356,6 +365,24 @@ div.wui-menubar > :is(.bar, .submenu) > :is(.top, .main, .bottom) > .button > :i
 		height: calc(50px + 2 * var(--wui-menubar-borderradius));
 		padding-top: 8px;
 		align-items: flex-start;
+	}
+
+	div.wui-menubar > .submenu > .header {
+		position: absolute;
+		top: -20px;
+		left: 50%;
+		width: 60px;
+		margin-left: -30px;
+		background-color: var(--wui-menubar-submenu-bgcolor);
+	}
+
+	div.wui-menubar > .submenu > .header > .close {
+		-webkit-border-bottom-left-radius: 0;
+		-webkit-border-bottom-right-radius: 0;
+		-moz-border-radius-bottomleft: 0;
+		-moz-border-radius-bottomright: 0;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 
 	div.wui-menubar > :is(.bar, .submenu) > .main {

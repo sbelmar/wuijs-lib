@@ -1995,6 +1995,12 @@ body {
 	margin: 10px;
 	font-family: monospace;
 }
+
+@media screen and (max-width: 767px) {
+	.my-output {
+		left: 0px;
+	}
+}
 ```
 
 HTML head:
