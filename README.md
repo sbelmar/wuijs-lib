@@ -2892,8 +2892,8 @@ Tool for managing and validating `string`, `number` and `Date` data formats.
 | M      | Minute in integer number format. |
 | ss     | Second in 2 digits format. |
 | s      | Second in integer number format. |
-| zzz    | Milisecond in 3 digits format. |
-| z      | Milisecond in integer number format. |
+| SSS    | Millisecond in 3 digits format. |
+| S      | Millisecond in integer number format. |
 | o      | Time zone offset in integer number format. |
 | tz     | Time zone offset in "±hhMM" format. |
 | gmt    | Time zone offset in "GMT±hhMM" format. |
@@ -2908,7 +2908,7 @@ Tool for managing and validating `string`, `number` and `Date` data formats.
 | `"standard"`                                  | `"yyyy-mm-dd hh:MM:ss"` |
 | `"numeric"`                                   | `"yyyymmddhhMMss"` |
 | `"longtime"`                                  | `"yyyy-mm-ddThh:MM:ss"` |
-| `"rfc3339\|atom"`                             | `"yyyy-mm-ddThh:MM:ss.oZ"` |
+| `"rfc3339\|atom"`                             | `"yyyy-mm-ddThh:MM:ss.SSSZ"` |
 | `"rfc1123\|rfc2616\|cookie"`                  | `"DDD, dd-mmm-yyyy hh:MM:ss GMT"` |
 | `"rfc3501"`                                   | `"dd-mmm-yyyy hh:MM:ss tz"` |
 

@@ -463,8 +463,8 @@ Date.prototype.wuiToString = function (format = "default", options = {}) {
 		"M": minute,
 		"ss": ("0" + second).slice(-2),
 		"s": second,
-		"zzz": ("0" + milliseconds).slice(-3),
-		"z": milliseconds,
+		"SSS": ("0" + milliseconds).slice(-3),
+		"S": milliseconds,
 		"o": offset,
 		"tz": timezone,
 		"gmt": "GMT" + timezone
@@ -484,7 +484,7 @@ Date.prototype.wuiToString = function (format = "default", options = {}) {
 		case "numeric": string = "yyyy mm dd hh MM ss"; break;
 		case "longtime": string = "yyyy-mm-dd T hh:MM:ss"; break;
 		/*case "atom":
-		case "rfc3339": string = "yyyy-mm-dd T hh:MM:ss.o Z"; break;
+		case "rfc3339": string = "yyyy-mm-dd T hh:MM:ss.zzz Z"; break;
 		case "cookie":
 		case "rfc1123":
 		case "rfc2616": string = "DDD, dd mmm yyyy hh:MM:ss GMT"; break;*/

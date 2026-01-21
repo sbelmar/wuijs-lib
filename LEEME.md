@@ -2893,8 +2893,8 @@ Herramienta para manejo y validación de formatos de datos de tipo `string`, `nu
 | M     | Minuto en formato de número entero. |
 | ss    | Segundo en formato de 2 digitos. |
 | s     | Segundo en formato de número entero. |
-| zzz   | Milisegundo en formato de 3 digitos. |
-| z     | Milisegundo en formato de número entero. |
+| SSS   | Milisegundo en formato de 3 digitos. |
+| S     | Milisegundo en formato de número entero. |
 | o     | Desplazamiento de zona horaria en formato de número entero. |
 | tz    | Desplazamiento de zona horaria en formato "±hhMM". |
 | gmt   | Desplazamiento de zona horaria en formato "GMT±hhMM". |
@@ -2909,7 +2909,7 @@ Herramienta para manejo y validación de formatos de datos de tipo `string`, `nu
 | `"standard"`                                  | `"yyyy-mm-dd hh:MM:ss"` |
 | `"numeric"`                                   | `"yyyymmddhhMMss"` |
 | `"longtime"`                                  | `"yyyy-mm-ddThh:MM:ss"` |
-| `"rfc3339\|atom"`                             | `"yyyy-mm-ddThh:MM:ss.oZ"` |
+| `"rfc3339\|atom"`                             | `"yyyy-mm-ddThh:MM:ss.SSSZ"` |
 | `"rfc1123\|rfc2616\|cookie"`                  | `"DDD, dd-mmm-yyyy hh:MM:ss GMT"` |
 | `"rfc3501"`                                   | `"dd-mmm-yyyy hh:MM:ss tz"` |
 
