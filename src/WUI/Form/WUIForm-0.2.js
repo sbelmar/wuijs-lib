@@ -211,7 +211,7 @@ class WUIForm {
 			}
 		}
 		if (data instanceof HTMLDataElement) {
-			data.value = value;
+			data.value = value instanceof HTMLElement ? value.textContent : value;
 			data.innerHTML = value;
 		}
 		return data;
@@ -477,10 +477,14 @@ Implemented HTML structure:
 			<div class="field">
 				<div class="icon"></div>
 				<label>Data</label>
-				<data value="" class="name"></data>
+				<data class="name" value=""></data>
 			</div>
+			<div class="text [disabled|center]">
+				[<p></p>]
+			</div>
+			<div class="message [highlight|center]"></div>
 		</fieldset>
-		<legend>WUI Fieldset</legend>
+		<legend>WUI Inputs Fieldset</legend>
 		<fieldset>
 			<div class="field">
 				<div class="icon"></div>

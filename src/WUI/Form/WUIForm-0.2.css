@@ -699,7 +699,7 @@
 	text-align: center;
 }
 
-.wui-form fieldset > :is(.field, .tex, .message) a {
+.wui-form fieldset > :is(.field, .text, .message) a {
 	text-decoration: none;
 	color: var(--wui-form-text-linkcolor-out);
 }
