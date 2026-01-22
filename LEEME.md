@@ -15,6 +15,10 @@ Licencia: `Licencia Apache 2.0`
 
 Autor: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 
+> [!NOTE]
+> Los dos primeros dígitos del número de versión corresponde a la mayor versión de las clases que componen la biblioteca,
+> meientras que el tercer digito corresponde al número de modificación de la versión general.
+
 ## Índice
 
 *   [Descripción General](#overview)

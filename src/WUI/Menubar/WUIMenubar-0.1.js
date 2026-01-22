@@ -410,6 +410,7 @@ class WUIMenubar {
 }
 
 /*
+HTML output:
 <div class="wui-menubar">
 	<div class="bar">
 		<div class="header">

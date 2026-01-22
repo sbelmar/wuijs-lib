@@ -15,6 +15,10 @@ License: `Apache License 2.0`
 
 Author: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 
+> [!NOTE]
+> The first two digits of the version number correspond to the highest version of the classes that make up the library,
+> while the third digit corresponds to the modification number of the general version.
+
 ## Index
 
 *   [Overview](#overview)

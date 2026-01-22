@@ -429,7 +429,7 @@ class WUIForm {
 }
 
 /*
-Implemented HTML structure:
+HTML output:
 <form class="wui-form (line|border [curve]) [mobile]">
 	<input type="hidden" name="hidden">
 	<div class="header"></div>
