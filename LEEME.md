@@ -2852,21 +2852,205 @@ Componente para la implementación de formularios de datos. Este componente perm
 
 #### Implementación
 
+Configuración CSS:
+
+```css
+:root {
+
+	/* wui-icon */
+
+	--wui-icon-size: 24px;
+	--wui-icon-smallsize: 14px;
+	--wui-icon-bgcolor-out: rgb(from #353a40 r g b / 70%);
+	--wui-icon-bgcolor-over: #353a40;
+
+	/* wui-form */
+
+	--wui-form-header-bordercolor: #d5dce3;
+	--wui-form-header-titlecolor: #000;
+	--wui-form-body-scroll-bgcolor-out: rgb(from #353a40 r g b / 20%);
+	--wui-form-body-scroll-bgcolor-over: rgb(from #353a40 r g b / 40%);
+	--wui-form-line-bordercolor: #d5dce3;
+	--wui-form-fieldset-bgcolor: #fff;
+	--wui-form-legend-texttransform: uppercase;
+	--wui-form-legend-textcolor: rgb(from #2d3a47 r g b / 60%);
+	--wui-form-label-textcolor-out: #2d3a47;
+	--wui-form-label-textcolor-focus: #1e90ff;
+	--wui-form-label-textcolor-notempty: rgb(from #2d3a47 r g b / 40%);
+	--wui-form-label-textcolor-disabled: #d5dce3;
+	--wui-form-input-height: 30px;
+	--wui-form-input-borderwidth: 1px;
+	--wui-form-input-borderradius: 15px;
+	--wui-form-input-bordercolor-out: rgb(from #1e90ff r g b / 20%);
+	--wui-form-input-bordercolor-focus: #1e90ff;
+	--wui-form-input-bordercolor-invalid: #f44343;
+	--wui-form-input-bordercolor-disabled: #d5dce3;
+	--wui-form-input-bgcolor-out: #f6f6fa;
+	--wui-form-input-bgcolor-focus: #f6f6fa;
+	--wui-form-input-bgcolor-disabled: #d5dce3;
+	--wui-form-input-textcolor-out: #2d3a47;
+	--wui-form-input-textcolor-over: #1f2937;
+	--wui-form-input-textcolor-disabled: #d5dce3;
+	--wui-form-date-opener-iconsize: 30px;
+	--wui-form-date-opener-iconcolor-out: #000;
+	--wui-form-date-opener-iconcolor-over: #1e90ff;
+	--wui-form-date-opener-iconcolor-disabled: #d5dce3;
+	--wui-form-date-opener-openicon-src: none;
+	--wui-form-date-opener-closeicon-src: none;
+	--wui-form-time-opener-iconsize: 30px;
+	--wui-form-time-opener-iconcolor-out: #000;
+	--wui-form-time-opener-iconcolor-over: #1e90ff;
+	--wui-form-time-opener-iconcolor-disabled: #d5dce3;
+	--wui-form-time-opener-openicon-src: none;
+	--wui-form-time-opener-closeicon-src: none;
+	--wui-form-range-thumb-size: 20px;
+	--wui-form-range-thumb-bgcolor-out: #1e90ff;
+	--wui-form-range-thumb-bgcolor-over: #1e90ff;
+	--wui-form-range-thumb-bgcolor-disabled: #d5dce3;
+	--wui-form-range-trackbar-height: 7px;
+	--wui-form-range-trackbar-borderwidth: 1px;
+	--wui-form-range-trackbar-bordercolor: #f0f0f3;
+	--wui-form-range-trackbar-bgcolor-out: #f6f6fa;
+	--wui-form-range-trackbar-bgcolor-over: #1e90ff;
+	--wui-form-range-trackbar-bgcolor-disabled: #d5dce3;
+	--wui-form-select-opener-iconsize: 30px;
+	--wui-form-select-opener-iconcolor-out: #000;
+	--wui-form-select-opener-iconcolor-over: #1e90ff;
+	--wui-form-select-opener-iconcolor-disabled: #d5dce3;
+	--wui-form-select-opener-openicon-src: none;
+	--wui-form-select-opener-closeicon-src: none;
+	--wui-form-data-textcolor-out: #1e90ff;
+	--wui-form-data-textcolor-disabled: #d5dce3;
+	--wui-form-progress-borderwidth: 1px;
+	--wui-form-progress-bordercolor: #f0f0f3;
+	--wui-form-progress-valuecolor: #1e90ff;
+	--wui-form-progress-bgcolor: #f6f6fa;
+	--wui-form-text-textcolor-out: #888;
+	--wui-form-text-textcolor-disabled: #d5dce3;
+	--wui-form-text-linkcolor-out: #1e90ff;
+	--wui-form-text-linkcolor-highlight: #1e90ff;
+	--wui-form-message-shadowcolor: #959da5;
+	--wui-form-message-bgcolor: #fdfdfe;
+	--wui-form-message-textcolor: #2d3a47;
+	--wui-form-message-highlight-bgcolor: #1e90ff;
+	--wui-form-message-highlight-textcolor: #fff;
+	--wui-form-mobile-field-bordercolor: rgb(from #1e90ff r g b / 10%);
+	--wui-form-mobile-label-textcolor: #444;
+	--wui-form-mobile-input-height: 40px;
+	--wui-form-mobile-input-bgcolor: rgb(from #1e90ff r g b / 4%);
+	--wui-form-mobile-input-height: 34px;
+	--wui-form-mobile-input-borderradius: 15px;
+}
+```
+
+Código CSS:
+
+```css
+body {
+	font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
+nav {
+	max-width: 400px;
+}
+```
+
 Cabecera HTML:
 
 ```html
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Icon/WUIIcon-0.1.css">
 <link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Form/WUIForm-0.2.css">
 <script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Form/WUIForm-0.2.js"></script>
+```
+
+Código HTML:
+
+```html
+<nav>
+	<form name="myForm" class="wui-form my-form line">
+		<input type="hidden" name="myHidden">
+		<div class="header"></div>
+		<div class="body">
+			<legend>Conjunto de campos</legend>
+			<fieldset>
+				<div class="field">
+					<div class="icon"></div>
+					<label>Texto</label>
+					<input type="text" name="text" value="">
+				</div>
+				<div class="field">
+					<div class="icon"></div>
+					<label>Fecha</label>
+					<input type="date" name="date" value="">
+				</div>
+				<div class="field">
+					<div class="icon"></div>
+					<label>Hora</label>
+					<input type="time" name="time" value="">
+				</div>
+				<div class="field">
+					<div class="icon"></div>
+					<label>Selector</label>
+					<select name="select">
+						<option value=""></option>
+						<option value="value1">valor 1</option>
+						<option value="value2">valor 2</option>
+						<option value="value3">valor 3</option>
+					</select>
+				</div>
+				<div class="field color">
+					<div class="icon"></div>
+					<label>Color</label>
+					<input type="color" name="color" value="">
+				</div>
+				<div class="field textarea">
+					<div class="icon"></div>
+					<label for="wuiTextarea">Área de texto</label>
+					<textarea name="textarea"></textarea>
+				</div>
+				<div class="field checkbox">
+					<div class="icon"></div>
+					<label for="checkbox">Caja de selección</label>
+					<input id="checkbox" type="checkbox" name="checkbox" value="1">
+				</div>
+				<div class="field">
+					<div class="icon"></div>
+					<label>Dato</label>
+					<data class="name" value=""></data>
+				</div>
+			</fieldset>
+			<div class="text my-text">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			</div>
+			<div class="message highlight center">
+				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+		</div>
+		<div class="footer">
+			<button class="wui-button cancel">cancel</button>
+			<button class="wui-button submit">submit</button>
+		</div>
+	</form>
+</nav>
 ```
 
 Código JS:
 
 ```js
+// Crear objeto
 const form = new WUIForm({
 	selector: ".wui-form.my-form",
-	//onSubmit: () => null
+	submit: false,
+	//onScrolling: null,
+	//onSubmit: null
 });
+
+// Inicializar objeto
+form.init();
 ```
+
+> [!TIP]
+> Puede revisar este ejemplo funcional en CodePen en el enlace: [https://codepen.io/wuijsproject/pen/YPWxexK](https://codepen.io/wuijsproject/pen/YPWxexK).
 
 <a name="WUIFormat"></a>
 
@@ -4538,6 +4722,7 @@ Los ejemplos listados en esta sección, son detallados en la sección "Implement
 | [WUIMenubar](#WUIMenubar)           | [https://codepen.io/wuijsproject/pen/JoKYVQm](https://codepen.io/wuijsproject/pen/JoKYVQm) |
 | [WUIList](#WUIList)                 | [https://codepen.io/wuijsproject/pen/xbOweva](https://codepen.io/wuijsproject/pen/xbOweva) |
 | [WUITable](#WUITable)               | [https://codepen.io/wuijsproject/pen/jErboKZ](https://codepen.io/wuijsproject/pen/jErboKZ) |
+| [WUIForm](#WUIForm)                 | [https://codepen.io/wuijsproject/pen/YPWxexK](https://codepen.io/wuijsproject/pen/YPWxexK) |
 | [WUIFormat](#WUIFormat)             | [https://codepen.io/wuijsproject/pen/emzBjVy](https://codepen.io/wuijsproject/pen/emzBjVy) |
 | [WUISelectpicker](#WUISelectpicker) | [https://codepen.io/wuijsproject/pen/WbxQBKX](https://codepen.io/wuijsproject/pen/WbxQBKX) |
 | [WUIDatepicker](#WUIDatepicker)     | [https://codepen.io/wuijsproject/pen/QwEyyZN](https://codepen.io/wuijsproject/pen/QwEyyZN) |

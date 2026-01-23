@@ -182,7 +182,7 @@
 	background-color: transparent;
 	padding-left: 10px;
 	padding-right: 10px;
-	justify-content: center;
+	justify-content: flex-start;
 	text-align: left;
 	font-size: 15px;
 	color: var(--wui-form-input-textcolor-out);

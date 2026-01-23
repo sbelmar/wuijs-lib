@@ -432,7 +432,7 @@ class WUIForm {
 
 /*
 HTML output:
-<form class="wui-form (line|border [curve]) [mobile]">
+<form name="form" class="wui-form (line|border [curve]) [mobile]">
 	<input type="hidden" name="hidden">
 	<div class="header"></div>
 	<div class="body">
@@ -468,7 +468,7 @@ HTML output:
 			</div>
 			<div class="field textarea">
 				<div class="icon"></div>
-				<label for="wuiTextarea"></label>
+				<label for="wuiTextarea">Text area</label>
 				<textarea name="textarea"></textarea>
 			</div>
 			<div class="field checkbox">
@@ -481,10 +481,6 @@ HTML output:
 				<label>Data</label>
 				<data class="name" value=""></data>
 			</div>
-			<div class="text name [disabled|center]">
-				[<p></p>]
-			</div>
-			<div class="message [highlight|center]"></div>
 		</fieldset>
 		<legend>WUI Inputs Fieldset</legend>
 		<fieldset>
@@ -519,7 +515,12 @@ HTML output:
 				<div class="wui-checkbox"><input id="wuiCheckbox" type="checkbox" name="wuiCheckbox" value="1"></div>
 			</div>
 		</fieldset>
-		<div class="text"></div>
+		<div class="text name [disabled|center]">
+			[<p></p>]
+		</div>
+		<div class="message [highlight|center]">
+			[<p></p>]
+		</div>
 	</div>
 	<div class="footer">
 		<button class="wui-button cancel">cancel</button>
