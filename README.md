@@ -16,8 +16,8 @@ License: `Apache License 2.0`
 Author: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 
 > [!NOTE]
-> The first two digits of the version number correspond to the highest version of the classes that make up the library,
-> while the third digit corresponds to the modification number of the general version.
+> The first two sections of the library version number correspond to the highest version of the classes that make up the library,
+> while the third section corresponds to the modification number of the general version.
 
 ## Index
 
@@ -41,7 +41,7 @@ Author: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 	*   [WUIMenubar](#WUIMenubar)
 	*   [WUIList](#WUIList)
 	*   [WUITable](#WUITable)
-	*   WUIForm
+	*   [WUIForm](#WUIForm)
 	*   [WUIFormat](#WUIFormat)
 	*   [WUISelectpicker](#WUISelectpicker)
 	*   [WUIDatepicker](#WUIDatepicker)
@@ -78,7 +78,7 @@ WUI, an acronym for *Web User Interface JavaScript library*, is an open source J
 | [WUIMenubar](#WUIMenubar)           | `0.1`   | Component for the implementation of menu bars. |
 | [WUIList](#WUIList)                 | `0.2`   | Component for the implementation of data lists and buttons for each row optionally. |
 | [WUITable](#WUITable)               | `0.2`   | Component for the implementation of data tables. Unlike the `WUIList` component, the `WUITable` component includes a column header. |
-| WUIForm                             | `0.2`   | Component for the implementation of data forms. This component allows the implementation of HTML data input elements such as `<input>`, `<select>`, and `<textarea>`, and WUI library objects such as `WUISelectpicker`, `WUIDatepicker`, `WUITimepicker`, `WUIColorpicker`, `WUICheckbox`, `WUIIntensity`, and `WUIButton`. |
+| [WUIForm](#WUIForm)                 | `0.2`   | Component for the implementation of data forms. This component allows the implementation of HTML data input elements such as `<input>`, `<select>`, and `<textarea>`, and WUI library objects such as `WUISelectpicker`, `WUIDatepicker`, `WUITimepicker`, `WUIColorpicker`, `WUICheckbox`, `WUIIntensity`, and `WUIButton`. |
 | [WUIFormat](#WUIFormat)             | `0.2`   | Tool for managing and validating `string`, `number` and `Date` data formats. |
 | [WUISelectpicker](#WUISelectpicker) | `0.2`   | Component for the implementation of multiple or exclusive selection list data inputs based on HTML element `<select>`. |
 | [WUIDatepicker](#WUIDatepicker)     | `0.2`   | Component for the implementation of date type data inputs based on HTML element `<input type="date">`. |
@@ -874,7 +874,7 @@ HTML body manager. Allows the import of CSS/JS/HTML content and facilitates impl
 | environment     | `string`   | `"web"`       | (get/set)<br><br>Web interface deployment environment.<br><br>Values:<br>• `"web"`<br>• `"native.android"`<br>• `"native.ios"` |
 | importDirectory | `string`   | `""`          | (get/set)<br><br>Relative path of the directory where the subdirectories for content import are hosted. |
 | importMode      | `string`   | `"fetch"`     | (get/set)<br><br>Content retrieval method for upload.<br><br>Values:<br>• `"fetch"`<br>• `"xhr"`<br><br>When deploying to native environments using WebView for Android or WebKit for iOS, it is recommended to use `"xhr"`. |
-| onCompleted     | `function` | `null`        | (get/set)<br><br>Function that is called when all content is imported and loaded into the body of the HTML page. |
+| onCompleted     | `function` | `null`        | (get/set)<br><br>Function run when all content is imported and loaded into the body of the HTML page. |
 | debug           | `boolean`  | `false`       | (get/set)<br><br>Test mode. Prints imported content to the console when the property value is `true`. |
 
 #### Methods
@@ -977,7 +977,7 @@ Language manager for web interfaces. Allows you to load language files in JS or 
 | mode       | `string`   | `"js"`            | (get/set)<br><br>Language file format.<br><br>Values:<br>• `"js"`<br>• `"json"` |
 | dataKey    | `string`   | `"key"`           | (get/set)<br><br>Name of the `data-*` attribute that contains the text key in HTML elements. |
 | dataOutput | `string`   | `"text"`          | (get/set)<br><br>Name of the `data-*` attribute where the loaded text can be placed. |
-| onLoad     | `function` | `null`            | (get/set)<br><br>Function that is called when the language loading has finished. |
+| onLoad     | `function` | `null`            | (get/set)<br><br>Function run when the language loading has finished. |
 
 #### Methods
 
@@ -1105,9 +1105,9 @@ Tool for animating HTML elements using the "onscroll" event of the HTML page bod
 | behavior      | `string`   | `"smooth"`                  | (get/set)<br><br>Behavior for moving focus to the body of the HTML page.<br><br>Values:<br>• `"auto"`<br>• `"smooth"` |
 | dataScrollY   | `string`   | `"scrollY"`                 | (get/set)<br><br>Name of the `data-*` attribute of the main document element (`<html>` / `document.documentElement`) that contains the numeric value measured in pixels of the total vertical scrolling of the HTML page, where `0` represents the top of the document (or no movement). |
 | dataDelay     | `string`   | `"delay"`                   | (get/set)<br><br>Name of the `data-*` attribute that determines the time, measured in milliseconds, that it takes for an HTML element animated using CSS styles to animate once it is given focus. |
-| onStart       | `function` | `null`                      | (get/set)<br><br>Function that is called when the scroll movement starts, either through the `scroll` events for the mouse or `touchmove` for the touch screen. |
-| onMove        | `function` | `null`                      | (get/set)<br><br>Function that is called when the scroll movement is executed, either through the `scroll` events for the mouse or `touchmove` for the touch screen. |
-| onStop        | `function` | `null`                      | (get/set)<br><br>Function that is called when the scroll movement ends, either through the `scroll` events for the mouse or `touchmove` for the touch screen. |
+| onStart       | `function` | `null`                      | (get/set)<br><br>Function run when the scroll movement starts, either through the `scroll` events for the mouse or `touchmove` for the touch screen. |
+| onMove        | `function` | `null`                      | (get/set)<br><br>Function run when the scroll movement is executed, either through the `scroll` events for the mouse or `touchmove` for the touch screen. |
+| onStop        | `function` | `null`                      | (get/set)<br><br>Function run when the scroll movement ends, either through the `scroll` events for the mouse or `touchmove` for the touch screen. |
 | scrollY       | `number`   | `0`                         | (get)<br><br>Vertical position of the page measured in pixels. |
 | deltaY        | `number`   | `0`                         | (get)<br><br>Last step of scrolling in the vertical movement of the page, measured in pixels. |
 | direction     | `string`   | `null`                      | (get)<br><br>Direction of vertical page movement.<br><br>Values:<br>• `"up"`<br>• `"down"` |
@@ -1128,7 +1128,7 @@ Tool for animating HTML elements using the "onscroll" event of the HTML page bod
 | height    | `number`   | `undefined`   | Section height. This can be expressed as a number associated with pixels or in a CSS compatible format. |
 | steps     | `number`   | `undefined`   | Total number of steps defined in the `animation` animation function. |
 | pages     | `number`   | `undefined`   | Total number of pages defined in the `animation` animation function. |
-| animation | `function` | `undefined`   | `function(step, progress)`<br><br>Arguments:<br>**• step:** `number`, value between `0` and `pages - 1` <br>**• progress:** `number`, value between `0` and `1` <br><br>Function that is called when the scroll movement is executed in a section. |
+| animation | `function` | `undefined`   | `function(step, progress)`<br><br>Arguments:<br>**• step:** `number`, value between `0` and `pages - 1` <br>**• progress:** `number`, value between `0` and `1` <br><br>Function run when the scroll movement is executed in a section. |
 
 #### Methods
 
@@ -1834,8 +1834,8 @@ Component for the implementation of menu bars.
 | topButtons    | `array`    | `[]`             | (get/set)<br><br>List of menu top buttons, as defined by **Button Options**. These buttons are not visible in mobile mode (when the screen width is less than `768px`). |
 | mainButtons   | `array`    | `[]`             | (get/set)<br><br>List of menu main buttons, as defined by **Button Options**. |
 | bottomButtons | `array`    | `[]`             | (get/set)<br><br>List of menu bottom buttons, as defined by **Button Options**. These buttons are not visible in mobile mode (when the screen width is less than `768px`). |
-| onClick       | `function` | `null`           | (get/set)<br><br>Function called when a button is clicked. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
-| onSelect      | `function` | `null`           | (get/set)<br><br>Function called when a button with the `selectable` property is selected. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
+| onClick       | `function` | `null`           | (get/set)<br><br>Function run when a button is clicked. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
+| onSelect      | `function` | `null`           | (get/set)<br><br>Function run when a button with the `selectable` property is selected. The function receives as parameters:<br><br>**• id:** `string`, unique button identifier. |
 
 #### Button Options
 
@@ -1851,7 +1851,7 @@ Component for the implementation of menu bars.
 | tooltipable  | `boolean`  | `true`        | Defines whether the button displays a tooltip when collapsed and the screen width is greater than or equal to `768px`. |
 | selected     | `boolean`  | `false`       | Defines whether the button is selected. |
 | enabled      | `boolean`  | `true`        | Defines whether the button is enabled. |
-| onClick      | `function` | `null`        | Function called when the button is clicked. If defined, this option takes precedence over the `onClick` property. |
+| onClick      | `function` | `null`        | Function run when the button is clicked. If defined, this option takes precedence over the `onClick` property. |
 
 #### Methods
 
@@ -2139,8 +2139,8 @@ Component for the implementation of data lists and buttons for each row optional
 | rows         | `array`    | `[]`          | (get/set)<br><br>List of rows in the list, as defined by **Row Options**. |
 | buttons      | `array`    | `[]`          | (get/set)<br><br>List of row buttons in the list, as defined by **Row Button Options**. |
 | buttonsStyle | `string`   | `"round"`     | (get/set)<br><br>Row button style.<br><br>Values:<br>• `"round"`, circular shape.<br>• `"stretch"`, square shape. |
-| onPrint      | `function` | `null`        | (get/set)<br><br>Function that is called when a page or the entire list is displayed. The function receives as parameters:<br><br>**• page:** `number`, page number.<br>**• pages:** `number`, total pages.<br>**• total:** `number`, total rows. |
-| onClick      | `function` | `null`        | (get/set)<br><br>Function that is called when a row is clicked. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
+| onPrint      | `function` | `null`        | (get/set)<br><br>Function run when a page or the entire list is displayed. The function receives as parameters:<br><br>**• page:** `number`, page number.<br>**• pages:** `number`, total pages.<br>**• total:** `number`, total rows. |
+| onClick      | `function` | `null`        | (get/set)<br><br>Function run when a row is clicked. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
 
 #### Column Options
 
@@ -2166,7 +2166,7 @@ Component for the implementation of data lists and buttons for each row optional
 | iconClass | `string\|function`  | `undefined`   | CSS styles that define the row button icon. This option can optionally be used with the [WUIIcon](#WUIIcon) library by using the `wui-icon` style in conjunction with a specific icon style. |
 | bgcolor   | `string\|function`  | `undefined`   | Background color in CSS compatible format. |
 | enabled   | `boolean\|function` | `true`        | Defines whether the button is enabled. |
-| onClick   | `function`          | `null`        | Function called when the button is clicked. It receives the parameters `index`, corresponding to the row position starting from `0`; and `id`, corresponding to the row's unique identifier. |
+| onClick   | `function`          | `null`        | Function run when the button is clicked. It receives the parameters `index`, corresponding to the row position starting from `0`; and `id`, corresponding to the row's unique identifier. |
 
 > [!IMPORTANT]
 > Options that accept optional function values ​​(`iconClass`, `bgcolor` and `enabled`) receive the parameters `index`, corresponding to the row position starting from `0`; and `id`, corresponding to the row's unique identifier.
@@ -2473,10 +2473,10 @@ Component for the implementation of data tables. Unlike the `WUIList` object, th
 | resizable    | `boolean`  | `true`         | (get/set)<br><br>Define whether columns are resizable. |
 | draggable    | `boolean`  | `true`         | (get/set)<br><br>Define whether columns are draggable so their position can be changed. |
 | selectable   | `boolean`  | `true`         | (get/set)<br><br>Define whether rows are selectable. |
-| onPrint      | `function` | `null`         | (get/set)<br><br>Function that is called when a page or the entire table is displayed. The function receives as parameters:<br><br>**• page:** `number`, page number.<br>**• pages:** `number`, total pages.<br>**• total:** `number`, total rows. |
-| onClick      | `function` | `null`         | (get/set)<br><br>Function that is called when a row is clicked. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
-| onDblClick   | `function` | `null`         | (get/set)<br><br>Function that is called when a row is double-clicked. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
-| onSelect     | `function` | `null`         | (get/set)<br><br>Function that is called when a row is selected. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
+| onPrint      | `function` | `null`         | (get/set)<br><br>Function run when a page or the entire table is displayed. The function receives as parameters:<br><br>**• page:** `number`, page number.<br>**• pages:** `number`, total pages.<br>**• total:** `number`, total rows. |
+| onClick      | `function` | `null`         | (get/set)<br><br>Function run when a row is clicked. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
+| onDblClick   | `function` | `null`         | (get/set)<br><br>Function run when a row is double-clicked. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
+| onSelect     | `function` | `null`         | (get/set)<br><br>Function run when a row is selected. The function receives as parameters:<br><br>**• index:** `number`, row number.<br>**• id:** `string`, row id.<br>**• enabled:** `boolean`, row enable state.<br>**• options:** `object`, row settings options. |
 
 #### Column Options
 
@@ -2786,6 +2786,81 @@ table.print();
 > You can check this functional example in CodePen at the link: [https://codepen.io/wuijsproject/pen/jErboKZ](https://codepen.io/wuijsproject/pen/jErboKZ).
 
 <a name="WUIForm"></a>
+
+### WUIForm
+
+Version: `0.2`
+
+Component for the implementation of data forms. This component allows the implementation of HTML data input elements such as `<input>`, `<select>`, and `<textarea>`, and WUI library objects such as `WUISelectpicker`, `WUIDatepicker`, `WUITimepicker`, `WUIColorpicker`, `WUICheckbox`, `WUIIntensity`, and `WUIButton`.
+
+#### Sources
+
+| Type | File |
+| ---- | ---- |
+| JS   | [src/WUI/Form/WUIForm-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Form/WUIForm-0.2.js) |
+| CSS  | [src/WUI/Form/WUIForm-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Form/WUIForm-0.2.css) |
+
+#### Constructor
+
+| Type    | Description |
+| ------- | ----------- |
+| WUIForm | `WUIForm([properties])`<br><br>Arguments:<br>**• properties:** `object` |
+
+#### Properties
+
+| Property    | Type       | Default value | Description |
+| ----------- | ---------- | ------------- | ----------- |
+| selector    | `string`   | `".wui-form"` | (get/set)<br><br>CSS selector that defines the HTML container element of the form. If more than one element matches the selector, only the first match will be included. |
+| submit      | `boolean`  | `true`        | (get/set)<br><br>Defines whether the form should be submitted natively when the submit event occurs. |
+| onScrolling | `function` | `null`        | (get/set)<br><br>Function run when the content of the form body is scrolled. |
+| onSubmit    | `function` | `null`        | (get/set)<br><br>Function run when the form is submitted. |
+
+#### Methods
+
+| Method      | Return type                                                | Description |
+| ----------- | ---------------------------------------------------------- | ----------- |
+| getElement  | `HTMLElement`                                              | `getElement()`<br><br>Returns the HTML container element of the form. |
+| getForm     | `HTMLFormElement`                                          | `getForm()`<br><br>Returns the HTML `<form>` element. |
+| getFormData | `FormData`                                                 | `getFormData()`<br><br>Returns the form data. |
+| getHeader   | `HTMLElement`                                              | `getHeader()`<br><br>Returns the HTML element of the form header section. |
+| getBody     | `HTMLElement`                                              | `getBody()`<br><br>Returns the HTML element of the form body section. |
+| getFooter   | `HTMLElement`                                              | `getFooter()`<br><br>Returns the HTML element of the form footer section. |
+| getField    | `HTMLElement`                                              | `getField(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Returns the HTML element containing the field identified by the input field name. |
+| getIcon     | `HTMLElement`                                              | `getIcon(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Returns the HTML element of the field icon section identified by the input field name. |
+| getLabel    | `HTMLLabelElement`                                         | `getLabel(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Returns the HTML element of the section of the field label identified by the input field name. |
+| getInput    | `HTMLInputElement\|HTMLSelectElement\|HTMLTextAreaElement` | `getInput(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Returns the HTML element of the input field section identified by the input field name. |
+| getData     | `HTMLDataElement`                                          | `getData(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Returns the HTML element of the data section of the field identified by the style class name. |
+| getText     | `HTMLElement`                                              | `getText(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Returns the auxiliary HTML text element identified by the style class name. |
+| getValue    | `string`                                                   | `getValue(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Returns the value of the input field identified by the input field name or the value of the output field identified by the style class name. |
+| setType     | `void`                                                     | `setType(name, type)`<br><br>Arguments:<br>**• name:** `string`<br>**• type:** `string`<br><br>Sets the type of the input field identified by the input field name using the `type` attribute of the `<input>` tag. |
+| setValue    | `HTMLInputElement\|HTMLSelectElement\|HTMLTextAreaElement` | `setValue(name, value)`<br><br>Arguments:<br>**• name:** `string`<br>**• value:** `string`<br><br>Sets the value of the input field identified by the input field name. |
+| setData     | `HTMLDataElement`                                          | `setData(name, value)`<br><br>Arguments:<br>**• name:** `string`<br>**• value:** `mixed`<br><br>Sets the value of the HTML element in the data section of the field identified by the style class name. |
+| setText     | `HTMLElement`                                              | `setText(name, value)`<br><br>Arguments:<br>**• name:** `string`<br>**• value:** `string`<br><br>Sets the content of the auxiliary text HTML element identified by the style class name. |
+| setEnabled  | `void`                                                     | `setEnabled(name, value)`<br><br>Arguments:<br>**• name:** `string`<br>**• value:** `boolean`<br><br>Enables or disables the field identified by the input field name. |
+| reset       | `void`                                                     | `reset()`<br><br>Resets the form values. |
+| focus       | `void`                                                     | `focus(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Sets the focus to the field identified by the input field name. |
+| blur        | `void`                                                     | `blur(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Removes focus from the field identified by the input field name. |
+| change      | `void`                                                     | `change(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Triggers the change event in the field identified by the input field name. |
+| autosize    | `void`                                                     | `autosize(name)`<br><br>Arguments:<br>**• name:** `string`<br><br>Automatically adjusts the height of a text field `<textarea>` identified by the input field name. |
+
+#### Implementation
+
+HTML Head:
+
+```html
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Form/WUIForm-0.2.css">
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Form/WUIForm-0.2.js"></script>
+```
+
+JS Code:
+
+```js
+const form = new WUIForm({
+	selector: ".wui-form.my-form",
+	//onSubmit: () => null
+});
+```
+
 <a name="WUIFormat"></a>
 
 ### WUIFormat
@@ -3043,8 +3118,8 @@ Component for the implementation of multiple or exclusive selection list data in
 | separatorText  | `string`   | `", "`                | (get/set)<br><br>Character separator of texts in case of multiple selection. |
 | filterable     | `boolean`  | `true`                | (get/set)<br><br>Defines if the selector allows filtering options by text input. |
 | enabled        | `boolean`  | `true`                | (get/set)<br><br>Defines whether the data input is enabled. |
-| onOpen         | `function` | `null`                | (get/set)<br><br>Function called when the selector is opened. The function receives the current selected value as a parameter. |
-| onChange       | `function` | `null`                | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
+| onOpen         | `function` | `null`                | (get/set)<br><br>Function run when the selector is opened. The function receives the current selected value as a parameter. |
+| onChange       | `function` | `null`                | (get/set)<br><br>Function run when the selected value changes. The function receives the new selected value as a parameter. |
 
 #### Menu Options
 
@@ -3305,8 +3380,8 @@ Component for the implementation of date type data inputs based on HTML element 
 | openDirection | `string`   | `"down"`             | (get/set)<br><br>Opening direction of the calendar.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
 | boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
 | enabled       | `boolean`  | `true`               | (get/set)<br><br>Defines whether the input is enabled. |
-| onOpen        | `function` | `null`               | (get/set)<br><br>Function called when the calendar is opened. The function receives the current selected value as a parameter. |
-| onChange      | `function` | `null`               | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Function run when the calendar is opened. The function receives the current selected value as a parameter. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Function run when the selected value changes. The function receives the new selected value as a parameter. |
 
 #### Methods
 
@@ -3541,8 +3616,8 @@ Component for the implementation of time type data inputs based on HTML element 
 | openDirection | `string`   | `"down"`             | (get/set)<br><br>Opening direction of the time picker.<br><br>Values:<br>• `"up"`, upwards.<br>• `"down"`, downwards. |
 | boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Horizontal alignment of the calendar relative to the input.<br><br>Values:<br>• `"left"`, left.<br>• `"center"`, center.<br>• `"right"`, right. |
 | enabled       | `boolean`  | `true`               | (get/set)<br><br>Defines whether the input is enabled. |
-| onOpen        | `function` | `null`               | (get/set)<br><br>Function called when the time picker is opened. The function receives the current selected value as a parameter. |
-| onChange      | `function` | `null`               | (get/set)<br><br>Function called when the selected value changes. The function receives the new selected value as a parameter. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Function run when the time picker is opened. The function receives the current selected value as a parameter. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Function run when the selected value changes. The function receives the new selected value as a parameter. |
 
 #### Methods
 
@@ -3940,7 +4015,7 @@ Component for the implementation of checkbox type data inputs based on HTML elem
 | value    | `string`   | `"1"`             | (get/set)<br><br>Value that the checkbox will take when it is checked. |
 | checked  | `boolean`  | `false`           | (get/set)<br><br>Defines if the checkbox is checked. |
 | enabled  | `boolean`  | `true`            | (get/set)<br><br>Defines if the checkbox is enabled. |
-| onChange | `function` | `null`            | (get/set)<br><br>Function called when the checkbox state changes. The function receives as a parameter the boolean state `checked` and the value of the check box. |
+| onChange | `function` | `null`            | (get/set)<br><br>Function run when the checkbox state changes. The function receives as a parameter the boolean state `checked` and the value of the check box. |
 
 #### Methods
 
@@ -4094,7 +4169,7 @@ Component for the implementation of 4-level intensity selector type data inputs:
 | selector | `string`   | `".wui-intensity"` | (get/set)<br><br>CSS selector defining the `HTMLDivElement` HTML element wrapping the `range` type `HTMLInputElement` element that will be converted into the object. If more than one element matches the selector, only the first match will be included. |
 | value    | `number`   | `0`                | (get/set)<br><br>Intensity value (0: none, 1: low, 2: half, 3: high). Also accepts strings `"none"`, `"low"`, `"half"`, `"high"`. |
 | enabled  | `boolean`  | `true`             | (get/set)<br><br>Defines if the selector is enabled. |
-| onChange | `function` | `null`             | (get/set)<br><br>Function called when the value changes. The function receives the integer value (0-3) and the associated string as parameters. |
+| onChange | `function` | `null`             | (get/set)<br><br>Function run when the value changes. The function receives the integer value (0-3) and the associated string as parameters. |
 
 #### Methods
 
@@ -4224,8 +4299,8 @@ Component for the implementation of.
 | selectable   | `boolean`  | `true`          | (get/set)<br><br>Define whether the button is selectable. |
 | locked       | `boolean`  | `false`         | (get/set)<br><br>Defines whether the button is locked. |
 | enabled      | `boolean`  | `true`          | (get/set)<br><br>Defines whether the button is enabled. |
-| onClick      | `function` | `null`          | (get/set)<br><br>Function that is called when the button is clicked. The function does not receive parameters. |
-| onDblClick   | `function` | `null`          | (get/set)<br><br>Function that is called when the button is double-clicked. The function does not receive parameters. |
+| onClick      | `function` | `null`          | (get/set)<br><br>Function run when the button is clicked. The function does not receive parameters. |
+| onDblClick   | `function` | `null`          | (get/set)<br><br>Function run when the button is double-clicked. The function does not receive parameters. |
 
 #### Methods
 

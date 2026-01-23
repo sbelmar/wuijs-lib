@@ -8,7 +8,7 @@ class WUIForm {
 
 	static version = "0.2";
 	static #defaults = {
-		selector: "",
+		selector: ".wui-form",
 		submit: true,
 		onScrolling: null,
 		onSubmit: null
@@ -43,10 +43,11 @@ class WUIForm {
 	#properties = {};
 	#htmlElement;
 	#htmlElements = {
+		form: null,
 		header: null,
 		body: null,
-		footer: null,
-		form: null
+		footer: null
+
 	};
 	#colorScheme;
 
@@ -107,6 +108,14 @@ class WUIForm {
 		return this.#htmlElement;
 	}
 
+	getForm() {
+		return this.#htmlElements.form;
+	}
+
+	getFormData() {
+		return new FormData(this.#htmlElements.form instanceof HTMLFormElement ? this.#htmlElements.form : null);
+	}
+
 	getHeader() {
 		return this.#htmlElements.header;
 	}
@@ -117,14 +126,6 @@ class WUIForm {
 
 	getFooter() {
 		return this.#htmlElements.footer;
-	}
-
-	getForm() {
-		return this.#htmlElements.form;
-	}
-
-	getFormData() {
-		return new FormData(this.#htmlElements.form);
 	}
 
 	#getNode(name, type) {
@@ -184,10 +185,11 @@ class WUIForm {
 		input.type = type.toLowerCase();
 	}
 
-	setValue = (name, value, visible = true) => {
+	setValue = (name, value) => {
 		const label = this.getLabel(name);
 		const input = this.getInput(name);
-		if (label instanceof HTMLLabelElement && visible) {
+		const hidden = Boolean(typeof (input.type) != "undefined" && input.type == "hidden");
+		if (label instanceof HTMLLabelElement && !hidden) {
 			if (value != "") {
 				label.classList.add("notempty");
 			} else {
@@ -479,7 +481,7 @@ HTML output:
 				<label>Data</label>
 				<data class="name" value=""></data>
 			</div>
-			<div class="text [disabled|center]">
+			<div class="text name [disabled|center]">
 				[<p></p>]
 			</div>
 			<div class="message [highlight|center]"></div>

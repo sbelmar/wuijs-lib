@@ -16,8 +16,8 @@ Licencia: `Licencia Apache 2.0`
 Autor: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 
 > [!NOTE]
-> Los dos primeros dígitos del número de versión corresponde a la mayor versión de las clases que componen la biblioteca,
-> meientras que el tercer digito corresponde al número de modificación de la versión general.
+> Las dos primeras secciones del número de versión de la biblioteca corresponde a la versión más alta de las clases que componen la biblioteca,
+> mientras que la tercera sección corresponde al número de modificación de la versión general.
 
 ## Índice
 
@@ -41,7 +41,7 @@ Autor: `Sergio E. Belmar V. <wuijs.project@gmail.com>`
 	*   [WUIMenubar](#WUIMenubar)
 	*   [WUIList](#WUIList)
 	*   [WUITable](#WUITable)
-	*   WUIForm
+	*   [WUIForm](#WUIForm)
 	*   [WUIFormat](#WUIFormat)
 	*   [WUISelectpicker](#WUISelectpicker)
 	*   [WUIDatepicker](#WUIDatepicker)
@@ -78,7 +78,7 @@ WUI, acrónimo del inglés *Web User Interface JavaScript library*, es una bibli
 | [WUIMenubar](#WUIMenubar)           | `0.1`   | Componente para la implementación de barras de menú. |
 | [WUIList](#WUIList)                 | `0.2`   | Componente para la implementación de listas de datos y botoneras para cada fila de manera opcional. |
 | [WUITable](#WUITable)               | `0.2`   | Componente para la implementación de tablas de datos. A diferencia del componente `WUIList`, el componente `WUITable` incluye una cabecera de columnas. |
-| WUIForm                             | `0.2`   | Componente para la implementación de formularios de datos. Este componente permite la implementación de elementos HTML de entrada de datos tales como `<input>`, `<select>` y `<textarea>` y objetos de la librería WUI como `WUISelectpicker`, `WUIDatepicker`, `WUITimepicker`, `WUIColorpicker`, `WUICheckbox`, `WUIIntensity` y `WUIButton`. |
+| [WUIForm](#WUIForm)                 | `0.2`   | Componente para la implementación de formularios de datos. Este componente permite la implementación de elementos HTML de entrada de datos tales como `<input>`, `<select>` y `<textarea>` y objetos de la librería WUI como `WUISelectpicker`, `WUIDatepicker`, `WUITimepicker`, `WUIColorpicker`, `WUICheckbox`, `WUIIntensity` y `WUIButton`. |
 | [WUIFormat](#WUIFormat)             | `0.2`   | Herramienta para manejo y validación de formatos de datos de tipo `string`, `number` y `Date`. |
 | [WUISelectpicker](#WUISelectpicker) | `0.2`   | Componente para la implementación de entradas de datos de tipo lista de selección múltiple o excluyente basada en el elemento HTML `<select>`. |
 | [WUIDatepicker](#WUIDatepicker)     | `0.2`   | Componente para la implementación de entradas de datos de tipo fecha basada en el elemento HTML `<input type="date">`. |
@@ -876,7 +876,7 @@ Administrador de cuerpo HTML. Permite la importación de contenido CSS/JS/HTML y
 | environment     | `string`   | `"web"`              | (get/set)<br><br>Entorno de despliegue de la interfaz web.<br><br>Valores:<br>• `"web"`<br>• `"native.android"`<br>• `"native.ios"` |
 | importDirectory | `string`   | `""`                 | (get/set)<br><br>Ruta relativa del directorio donde se alojan los subdirectorio para importación de contenido. |
 | importMode      | `string`   | `"fetch"`            | (get/set)<br><br>Método de recuperación de contenido para carga.<br><br>Valores:<br>• `"fetch"`<br>• `"xhr"`<br><br>Cuando el despliegue se realiza en ambientes nativos mediante WebView para Android o WebKit para iOS, se recomienda utilizar `"xhr"`. |
-| onCompleted     | `function` | `null`               | (get/set)<br><br>Función que se llama cuando todos los contenidos son importados y cargados en el cuerpo de la página HTML. |
+| onCompleted     | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando todos los contenidos son importados y cargados en el cuerpo de la página HTML. |
 | debug           | `boolean`  | `false`              | (get/set)<br><br>Modo de testeo. Imprime en consola los contenidos importados cuando el valor de la propiedad es `true`. |
 
 #### Métodos
@@ -979,7 +979,7 @@ Administrador de idioma para interfaces web. Permite cargar archivos de idioma e
 | mode       | `string`   | `"js"`               | (get/set)<br><br>Formato de los archivos de idioma.<br><br>Valores:<br>• `"js"`<br>• `"json"` |
 | dataKey    | `string`   | `"key"`              | (get/set)<br><br>Nombre del atributo `data-*` que contiene la clave de texto en los elementos HTML. |
 | dataOutput | `string`   | `"text"`             | (get/set)<br><br>Nombre del atributo `data-*` donde se puede colocar el texto cargado. |
-| onLoad     | `function` | `null`               | (get/set)<br><br>Función que se llama cuando la carga de idioma ha finalizado. |
+| onLoad     | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando la carga de idioma ha finalizado. |
 
 #### Métodos
 
@@ -1107,9 +1107,9 @@ Herramienta para animación de elementos HTML mediante el evento "onscroll" del 
 | behavior      | `string`   | `"smooth"`                  | (get/set)<br><br>Comportamiento para desplazar el foco en el cuerpo de la página HTML.<br><br>Valores:<br>• `"auto"`<br>• `"smooth"` |
 | dataScrollY   | `string`   | `"scrollY"`                 | (get/set)<br><br>Nombre del atributo `data-*` del elemento de documento principal (`<html>` / `document.documentElement`) que contiene el valor numérico medido en píxeles del desplazamiento total del scroll vertical de la página HTML y donde `0` representa la parte superior del documento (o sin movimiento). |
 | dataDelay     | `string`   | `"delay"`                   | (get/set)<br><br>Nombre del atributo `data-*` que determina el tiempo medido en milisegundos en que tarda en animarse un elemento HTML animados mediante estilos CSS una vez que se le da foco. |
-| onStart       | `function` | `null`                      | (get/set)<br><br>Función que se llama cuando inicia el movimiento del scroll, ya sea a travéz de los eventos `scroll` para ratón o `touchmove` para pantalla táctil. |
-| onMove        | `function` | `null`                      | (get/set)<br><br>Función que se llama cuando se ejecuta el movimiento del scroll, ya sea a travéz de los eventos `scroll` para ratón o `touchmove` para pantalla táctil. |
-| onStop        | `function` | `null`                      | (get/set)<br><br>Función que se llama cuando termina el movimiento del scroll, ya sea a travéz de los eventos `scroll` para ratón o `touchmove` para pantalla táctil. |
+| onStart       | `function` | `null`                      | (get/set)<br><br>Función que se ejecuta cuando inicia el movimiento del scroll, ya sea a travéz de los eventos `scroll` para ratón o `touchmove` para pantalla táctil. |
+| onMove        | `function` | `null`                      | (get/set)<br><br>Función que se ejecuta cuando se ejecuta el movimiento del scroll, ya sea a travéz de los eventos `scroll` para ratón o `touchmove` para pantalla táctil. |
+| onStop        | `function` | `null`                      | (get/set)<br><br>Función que se ejecuta cuando termina el movimiento del scroll, ya sea a travéz de los eventos `scroll` para ratón o `touchmove` para pantalla táctil. |
 | scrollY       | `number`   | `0`                         | (get)<br><br>Posición vertical de la página medida en píxeles. |
 | deltaY        | `number`   | `0`                         | (get)<br><br>Último paso de desplazamiento en el movimiento vertical de la página medida en píxeles. |
 | direction     | `string`   | `null`                      | (get)<br><br>Sentido del movimiento vertical de la página.<br><br>Valores:<br>• `"up"`<br>• `"down"` |
@@ -1130,7 +1130,7 @@ Herramienta para animación de elementos HTML mediante el evento "onscroll" del 
 | height    | `number`   | `undefined`          | Alto de la sección. Este puede estar expresado como número asociado a píxeles o en formato compatible CSS. |
 | steps     | `number`   | `undefined`          | Número total de pasos definidos en la función de animación `animation`. |
 | pages     | `number`   | `undefined`          | Número total de paginas definidos en la función de animación `animation`. |
-| animation | `function` | `undefined`          | `function(step, progress)`<br><br>Parámetros:<br>**• step:** `number`, valor entre `0` y `pages - 1` <br>**• progress:** `number`, valor entre `0` y `1` <br><br>Función que se llama cuando se ejecuta el movimiento del scroll en una sección. |
+| animation | `function` | `undefined`          | `function(step, progress)`<br><br>Parámetros:<br>**• step:** `number`, valor entre `0` y `pages - 1` <br>**• progress:** `number`, valor entre `0` y `1` <br><br>Función que se ejecuta cuando se ejecuta el movimiento del scroll en una sección. |
 
 #### Métodos
 
@@ -1836,8 +1836,8 @@ Componente para la implementación de barras de menú.
 | topButtons    | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú superior, según la definición de **Opciones de Botón**. Los botónes de esta sección no son visibles en modo móvil (cuando el ancho de la pantalla es inferior a `768px`). |
 | mainButtons   | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú principal, según la definición de **Opciones de Botón**. |
 | bottomButtons | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de menú inferior, según la definición de **Opciones de Botón**. Los botónes de esta sección no son visibles en modo móvil (cuando el ancho de la pantalla es inferior a `768px`). |
-| onClick       | `function` | `null`               | (get/set)<br><br>Función que se llama cuando un botón es presionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
-| onSelect      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando un botón con propiedad `selectable` es seleccionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
+| onClick       | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando un botón es presionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
+| onSelect      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando un botón con propiedad `selectable` es seleccionado. La función recibe por parámetro:<br><br>**• id:** `string`, identificador único de botón. |
 
 #### Opciones de Botón
 
@@ -1853,7 +1853,7 @@ Componente para la implementación de barras de menú.
 | tooltipable  | `boolean`  | `true`               | Define si el botón muestra un tooltip cuando está contraido y el ancho de la pantalla es mayor o igual a `768px`. |
 | selected     | `boolean`  | `false`              | Define si el botón se encuentra seleccionado. |
 | enabled      | `boolean`  | `true`               | Define si el botón está habilitado. |
-| onClick      | `function` | `null`               | Función que se llama cuando el botón es presionado. Si está definida, esta opción tiene prioridad sobre la propiedad `onClick`. |
+| onClick      | `function` | `null`               | Función que se ejecuta cuando el botón es presionado. Si está definida, esta opción tiene prioridad sobre la propiedad `onClick`. |
 
 #### Métodos
 
@@ -2145,8 +2145,8 @@ Componente para la implementación de listas de datos y botoneras para cada fila
 | rows         | `array`    | `[]`                 | (get/set)<br><br>Lista de filas de la lista, según la definición de **Opciones de Fila**. |
 | buttons      | `array`    | `[]`                 | (get/set)<br><br>Lista de botones de filas de la lista, según la definición de **Opciones de Botón de Fila**. |
 | buttonsStyle | `string`   | `"round"`            | (get/set)<br><br>Estilo de los botones de fila.<br><br>Valores:<br>• `"round"`, forma circular.<br>• `"stretch"`, forma cuadrada. |
-| onPrint      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando se despliega una página o la totalidad de la lista. La función recibe por parámetro:<br><br>**• page:** `number`, número de página.<br>**• pages:** `number`, total de página.<br>**• total:** `number`, total de filas. |
-| onClick      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando una fila es presionada. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
+| onPrint      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando se despliega una página o la totalidad de la lista. La función recibe por parámetro:<br><br>**• page:** `number`, número de página.<br>**• pages:** `number`, total de página.<br>**• total:** `number`, total de filas. |
+| onClick      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando una fila es presionada. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
 
 #### Opciones de Columna
 
@@ -2172,7 +2172,7 @@ Componente para la implementación de listas de datos y botoneras para cada fila
 | iconClass | `string\|function`  | `undefined`          | Estilos CSS que define el ícono del botón de fila. Esta opción puede ser utilizado opcionalmente con la librería [WUIIcon](#wuiIcon) mediante el estilo `wui-icon` conjuntamente a un estilo de ícono específico. |
 | bgcolor   | `string\|function`  | `undefined`          | Color de fondo en formato compatible CSS. |
 | enabled   | `boolean\|function` | `true`               | Define si el botón está habilitado. |
-| onClick   | `function`          | `null`               | Función que se llama cuando el botón es presionado. Reciven los parámetro `index`, correspondiente a la posición de la fila partiendo desde `0`; y `id`, correspondiente al Identificador único de fila. |
+| onClick   | `function`          | `null`               | Función que se ejecuta cuando el botón es presionado. Reciven los parámetro `index`, correspondiente a la posición de la fila partiendo desde `0`; y `id`, correspondiente al Identificador único de fila. |
 
 > [!IMPORTANT]
 > Las opciones que aceptan valores opcionales de tipo función (`iconClass`, `bgcolor` y `enabled`), reciven los parámetro `index`, correspondiente a la posición de la fila partiendo desde `0`; e `id`, correspondiente al Identificador único de fila.
@@ -2479,10 +2479,10 @@ Componente para la implementación de tablas de datos. A diferencia del objeto `
 | resizable    | `boolean`  | `true`               | (get/set)<br><br>Define si las columnas son redimensionables. |
 | draggable    | `boolean`  | `true`               | (get/set)<br><br>Define si las columnas son arrastrables para poder cambiar su posición. |
 | selectable   | `boolean`  | `true`               | (get/set)<br><br>Define si las filas son seleccionables. |
-| onPrint      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando una página o la totalidad de la tabla es despliega. La función recibe por parámetro:<br><br>**• page:** `number`, número de página.<br>**• pages:** `number`, total de página.<br>**• total:** `number`, total de filas. |
-| onClick      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando una fila es presionada. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
-| onDblClick   | `function` | `null`               | (get/set)<br><br>Función que se llama cuando una fila es presionada dos veces. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
-| onSelect     | `function` | `null`               | (get/set)<br><br>Función que se llama cuando una fila es seleccionada. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
+| onPrint      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando una página o la totalidad de la tabla es despliega. La función recibe por parámetro:<br><br>**• page:** `number`, número de página.<br>**• pages:** `number`, total de página.<br>**• total:** `number`, total de filas. |
+| onClick      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando una fila es presionada. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
+| onDblClick   | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando una fila es presionada dos veces. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
+| onSelect     | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando una fila es seleccionada. La función recibe por parámetro:<br><br>**• index:** `number`, número de fila.<br>**• id:** `string`, id de fila.<br>**• enabled:** `boolean`, estado de habilitación de fila.<br>**• options:** `object`, opciones de configuración de la fila. |
 
 #### Opciones de Columna
 
@@ -2793,6 +2793,81 @@ table.print();
 > Puede revisar este ejemplo funcional en CodePen en el enlace: [https://codepen.io/wuijsproject/pen/jErboKZ](https://codepen.io/wuijsproject/pen/jErboKZ).
 
 <a name="WUIForm"></a>
+
+### WUIForm
+
+Versión: `0.2`
+
+Componente para la implementación de formularios de datos. Este componente permite la implementación de elementos HTML de entrada de datos tales como `<input>`, `<select>` y `<textarea>` y objetos de la librería WUI como `WUISelectpicker`, `WUIDatepicker`, `WUITimepicker`, `WUIColorpicker`, `WUICheckbox`, `WUIIntensity` y `WUIButton`.
+
+#### Fuentes
+
+| Tipo | Archivo |
+| ---- | ------- |
+| JS   | [src/WUI/Form/WUIForm-0.2.js](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Form/WUIForm-0.2.js) |
+| CSS  | [src/WUI/Form/WUIForm-0.2.css](https://github.com/wuijsproject/wuijs-lib/blob/main/src/WUI/Form/WUIForm-0.2.css) |
+
+#### Constructor
+
+| Tipo    | Descripción |
+| ------- | ----------- |
+| WUIForm | `WUIForm([properties])`<br><br>Parámetros:<br>**• properties:** `object` |
+
+#### Propiedades
+
+| Propiedad   | Tipo       | Valor predeterminado | Descripción |
+| ----------- | ---------- | -------------------- | ----------- |
+| selector    | `string`   | `".wui-form"`        | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del formulario. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
+| submit      | `boolean`  | `true`               | (get/set)<br><br>Define si el formulario debe enviarse de forma nativa al ocurrir el evento submit. |
+| onScrolling | `function` | `null`               | (get/set)<br><br>Función que se ejecuta al desplazar el contenido del cuerpo del formulario. |
+| onSubmit    | `function` | `null`               | (get/set)<br><br>Función que se ejecuta al enviar el formulario. |
+
+#### Métodos
+
+| Método      | Tipo retorno                                               | Descripción |
+| ----------- | ---------------------------------------------------------- | ----------- |
+| getElement  | `HTMLElement`                                              | `getElement()`<br><br>Retorna el elemento HTML contenedor del objeto. |
+| getForm     | `HTMLFormElement`                                          | `getForm()`<br><br>Retorna el elemento HTML `<form>`. |
+| getFormData | `FormData`                                                 | `getFormData()`<br><br>Retorna los datos del formulario. |
+| getHeader   | `HTMLElement`                                              | `getHeader()`<br><br>Retorna el elemento HTML de la sección de la cabecera del formulario. |
+| getBody     | `HTMLElement`                                              | `getBody()`<br><br>Retorna el elemento HTML de la sección del cuerpo del formulario. |
+| getFooter   | `HTMLElement`                                              | `getFooter()`<br><br>Retorna el elemento HTML de la sección del pie del formulario. |
+| getField    | `HTMLElement`                                              | `getField(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Retorna el elemento HTML contenedor del campo identificado por el nombre del campo de entrada. |
+| getIcon     | `HTMLElement`                                              | `getIcon(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Retorna el elemento HTML de la sección del ícono del campo identificado por el nombre del campo de entrada. |
+| getLabel    | `HTMLLabelElement`                                         | `getLabel(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Retorna el elemento HTML de la sección de la etiqueta del campo identificado por el nombre del campo de entrada. |
+| getInput    | `HTMLInputElement\|HTMLSelectElement\|HTMLTextAreaElement` | `getInput(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Retorna el elemento HTML de la sección del campo de entrada identificado por el nombre del campo de entrada. |
+| getData     | `HTMLDataElement`                                          | `getData(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Retorna el elemento HTML de la sección de datos del campo identificado por el nombre de la clase de estilo. |
+| getText     | `HTMLElement`                                              | `getText(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Retorna el elemento HTML de texto auxiliar identificado por el nombre de la clase de estilo. |
+| getValue    | `string`                                                   | `getValue(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Retorna el valor del campo de entrada identificado por el nombre del campo de entrada o el valor del campo de salida identificado por el nombre de la clase de estilo. |
+| setType     | `void`                                                     | `setType(name, type)`<br><br>Parámetros:<br>**• name:** `string`<br>**• type:** `string`<br><br>Establece el tipo del campo de entrada identificado por el nombre del campo de entrada mediante el atributo `type` de la etiqueta `<input>`. |
+| setValue    | `HTMLInputElement\|HTMLSelectElement\|HTMLTextAreaElement` | `setValue(name, value)`<br><br>Parámetros:<br>**• name:** `string`<br>**• value:** `string`<br><br>Establece el valor del campo de entrada identificado por el nombre del campo de entrada. |
+| setData     | `HTMLDataElement`                                          | `setData(name, value)`<br><br>Parámetros:<br>**• name:** `string`<br>**• value:** `mixed`<br><br>Establece el valor del elemento HTML de la sección de datos del campo identificado por el nombre de la clase de estilo. |
+| setText     | `HTMLElement`                                              | `setText(name, value)`<br><br>Parámetros:<br>**• name:** `string`<br>**• value:** `string`<br><br>Establece el contenido del elemento HTML de texto auxiliar identificado por el nombre de la clase de estilo. |
+| setEnabled  | `void`                                                     | `setEnabled(name, value)`<br><br>Parámetros:<br>**• name:** `string`<br>**• value:** `boolean`<br><br>Habilita o deshabilita el campo identificado por el nombre del campo de entrada. |
+| reset       | `void`                                                     | `reset()`<br><br>Restablece los valores del formulario. |
+| focus       | `void`                                                     | `focus(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Establece el foco en el campo identificado por el nombre del campo de entrada. |
+| blur        | `void`                                                     | `blur(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Quita el foco del campo identificado por el nombre del campo de entrada. |
+| change      | `void`                                                     | `change(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Desencadena el evento change en el campo identificado por el nombre del campo de entrada. |
+| autosize    | `void`                                                     | `autosize(name)`<br><br>Parámetros:<br>**• name:** `string`<br><br>Ajusta automáticamente la altura de un campo de texto `<textarea>` identificado por el nombre del campo de entrada. |
+
+#### Implementación
+
+Cabecera HTML:
+
+```html
+<link type="text/css" rel="stylesheet" href="https://wuijs.dev/Libraries/WUI/Form/WUIForm-0.2.css">
+<script type="text/javascript" src="https://wuijs.dev/Libraries/WUI/Form/WUIForm-0.2.js"></script>
+```
+
+Código JS:
+
+```js
+const form = new WUIForm({
+	selector: ".wui-form.my-form",
+	//onSubmit: () => null
+});
+```
+
 <a name="WUIFormat"></a>
 
 ### WUIFormat
@@ -3050,8 +3125,8 @@ Componente para la implementación de entradas de datos de tipo lista de selecci
 | separatorText  | `string`   | `", "`                | (get/set)<br><br>Caracter separador de textos en caso de selección múltiple. |
 | filterable     | `boolean`  | `true`                | (get/set)<br><br>Define si el selector permite filtrar opciones mediante entrada de texto. |
 | enabled        | `boolean`  | `true`                | (get/set)<br><br>Define si la entrada de datos está habilitada. |
-| onOpen         | `function` | `null`                | (get/set)<br><br>Función que se llama cuando se abre el selector. La función recibe por parámetro el valor actual seleccionado. |
-| onChange       | `function` | `null`                | (get/set)<br><br>Función que se llama cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
+| onOpen         | `function` | `null`                | (get/set)<br><br>Función que se ejecuta cuando se abre el selector. La función recibe por parámetro el valor actual seleccionado. |
+| onChange       | `function` | `null`                | (get/set)<br><br>Función que se ejecuta cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
 
 #### Opciones de Menú
 
@@ -3312,8 +3387,8 @@ Componente para la implementación de entradas de datos de tipo fecha basada en 
 | openDirection | `string`   | `"down"`             | (get/set)<br><br>Dirección de apertura del calendario.<br><br>Valores:<br>• `"up"`, hacia arriba.<br>• `"down"`, hacia abajo. |
 | boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Alineación horizontal del calendario respecto a la entrada de datos.<br><br>Valores:<br>• `"left"`, izquierda.<br>• `"center"`, centro.<br>• `"right"`, derecha. |
 | enabled       | `boolean`  | `true`               | (get/set)<br><br>Define si la entrada de datos está habilitada. |
-| onOpen        | `function` | `null`               | (get/set)<br><br>Función que se llama cuando se abre el calendario. La función recibe por parámetro el valor actual seleccionado. |
-| onChange      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando se abre el calendario. La función recibe por parámetro el valor actual seleccionado. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
 
 #### Métodos
 
@@ -3548,8 +3623,8 @@ Componente para la implementación de entradas de datos de tipo hora basada en e
 | openDirection | `string`   | `"down"`             | (get/set)<br><br>Dirección de apertura del selector de hora.<br><br>Valores:<br>• `"up"`, hacia arriba.<br>• `"down"`, hacia abajo. |
 | boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Alineación horizontal del calendario respecto a la entrada de datos.<br><br>Valores:<br>• `"left"`, izquierda.<br>• `"center"`, centro.<br>• `"right"`, derecha. |
 | enabled       | `boolean`  | `true`               | (get/set)<br><br>Define si la entrada de datos está habilitada. |
-| onOpen        | `function` | `null`               | (get/set)<br><br>Función que se llama cuando se abre el selector de hora. La función recibe por parámetro el valor actual seleccionado. |
-| onChange      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando se abre el selector de hora. La función recibe por parámetro el valor actual seleccionado. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
 
 #### Métodos
 
@@ -3744,8 +3819,8 @@ Componente para la implementación de entradas de datos de tipo selector de colo
 | openDirection | `string`   | `"down"`             | (get/set)<br><br>Dirección de apertura del selector de color.<br><br>Valores:<br>• `"up"`, hacia arriba.<br>• `"down"`, hacia abajo. |
 | boxAlign      | `string`   | `"left"`             | (get/set)<br><br>Alineación horizontal del calendario respecto a la entrada de datos.<br><br>Valores:<br>• `"left"`, izquierda.<br>• `"center"`, centro.<br>• `"right"`, derecha. |
 | enabled       | `boolean`  | `true`               | (get/set)<br><br>Define si la entrada de datos está habilitada. |
-| onOpen        | `function` | `null`               | (get/set)<br><br>Función que se llama cuando se abre el selector de color. La función recibe por parámetro el valor actual seleccionado. |
-| onChange      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
+| onOpen        | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando se abre el selector de color. La función recibe por parámetro el valor actual seleccionado. |
+| onChange      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando cambia el valor seleccionado. La función recibe por parámetro el nuevo valor seleccionado. |
 
 #### Métodos
 
@@ -3947,7 +4022,7 @@ Componente para la implementación de entradas de datos de tipo casilla de verif
 | value     | `string`   | `"1"`                | (get/set)<br><br>Valor que tomará la casilla de verificación cuando esté marcado. |
 | checked   | `boolean`  | `false`              | (get/set)<br><br>Define si la casilla de verificación está marcada. |
 | enabled   | `boolean`  | `true`               | (get/set)<br><br>Define si la casilla de verificación está habilitada. |
-| onChange  | `function` | `null`               | (get/set)<br><br>Función que se llama cuando el estado de la casilla de verificación cambia. La función recibe como parámetros el estado booleano `checked` y el valor de la casilla de verificación. |
+| onChange  | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando el estado de la casilla de verificación cambia. La función recibe como parámetros el estado booleano `checked` y el valor de la casilla de verificación. |
 
 #### Métodos
 
@@ -4101,7 +4176,7 @@ Componente para la implementación de entradas de datos de tipo selector de inte
 | selector  | `string`   | `".wui-intensity"`   | (get/set)<br><br>Selector CSS que define el elemento HTML contenedor del objeto. En caso de existir más de un elemento coincidente con el selector se incluirá únicamente la primera coincidencia. |
 | value     | `number`   | `0`                  | (get/set)<br><br>Valor de la intensidad (0: nada, 1: bajo, 2: medio, 3: alto). Acepta también las cadenas `"none"`, `"low"`, `"half"`, `"high"`. |
 | enabled   | `boolean`  | `true`               | (get/set)<br><br>Define si el selector está habilitado. |
-| onChange  | `function` | `null`               | (get/set)<br><br>Función que se llama cuando el valor cambia. La función recibe como parámetros el valor entero (0-3) y la cadena asociada. |
+| onChange  | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando el valor cambia. La función recibe como parámetros el valor entero (0-3) y la cadena asociada. |
 
 #### Métodos
 
@@ -4231,8 +4306,8 @@ Componente para la implementación de botones.
 | selectable   | `boolean`  | `true`               | (get/set)<br><br>Define si el botón es seleccionable. |
 | locked       | `boolean`  | `false`              | (get/set)<br><br>Define si el botón está bloqueado. |
 | enabled      | `boolean`  | `true`               | (get/set)<br><br>Define si el botón está habilitado. |
-| onClick      | `function` | `null`               | (get/set)<br><br>Función que se llama cuando el botón es presionado. La función no recibe parámetros. |
-| onDblClick   | `function` | `null`               | (get/set)<br><br>Función que se llama cuando el botón es presionado dos veces. La función no recibe parámetros. |
+| onClick      | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando el botón es presionado. La función no recibe parámetros. |
+| onDblClick   | `function` | `null`               | (get/set)<br><br>Función que se ejecuta cuando el botón es presionado dos veces. La función no recibe parámetros. |
 
 #### Métodos
 
