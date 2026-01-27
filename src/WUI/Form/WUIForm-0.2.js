@@ -436,7 +436,7 @@ HTML output:
 <form name="form" class="wui-form (line|border [curve]) [mobile]">
 	<input type="hidden" name="hidden">
 	<div class="header">Header</div>
-	<div class="body [scroll]">
+	<div class="body [scroll|scroll-x|scroll-y]">
 		<fieldset>
 			<legend>Fieldset</legend>
 			<div class="field icon-left">

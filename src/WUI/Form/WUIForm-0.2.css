@@ -72,6 +72,16 @@
 	overflow: auto !important;
 }
 
+.wui-form > .body.scroll-x {
+	overflow-x: auto !important;
+	overflow-y: hidden !important;
+}
+
+.wui-form > .body.scroll-y {
+	overflow-x: hidden !important;
+	overflow-y: auto !important;
+}
+
 .wui-form > .footer {
 	justify-content: center;
 	flex-basis: 80px;
@@ -740,25 +750,25 @@
 }
 
 @media screen and (min-width: 768px) {
-	.wui-form > .body.scroll {
+	.wui-form > .body:is(.scroll, .scroll-x, .scroll-y) {
 		scrollbar-color: var(--wui-form-body-scroll-bgcolor-out) transparent;
 	}
 
-	.wui-form > .body.scroll::-webkit-scrollbar {
+	.wui-form > .body:is(.scroll, .scroll-x, .scroll-y)::-webkit-scrollbar {
 		width: 4px;
 		background-color: transparent;
 	}
 
-	.wui-form > .body.scroll::-webkit-scrollbar-thumb {
+	.wui-form > .body:is(.scroll, .scroll-x, .scroll-y)::-webkit-scrollbar-thumb {
 		border-radius: 2px;
 		background-color: var(--wui-form-body-scroll-bgcolor-out);
 	}
 
-	.wui-form > .body.scroll::-webkit-scrollbar-thumb:is(:hover, :active) {
+	.wui-form > .body:is(.scroll, .scroll-x, .scroll-y)::-webkit-scrollbar-thumb:is(:hover, :active) {
 		background-color: var(--wui-form-body-scroll-bgcolor-over);
 	}
 
-	.wui-form > .body.scroll::-webkit-scrollbar-track {
+	.wui-form > .body:is(.scroll, .scroll-x, .scroll-y)::-webkit-scrollbar-track {
 		background-color: transparent;
 	}
 }
