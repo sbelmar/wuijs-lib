@@ -353,7 +353,7 @@ class WUIForm {
 				}
 			}
 			if (label instanceof HTMLLabelElement) {
-				if (tag == "data" || type.match(/^(date|time)$/)) {
+				if (tag == "data" || type.match(/^(date|time|range)$/)) {
 					label.classList.add("fixed");
 				}
 				if (input.value != "" || type.match(/date|time/)) {
@@ -435,14 +435,22 @@ class WUIForm {
 HTML output:
 <form name="form" class="wui-form (line|border [curve]) [mobile]">
 	<input type="hidden" name="hidden">
-	<div class="header"></div>
-	<div class="body">
-		<legend>Fieldset</legend>
+	<div class="header">Header</div>
+	<div class="body [scroll]">
 		<fieldset>
+			<legend>Fieldset</legend>
 			<div class="field icon-left">
 				<div class="icon"></div>
 				<label>Text</label>
 				<input type="text" name="text">
+			</div>
+			<div class="field icon-left">
+				<div class="icon"></div>
+				<label>Select</label>
+				<select name="select">
+					<option value="value1">value 1</option>
+					[...]
+				</select>
 			</div>
 			<div class="field icon-left">
 				<div class="icon"></div>
@@ -454,27 +462,24 @@ HTML output:
 				<label>Time</label>
 				<input type="time" name="time">
 			</div>
-			<div class="field icon-left">
-				<div class="icon"></div>
-				<label>Select</label>
-				<select name="select">
-					<option value="value1">value 1</option>
-					[...]
-				</select>
-			</div>
 			<div class="field icon-left inline noborder">
 				<div class="icon"></div>
 				<label>Color</label>
 				<input type="color" name="color">
 			</div>
+			<div class="field icon-left noborder">
+				<div class="icon"></div>
+				<label>Range</label>
+				<input type="range" name="range">
+			</div>
 			<div class="field icon-left [autosize]">
 				<div class="icon"></div>
 				<label for="wuiTextarea">Text area</label>
-				<textarea name="textarea"></textarea>
+				<textarea name="textarea [noresize|vresize|hresize]"></textarea>
 			</div>
 			<div class="field icon-left inline noborder">
 				<div class="icon"></div>
-				<label for="checkbox">Checkbox</label>
+				<label for="checkbox" class="pointer">Checkbox</label>
 				<input id="checkbox" type="checkbox" name="checkbox" value="1">
 			</div>
 			<div class="field icon-left">

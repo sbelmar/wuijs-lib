@@ -3025,6 +3025,7 @@ body {
 
 nav {
 	max-width: 400px;
+	height: 400px;
 }
 ```
 
@@ -3042,24 +3043,14 @@ HTML code:
 <nav>
 	<form name="myForm" class="wui-form my-form line">
 		<input type="hidden" name="myHidden">
-		<div class="header"></div>
-		<div class="body">
-			<legend>Fieldset</legend>
+		<div class="header">Header</div>
+		<div class="body scroll">
 			<fieldset>
+				<legend>Fieldset</legend>
 				<div class="field icon-left">
 					<div class="icon wui-icon text-left-line"></div>
 					<label>Text</label>
 					<input type="text" name="text" value="">
-				</div>
-				<div class="field icon-left">
-					<div class="icon wui-icon calendar-line"></div>
-					<label>Date</label>
-					<input type="date" name="date" value="">
-				</div>
-				<div class="field icon-left">
-					<div class="icon wui-icon time-line"></div>
-					<label>Time</label>
-					<input type="time" name="time" value="">
 				</div>
 				<div class="field icon-left">
 					<div class="icon wui-icon list-check-line"></div>
@@ -3071,10 +3062,15 @@ HTML code:
 						<option value="value3">value 3</option>
 					</select>
 				</div>
-				<div class="field icon-left inline noborder">
-					<div class="icon wui-icon palette-line"></div>
-					<label>Color</label>
-					<input type="color" name="color" value="">
+				<div class="field icon-left">
+					<div class="icon wui-icon calendar-line"></div>
+					<label>Date</label>
+					<input type="date" name="date" value="">
+				</div>
+				<div class="field icon-left">
+					<div class="icon wui-icon time-line"></div>
+					<label>Time</label>
+					<input type="time" name="time" value="">
 				</div>
 				<div class="field icon-left autosize">
 					<div class="icon wui-icon text-paragraph-line"></div>
@@ -3082,8 +3078,18 @@ HTML code:
 					<textarea name="textarea"></textarea>
 				</div>
 				<div class="field icon-left inline noborder">
+					<div class="icon wui-icon palette-line"></div>
+					<label>Color</label>
+					<input type="color" name="color" value="">
+				</div>
+				<div class="field icon-left noborder">
+					<div class="icon wui-icon thermometer-half-line"></div>
+					<label>Range</label>
+					<input type="range" name="range" value="">
+				</div>
+				<div class="field icon-left inline noborder">
 					<div class="icon wui-icon check-line"></div>
-					<label for="checkbox">Checkbox</label>
+					<label for="checkbox" class="pointer">Checkbox</label>
 					<input id="checkbox" type="checkbox" name="checkbox" value="1">
 				</div>
 				<div class="field icon-left">
@@ -3092,10 +3098,10 @@ HTML code:
 					<data class="name" value="data">data</data>
 				</div>
 				<div class="text my-text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 				</div>
 				<div class="message highlight center">
-					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</div>
 			</fieldset>
 		</div>
